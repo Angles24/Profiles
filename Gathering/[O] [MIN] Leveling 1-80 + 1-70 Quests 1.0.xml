@@ -38,7 +38,7 @@
 	<KillRadius>90</KillRadius>
 	<CodeChunks>
 
-		<!-- Modify Gear Set Test -->
+		<!-- Modify Gear Set -->
 
 		<CodeChunk Name="Miner">
 			<![CDATA[
