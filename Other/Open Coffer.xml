@@ -19,6 +19,7 @@ Open Coffers - Angles24 / Kayla
 	</CodeChunks>	
 	<Order>	
 		<Dismount />
+		<WaitTimer WaitTime="3" />
 		<RunCode Name="Coffer" />	
 	</Order>
 </Profile>

@@ -2350,7 +2350,7 @@
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
 			  </ExGather>
-			  <NoCombatMoveTo Name="Farming Area" XYZ="-765.9192, 47.86558, -223.4224" />
+			  <GetTo Name="Farming Area" XYZ="-765.9192, 47.86558, -223.4224" />
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -2361,7 +2361,7 @@
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
 			  </ExGather>
-			  <NoCombatMoveTo Name="Farming Area" XYZ="-681.9741, 22.7364,-44.21484" />
+			  <GetTo Name="Farming Area" XYZ="-681.9741, 22.7364,-44.21484" />
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
