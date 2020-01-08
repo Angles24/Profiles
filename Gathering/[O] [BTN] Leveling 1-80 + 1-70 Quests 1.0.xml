@@ -2470,7 +2470,7 @@
 
 		  <!-- Level 73-75 -->
 
-		  <While Condition="Core.Player.ClassLevel &lt; 81">
+		  <While Condition="Core.Player.ClassLevel &lt; 75">
 			  <GetTo ZoneId="817" XYZ="-418.7421, 9.660616, 260.4372"/>			  <!-- Safe spot-->
 			  <RunCode Name="Stealth" />
 			  <Dismount />
