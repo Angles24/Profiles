@@ -3358,7 +3358,6 @@ Required Botbases:  Lisbeth 3.0.
         </If>-->
         <GetTo ZoneId="131" XYZ="-98.8938, 40.19999, 120.8362"/>
         <If Condition="GetQuestStep(66118) == 255">
-          <RunCode Name="Requires_Melding"/>
           <WaitWhile Condition="GetQuestStep(66118) == 255"/>
         </If>
         <SoTurnIn QuestId="66118" ItemId="2149" NpcId="1002299" AllowHq="True" XYZ="-98.8938, 40.19999, 120.8362"/>
@@ -3475,25 +3474,35 @@ Required Botbases:  Lisbeth 3.0.
         <GetTo ZoneId="131" XYZ="105.9434, 7.999993, -32.70007"/>
         <TalkTo NpcId="1003927" XYZ="105.9434, 7.999993, -32.70007" QuestId="66186" StepId="1"/>
       </If>
-      <If Condition="HasQuest(66186) and not IsQuestCompleted(66186) and GetQuestStep(66186) == 2 and not IsTodoChecked(66186, 2, 0)">
-        <GetTo ZoneId="131" XYZ="37.67456, 7.999928, -113.2067"/>
+	  
+      <!--<If Condition="HasQuest(66186) and not IsQuestCompleted(66186) and GetQuestStep(66186) == 2 and not IsTodoChecked(66186, 2, 0)">
+        <GetTo ZoneId="130" XYZ="37.67456, 7.999928, -113.2067"/>
         <TalkTo NpcId="1001309" XYZ="37.67456, 7.999928, -113.2067" QuestId="66186"/>
       </If>
       <If Condition="HasQuest(66186) and not IsQuestCompleted(66186) and GetQuestStep(66186) == 2 and not IsTodoChecked(66186, 2, 1)">
-        <GetTo ZoneId="131" XYZ="14.1756, 6.973328, -83.87885"/>
+        <GetTo ZoneId="130" XYZ="14.1756, 6.973328, -83.87885"/>
         <TalkTo NpcId="1001301" XYZ="14.1756, 6.973328, -83.87885" QuestId="66186"/>
       </If>
       <If Condition="HasQuest(66186) and not IsQuestCompleted(66186) and GetQuestStep(66186) == 2 and not IsTodoChecked(66186, 2, 2)">
-        <GetTo ZoneId="131" XYZ="-34.16504, 9.099978, -87.44946"/>
+        <GetTo ZoneId="130" XYZ="-34.16504, 9.099978, -87.44946"/>
         <TalkTo NpcId="1001354" XYZ="-34.16504, 9.099978, -87.44946" QuestId="66186"/>
-      </If>
+      </If>-->
+	  
+	  <If Condition="HasQuest(66186) and not IsQuestCompleted(66186) and GetQuestStep(66186) == 2">
+		<GetTo ZoneId="130" XYZ="37.67456, 7.999928, -113.2067"/>
+        <TalkTo NpcId="1001309" XYZ="37.67456, 7.999928, -113.2067" QuestId="66186"/>
+		<GetTo ZoneId="130" XYZ="14.1756, 6.973328, -83.87885"/>
+        <TalkTo NpcId="1001301" XYZ="14.1756, 6.973328, -83.87885" QuestId="66186"/>
+		<GetTo ZoneId="130" XYZ="-34.16504, 9.099978, -87.44946"/>
+        <TalkTo NpcId="1001354" XYZ="-34.16504, 9.099978, -87.44946" QuestId="66186"/>
+	   </If>
+	  
       <If Condition="HasQuest(66186) and not IsQuestCompleted(66186) and GetQuestStep(66186) == 3">
         <!--<If Condition="not HasHqItem(1987)">
           <Lisbeth Json="[{'Item': 1987,'Group': 0,'Amount': 1,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': false,'Food': 0,'Primary': true,'Type': 'Alchemist','Enabled': true,'Manual': 0,'Medicine': 0}]"/>
         </If>-->
         <GetTo ZoneId="131" XYZ="-98.8938, 40.19999, 120.8362"/>
         <If Condition="GetQuestStep(66186) == 3">
-          <RunCode Name="Requires_Melding"/>
           <WaitWhile Condition="GetQuestStep(66186) == 3"/>
         </If>
         <SoHandOver ItemId="1987" NpcId="1002299" RequiresHq="False" XYZ="-98.8938, 40.19999, 120.8362" QuestId="66186" StepId="3"/>
@@ -3607,8 +3616,8 @@ Required Botbases:  Lisbeth 3.0.
       <!-- What Death can Join Together (Level 60) -->
       <If Condition="IsQuestCompleted(67604) and not HasQuest(67605) and not IsQuestCompleted(67605) and Core.Player.ClassLevel &gt; 59">
         <GetTo ZoneId="156" XYZ="76.8951, 22.2367, -640.412"/>
-        <If Condition="IsQuestAcceptQualified(67604)">
-          <PickupQuest QuestId="67604" NpcId="1012558" XYZ="76.8951, 22.2367, -640.412"/>
+        <If Condition="IsQuestAcceptQualified(67605)">
+          <PickupQuest QuestId="67605" NpcId="1012558" XYZ="76.8951, 22.2367, -640.412"/>
         </If>
       </If>
       <If Condition="HasQuest(67605) and not IsQuestCompleted(67605) and GetQuestStep(67605) == 1">
@@ -3620,7 +3629,7 @@ Required Botbases:  Lisbeth 3.0.
         <TalkTo NpcId="1013677" XYZ="241.9012, 1.377398, -568.0171" QuestId="67605" StepId="2"/>
       </If>
       <If Condition="HasQuest(67605) and not IsQuestCompleted(67605) and GetQuestStep(67605) == 3">
-        <GetTo ZoneId="398" XYZ="76.8951, 22.2367, -640.412"/>
+        <GetTo ZoneId="156" XYZ="76.8951, 22.2367, -640.412"/>
         <TalkTo NpcId="1012558" XYZ="76.8951, 22.2367, -640.412" QuestId="67605" StepId="3"/>
       </If>
       <If Condition="HasQuest(67605) and not IsQuestCompleted(67605) and GetQuestStep(67605) == 4">
@@ -4020,7 +4029,7 @@ Required Botbases:  Lisbeth 3.0.
         <GetTo ZoneId="128" XYZ="-58.85406, 42.29973, -164.0803"/>
         <TalkTo NpcId="1001537" XYZ="-58.85406, 42.29973, -164.0803" QuestId="65806" StepId="2"/>
       </If>
-      <If Condition="HasQuest(65806) and not IsQuestCompleted(65806) and GetQuestStep(65806) == 3 and GetQuestById(65806).GetTodoArgs(3, 0).Item1 == 0">
+      <!--<If Condition="HasQuest(65806) and not IsQuestCompleted(65806) and GetQuestStep(65806) == 3 and GetQuestById(65806).GetTodoArgs(3, 0).Item1 == 0">
         <GetTo ZoneId="128" XYZ="-85.16064, 40.99998, -141.0392"/>
         <TalkTo NpcId="1000962" XYZ="-85.16064, 40.99998, -141.0392" QuestId="65806"/>
       </If>
@@ -4035,11 +4044,29 @@ Required Botbases:  Lisbeth 3.0.
       <If Condition="HasQuest(65806) and not IsQuestCompleted(65806) and GetQuestStep(65806) == 3 and GetQuestById(65806).GetTodoArgs(3, 0).Item1 == 3">
         <GetTo ZoneId="129" XYZ="-344.7776, 12.8938, 5.81366"/>
         <TalkTo NpcId="1000899" XYZ="-344.7776, 12.8938, 5.81366" QuestId="65806"/>
-      </If>
+      </If> --> 
+	  
+	  <!--1-1
+	  2-0
+	  3-2
+	  4-3 -->
+	  
+	  
+	  <If Condition="HasQuest(65806) and not IsQuestCompleted(65806) and GetQuestStep(65806) == 3">
+		<GetTo ZoneId="128" XYZ="-85.16064, 40.99998, -141.0392"/>
+        <TalkTo NpcId="1000962" XYZ="-85.16064, 40.99998, -141.0392" QuestId="65806"/>
+		<GetTo ZoneId="128" XYZ="-5.69165, 44.00137, -102.2507"/>
+        <TalkTo NpcId="1002079" XYZ="-5.69165, 44.00137, -102.2507" QuestId="65806"/>
+		<GetTo ZoneId="129" XYZ="-136.6751, 18.2, 16.495"/>
+        <TalkTo NpcId="1003277" XYZ="-136.6751, 18.2, 16.495" QuestId="65806"/>
+		<GetTo ZoneId="129" XYZ="-343.8453, 12.89976, 8.684866"/>
+        <TalkTo NpcId="1000899" XYZ="-343.8453, 12.89976, 8.684866" QuestId="65806"/>
+	   </If>
+	  
       <If Condition="HasQuest(65806) and not IsQuestCompleted(65806) and GetQuestStep(65806) == 4">
         <GetTo ZoneId="128" XYZ="-58.85406, 42.29973, -164.0803"/>
         <TalkTo NpcId="1001537" XYZ="-58.85406, 42.29973, -164.0803" QuestId="65806" StepId="4"/>
-      </If>
+      </If>	  
       <If Condition="HasQuest(65806) and not IsQuestCompleted(65806) and GetQuestStep(65806) == 5">
         <!--<If Condition="not HasHqItem(4647)">
           <Lisbeth Json="[{'Item': 4647,'Group': 0,'Amount': 1,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Culinarian','Enabled': true,'Manual': 0,'Medicine': 0}]"/>

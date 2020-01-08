@@ -2394,6 +2394,7 @@
 
 		  <While Condition="Core.Player.ClassLevel &lt; 71">
 			  <GetTo ZoneId="621" XYZ="359.1889, 23.22657, -513.6865" /> <!-- Farming Area -->
+			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Mature Tree</GatherObject>
 				  <HotSpots>
@@ -2432,6 +2433,7 @@
 
 		  <While Condition="Core.Player.ClassLevel &lt; 73">
 			  <GetTo ZoneId="813" XYZ="-409.8083, 3.721667, -28.28305" /> <!-- Farming Area -->
+			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
@@ -2468,8 +2470,9 @@
 
 		  <!-- Level 73-75 -->
 
-		  <While Condition="Core.Player.ClassLevel &lt; 75">
-			  <NoCombatMoveTo ZoneId="817" XYZ="-418.7421, 9.660616, 260.4372"/> <!-- Safe spot-->
+		  <While Condition="Core.Player.ClassLevel &lt; 81">
+			  <GetTo ZoneId="817" XYZ="-418.7421, 9.660616, 260.4372"/>			  <!-- Safe spot-->
+			  <RunCode Name="Stealth" />
 			  <Dismount />
 			  <WaitTimer WaitTime="1" />
 				<RunCode Name="Stealth" />
@@ -2527,6 +2530,7 @@
 
 		  <While Condition="Core.Player.ClassLevel &lt; 76">
 			  <GetTo ZoneId="817" XYZ="-418.7421, 9.660616, 260.4372" /> <!-- Farming Area -->
+			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
@@ -2565,6 +2569,7 @@
 
 		  <While Condition="Core.Player.ClassLevel &lt; 78">
 			  <GetTo ZoneId="813" XYZ="-549.0365, 77.36881, -501.8888" /> <!-- Farming Area -->
+			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Mature Tree</GatherObject>
 				  <HotSpots>
@@ -2603,6 +2608,7 @@
 
 		  <While Condition="Core.Player.ClassLevel &lt; 80">
 			  <GetTo ZoneId="813" XYZ="-549.0365, 77.36881, -501.8888" /> <!-- Farming Area -->
+			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Mature Tree</GatherObject>
 				  <HotSpots>
