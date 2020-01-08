@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Open Coffers - Angles24 / Kayla
+-->
+<Profile>
+	<Name>Open Coffers</Name>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+	<KillRadius>90</KillRadius>
+	<CodeChunks>	
+		<CodeChunk Name="Coffer">
+			<![CDATA[		
+				foreach (var bagslot in InventoryManager.FilledSlots.Where(bagslot => bagslot.Item.ItemAction == 388))
+            {
+                bagslot.UseItem();
+                await Coroutine.Sleep(5000);
+            }
+		]]> 
+		</CodeChunk>
+	</CodeChunks>	
+	<Order>	
+		<Dismount />
+		<RunCode Name="Coffer" />	
+	</Order>
+</Profile>
