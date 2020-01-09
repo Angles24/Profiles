@@ -102,7 +102,9 @@
 	<Order>
     <RunCode Name="Miner" />
     <WaitTimer WaitTime="3" />
-	<BotSettings AutoEquip="1"/>
+	<If Condition="not Core.Me.ClassLevel &gt; 79">
+      <BotSettings AutoEquip="1"/>
+    </If>
 		  <LogMessage Message="The Journey Begins! Remember to Check up on me!" />
 		  <!--Unlocking Miner-->
 		  <If Condition="not IsQuestCompleted(65728)">
@@ -1660,7 +1662,7 @@
                 <GetTo ZoneId="402" XYZ="-710.4073, -187.544, -589.1729" />
                 <!-- Helix -->
               </If>
-              <While Condition="not HqHasAtLeast(12538,3)">
+              <While Condition="IsTimeBetween(12,14) or IsTimeBetween(0,2) and not HqHasAtLeast(12538,3)">
                 <!-- Entrax -->
                 <ExGather DiscoverUnknowns="&DiscoverUnknowns;" While="not HqHasAtLeast(12538,3)">
                   <GatherObjects>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Angles24
+-->
+<Profile>
+	<Name>Firmament Teleport</Name>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+	<KillRadius>90</KillRadius>
+	<CodeChunks>
+	</CodeChunks>	
+	<Order>
+		
+			<!--<GetTo ZoneId="418" XYZ="-56.22199, 8.113304, 43.31803"/>
+			<UseObject NpcId="5877371" UseTimes="1" DialogOption="1" BlacklistAfter="True" InteractDistance="10" XYZ="-56.22199, 8.113304, 43.31803" Radius="5" UseMesh="False"/>
+			<MoveTo XYZ="38.89689, -16, 139.8554" UseMesh="False" />
+			<TalkTo NpcId="1031680" XYZ="38.89689, -16, 139.8554" InteractDistance="5" UseMesh="False"/>
+			<MoveTo XYZ="50.83703, -16, 168.3313" UseMesh="False" />	
+			<TalkTo NpcId="1031677" XYZ="50.83703, -16, 168.3313" InteractDistance="5" UseMesh="False"/>-->
+			
+			<If Condition="Managers.WorldManager.HasAetheryteId(70)">
+				<If Condition="not IsOnMap(886)">
+					<GetTo ZoneId="418" XYZ="-56.22199, 8.113304, 43.31803"/> <!-- The Pillars -->
+				</If>
+				<If Condition="IsOnMap(418)">
+					<UseTransport Name="Aetheryte" InteractDistance="3.0" NpcId="70" DialogOption="1" XYZ="-56.22199, 8.113304, 43.31803" />
+				</If>
+			</If>
+			
+		
+	</Order>
+	<GrindAreas>
+	</GrindAreas>
+</Profile>
