@@ -10,9 +10,9 @@ Added:	Chocobo quest and opening of Coffers
   <BehaviorDirectory>..\Quest Behaviors</BehaviorDirectory>
   <Order>
     <RunCode Name="Disable_Flight"/>
-    <If Condition="not Core.Me.ClassLevel &gt; 79">
+    <!--<If Condition="not Core.Me.ClassLevel &gt; 79">
       <BotSettings AutoEquip="1"/>
-    </If>
+    </If>-->
     <RunCode Name="Profile"/>
 	 <!-- My Feisty Little Chocobo (Level 30) -->
     <If Condition="IsQuestCompleted(66337) and not HasQuest(66698) and not IsQuestCompleted(66698)">
@@ -4519,8 +4519,7 @@ Added:	Chocobo quest and opening of Coffers
 
         Navigator.PlayerMover.MoveStop();
       ]]>
-    </CodeChunk>
-	<CodeChunks>	
+    </CodeChunk>	
 	  <CodeChunk Name="Summon_Chocobo">
 	  <![CDATA[ 
         if(!ChocoboManager.Summoned)
@@ -4539,6 +4538,5 @@ Added:	Chocobo quest and opening of Coffers
             }
 		]]> 
 		</CodeChunk>
-	</CodeChunks>
   </CodeChunks>
 </Profile>
