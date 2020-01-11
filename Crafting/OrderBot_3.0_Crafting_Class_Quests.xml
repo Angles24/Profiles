@@ -384,10 +384,11 @@ Required Botbases:  Lisbeth 3.0.
       </If>
       <If Condition="HasQuest(67537) and not IsQuestCompleted(67537) and GetQuestStep(67537) == 6">
         <GetTo ZoneId="397" XYZ="-270.0085, 80.85996, -350.6066"/>
+		<Dismount/>
         <TalkTo NpcId="1013600" XYZ="-270.0085, 80.85996, -350.6066" QuestId="67537" StepId="6"/>
       </If>
       <If Condition="HasQuest(67537) and not IsQuestCompleted(67537) and GetQuestStep(67537) == 255">
-        <GetTo ZoneId="397" XYZ="542.2294, 176.8043, -554.4976"/>
+	    <GetTo ZoneId="397" XYZ="542.2294, 176.8043, -554.4976"/>
         <TurnIn QuestId="67537" NpcId="1013686" XYZ="542.2294, 176.8043, -554.4976"/>
         <WaitTimer WaitTime="2"/>
       </If>
