@@ -151,9 +151,13 @@ Authors:  Sodimm
         <GetTo ZoneId="813" XYZ="705.6411, 24.19248, 3.015944"/>
         <MoveTo XYZ="705.6411, 24.19248, 3.015944" Distance="1"/>
         <Dismount/>
+		<WaitTimer WaitTime="5" />
         <ClimbHill Start="705.6411, 24.19248, 3.015944" End="706.9333, 27.62939, 8.007933"/>
+		<WaitTimer WaitTime="5" />
         <RunCode Name="2010026"/>
+		<WaitTimer WaitTime="5" />
         <MoveTo XYZ="702.3759, 30.48876, 2.899601" Distance="1" UseMesh="False"/>
+		<WaitTimer WaitTime="5" />
         <UseObject NpcId="2010026" XYZ="702.2355, 30.47229, 1.235901" Condition="not IsAetherCurrentCompleted(813,12)"/>
         <MoveTo XYZ="709.9052, 24.19248, -1.722743" UseMesh="False"/>
       </If>
@@ -191,7 +195,7 @@ Authors:  Sodimm
       <If Condition="not IsAetherCurrentCompleted(813,7)">
         <GetTo ZoneId="813" XYZ="-143.7215, 14.6239, -146.5056"/>
         <Dismount/>
-        <MoveTo XYZ="-143.7215, 14.6239, -146.5056" Distance="1"/>
+        <MoveTo XYZ="-143.7215, 14.6239, -146.5056" Distance="0.1"/>
         <RunCode Name="2010031"/>
       </If>
     </If>

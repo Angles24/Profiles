@@ -2022,14 +2022,22 @@
       <If Condition="not IsOnMap(613)">
         <GetTo ZoneId="613" XYZ="91.30017, 3.033221, -576.0388"/>
       </If>
-      <ExMoveTo XYZ="63.82051, 34.01744, 658.9822"/>
+      <ExMoveTo XYZ="49.17141, 25.88081, 660.0438"/>
       <While Condition="not HqHasAtLeast(17942,5)">
         <ExGather DiscoverUnknowns="true" Loops="1" While="not HqHasAtLeast(17942,5)">
           <GatherObject>Mineral Deposit</GatherObject>
+		  <WaitTimer WaitTime="1" />
+				<NoCombatMoveTo XYZ="49.17141, 25.88081, 660.0438"/> <!-- Safe spot-->
           <HotSpots>
-            <HotSpot Radius="50" XYZ="63.82051, 34.01744, 658.9822" name="Mineral Deposits"/>
-            <HotSpot Radius="50" XYZ="132.173, 36.3882, 786.7529" name="Mineral Deposits"/>
-            <HotSpot Radius="50" XYZ="216.2265, 30.78921, 713.9532" name="Mineral Deposits"/>
+            <HotSpot Radius="50" XYZ="49.17141, 25.88081, 660.0438" name="Mineral Deposits"/>
+		  </HotSpots>
+				<NoCombatMoveTo XYZ="201.092, 29.4713, 692.2793"/> <!-- Safe spot-->
+		  <HotSpots>
+            <HotSpot Radius="50" XYZ="201.092, 29.4713, 692.2793" name="Mineral Deposits"/>
+		  </HotSpots>
+				<NoCombatMoveTo XYZ="139.6632, 34.65311, 802.1102"/> <!-- Safe spot-->
+		  <HotSpots>
+            <HotSpot Radius="50" XYZ="139.6632, 34.65311, 802.1102" name="Mineral Deposits"/>
           </HotSpots>
           <ItemNames>
             <ItemName>Feather Iron Ore</ItemName>

@@ -1035,7 +1035,8 @@ Added:	Chocobo quest and opening of Coffers
       <If Condition="not IsOnMap(816)">
         <GetTo ZoneId="816" XYZ="-382.3653, 60.34946, 529.2402"/>
       </If>
-      <SoTalkTo NpcId="2009816" XYZ="-382.8031, 60.74609, 530.5714" QuestId="68842" StepId="2"/>
+	  <MoveTo XYZ="-382.5748, 60.79728, 530.5694" Distance="0.1"/>
+      <SoTalkTo NpcId="2009816" XYZ="-382.5748, 60.79728, 530.5694" QuestId="68842" StepId="2"/>
     </If>
     <If Condition="HasQuest(68842) and not IsQuestCompleted(68842) and GetQuestStep(68842) == 255">
       <If Condition="not IsOnMap(816)">
