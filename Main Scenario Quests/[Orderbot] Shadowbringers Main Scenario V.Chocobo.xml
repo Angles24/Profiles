@@ -2423,8 +2423,9 @@ Added:	Chocobo quest and opening of Coffers
       </If>
     </If>
     <If Condition="HasQuest(69147) and not IsQuestCompleted(69147) and GetQuestStep(69147) == 1">
-      <GetTo ZoneId="815" XYZ="-462.6006, -1.252241, -373.8559"/>
-      <TalkTo NpcId="1030947" XYZ="-461.9364, -1.218392, -372.0607" QuestId="69147" StepId="1"/>
+	  <GetTo ZoneId="815" XYZ="-493.2674, 45.59068, -217.0783"/>
+      <GetTo ZoneId="815" XYZ="-459.9622, -1.244542, -371.7602"/>
+      <TalkTo NpcId="1030947" XYZ="-459.9622, -1.244542, -371.7602" QuestId="69147" StepId="1"/>
     </If>
     <If Condition="HasQuest(69147) and not IsQuestCompleted(69147) and GetQuestStep(69147) == 2">
       <GetTo ZoneId="815" XYZ="-3.106345, 45.61908, -582.3674"/>
