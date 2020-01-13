@@ -3427,9 +3427,9 @@ Added:	Chocobo quest and opening of Coffers
     </If>
     <If Condition="HasQuest(69185) and not IsQuestCompleted(69185) and GetQuestStep(69185) == 2 and not IsTodoChecked(69185, 2, 1)">
       <If Condition="not IsOnMap(818)">
-        <GetTo ZoneId="818" XYZ="324.801, 354.5316, -477.1926"/>
+        <GetTo ZoneId="818" XYZ="325.0492, 353.7672, -475.2761" Distance="0.1"/>
       </If>
-      <UseItem ItemId="2002673" NpcId="2010142" XYZ="324.801, 354.5316, -477.1926" QuestId="69185" Condition="HasQuest(69185) and not IsQuestCompleted(69185) and GetQuestStep(69185) == 2 and not IsTodoChecked(69185, 2, 1)"/>
+      <UseItem ItemId="2002673" NpcId="2010142" Distance="0.1" XYZ="325.0492, 353.7672, -475.2761" QuestId="69185" Condition="HasQuest(69185) and not IsQuestCompleted(69185) and GetQuestStep(69185) == 2 and not IsTodoChecked(69185, 2, 1)"/>
     </If>
     <If Condition="HasQuest(69185) and not IsQuestCompleted(69185) and GetQuestStep(69185) == 2 and not IsTodoChecked(69185, 2, 0)">
       <If Condition="not IsOnMap(818)">
@@ -3501,7 +3501,10 @@ Added:	Chocobo quest and opening of Coffers
     </If>
     <If Condition="HasQuest(69187) and not IsQuestCompleted(69187) and GetQuestStep(69187) == 3">
 	  <!-- GetTo may keep walking over the geyser -->
-      <GetTo ZoneId="818" XYZ="403.1016, 303.3107, -245.2823"/>
+      <GetTo ZoneId="818" XYZ="473.1768, 341.6489, -272.3576"/>
+	  <MoveTo XYZ="483.5955, 315.3157, -280.4646" UseMesh="False"/>
+	  <WaitTimer WaitTime="5" />
+	  <GetTo ZoneId="818" XYZ="403.1016, 303.3107, -245.2823"/>
       <TalkTo NpcId="1030570" XYZ="400.595, 303.5103, -245.1057" QuestId="69187" StepId="3"/>
     </If>
     <If Condition="HasQuest(69187) and not IsQuestCompleted(69187) and GetQuestStep(69187) == 4">

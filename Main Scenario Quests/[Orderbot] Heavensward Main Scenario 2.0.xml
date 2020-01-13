@@ -71,7 +71,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
  <Name>[OrderBot] Heavensward Main Scenario 2.0</Name>
  <BehaviorDirectory>..\Quest Behaviors</BehaviorDirectory>
  <Order>
-  <BotSettings AutoEquip="1"/>
+  <!--<BotSettings AutoEquip="1"/>-->
   <RunCode Name="No_ExBuddy"/>
   <!-- Coming to Ishgard (Level 50) -->
   <If Condition="IsQuestCompleted(65964) and not HasQuest(67116) and not IsQuestCompleted(67116)">
@@ -2869,6 +2869,8 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <Dismount />
    <WaitTimer WaitTime="3" />
    <RunCode Name="Coffer" />
+   <WaitTimer WaitTime="3" />
+   <RunCode Name="AutoEquip"/>
   </If>
   <!-- As Goes Light, So Goes Darkness (Level 60) -->
   <If Condition="IsQuestCompleted(67698) and not HasQuest(67699) and not IsQuestCompleted(67699)">
@@ -2919,6 +2921,8 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <Dismount />
    <WaitTimer WaitTime="3" />
    <RunCode Name="Coffer" />
+   <WaitTimer WaitTime="3" />
+   <RunCode Name="AutoEquip"/>
   </If>
   <!-- As It Once Was (Level 60) -->
   <If Condition="IsQuestCompleted(67699) and not HasQuest(67767) and not IsQuestCompleted(67767)">
@@ -3247,6 +3251,8 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <Dismount />
    <WaitTimer WaitTime="3" />
    <RunCode Name="Coffer" />
+   <WaitTimer WaitTime="3" />
+   <RunCode Name="AutoEquip"/>
   </If>
   <!-- The Man Within (Level 60) -->
   <If Condition="IsQuestCompleted(67777) and not HasQuest(67778) and not IsQuestCompleted(67778)">
@@ -3272,6 +3278,8 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <Dismount />
    <WaitTimer WaitTime="3" />
    <RunCode Name="Coffer" />
+   <WaitTimer WaitTime="3" />
+   <RunCode Name="AutoEquip"/>
   </If>
   <!-- An Ally for Ishgard (Level 60) -->
   <If Condition="IsQuestCompleted(67778) and not HasQuest(67779) and not IsQuestCompleted(67779)">
@@ -4003,6 +4011,29 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
             }
 		]]> 
   </CodeChunk>
+  <CodeChunk Name="AutoEquip">
+            <![CDATA[ 
+            var patternFinder = new GreyMagic.PatternFinder(Core.Memory);
+            IntPtr agentVtable = patternFinder.Find("48 8D 05 ? ? ? ? C6 43 ? ? 48 89 03 48 8B C3 C7 43 ? ? ? ? ? Add 3 TraceRelative");
+            int id = AgentModule.FindAgentIdByVtable(agentVtable);
+
+            AtkAddonControl windowByName = RaptureAtkUnitManager.GetWindowByName("RecommendEquip");
+
+            if (windowByName == null)
+            {
+                AgentModule.GetAgentInterfaceById(id).Toggle();
+            }
+
+            await Coroutine.Wait(10000, () => RaptureAtkUnitManager.GetWindowByName("RecommendEquip") != null);
+            
+            windowByName = RaptureAtkUnitManager.GetWindowByName("RecommendEquip");
+            
+            if (windowByName != null)
+            {
+                windowByName.SendAction(1, 3, 0);
+            }
+            ]]>
+        </CodeChunk>
  </CodeChunks>
  <GrindAreas>
   <GrindArea Name="Deepeye">
