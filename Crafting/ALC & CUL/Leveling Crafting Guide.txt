@@ -1,16 +1,17 @@
-Have Gearsets Ready on toon(Optional) and Class Quest Items(Optional).
+Empty Inventory.
+Have Gearsets Ready on toonand Class Quest Items.
 Gearset for levels 21-51-63-70/71
 Prepare Leve quest items for 70-80!
 Before running Lisbeth always redo Gearsets!
 
 1. Get Crafters to 21
 	Botbase: Lisbeth
-		Profile:"CRAFT 1-21 levelling"
+		Profile:"CRAFT 1-21 alc & cul levelling" 3 Profiles here, remember to redo gearsets inbetween!
 	1.1 - Craft Level 21 Crafting Gear	
 
-2. Run the Unlock Ishgard Firmament profile
+2. Clear inventory of newly crafted items & run the Unlock Ishgard Firmament profile
 	Botbase: Order Bot
-		Profile:"Unlock Ishgard Firmament(Work in Progress)"
+		Profile:"Unlock Ishgard Firmament"
 
 3. Equip level 21 gear and redo gearsets then craft ishgard collecatables.
 	Botbase: Lisbeth
@@ -41,7 +42,7 @@ Before running Lisbeth always redo Gearsets!
 		Profile:"60-70 quest items"
 	8.1 Craft 70/71 Gear or Yellow Scrip Crafter Gear
 
-9. Use leve's to boost from 70-80
+9. Clear inventory of quest reward items & use leve's to boost from 70-80
 	Plugin: Levegen
 		Profile:"work in progress"
 
