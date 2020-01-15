@@ -33,7 +33,7 @@
 
 		<CodeChunk Name="Botanist">
 			<![CDATA[
-				ff14bot.Managers.ChatManager.SendChat("/gs change 2");
+				ff14bot.Managers.ChatManager.SendChat("/gs change 10");
 		]]>
 		</CodeChunk>
 
@@ -119,12 +119,9 @@
         </CodeChunk>
 	</CodeChunks>
 	<Order>
-	<RunCode Name="Botanist" />
+	<ChangeClass Job="Botanist" />
 	<WaitTimer WaitTime="3" />
-	<If Condition="not Core.Me.ClassLevel &gt; 79">
-     <!-- <BotSettings AutoEquip="1"/> -->
-    </If>
-		<LogMessage Message="The Journey Begins! Remember to Check up on me!" />
+	<LogMessage Message="The Journey Begins! Remember to Check up on me!" />
 		<!--Unlocking Botany-->
 		<If Condition="not IsQuestCompleted(65729)">
 			<If Condition="not HasQuest(65729)">
@@ -175,8 +172,7 @@
 	<If Condition="Core.Me.CurrentJob == ClassJobType.Botanist">
 
 	  <RunCode Name="Triangulate" />
-
-		<RunCode Name="Botanist" />
+		<ChangeClass Job="Botanist" />
 		<WaitTimer WaitTime="3" />
 		<WaitWhile Condition="Managers.QuestLogManager.InCutscene" />
 
@@ -2815,9 +2811,6 @@
 				  </GatheringSkillOrder>
 			  </ExGather>
 		  </While>
-
-		</If>
-
 		<If Condition="Core.Player.ClassLevel == 80">
 			<LogMessage Message="Congrats! You've hit level 80 Botanist!" />
 			<If Condition="not IsOnMap(129)">
@@ -2827,7 +2820,7 @@
 						<WaitTimer WaitTime="3" />
 			</If>
 		</If>
-
+	</If>
 	</Order>
 	<GrindAreas>
 	</GrindAreas>

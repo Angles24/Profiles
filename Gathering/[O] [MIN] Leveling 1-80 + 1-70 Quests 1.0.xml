@@ -33,7 +33,7 @@
 ]>
 <!-- End User Configuration -->
 <Profile>
-	<Name>[O] [MIN] Leveling 1-70 + 1-70 Quests (v1.0)</Name>
+	<Name>[O] [MIN] Leveling 1-80 + 1-70 Quests (v1.0)</Name>
 	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
 	<KillRadius>90</KillRadius>
 	<CodeChunks>
@@ -42,7 +42,7 @@
 
 		<CodeChunk Name="Miner">
 			<![CDATA[
-				ff14bot.Managers.ChatManager.SendChat("/gs change 1");
+				ff14bot.Managers.ChatManager.SendChat("/gs change 10");
 		  ]]>
 		</CodeChunk>
 
@@ -123,11 +123,8 @@
         </CodeChunk>
 	</CodeChunks>
 	<Order>
-    <RunCode Name="Miner" />
+    <ChangeClass Job="Miner" />
     <WaitTimer WaitTime="3" />
-	<If Condition="not Core.Me.ClassLevel &gt; 79">
-      <!--<BotSettings AutoEquip="1"/>-->
-    </If>
 		  <LogMessage Message="The Journey Begins! Remember to Check up on me!" />
 		  <!--Unlocking Miner-->
 		  <If Condition="not IsQuestCompleted(65728)">
@@ -179,8 +176,7 @@
     <If Condition="Core.Me.CurrentJob == ClassJobType.Miner">
 
       <RunCode Name="Prospect" />
-
-		  <RunCode Name="Miner" />
+		<ChangeClass Job="Miner" />		  
 		  <WaitTimer WaitTime="3" />
 		  <WaitWhile Condition="Managers.QuestLogManager.InCutscene" />
 
@@ -2668,17 +2664,14 @@
 				  </GatheringSkillOrder>
 			  </ExGather>
 		  </While>
-
-    </If>
-
-		<If Condition="Core.Player.ClassLevel == 80">
+    	<If Condition="Core.Player.ClassLevel == 80">
 			<LogMessage Message="Congrats! You've hit level 80 Miner!" />
 			<GetTo ZoneId="129" XYZ="-84.08636, 18.60033, -12.41393" /> <!-- Limsa Lominsa Lower Decks -->
 			<WaitTimer WaitTime="3" />
 						<RunCode Name="AutoEquip"/>	
 						<WaitTimer WaitTime="3" />
 		</If>
-
+	</If>
 	</Order>
 	<GrindAreas>
 	</GrindAreas>
