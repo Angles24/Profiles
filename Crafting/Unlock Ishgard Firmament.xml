@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 Unlock The Ishgard Firmament by Angels & Kayla
+
+Requirement: MSQ Litany of Peace completed, level 20 DoH to add new crafts to crafting log.
 -->
 <Profile>
 	<Name>Unlock The Ishgard Firmament</Name>
@@ -56,7 +58,9 @@ Unlock The Ishgard Firmament by Angels & Kayla
 				<MoveTo Name="Francel" XYZ="-7.472548, -16, 162.5581" UseMesh="False" /> 	
 				<TalkTo NpcId="1031684" XYZ="-7.472548, -16, 162.5581" InteractDistance="5" UseMesh="False"/>
 				<WaitTimer WaitTime="3" />
-				<MoveTo Name="Potkin" XYZ="50.83703, -16, 168.3313" UseMesh="False" /> 					
+				<RunCode Name="SwitchDohJob"/>
+				<MoveTo Name="Potkin" XYZ="50.83703, -16, 168.3313" UseMesh="False" /> 	
+				<TalkTo NpcId="1031677" XYZ="50.83703, -16, 168.3313" InteractDistance="5" UseMesh="False"/>
 		</If>
 		<If Condition="IsQuestCompleted(69208)">
 			<If Condition="not IsOnMap(886)">
@@ -68,7 +72,7 @@ Unlock The Ishgard Firmament by Angels & Kayla
 	<CodeChunks>
 		<CodeChunk Name="Profile">
 			<![CDATA[ 
-				Core.OverlayManager.AddToast(() => "Make sure your doing quest as a Combat Class!\n Switch to a Crafting class that is level 20 or higher when profile complete\n and talk to Potkin to Unlock Ishgard Collectables in your Crafting Log!", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
+				Core.OverlayManager.AddToast(() => "Make sure your doing quest as a Combat Class!", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
 				await Coroutine.Sleep(6000);
 			]]>
 		</CodeChunk>
@@ -96,6 +100,18 @@ Unlock The Ishgard Firmament by Angels & Kayla
                 }
 				
                 await Coroutine.Sleep(3000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="SwitchDohJob">
+			<![CDATA[ 
+				var DoH = Enumerable.Range(8, 8);
+				var gearSets = GearsetManager.GearSets.Where(i => i.InUse && DoH.Contains((int)i.Class) && Core.Player.Levels[i.Class] > 20);
+
+				if (gearSets.Any())
+				{
+					gearSets.First().Activate();
+					await Coroutine.Sleep(2000);
+				}
 			]]>
 		</CodeChunk>
 	</CodeChunks>
