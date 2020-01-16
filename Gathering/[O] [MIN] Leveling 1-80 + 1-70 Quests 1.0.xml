@@ -124,7 +124,7 @@
 	</CodeChunks>
 	<Order>
     <ChangeClass Job="Miner" />
-    <WaitTimer WaitTime="3" />
+    
 		  <LogMessage Message="The Journey Begins! Remember to Check up on me!" />
 		  <!--Unlocking Miner-->
 		  <If Condition="not IsQuestCompleted(65728)">
@@ -163,10 +163,8 @@
 						  <TurnInPlus QuestId="66133" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
 					  </If>
 					  <While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId != 2519">
-						  <RunCode Name="MINWeapon" />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <RunCode Name="MINWeapon" />						  
+						<RunCode Name="AutoEquip"/>							
 					  </While>
 				  </If>
 			  </If>
@@ -177,7 +175,7 @@
 
       <RunCode Name="Prospect" />
 		<ChangeClass Job="Miner" />		  
-		  <WaitTimer WaitTime="3" />
+		  
 		  <WaitWhile Condition="Managers.QuestLogManager.InCutscene" />
 
 		  <!--Level 1 - My First Pickaxe-->
@@ -220,10 +218,8 @@
 					  </If>
 					  <If Condition="IsOnMap(131)">
 						  <TurnIn ItemId="5106" QuestId="66135" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
-						  <LogMessage Message="Level 1 - My First Pickaxe - Completed." />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Level 1 - My First Pickaxe - Completed." />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -248,10 +244,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 6">
-			  <LogMessage Message="Congrats on Level 6, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 6, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 6 Grind-->
 
@@ -296,10 +290,8 @@
 					  </If>
 					  <If Condition="IsOnMap(131)">
 						  <TurnIn ItemId="5432" QuestId="66136" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
-						  <LogMessage Message="Level 5 - Know Thy Land - Completed." />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Level 5 - Know Thy Land - Completed." />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -326,10 +318,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 11">
-			  <LogMessage Message="Congrats on Level 11, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 11, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 11 Grind-->
 
@@ -376,10 +366,8 @@
 					  </If>
 					  <If Condition="IsOnMap(131)">
 						  <TurnIn ItemId="5124" QuestId="66138" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
-						  <LogMessage Message="Level 10 - The Cutting Edge - Completed." />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Level 10 - The Cutting Edge - Completed." />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -404,10 +392,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 16">
-			  <LogMessage Message="Congrats on Level 16, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 16, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 16 Grind-->
 
@@ -440,9 +426,9 @@
 				  </If>
 				  <MoveTo Name="Quest Loc1" Distance="1" UseMesh="True" InteractDistance="1.0" XYZ="141.1154, 50.40661, -147.4492" />
 				  <RunCode Name="Dismount" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="Stealth" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="DisableMount" />
 				  <ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="not HqHasAtLeast(5519,10)">
 					  <GatherObject>Rocky Outcrop</GatherObject>
@@ -466,10 +452,8 @@
 					  </If>
 					  <If Condition="IsOnMap(131)">
 						  <TurnIn ItemId="5519" QuestId="66139" RequiresHq="true" StepId="255" NpcId="1003909" InteractDistance="1.0" XYZ="18.72768, 9.00961, 168.2022" />
-						  <LogMessage Message="Level 15 - Getting in Deep - Completed." />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Level 15 - Getting in Deep - Completed." />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -494,10 +478,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 21">
-			  <LogMessage Message="Congrats on Level 21, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 21, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 21 Grind-->
 
@@ -524,9 +506,9 @@
 				  </If>
 				  <MoveTo Name="Quest Loc2" Distance="1" UseMesh="True" InteractDistance="1.0" XYZ="-286.7015, 23.16407, -518.0267" />
 				  <RunCode Name="Dismount" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="Stealth" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="DisableMount" />
 				  <ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="not NqHasAtLeast(5599,99)">
 					  <GatherObject>Rocky Outcrop</GatherObject>
@@ -550,10 +532,8 @@
 					  </If>
 					  <If Condition="IsOnMap(131)">
 						  <TurnIn ItemId="5599" QuestId="66140" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
-						  <LogMessage Message="Level 20 - Old Wisdom, New Ways - Completed." />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Level 20 - Old Wisdom, New Ways - Completed." />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -578,10 +558,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 26">
-			  <LogMessage Message="Congrats on Level 26, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 26, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 26 Grind-->
 
@@ -608,9 +586,9 @@
 				  </If>
 				  <MoveTo Name="Quest Loc3" Distance="1" UseMesh="True" InteractDistance="1.0" XYZ="-33.40127, -1.141631, -46.80482" />
 				  <RunCode Name="Dismount" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="Stealth" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="DisableMount" />
 				  <ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="not HqHasAtLeast(5491,15)">
 					  <GatherObject>Mineral Deposit</GatherObject>
@@ -634,10 +612,8 @@
 					  </If>
 					  <If Condition="IsOnMap(131)">
 						  <TurnIn ItemId="5491" QuestId="66141" RequiresHq="true" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
-						  <LogMessage Message="Level 25 - Water From Stone - Completed." />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Level 25 - Water From Stone - Completed." />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -662,10 +638,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 31">
-			  <LogMessage Message="Congrats on Level 31, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 31, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 31 Grind-->
 
@@ -698,9 +672,9 @@
 				  </If>
 				  <MoveTo Name="Quest Loc5" Distance="1" UseMesh="True" InteractDistance="1.0" XYZ="246.3232, 1.898447, -217.2365" />
 				  <RunCode Name="Dismount" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="Stealth" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="DisableMount" />
 				  <ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="not HqHasAtLeast(5125,15)">
 					  <GatherObject>Mineral Deposit</GatherObject>
@@ -729,10 +703,8 @@
 			  </If>
 			  <If Condition="GetQuestStep(66142) == 255">
 				  <TurnIn QuestId="66142" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
-				  <LogMessage Message="Level 30 - Obsidian Race - Completed." />
-				  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+				  <LogMessage Message="Level 30 - Obsidian Race - Completed." />				  
+						<RunCode Name="AutoEquip"/>							
 			  </If>
 		  </If>
 		  <!--End Level 30-->
@@ -760,10 +732,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 36">
-			  <LogMessage Message="Congrats on Level 36, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 36, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 36 Grind-->
 
@@ -793,9 +763,9 @@
 				  </If>
 				  <NoCombatMoveTo Name="Quest Loc6" Distance="1" UseMesh="True" InteractDistance="1.0" XYZ="-362.8043, 54.60392, 5.231353" />
 				  <RunCode Name="Dismount" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="Stealth" />
-				  <WaitTimer WaitTime="3" />
+				  
 				  <RunCode Name="DisableMount" />
 				  <ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="not HqHasAtLeast(5138,20)">
 					  <GatherObject>Mineral Deposit</GatherObject>
@@ -819,10 +789,8 @@
 					  </If>
 					  <If Condition="IsOnMap(131)">
 						  <TurnIn ItemId="5138" QuestId="66179" RequiresHq="true" StepId="255" NpcId="1003910" InteractDistance="1.0" XYZ="-5.622513, 6.2, 165.3229" />
-						  <LogMessage Message="Level 35 - Amethysts Are Forever - Completed." />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Level 35 - Amethysts Are Forever - Completed." />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -847,10 +815,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 41">
-			  <LogMessage Message="Congrats on Level 41, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 41, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 41 Grind-->
 
@@ -899,10 +865,8 @@
 					  </If>
 					  <If Condition="IsOnMap(131)">
 						  <TurnIn ItemId="5168" QuestId="66180" RequiresHq="true" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
-						  <LogMessage Message="Level 40 - To Die For - Completed." />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Level 40 - To Die For - Completed." />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -927,10 +891,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 46">
-			  <LogMessage Message="Congrats on Level 46, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 46, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 46 Grind-->
 
@@ -979,10 +941,8 @@
 					  </If>
 					  <If Condition="IsOnMap(131)">
 						  <TurnIn ItemId="5115" QuestId="66181" RequiresHq="true" StepId="255" NpcId="1003910" InteractDistance="1.0" XYZ="-5.622513, 6.2, 165.3229" />
-						  <LogMessage Message="Level 45 - Gulley of Woes - Completed." />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Level 45 - Gulley of Woes - Completed." />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -1007,10 +967,8 @@
 			  </ExGather>
 		  </If>
 		  <If Condition="Core.Player.ClassLevel == 50">
-			  <LogMessage Message="Congrats on Level 50, moving on." />
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <LogMessage Message="Congrats on Level 50, moving on." />			  
+						<RunCode Name="AutoEquip"/>							
 		  </If>
 		  <!--End Level 50 Grind-->
 
@@ -1079,14 +1037,12 @@
 					  <If Condition="IsOnMap(131)">
 						  <HandOverPlus ItemId="5121" QuestId="66182" StepId="5" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
 						  <TurnIn QuestId="66182" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
-						  <WaitTimer WaitTime="3" />
+						  
 						  <RunCode Name="MINWeapon2" />
-						  <WaitTimer WaitTime="3" />
+						  
 						  <LogMessage Message="Level 50 - Canyon of Regret - Completed." />
-						  <LogMessage Message="Congrats! You are now complete with all Mining Quests &amp; Level 50!" />
-						  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						  <LogMessage Message="Congrats! You are now complete with all Mining Quests &amp; Level 50!" />						  
+						<RunCode Name="AutoEquip"/>							
 					  </If>
 				  </If>
 			  </If>
@@ -1132,10 +1088,8 @@
 						  <GetTo ZoneId="418" XYZ="-56.30568, 8.113304, 38.95942" /> <!-- Foundation -->
 					  </If>
 					  <NoCombatMoveTo Name="Haimirich" XYZ="86.81773, 15.00001, 36.22687" />
-					  <TurnIn QuestId="67616" NpcId="1013230" ItemId="0" XYZ="85.19104, 15.00001, 40.66516" />
-					  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+					  <TurnIn QuestId="67616" NpcId="1013230" ItemId="0" XYZ="85.19104, 15.00001, 40.66516" />					  
+						<RunCode Name="AutoEquip"/>							
 				  </If>
 			  </If>
 		  </If>
@@ -1145,10 +1099,8 @@
       <While Condition="Core.Player.ClassLevel &lt; 51">
         <If Condition="not IsOnMap(139)">
           <GetTo ZoneId="139" XYZ="426.6154, 4.171807, 90.07837" />
-          <!-- Camp Bronze Lake -->
-		  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+          <!-- Camp Bronze Lake -->		  
+						<RunCode Name="AutoEquip"/>							
         </If>
         <NoCombatMoveTo Name="Farming Area" XYZ="425.5676, -2.748671, 180.2855" />
         <ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 51">
@@ -1168,10 +1120,8 @@
       <While Condition="Core.Player.ClassLevel &lt; 52">
         <If Condition="not IsOnMap(397)">
           <GetTo ZoneId="397" XYZ="474.8097, 212.5399, 721.9003" />
-          <!-- Falcon's Nest -->
-		  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+          <!-- Falcon's Nest -->		  
+						<RunCode Name="AutoEquip"/>							
         </If>
         <ExGather DiscoverUnknowns="&DiscoverUnknowns;" Loops="1">
           <GatherObjects>
@@ -1198,10 +1148,8 @@
       <While Condition="Core.Player.ClassLevel &lt; 54">
         <If Condition="not IsOnMap(397)">
           <GetTo ZoneId="397" XYZ="474.8097, 212.5399, 721.9003" />
-          <!-- Falcon's Nest -->
-		  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+          <!-- Falcon's Nest -->		  
+						<RunCode Name="AutoEquip"/>							
         </If>
         <ExGather DiscoverUnknowns="&DiscoverUnknowns;" Loops="1">
           <GatherObjects>
@@ -1290,10 +1238,8 @@
               <!-- Foundation -->
             </If>
             <NoCombatMoveTo Name="Haimirich" XYZ="86.81773, 15.00001, 36.22687" />
-            <TurnIn QuestId="67617" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+            <TurnIn QuestId="67617" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />			
+						<RunCode Name="AutoEquip"/>							
           </If>
         </If>
       </If>
@@ -1383,10 +1329,8 @@
               <!-- Foundation -->
             </If>
             <NoCombatMoveTo Name="Haimirich" XYZ="86.81773, 15.00001, 36.22687" />
-            <TurnIn QuestId="67618" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+            <TurnIn QuestId="67618" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />			
+						<RunCode Name="AutoEquip"/>							
           </If>
         </If>
       </If>
@@ -1396,10 +1340,8 @@
       <While Condition="Core.Player.ClassLevel &lt; 56">
         <If Condition="not IsOnMap(398)">
           <GetTo ZoneId="398" XYZ="527.918, -51.27571, 41.3532" />
-          <!-- Tailfeather -->
-		  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+          <!-- Tailfeather -->		  
+						<RunCode Name="AutoEquip"/>							
         </If>
         <NoCombatMoveTo Name="Farming Area" XYZ="336.5955, -43.11188, -245.9103" />
         <ExGather DiscoverUnknowns="&DiscoverUnknowns;" Loops="1">
@@ -1530,10 +1472,8 @@
               <!-- Foundation -->
             </If>
             <NoCombatMoveTo Name="Haimirich" XYZ="86.81773, 15.00001, 36.22687" />
-            <TurnIn QuestId="67618" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+            <TurnIn QuestId="67618" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />			
+						<RunCode Name="AutoEquip"/>							
           </If>
         </If>
       </If>
@@ -1543,10 +1483,8 @@
       <While Condition="Core.Player.ClassLevel &lt; 58">
         <If Condition="not IsOnMap(398)">
           <GetTo ZoneId="398" XYZ="-300.4373, -21.13108, 37.52076" />
-          <!-- Anyx Trine -->
-		  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+          <!-- Anyx Trine -->		  
+						<RunCode Name="AutoEquip"/>							
         </If>
         <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
           <GatherObjects>
@@ -1612,7 +1550,7 @@
                 <UseObject NpcId="2005948" XYZ="350.3623, 103.4714, 333.8826" Radius="10" UseTimes="1" BlacklistAfter="True" />
               </If>
               <RunCode Name="Stealth" />
-              <WaitTimer WaitTime="3" />
+              
               <NoCombatMoveTo Name="Mining Point #3" XYZ="337.6349, 92.3186, 313.3165" />
               <If Condition="GameObjectManager.GetObjectByNPCId(2005950).IsVisible">
                 <UseObject NpcId="2005950" XYZ="338.8571, 92.48486, 314.2595" Radius="10" UseTimes="1" BlacklistAfter="True" />
@@ -1677,10 +1615,8 @@
               <!-- Foundation -->
             </If>
             <NoCombatMoveTo Name="Haimirich" XYZ="86.81773, 15.00001, 36.22687" />
-            <TurnIn QuestId="67619" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+            <TurnIn QuestId="67619" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />			
+						<RunCode Name="AutoEquip"/>							
           </If>
         </If>
       </If>
@@ -1690,10 +1626,8 @@
       <While Condition="Core.Player.ClassLevel &lt; 60">
         <If Condition="not IsOnMap(398)">
           <GetTo ZoneId="398" XYZ="-300.4373, -21.13108, 37.52076" />
-          <!-- Anyx Trine -->
-		  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+          <!-- Anyx Trine -->		  
+						<RunCode Name="AutoEquip"/>							
         </If>
         <NoCombatMoveTo Name="Farming Area" XYZ="-295.0072, -55.02479, 314.6609" />
         <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
@@ -1844,10 +1778,8 @@
               <!-- Foundation -->
             </If>
             <NoCombatMoveTo Name="Haimirich" XYZ="86.81773, 15.00001, 36.22687" />
-            <TurnIn QuestId="67620" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+            <TurnIn QuestId="67620" NpcId="1013230" XYZ="85.19104, 15.00001, 40.66516" />			
+						<RunCode Name="AutoEquip"/>							
           </If>
         </If>
       </If>
@@ -1873,19 +1805,15 @@
 		</If>
 		<If Condition="HasQuest(68090) and not IsQuestCompleted(68090) and GetQuestStep(68090) == 255">
 			<GetTo ZoneId="478" XYZ="54.56663, 207.3399, -8.392662"/>
-			<TurnIn QuestId="68090" NpcId="1019863" XYZ="54.56663, 207.3399, -8.392662"/>
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<TurnIn QuestId="68090" NpcId="1019863" XYZ="54.56663, 207.3399, -8.392662"/>			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 
 		  <!-- Level 60-62 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 62">
-			  <GetTo ZoneId="612" XYZ="-303.2047, 72.39091, -465.3484" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="612" XYZ="-303.2047, 72.39091, -465.3484" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -1929,10 +1857,8 @@
 		  <!-- Level 62-63 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 63">
-			  <GetTo ZoneId="620" XYZ="105.2464, 114.3518, -510.7864" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="620" XYZ="105.2464, 114.3518, -510.7864" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Rocky Outcrop</GatherObject>
 				  <HotSpots>
@@ -2027,19 +1953,15 @@
     </If>
     <If Condition="HasQuest(68091) and not IsQuestCompleted(68091) and GetQuestStep(68091) == 255">
       <GetTo ZoneId="478" XYZ="54.85791, 207.3399, -8.434767"/>
-      <TurnIn QuestId="68091" NpcId="1019863" XYZ="54.85791, 207.3399, -8.434767"/>
-      <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+      <TurnIn QuestId="68091" NpcId="1019863" XYZ="54.85791, 207.3399, -8.434767"/>      
+						<RunCode Name="AutoEquip"/>							
     </If>
 
 		  <!-- Level 63-64 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 64">
-			  <GetTo ZoneId="620" XYZ="105.2464, 114.3518, -510.7864" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="620" XYZ="105.2464, 114.3518, -510.7864" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Rocky Outcrop</GatherObject>
 				  <HotSpots>
@@ -2083,10 +2005,8 @@
 		  <!-- Level 64-65 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 65">
-			  <GetTo ZoneId="614" XYZ="516.8639, 42.48845, -68.91994" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="614" XYZ="516.8639, 42.48845, -68.91994" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -2194,19 +2114,15 @@
     </If>
     <If Condition="HasQuest(68092) and not IsQuestCompleted(68092) and GetQuestStep(68092) == 255">
       <GetTo ZoneId="478" XYZ="54.88151, 207.3399, -8.167487"/>
-      <TurnIn QuestId="68092" NpcId="1019863" XYZ="54.88151, 207.3399, -8.167487"/>
-      <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+      <TurnIn QuestId="68092" NpcId="1019863" XYZ="54.88151, 207.3399, -8.167487"/>      
+						<RunCode Name="AutoEquip"/>							
     </If>
 
 		  <!-- Level 65-66 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 66">
-			  <GetTo ZoneId="614" XYZ="516.8639, 42.48845, -68.91994" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="614" XYZ="516.8639, 42.48845, -68.91994" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -2250,10 +2166,8 @@
 		  <!-- Level 66-68 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 68">
-			  <GetTo ZoneId="614" XYZ="810.4478, 130.4496, 18.63812" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="614" XYZ="810.4478, 130.4496, 18.63812" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -2345,19 +2259,15 @@
     </If>
     <If Condition="HasQuest(68093) and not IsQuestCompleted(68093) and GetQuestStep(68093) == 255">
       <GetTo ZoneId="478" XYZ="54.71909, 207.3399, -7.805041"/>
-      <TurnIn QuestId="68093" NpcId="1019863" XYZ="54.71909, 207.3399, -7.805041"/>
-      <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+      <TurnIn QuestId="68093" NpcId="1019863" XYZ="54.71909, 207.3399, -7.805041"/>      
+						<RunCode Name="AutoEquip"/>							
     </If>
 
 			  <!-- Level 68-70 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 70">
-			  <GetTo ZoneId="614" XYZ="810.4478, 130.4496, 18.63812" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="614" XYZ="810.4478, 130.4496, 18.63812" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -2454,19 +2364,15 @@
     </If>
     <If Condition="HasQuest(68094) and not IsQuestCompleted(68094) and GetQuestStep(68094) == 255">
       <GetTo ZoneId="131" XYZ="-18.1387, 6.2, 157.5993"/>
-      <TurnIn QuestId="68094" NpcId="1002298" XYZ="-18.1387, 6.2, 157.5993"/>
-	  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+      <TurnIn QuestId="68094" NpcId="1002298" XYZ="-18.1387, 6.2, 157.5993"/>	  
+						<RunCode Name="AutoEquip"/>							
     </If>
 
 			  <!-- Level 70-71 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 71">
-			  <GetTo ZoneId="621" XYZ="-574.9869, 18.23296, -155.1063" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="621" XYZ="-574.9869, 18.23296, -155.1063" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -2504,10 +2410,8 @@
 		  			  <!-- Level 71-73 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 73">
-			  <GetTo ZoneId="816" XYZ="-822.9684, 24.18817, -108.701" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="816" XYZ="-822.9684, 24.18817, -108.701" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -2518,22 +2422,22 @@
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
 			  </ExGather>
-			  <GetTo Name="Farming Area" XYZ="-765.9192, 47.86558, -223.4224" />
+			  <NoCombatMoveTo Name="Farming Area" XYZ="-730.0422, 47.85723, -222.1555" />
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
-					  <HotSpot Radius="90" XYZ="-765.9192, 47.86558, -223.4224" name="Mineral Deposits" />
+					  <HotSpot Radius="90" XYZ="-730.0422, 47.85723, -222.1555" name="Mineral Deposits" />
 				  </HotSpots>
 				  <Slot>0</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
 			  </ExGather>
-			  <GetTo Name="Farming Area" XYZ="-681.9741, 22.7364,-44.21484" />
+			  <NoCombatMoveTo Name="Farming Area" XYZ="-682.9999, 34.69775, -85.80553" />
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
-					  <HotSpot Radius="90" XYZ="-681.9741, 22.7364,-44.21484" name="Mineral Deposits" />
+					  <HotSpot Radius="90" XYZ="-682.9999, 34.69775, -85.80553" name="Mineral Deposits" />
 				  </HotSpots>
 				  <Slot>0</Slot>
 				  <GatheringSkillOrder>
@@ -2545,10 +2449,8 @@
 		  		  			  <!-- Level 73-75 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 75">
-			  <GetTo ZoneId="813" XYZ="224.2676, 18.95998, 794.2184" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="813" XYZ="224.2676, 18.95998, 794.2184" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -2586,10 +2488,8 @@
 		  		  		  			  <!-- Level 75-76 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 76">
-			  <GetTo ZoneId="817" XYZ="-221.8309, 33.33236, -117.6477" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="817" XYZ="-221.8309, 33.33236, -117.6477" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Rocky Outcrop</GatherObject>
 				  <HotSpots>
@@ -2627,10 +2527,8 @@
 		  			  <!-- Level 76-80 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 80">
-			  <GetTo ZoneId="817" XYZ="122.7405, -2.637969, 323.2207" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="817" XYZ="122.7405, -2.637969, 323.2207" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
@@ -2666,10 +2564,8 @@
 		  </While>
     	<If Condition="Core.Player.ClassLevel == 80">
 			<LogMessage Message="Congrats! You've hit level 80 Miner!" />
-			<GetTo ZoneId="129" XYZ="-84.08636, 18.60033, -12.41393" /> <!-- Limsa Lominsa Lower Decks -->
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<GetTo ZoneId="129" XYZ="-84.08636, 18.60033, -12.41393" /> <!-- Limsa Lominsa Lower Decks -->			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 	</If>
 	</Order>

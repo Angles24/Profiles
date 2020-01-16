@@ -120,7 +120,7 @@
 	</CodeChunks>
 	<Order>
 	<ChangeClass Job="Botanist" />
-	<WaitTimer WaitTime="3" />
+	
 	<LogMessage Message="The Journey Begins! Remember to Check up on me!" />
 		<!--Unlocking Botany-->
 		<If Condition="not IsQuestCompleted(65729)">
@@ -159,10 +159,8 @@
 						<TurnInPlus QuestId="65539" StepId="255" NpcId="1000815" InteractDistance="1.0" XYZ="-232.9017, 6.263501, -169.7613" />
 					</If>
 					<While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId != 2545">
-						<RunCode Name="BTNWeapon" />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<RunCode Name="BTNWeapon" />						
+						<RunCode Name="AutoEquip"/>							
 					</While>
 				</If>
 			</If>
@@ -173,7 +171,7 @@
 
 	  <RunCode Name="Triangulate" />
 		<ChangeClass Job="Botanist" />
-		<WaitTimer WaitTime="3" />
+		
 		<WaitWhile Condition="Managers.QuestLogManager.InCutscene" />
 
 		<!--Level 1 - My First Hatchet-->
@@ -216,10 +214,8 @@
 					</If>
 					<If Condition="IsOnMap(133)">
 						<TurnIn ItemId="5509" QuestId="65744" StepId="255" NpcId="1000815" InteractDistance="2.0" XYZ="-232.9017, 6.263501, -169.7613" />
-						<LogMessage Message="Level 1 - My First Hatchet - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 1 - My First Hatchet - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -241,10 +237,8 @@
 			</Gather>
 		</If>
 		<If Condition="Core.Player.ClassLevel == 6">
-			<LogMessage Message="Congrats on Level 6, moving on." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 6, moving on." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Level 6 Grind-->
 
@@ -287,10 +281,8 @@
 					</If>
 					<If Condition="IsOnMap(133)">
 						<TurnIn ItemId="5498" QuestId="65540" StepId="255" NpcId="1000295" InteractDistance="2.0" XYZ="-236.451, 8.000312, -155.7238" />
-						<LogMessage Message="Level 5 - Sap for Smiles - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 5 - Sap for Smiles - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -315,10 +307,8 @@
 			</Gather>
 		</If>
 		<If Condition="Core.Player.ClassLevel == 11">
-			<LogMessage Message="Congrats on Level 11, moving on." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 11, moving on." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Level 11 Grind-->
 
@@ -364,10 +354,8 @@
 					</If>
 					<If Condition="IsOnMap(133)">
 						<TurnIn ItemId="5352" QuestId="65541" StepId="255" NpcId="1000295" InteractDistance="2.0" XYZ="-236.451, 8.000312, -155.7238" />
-						<LogMessage Message="Level 10 - Weapons of a Feather - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 10 - Weapons of a Feather - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -392,10 +380,8 @@
 			</Gather>
 		</If>
 		<If Condition="Core.Player.ClassLevel == 16">
-			<LogMessage Message="Congrats on Level 16, moving on." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 16, moving on." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Level 16 Grind-->
 
@@ -426,9 +412,9 @@
 					</If>
 					<MoveTo Name="Quest Loc1" Distance="1" UseMesh="True" InteractDistance="1.0" XYZ="-142.1235, 1.872276, -118.8488" />
 					<RunCode Name="Dismount" />
-					<WaitTimer WaitTime="3" />
+					
 					<RunCode Name="Stealth" />
-					<WaitTimer WaitTime="3" />
+					
 					<RunCode Name="DisableMount" />
 					<Gather while="not HqHasAtLeast(4832,10)">
 						<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -456,10 +442,8 @@
 					</If>
 					<If Condition="GetQuestStep(65542) == 255">
 						<TurnIn QuestId="65542" StepId="255" NpcId="1000815" InteractDistance="2.0" XYZ="-232.9017, 6.263501, -169.7613" />
-						<LogMessage Message="Level 15 - Haste Makes Waste - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 15 - Haste Makes Waste - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -484,10 +468,8 @@
 			</Gather>
 		</If>
 		<If Condition="Core.Player.ClassLevel == 21">
-			<LogMessage Message="Congrats on Level 21, moving on." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 21, moving on." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Level 21 Grind-->
 
@@ -525,10 +507,8 @@
 					</If>
 					<If Condition="IsOnMap(133)">
 						<TurnIn ItemId="5599" QuestId="65543" StepId="255" NpcId="1000292" InteractDistance="2.0" XYZ="-235.7631, 8, -147.0039" />
-						<LogMessage Message="Level 20 - Dressed to Harvest - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 20 - Dressed to Harvest - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -553,10 +533,8 @@
 			</Gather>
 		</If>
 		<If Condition="Core.Player.ClassLevel == 26">
-			<LogMessage Message="Congrats on Level 26, moving on." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 26, moving on." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Grind to Level 26-->
 
@@ -584,9 +562,9 @@
 				<MoveTo Name="Upper La Noscea" Distance="1" UseMesh="True" XYZ="413.7994, 30.43617, -13.40433" />
 				<MoveTo Name="Quest Loc2" Distance="1" UseMesh="True" InteractDistance="1.0" XYZ="-375.3575, -3.400003, 153.8915" />
 				<RunCode Name="Dismount" />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="DisableMount" />
 				<Gather while="not HqHasAtLeast(5542,15)">
 					<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -610,10 +588,8 @@
 					</If>
 					<If Condition="IsOnMap(133)">
 						<TurnIn ItemId="5542" RequiresHq="true" QuestId="65544" StepId="255" NpcId="1000292" InteractDistance="2.0" XYZ="-235.7631, 8, -147.0039" />
-						<LogMessage Message="Level 25 - Aromatic Aspirations - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 25 - Aromatic Aspirations - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -627,9 +603,9 @@
 				<GetTo ZoneId="154" XYZ="-43.92079, -40.88041, 241.8634" /> <!-- Fallgourd Float -->
 			</If>
 			<RunCode Name="Dismount" />
-			<WaitTimer WaitTime="3" />
+			
 			<RunCode Name="Stealth" />
-			<WaitTimer WaitTime="3" />
+			
 			<RunCode Name="DisableMount" />
 			<Gather while="Core.Player.ClassLevel &lt; 31">
 				<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -644,10 +620,8 @@
 			<RunCode Name="EnableMount" />
 		</If>
 		<If Condition="Core.Player.ClassLevel == 31">
-			<LogMessage Message="Congrats on Level 31, moving on." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 31, moving on." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Grind to Level 31-->
 
@@ -699,10 +673,8 @@
 					</If>
 					<If Condition="IsOnMap(133)">
 						<TurnIn ItemId="4813" RequiresHq="true" QuestId="65545" StepId="255" NpcId="1000815" InteractDistance="2.0" XYZ="-233.54, 6.246956, -170.5644" />
-						<LogMessage Message="Level 30 - What Nature Giveth - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 30 - What Nature Giveth - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -728,10 +700,8 @@
 			</Gather>
 		</If>
 		<If Condition="Core.Player.ClassLevel == 36">
-			<LogMessage Message="Congrats on Level 36, moving on." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 36, moving on." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Grind to Level 36-->
 
@@ -787,10 +757,8 @@
 			</If>
 			<If Condition="GetQuestStep(65546) == 255">
 				<TurnIn QuestId="65546" StepId="255" NpcId="1000815" InteractDistance="2.0" XYZ="-233.54, 6.246956, -170.5644" />
-				<LogMessage Message="Level 35 - A Feast to Say the Least - Completed." />
-				<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+				<LogMessage Message="Level 35 - A Feast to Say the Least - Completed." />				
+						<RunCode Name="AutoEquip"/>							
 			</If>
 		</If>
 		<!--End Level 35-->
@@ -813,10 +781,8 @@
 			</Gather>
 		</If>
 		<If Condition="Core.Player.ClassLevel == 41">
-			<LogMessage Message="Congrats on Level 41, moving on." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 41, moving on." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Grind to Level 41-->
 
@@ -872,10 +838,8 @@
 			</If>
 			<If Condition="GetQuestStep(65547) == 255">
 				<TurnIn ItemId="2000569" QuestId="65547" StepId="255" NpcId="1000815" InteractDistance="2.0" XYZ="-233.54, 6.246956, -170.5644" />
-				<LogMessage Message="Level 40 - Crisis of Faith - Completed." />
-				<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+				<LogMessage Message="Level 40 - Crisis of Faith - Completed." />				
+						<RunCode Name="AutoEquip"/>							
 			</If>
 		</If>
 		<!--End Level 40-->
@@ -898,10 +862,8 @@
 			</Gather>
 		</If>
 		<If Condition="Core.Player.ClassLevel == 46">
-			<LogMessage Message="Congrats on Level 46, moving on." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 46, moving on." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Grind to Level 46-->
 
@@ -954,9 +916,7 @@
 					<If Condition="IsOnMap(133)">
 						<TurnIn ItemId="5536" RequiresHq="true" QuestId="65548" StepId="255" NpcId="1000815" InteractDistance="1.0" XYZ="-232.9017, 6.263501, -169.7613" />
 						<LogMessage Message="Level 45 - Botanist in a Bind - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+												<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -981,10 +941,8 @@
 			</Gather>
 		</If>
 		<If Condition="Core.Player.ClassLevel == 50">
-			<LogMessage Message="Congrats on Level 50, moving to final quest." />
-			<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			<LogMessage Message="Congrats on Level 50, moving to final quest." />			
+						<RunCode Name="AutoEquip"/>							
 		</If>
 		<!--End Grind to Level 50-->
 
@@ -1060,13 +1018,11 @@
 				</If>
 				<If Condition="IsOnMap(133)">
 					<TurnIn QuestId="65549" StepId="255" NpcId="1000815" InteractDistance="1.0" XYZ="-232.9017, 6.263501, -169.7613" />
-					<WaitTimer WaitTime="3" />
+					
 					<RunCode Name="BTNWeapon2" />
-					<WaitTimer WaitTime="3" />
+					
 					<LogMessage Message="Level 50 - Seeds of Hope - Completed." />
-					<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+							<RunCode Name="AutoEquip"/>							
 					<!-- <LogMessage Message="Congrats! You are now complete with all Botany Quests &amp; Level 50!" /> -->
 				</If>
 			</If>
@@ -1105,10 +1061,8 @@
 					</If>
 					<NoCombatMoveTo Name="Mujih Mewrilah" XYZ="-84.45868, 8.05915, 37.12512" />
 					<TurnIn QuestId="67584" NpcId="1013240" ItemId="2001886" XYZ="-84.45868, 8.05915, 37.12512" />
-					<LogMessage Message="Level 50 - Call From The Clouds - Completed." />
-					<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+					<LogMessage Message="Level 50 - Call From The Clouds - Completed." 	/>				
+				    <RunCode Name="AutoEquip"/>								
 				</If>
 			</If>
 		</If>
@@ -1117,10 +1071,8 @@
 
 			<While Condition="Core.Player.ClassLevel &lt; 51">
 				<If Condition="not IsOnMap(152)">
-					<GetTo ZoneId="152" XYZ="-190.5567, 3.190276, 288.5939"/> <!-- The Hawthorne Hut -->
-					<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+					<GetTo ZoneId="152" XYZ="-190.5567, 3.190276, 288.5939"/> <!-- The Hawthorne Hut -->					
+						<RunCode Name="AutoEquip"/>							
 				</If>
 				<NoCombatMoveTo Name="Farming Area" XYZ="-189.6482, 3.025832, 122.088" />
 				<Gather while="Core.Player.ClassLevel &lt; 51">
@@ -1139,10 +1091,8 @@
 
 			<While Condition="Core.Player.ClassLevel &lt; 52">
 				<If Condition="not IsOnMap(397)">
-					<GetTo ZoneId="397" XYZ="474.8097, 212.5399, 721.9003" /> <!-- Falcon's Nest -->
-					<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+					<GetTo ZoneId="397" XYZ="474.8097, 212.5399, 721.9003" /> <!-- Falcon's Nest -->					
+						<RunCode Name="AutoEquip"/>							
 				</If>
 				<NoCombatMoveTo Name="Farming Area" XYZ="-163.4057, 86.64782, -223.922" />
 				<Gather Loops="1">
@@ -1196,16 +1146,14 @@
 
 			<While Condition="Core.Player.ClassLevel &lt; 54">
 				<If Condition="not IsOnMap(398)">
-					<GetTo ZoneId="398" XYZ="527.918, -51.27571, 41.3532" /> <!-- Tailfeather -->
-					<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+					<GetTo ZoneId="398" XYZ="527.918, -51.27571, 41.3532" /> <!-- Tailfeather -->					
+						<RunCode Name="AutoEquip"/>							
 				</If>
 				<NoCombatMoveTo Name="Farming Area" XYZ="679.3611, -53.20882, -105.4077" />
 				<Dismount />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="DisableMount" />
 				<Gather Loops="1">
 					<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -1218,12 +1166,12 @@
 					</GatheringSkillOrder>
 				</Gather>
 				<RunCode Name="EnableMount" />
-				<WaitTimer WaitTime="3" />
+				
 				<NoCombatMoveTo Name="Farming Area" XYZ="723.6763, -46.25278, -188.5057" />
 				<Dismount />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="DisableMount" />
 				<Gather Loops="1">
 					<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -1236,12 +1184,12 @@
 					</GatheringSkillOrder>
 				</Gather>
 				<RunCode Name="EnableMount" />
-				<WaitTimer WaitTime="3" />
+				
 				<NoCombatMoveTo Name="Farming Area" XYZ="824.1179, -39.59391, -42.10449" />
 				<Dismount />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="DisableMount" />
 				<Gather Loops="1">
 					<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -1254,7 +1202,7 @@
 					</GatheringSkillOrder>
 				</Gather>
 				<RunCode Name="EnableMount" />
-				<WaitTimer WaitTime="3" />
+				
 			</While>
 
 				<!-- [Pickup Quest] -->
@@ -1289,9 +1237,9 @@
 							<!-- 1 -->
 							<NoCombatMoveTo Name="Farming Area" XYZ="679.8785, -53.19801, -110.3435" />
 							<Dismount />
-							<WaitTimer WaitTime="3" />
+							
 							<RunCode Name="Stealth" />
-							<WaitTimer WaitTime="3" />
+							
 							<RunCode Name="DisableMount" />
 							<ExGather DiscoverUnknowns="true" Loops="1">
 								<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -1311,9 +1259,9 @@
 							<!-- 2 -->
 							<NoCombatMoveTo Name="Farming Area" XYZ="755.217, -35.73953, -231.5897" />
 							<Dismount />
-							<WaitTimer WaitTime="3" />
+							
 							<RunCode Name="Stealth" />
-							<WaitTimer WaitTime="3" />
+							
 							<RunCode Name="DisableMount" />
 							<ExGather DiscoverUnknowns="true" Loops="1">
 								<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -1333,9 +1281,9 @@
 							<!-- 3 -->
 							<NoCombatMoveTo Name="Farming Area" XYZ="818.6202, -38.77975, -92.19202" />
 							<Dismount />
-							<WaitTimer WaitTime="3" />
+							
 							<RunCode Name="Stealth" />
-							<WaitTimer WaitTime="3" />
+							
 							<RunCode Name="DisableMount" />
 							<ExGather DiscoverUnknowns="true" Loops="1">
 								<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -1369,10 +1317,8 @@
 						</If>
 						<NoCombatMoveTo Name="Mujih Mewrilah" XYZ="-84.45868, 8.05915, 37.12512" />
 						<TurnIn RewardSlot="0" QuestId="67585" NpcId="1013240" ItemId="2001886" XYZ="-84.45868, 8.05915, 37.12512" />
-						<LogMessage Message="Level 53 - Onions Of Life Bestowing - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 53 - Onions Of Life Bestowing - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -1381,10 +1327,8 @@
 
 			<While Condition="Core.Player.ClassLevel &lt; 55">
 				<If Condition="not IsOnMap(398)">
-					<GetTo ZoneId="398" XYZ="527.918, -51.27571, 41.3532" /> <!-- Tailfeather -->
-					<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+					<GetTo ZoneId="398" XYZ="527.918, -51.27571, 41.3532" /> <!-- Tailfeather -->					
+						<RunCode Name="AutoEquip"/>							
 				</If>
 				<!-- 1 -->
 				<NoCombatMoveTo Name="Farming Area" XYZ="182.2724, -85.44949, 169.5125" />
@@ -1405,7 +1349,7 @@
 				<Dismount />
 				<WaitTimer WaitTime="5" />
 				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="DisableMount" />
 				<Gather Loops="1">
 					<GatherObject>Mature Tree</GatherObject>
@@ -1420,13 +1364,13 @@
 					</GatheringSkillOrder>
 				</Gather>
 				<RunCode Name="EnableMount" />
-				<WaitTimer WaitTime="3" />
+				
 				<!-- 3 -->
 				<NoCombatMoveTo Name="Farming Area" XYZ="309.5887, -65.90142, 164.1102" />
 				<Dismount />
 				<WaitTimer WaitTime="5" />
 				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="DisableMount" />
 				<Gather Loops="1">
 					<GatherObject>Mature Tree</GatherObject>
@@ -1443,14 +1387,14 @@
 					</GatheringSkillOrder>
 				</Gather>
 				<RunCode Name="EnableMount" />
-				<WaitTimer WaitTime="3" />
+				
 
 				<!-- 4 -->
 				<NoCombatMoveTo Name="Farming Area" XYZ="219.5222, -94.79668, 290.0431" />
 				<Dismount />
 				<WaitTimer WaitTime="5" />
 				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="3" />
+				
 				<RunCode Name="DisableMount" />
 				<Gather Loops="1">
 					<GatherObject>Mature Tree</GatherObject>
@@ -1467,7 +1411,7 @@
 					</GatheringSkillOrder>
 				</Gather>
 				<RunCode Name="EnableMount" />
-				<WaitTimer WaitTime="3" />
+				
 			</While>
 
 			<!-- [Pickup Quest] -->
@@ -1523,9 +1467,9 @@
 							<!-- 1 -->
 							<NoCombatMoveTo Name="Farming Area" XYZ="1.39111, -22.70498, 120.5849" />
 							<Dismount />
-							<WaitTimer WaitTime="3" />
+							
 							<RunCode Name="Stealth" />
-							<WaitTimer WaitTime="3" />
+							
 							<RunCode Name="DisableMount" />
 							<ExGather DiscoverUnknowns="true" Loops="1">
 								<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -1594,10 +1538,8 @@
 						</If>
 						<NoCombatMoveTo Name="Mujih Mewrilah" XYZ="-84.45868, 8.05915, 37.12512" />
 						<TurnIn RewardSlot="0" QuestId="67586" NpcId="1013240" XYZ="-84.45868, 8.05915, 37.12512" />
-						<LogMessage Message="Level 55 - Two Nations, One Seed - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 55 - Two Nations, One Seed - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -1606,10 +1548,8 @@
 
 			<While Condition="Core.Player.ClassLevel &lt; 58">
 				<If Condition="not IsOnMap(400)">
-					<GetTo ZoneId="400" XYZ="252.6177, -42.16244, 590.2133" /> <!-- Moghome -->
-					<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+					<GetTo ZoneId="400" XYZ="252.6177, -42.16244, 590.2133" /> <!-- Moghome -->					
+						<RunCode Name="AutoEquip"/>							
 				</If>
 				<!-- 1 -->
 				<NoCombatMoveTo Name="Farming Area" XYZ="1.39111, -22.70498, 120.5849" />
@@ -1632,9 +1572,9 @@
 				<!-- </If> -->
 				<!-- <If Condition="GameObjectManager.GetObjectByObjectId(1073742610).IsVisible or
 							GameObjectManager.GetObjectByObjectId(1073742609).IsVisible"> -->
-					<WaitTimer WaitTime="3" />
+					
 					<RunCode Name="Stealth" />
-					<WaitTimer WaitTime="3" />
+					
 					<RunCode Name="DisableMount" />
 					<ExGather DiscoverUnknowns="true" Loops="1">
 						<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -1772,10 +1712,8 @@
 						</If>
 						<NoCombatMoveTo Name="Mujih Mewrilah" XYZ="-84.45868, 8.05915, 37.12512" />
 						<TurnIn RewardSlot="0" QuestId="67587" NpcId="1013240" XYZ="-84.45868, 8.05915, 37.12512" />
-						<LogMessage Message="Level 58 - Love For Harmony - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 58 - Love For Harmony - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -1784,10 +1722,8 @@
 
 			<While Condition="Core.Player.ClassLevel &lt; 60">
 				<If Condition="not IsOnMap(401)">
-					<GetTo ZoneId="401" XYZ="-626.617, -122.5, 539.8152" /> <!-- Camp Cloudtop -->
-					<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+					<GetTo ZoneId="401" XYZ="-626.617, -122.5, 539.8152" /> <!-- Camp Cloudtop -->					
+						<RunCode Name="AutoEquip"/>							
 				</If>
 				<!-- From Entrax -->
 				<ExGather DiscoverUnknowns="true" Loops="1">
@@ -1859,9 +1795,9 @@
 							</If>
 							<NoCombatMoveTo Name="Chysahl greens" XYZ="-693.0293, 99.73334, -589.5204" />
 							<Dismount />
-							<WaitTimer WaitTime="3" />
+							
 							<RunCode Name="Stealth" />
-							<WaitTimer WaitTime="3" />
+							
 							<ExGather While="not HqHasAtLeast(12900,3)" CordialType="Auto" CordialTime="Auto" DiscoverUnknowns="True" GatherIncrease="Yield">
 								<GatherObjects>
 									<GatherObject>Unspoiled Lush Vegetation Patch</GatherObject>
@@ -1920,10 +1856,8 @@
 						</If>
 						<NoCombatMoveTo Name="Fufucha" XYZ="-232.9017, 6.263501, -169.7613" />
 						<TurnIn RewardSlot="1" QuestId="67588" NpcId="1000815" XYZ="-232.9017, 6.263501, -169.7613" />
-						<LogMessage Message="Level 60 - Seeds Know No Borders - Completed." />
-						<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+						<LogMessage Message="Level 60 - Seeds Know No Borders - Completed." />						
+						<RunCode Name="AutoEquip"/>							
 					</If>
 				</If>
 			</If>
@@ -1941,19 +1875,15 @@
     </If>
     <If Condition="HasQuest(68156) and not IsQuestCompleted(68156) and GetQuestStep(68156) == 255">
       <GetTo ZoneId="478" XYZ="-44.56588, 209.2288, -90.81387"/>
-      <TurnIn QuestId="68156" NpcId="1021349" XYZ="-44.56588, 209.2288, -90.81387"/>
-      <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+      <TurnIn QuestId="68156" NpcId="1021349" XYZ="-44.56588, 209.2288, -90.81387"/>      
+						<RunCode Name="AutoEquip"/>							
     </If>
 
 		  <!-- Level 60-62 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 62">
-			  <GetTo ZoneId="612" XYZ="-261.0497, 61.09257, -570.2502" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="612" XYZ="-261.0497, 61.09257, -570.2502" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
@@ -1997,10 +1927,8 @@
 		  <!-- Level 62-63 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 63">
-			  <GetTo ZoneId="612" XYZ="-496.9459, 54.01863, 138.8405" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="612" XYZ="-496.9459, 54.01863, 138.8405" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
@@ -2088,19 +2016,15 @@
     </If>
     <If Condition="HasQuest(68157) and not IsQuestCompleted(68157) and GetQuestStep(68157) == 255">
       <GetTo ZoneId="478" XYZ="-44.95714, 209.2252, -90.96803"/>
-      <TurnIn QuestId="68157" NpcId="1021349" XYZ="-44.95714, 209.2252, -90.96803"/>
-      <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+      <TurnIn QuestId="68157" NpcId="1021349" XYZ="-44.95714, 209.2252, -90.96803"/>      
+						<RunCode Name="AutoEquip"/>							
     </If>
 
 		  <!-- Level 63-64 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 64">
-			  <GetTo ZoneId="612" XYZ="-496.9459, 54.01863, 138.8405" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="612" XYZ="-496.9459, 54.01863, 138.8405" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
@@ -2144,10 +2068,8 @@
 		  <!-- Level 64-65 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 65">
-			  <GetTo ZoneId="614" XYZ="772.0947, 95.9671, -262.999" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="614" XYZ="772.0947, 95.9671, -262.999" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Mature Tree</GatherObject>
 				  <HotSpots>
@@ -2257,19 +2179,15 @@
     </If>
     <If Condition="GetQuestStep(68158) == 255 and HqHasAtLeast(17946,5)">
       <GetTo ZoneId="478" XYZ="-44.67389, 209.2242, -90.67441"/>
-      <TurnIn ItemIds="17946" RequiresHq="True" QuestId="68158" NpcId="1021349" XYZ="-44.67389, 209.2242, -90.67441"/>
-      <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+      <TurnIn ItemIds="17946" RequiresHq="True" QuestId="68158" NpcId="1021349" XYZ="-44.67389, 209.2242, -90.67441"/>      
+						<RunCode Name="AutoEquip"/>							
     </If>
 
 		  <!-- Level 65-66 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 66">
-			  <GetTo ZoneId="614" XYZ="772.0947, 95.9671, -262.999" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="614" XYZ="772.0947, 95.9671, -262.999" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Mature Tree</GatherObject>
 				  <HotSpots>
@@ -2313,10 +2231,8 @@
 		  <!-- Level 66-68 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 68">
-			  <GetTo ZoneId="620" XYZ="298.305, 323.4938, 392.7249" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="620" XYZ="298.305, 323.4938, 392.7249" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
@@ -2414,21 +2330,17 @@
       <GetTo ZoneId="478" XYZ="74.53394, 214.12, -91.56881"/>
       <HandOver ItemIds="17947" RequiresHq="True" NpcId="1017106" XYZ="74.53394, 214.12, -91.56881" QuestId="68159" StepId="6"/>
     </If>
-    <If Condition="HasQuest(68159) and not IsQuestCompleted(68159) and GetQuestStep(68159) == 255">
+    <If Condition="HasQuest(68159) and not IsQuestCompleted(68159) and GetQuestStep(68159) == 255" >
       <GetTo ZoneId="478" XYZ="-44.62869, 209.2269, -90.77264"/>
-      <TurnIn ItemIds="2002168" QuestId="68159" NpcId="1021349" XYZ="-44.62869, 209.2269, -90.77264"/>
-      <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+      <TurnIn ItemIds="2002168" QuestId="68159" NpcId="1021349" XYZ="-44.62869, 209.2269, -90.77264"/>      
+						<RunCode Name="AutoEquip" />						
     </If>
 
 			  <!-- Level 68-70 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 70">
-			  <GetTo ZoneId="620" XYZ="298.305, 323.4938, 392.7249" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="620" XYZ="298.305, 323.4938, 392.7249" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
@@ -2535,19 +2447,15 @@
     </If>
     <If Condition="HasQuest(68160) and not IsQuestCompleted(68160) and GetQuestStep(68160) == 255 and HasAtLeast(17948,5)">
       <GetTo ZoneId="478" XYZ="-44.54691, 209.2032, -89.48778"/>
-      <SoTurnIn ItemIds="17948" QuestId="68160" NpcId="1021349" XYZ="-44.54691, 209.2032, -89.48778"/>
-	  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+      <SoTurnIn ItemIds="17948" QuestId="68160" NpcId="1021349" XYZ="-44.54691, 209.2032, -89.48778"/>	  
+						<RunCode Name="AutoEquip"/>							
     </If>
 
 		  <!-- Level 70-71 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 71">
 			  <GetTo ZoneId="621" XYZ="359.1889, 23.22657, -513.6865" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <RunCode Name="AutoEquip"/>	
 			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Mature Tree</GatherObject>
@@ -2587,16 +2495,14 @@
 
 		  <While Condition="Core.Player.ClassLevel &lt; 73">
 			  <GetTo ZoneId="813" XYZ="-409.8083, 3.721667, -28.28305" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <RunCode Name="AutoEquip"/>
 			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
 					  <HotSpot Radius="90" XYZ="-409.8083, 3.721667, -28.28305" name="Lush Vegetation Patches" />
 				  </HotSpots>
-				  <Slot>3</Slot>
+				  <Slot>6</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
@@ -2607,7 +2513,7 @@
 				  <HotSpots>
 					  <HotSpot Radius="90" XYZ="-426.5502, -0.6516011, 107.2197" name="Lush Vegetation Patches" />
 				  </HotSpots>
-				  <Slot>3</Slot>
+				  <Slot>6</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
@@ -2618,7 +2524,7 @@
 				  <HotSpots>
 					  <HotSpot Radius="90" XYZ="-263.0041, -1.592852, 133.1774" name="Lush Vegetation Patches" />
 				  </HotSpots>
-				  <Slot>3</Slot>
+				  <Slot>6</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
@@ -2628,58 +2534,37 @@
 		  <!-- Level 73-75 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 75">
-			  <GetTo ZoneId="817" XYZ="-418.7421, 9.660616, 260.4372"/>			  <!-- Safe spot-->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="816" XYZ="432.7688, 98.30019, -812.1121" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <RunCode Name="Stealth" />
-			  <Dismount />
-			  <WaitTimer WaitTime="1" />
-				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="2" />
-				<RunCode Name="DisableMount" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
-				  <GatherObject>Lush Vegetation Patch</GatherObject>
+				  <GatherObject>Mature Tree</GatherObject>
 				  <HotSpots>
-					  <HotSpot Radius="90" XYZ="-418.7421, 9.660616, 260.4372" name="Lush Vegetation Patches" />
+					  <HotSpot Radius="90" XYZ="432.7688, 98.30019, -812.1121" name="Mature Trees" />
 				  </HotSpots>
-				  <Slot>3</Slot>
+				  <Slot>1</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
 			  </ExGather>
-				<RunCode Name="EnableMount" />
-				<WaitTimer WaitTime="1" />
-				<NoCombatMoveTo Name="Zone 2" XYZ="-254.4734, 22.1074, 202.1151"/> <!-- Safe spot-->
-				<Dismount />
-				<WaitTimer WaitTime="1" />
-				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="2" />
-				<RunCode Name="DisableMount" />
+			  <NoCombatMoveTo Name="Farming Area" XYZ="563.6588, 113.2783, -900.4473" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
-				  <GatherObject>Lush Vegetation Patch</GatherObject>
+				  <GatherObject>Mature Tree</GatherObject>
 				  <HotSpots>
-					  <HotSpot Radius="90" XYZ="-274.8887, 19.79855, 204.3748" name="Lush Vegetation Patches" />
+					  <HotSpot Radius="90" XYZ="563.6588, 113.2783, -900.4473" name="Mature Trees" />
 				  </HotSpots>
-				  <Slot>3</Slot>
+				  <Slot>1</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
 			  </ExGather>
-				<RunCode Name="EnableMount" />
-				<WaitTimer WaitTime="1" />
-				<NoCombatMoveTo Name="Zone 3" XYZ="-246.6035, 2.579692, 357.5639" />
-				<Dismount />
-				<WaitTimer WaitTime="1" />
-				<RunCode Name="Stealth" />
-				<WaitTimer WaitTime="2" />
-				<RunCode Name="DisableMount" />
+			  <NoCombatMoveTo Name="Farming Area" XYZ="562.5984, 108.4222, -733.1039" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
-				  <GatherObject>Lush Vegetation Patch</GatherObject>
+				  <GatherObject>Mature Tree</GatherObject>
 				  <HotSpots>
-					  <HotSpot Radius="90" XYZ="-278.1135, 2.063152, 375.9325" name="Lush Vegetation Patches" />
+					  <HotSpot Radius="90" XYZ="562.5984, 108.4222, -733.1039" name="Mature Trees" />
 				  </HotSpots>
-				  <Slot>3</Slot>
+				  <Slot>1</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
@@ -2689,39 +2574,37 @@
 		  <!-- Level 75-76 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 76">
-			  <GetTo ZoneId="817" XYZ="-418.7421, 9.660616, 260.4372" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="816" XYZ="-503.7161, 13.69754, -49.07911" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
-					  <HotSpot Radius="90" XYZ="-418.7421, 9.660616, 260.4372" name="Lush Vegetation Patches" />
+					  <HotSpot Radius="90" XYZ="-503.7161, 13.69754, -49.07911" name="Lush Vegetation Patches" />
 				  </HotSpots>
-				  <Slot>6</Slot>
+				  <Slot>2</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
 			  </ExGather>
-			  <NoCombatMoveTo Name="Farming Area" XYZ="-274.8887, 19.79855, 204.3748" />
+			  <NoCombatMoveTo Name="Farming Area" XYZ="-488.6248, 42.82056, 127.1283" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
-					  <HotSpot Radius="90" XYZ="-274.8887, 19.79855, 204.3748" name="Lush Vegetation Patches" />
+					  <HotSpot Radius="90" XYZ="-488.6248, 42.82056, 127.1283" name="Lush Vegetation Patches" />
 				  </HotSpots>
-				  <Slot>6</Slot>
+				  <Slot>2</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
 			  </ExGather>
-			  <NoCombatMoveTo Name="Farming Area" XYZ="-278.1135, 2.063152, 375.9325" />
+			  <NoCombatMoveTo Name="Farming Area" XYZ="-376.0564, 14.89134, 90.93565" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Lush Vegetation Patch</GatherObject>
 				  <HotSpots>
-					  <HotSpot Radius="90" XYZ="-278.1135, 2.063152, 375.9325" name="Lush Vegetation Patches" />
+					  <HotSpot Radius="90" XYZ="-376.0564, 14.89134, 90.93565" name="Lush Vegetation Patches" />
 				  </HotSpots>
-				  <Slot>6</Slot>
+				  <Slot>2</Slot>
 				  <GatheringSkillOrder>
 					  <GatheringSkill SpellName="Sharp Vision II" TimesToCast="1" />
 				  </GatheringSkillOrder>
@@ -2731,10 +2614,8 @@
 		  <!-- Level 76-78 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 78">
-			  <GetTo ZoneId="813" XYZ="-549.0365, 77.36881, -501.8888" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="813" XYZ="-549.0365, 77.36881, -501.8888" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Mature Tree</GatherObject>
@@ -2773,10 +2654,8 @@
 		  <!-- Level 78-80 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 80">
-			  <GetTo ZoneId="813" XYZ="-549.0365, 77.36881, -501.8888" /> <!-- Farming Area -->
-			  <WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+			  <GetTo ZoneId="813" XYZ="-549.0365, 77.36881, -501.8888" /> <!-- Farming Area -->			  
+						<RunCode Name="AutoEquip"/>							
 			  <RunCode Name="Stealth" />
 			  <ExGather DiscoverUnknowns="true" Loops="1">
 				  <GatherObject>Mature Tree</GatherObject>
@@ -2814,10 +2693,8 @@
 		<If Condition="Core.Player.ClassLevel == 80">
 			<LogMessage Message="Congrats! You've hit level 80 Botanist!" />
 			<If Condition="not IsOnMap(129)">
-				<GetTo ZoneId="129" XYZ="-84.08636, 18.60033, -12.41393" /> <!-- Limsa Lominsa Lower Decks -->
-				<WaitTimer WaitTime="3" />
-						<RunCode Name="AutoEquip"/>	
-						<WaitTimer WaitTime="3" />
+				<GetTo ZoneId="129" XYZ="-84.08636, 18.60033, -12.41393" /> <!-- Limsa Lominsa Lower Decks -->				
+						<RunCode Name="AutoEquip"/>							
 			</If>
 		</If>
 	</If>
