@@ -15,7 +15,7 @@ Added:	Chocobo quest and opening of Coffers
     </If>-->
     <RunCode Name="Profile"/>
 	 <!-- My Feisty Little Chocobo (Level 30) -->
-    <If Condition="IsQuestCompleted(66337) and not HasQuest(66698) and not IsQuestCompleted(66698)">
+    <If Condition="not HasQuest(66698) and not IsQuestCompleted(66698)">
       <GetTo ZoneId="153" XYZ="-219.2264, 20.92336, 338.4298"/>
       <If Condition="IsQuestAcceptQualified(66698)">
         <PickupQuest NpcId="1002754" QuestId="66698" XYZ="-219.2264, 20.92336, 338.4298"/>
