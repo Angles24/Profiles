@@ -13,6 +13,7 @@ Profile and fixes by Anges
 
 	<If Condition="not IsQuestCompleted(67144)"> <!-- Check to See if Purple Flame, Purple Flame is completed. -->
 		<RunCode Name="PurpleFlame"/>
+	</If>
 		
 		<If Condition="IsQuestCompleted(67144)">
 		
@@ -169,6 +170,7 @@ Profile and fixes by Anges
 		
 	<If Condition="IsQuestCompleted(67144) and not IsQuestCompleted(67153)"> <!-- Check to See if Mourn in Passing is completed. -->
 		<RunCode Name="MourninPassing"/>
+	</If>
 		
 		<If Condition="IsQuestCompleted(67153)">
 
@@ -445,6 +447,7 @@ Profile and fixes by Anges
 		
 	<If Condition="IsQuestCompleted(67153) and not IsQuestCompleted(67170)"> <!-- Check to See if Into the Aery is completed. -->
 		<RunCode Name="IntotheAery"/>
+	</If>
 		
 		<If Condition="IsQuestCompleted(67144)">
 
@@ -686,6 +689,7 @@ Profile and fixes by Anges
 		
 	<If Condition="IsQuestCompleted(67170) and not IsQuestCompleted(67183)"> <!-- Check to See if Bolt, Chain, and Island is completed. -->
 		<RunCode Name="BoltChainIsland"/>
+	</If>
 		
 		<If Condition="IsQuestCompleted(67183)">
 
@@ -1008,6 +1012,7 @@ Profile and fixes by Anges
 		
 	<If Condition="IsQuestCompleted(67183) and not IsQuestCompleted(67196)"> <!-- Check to See if Forbidden Knowledge is completed. -->
 		<RunCode Name="ForbiddenKnowledge"/>
+	</If>
 		
 		<If Condition="IsQuestCompleted(67196)">
 
@@ -1273,11 +1278,6 @@ Profile and fixes by Anges
 
 		<LogMessage Message="You've attuned to the Aether Currents in The Dravanian Hinterlands!" />		
 		</If>
-	</If>	
-	</If>
-	</If>
-	</If>
-	</If>
 	</Order>
 	<GrindAreas>
 		<GrindArea name="Louder_than_Words">
