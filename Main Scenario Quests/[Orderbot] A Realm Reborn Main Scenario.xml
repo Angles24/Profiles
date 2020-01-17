@@ -11030,5 +11030,12 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         MovementManager.MoveForwardStop();
         await Coroutine.Sleep(500);
         ]]></CodeChunk>
+		<CodeChunk Name="SetGearSet">
+		<![CDATA[ 
+			if  (!GearsetManager.GearSets.Any(i => i.InUse && i.Class == Core.Me.CurrentJob))
+                ff14bot.Managers.ChatManager.SendChat("/gs save");
+			
+			]]>
+		</CodeChunk>
   </CodeChunks>
 </Profile>

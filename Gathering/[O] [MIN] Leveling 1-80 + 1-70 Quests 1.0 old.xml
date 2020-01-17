@@ -65,23 +65,29 @@
 		</CodeChunk>
 		<CodeChunk Name="MINWeapon">
 			<![CDATA[
-				var item = InventoryManager.FilledInventoryAndArmory.FirstOrDefault(i => i.Item.EquipmentCatagory == ItemUiCategory.Miners_Primary_Tool);
-				BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(InventoryBagId.EquippedItems)[EquipmentSlot.MainHand];
-				if (item != null)
+				BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
+
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
 				{
-					item.Move(EquipSlot);
+					if(slot.RawItemId == 2519)
+					{
+						slot.Move(EquipSlot);
+					}
 				}
-		]]>
+      ]]>
 		</CodeChunk>
 		<CodeChunk Name="MINWeapon2">
 			<![CDATA[
-				var item = InventoryManager.FilledInventoryAndArmory.FirstOrDefault(i => i.Item.EquipmentCatagory == ItemUiCategory.Miners_Secondary_Tool);
-				BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(InventoryBagId.EquippedItems)[EquipmentSlot.OffHand];
-				if (item != null)
+				BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
+
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
 				{
-					item.Move(EquipSlot);
+					if(slot.RawItemId == 2532)
+					{
+						slot.Move(EquipSlot);
+					}
 				}
-		]]>
+      ]]>
 		</CodeChunk>
 		<CodeChunk Name="Prospect">
 			<![CDATA[
@@ -115,55 +121,10 @@
             }
             ]]>
         </CodeChunk>
-		<CodeChunk Name="UpdateGearSet">
-		<![CDATA[ 
-		   var patternFinder = new GreyMagic.PatternFinder(Core.Memory);
-            IntPtr agentCharVtable = patternFinder.Find("48 8D 05 ? ? ? ? 89 77 ? Add 3 TraceRelative");
-			int idChar = AgentModule.FindAgentIdByVtable(agentCharVtable);
-
-			AtkAddonControl windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
-
-			if (windowByName == null)
-			{
-				AgentModule.GetAgentInterfaceById(idChar).Toggle();
-			}
-
-			await Coroutine.Wait(5000, () => RaptureAtkUnitManager.GetWindowByName("Character") != null);
-
-			windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
-
-			if (windowByName != null)
-			{
-				windowByName.SendAction(1, 3, 0xF);
-			}
-            
-            await Coroutine.Wait(1000, () => SelectYesno.IsOpen);
-
-            if (SelectYesno.IsOpen)
-                SelectYesno.Yes();
-
-			await Coroutine.Wait(1000, () => !SelectYesno.IsOpen);
-			
-            await Coroutine.Sleep(200);
-			
-			windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
-
-			if (windowByName != null)
-			{
-				AgentModule.GetAgentInterfaceById(idChar).Toggle();
-			}
-			
-		]]>
-		</CodeChunk>
-		<CodeChunk Name="SetGearSet">
-		<![CDATA[ 
-			if  (!GearsetManager.GearSets.Any(i => i.InUse && i.Class == Core.Me.CurrentJob))
-                ff14bot.Managers.ChatManager.SendChat("/gs save");			
-		]]>
-		</CodeChunk>		
 	</CodeChunks>
 	<Order>
-        
+    <ChangeClass Job="Miner" />
+    
 		  <LogMessage Message="The Journey Begins! Remember to Check up on me!" />
 		  <!--Unlocking Miner-->
 		  <If Condition="not IsQuestCompleted(65728)">
@@ -202,30 +163,19 @@
 						  <TurnInPlus QuestId="66133" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.45324, 6.2, 157.4644" />
 					  </If>
 					  <While Condition="ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand].RawItemId != 2519">
-						 <RunCode Name="MINWeapon" />						 							
+						  <RunCode Name="MINWeapon" />						  
+						<RunCode Name="AutoEquip"/>							
 					  </While>
-					  <RunCode Name="SetGearSet"/>
-					  <WaitTimer WaitTime="2"/>	
-					  <RunCode Name="AutoEquip"/>
-					  <WaitTimer WaitTime="2"/>						 
-					  <RunCode Name="UpdateGearSet"/>
 				  </If>
 			  </If>
 		  </If>
-		  <!--End Level 1--> 			
-	
-		<If Condition="ClassName != ClassJobType.Miner">
-			<ChangeClass Job="Miner" />
-		</If> 
-				
-    <If Condition="ClassName == ClassJobType.Miner">
-		<WaitTimer WaitTime="2"/>	
-		<RunCode Name="AutoEquip"/>
-		<WaitTimer WaitTime="2"/>						 
-		<RunCode Name="UpdateGearSet"/> 
+		  <!--End Level 1-->
+
+    <If Condition="Core.Me.CurrentJob == ClassJobType.Miner">
 
       <RunCode Name="Prospect" />
-				  
+		<ChangeClass Job="Miner" />		  
+		  
 		  <WaitWhile Condition="Managers.QuestLogManager.InCutscene" />
 
 		  <!--Level 1 - My First Pickaxe-->
