@@ -161,18 +161,6 @@
 			
 			]]>
 		</CodeChunk>
-		<CodeChunk Name="Disable_Flight">
-      <![CDATA[
-        foreach (var plugin in PluginManager.Plugins.Where(p => p.Plugin.Name == "Enable Flight" || p.Plugin.Name == "启用飞行"))
-        {
-          try
-          {
-            if (!plugin.Enabled)  {  break;  }  else  {  plugin.Enabled = false;  }
-          }
-          catch (Exception ex) {  }
-        }
-      ]]>
-    </CodeChunk>
 	</CodeChunks>
 	<Order>
 		
@@ -2561,7 +2549,6 @@
 		  <!-- Level 71-73 -->
 
 		  <While Condition="Core.Player.ClassLevel &lt; 73">
-			<RunCode Name="Disable_Flight"/>
 			  <GetTo ZoneId="813" XYZ="-409.8083, 3.721667, -28.28305" /> <!-- Farming Area -->
 			  <RunCode Name="AutoEquip"/>
 			  <RunCode Name="Stealth" />

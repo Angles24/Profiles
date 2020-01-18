@@ -3415,10 +3415,12 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       </If>
       <TurnIn QuestId="68499" NpcId="1024103" InteractDistance="3.0" XYZ="532.494, 70, 576.1653" RewardSlot="&TheDarknessBelow;"/>
 	  <Dismount />
-	  <WaitTimer WaitTime="3" />
-	  <RunCode Name="Coffer" />
-	  <WaitTimer WaitTime="3" />
-	  <RunCode Name="AutoEquip"/>
+   <WaitTimer WaitTime="2" />
+   <RunCode Name="Coffer" />
+   <WaitTimer WaitTime="2"/>	
+					  <RunCode Name="AutoEquip"/>
+					  <WaitTimer WaitTime="2"/>						 
+					  <RunCode Name="UpdateGearSet"/>
     </If>
     <!-- The Mad King's Trove (Level 70) -->
     <If Condition="IsQuestCompleted(68499) and not HasQuest(68500) and not IsQuestCompleted(68500)">
@@ -3721,6 +3723,13 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       </If>
       <FlyTo XYZ="342.005, 74.00002, 70.64069" ArrivalTolerance="0.5" AllowedVariance="1.0" Land="True" IgnoreIndoors="True"/>
       <TurnIn QuestId="68507" NpcId="1024057" InteractDistance="3.0" XYZ="340.2302, 74.00002, 70.66455"/>
+	  <Dismount />
+   <WaitTimer WaitTime="2" />
+   <RunCode Name="Coffer" />
+   <WaitTimer WaitTime="2"/>	
+					  <RunCode Name="AutoEquip"/>
+					  <WaitTimer WaitTime="2"/>						 
+					  <RunCode Name="UpdateGearSet"/>
     </If>
     <!-- Return of the Bull (Level 70) -->
     <If Condition="IsQuestCompleted(68507) and not HasQuest(68508) and not IsQuestCompleted(68508)">
@@ -4081,12 +4090,14 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <If Condition="HasQuest(68565) and not IsQuestCompleted(68565) and GetQuestStep(68565) == 255">
       <GetTo ZoneId="628" XYZ="150.5564, 14.77572, 93.08349"/>
       <UseTransport InteractDistance="3.0" NpcId="1019070" XYZ="151.2017, 14.77572, 95.78088"/>
-      <TurnIn QuestId="68565" NpcId="1020622" InteractDistance="3.0" XYZ="0.04577637, 0, -2.304138" RewarSlot="&RiseofaNewSun;"/>
+      <TurnIn QuestId="68565" NpcId="1020622" InteractDistance="3.0" XYZ="0.04577637, 0, -2.304138" RewardSlot="&RiseofaNewSun;"/>
 	  <Dismount />
-	  <WaitTimer WaitTime="3" />
-	  <RunCode Name="Coffer" />
-	  <WaitTimer WaitTime="3" />
-	  <RunCode Name="AutoEquip"/>
+   <WaitTimer WaitTime="2" />
+   <RunCode Name="Coffer" />
+   <WaitTimer WaitTime="2"/>	
+					  <RunCode Name="AutoEquip"/>
+					  <WaitTimer WaitTime="2"/>						 
+					  <RunCode Name="UpdateGearSet"/>
     </If>
     <!-- (Patch 4.3) Gosetsu & Tsuyu (Level 70) -->
     <If Condition="IsQuestCompleted(68565) and not HasQuest(68606) and not IsQuestCompleted(68606)">
@@ -4118,10 +4129,12 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       </If>
       <TurnIn QuestId="68606" NpcId="1025555" InteractDistance="3.0" XYZ="148.0582, -4.178733, 60.13574" RewardSlot="&GosetsuandTsuyu;"/>
 	  <Dismount />
-	  <WaitTimer WaitTime="3" />
-	  <RunCode Name="Coffer" />
-	  <WaitTimer WaitTime="3" />
-	  <RunCode Name="AutoEquip"/>
+   <WaitTimer WaitTime="2" />
+   <RunCode Name="Coffer" />
+   <WaitTimer WaitTime="2"/>	
+					  <RunCode Name="AutoEquip"/>
+					  <WaitTimer WaitTime="2"/>						 
+					  <RunCode Name="UpdateGearSet"/>
     </If>
     <!-- Gone Like the Morning Dew (Level 70) -->
     <If Condition="IsQuestCompleted(68606) and not HasQuest(68607) and not IsQuestCompleted(68607)">
@@ -4906,7 +4919,8 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <GetTo ZoneId="156" XYZ="21.79132, 21.25273, -632.7344"/>
         <UseTransport InteractDistance="3.0" NpcId="2002881" XYZ="21.13373, 22.32391, -631.281"/>
       </If>
-      <TurnIn QuestId="68721" NpcId="1026990" XYZ="-2.426208, 7.450581E-09, -9.10968"/>
+      <SoTurnIn QuestId="68721" NpcId="1026990" XYZ="-2.426208, 7.450581E-09, -9.10968"/>
+	  <LoadProfile Path="[Orderbot] Shadowbringers Main Scenario V.Chocobo.xml"/>
     </If>
   </Order>
   <GrindAreas>
@@ -5523,5 +5537,45 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
             }
             ]]>
         </CodeChunk>
+		<CodeChunk Name="UpdateGearSet">
+		<![CDATA[ 
+		   var patternFinder = new GreyMagic.PatternFinder(Core.Memory);
+            IntPtr agentCharVtable = patternFinder.Find("48 8D 05 ? ? ? ? 89 77 ? Add 3 TraceRelative");
+			int idChar = AgentModule.FindAgentIdByVtable(agentCharVtable);
+
+			AtkAddonControl windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
+
+			if (windowByName == null)
+			{
+				AgentModule.GetAgentInterfaceById(idChar).Toggle();
+			}
+
+			await Coroutine.Wait(5000, () => RaptureAtkUnitManager.GetWindowByName("Character") != null);
+
+			windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
+
+			if (windowByName != null)
+			{
+				windowByName.SendAction(1, 3, 0xF);
+			}
+            
+            await Coroutine.Wait(1000, () => SelectYesno.IsOpen);
+
+            if (SelectYesno.IsOpen)
+                SelectYesno.Yes();
+
+			await Coroutine.Wait(1000, () => !SelectYesno.IsOpen);
+			
+            await Coroutine.Sleep(200);
+			
+			windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
+
+			if (windowByName != null)
+			{
+				AgentModule.GetAgentInterfaceById(idChar).Toggle();
+			}
+			
+			]]>
+		</CodeChunk>
   </CodeChunks>
 </Profile>

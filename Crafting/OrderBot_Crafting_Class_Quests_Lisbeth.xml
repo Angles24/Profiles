@@ -5112,10 +5112,12 @@ Required Botbases: Lisbeth
 			
 			]]>
 		</CodeChunk>
-    <CodeChunk Name="Requires_Melding"><![CDATA[
+    <CodeChunk Name="Requires_Melding">
+		<![CDATA[
         Core.OverlayManager.AddToast(() => "Please complete the current quest step manually.", TimeSpan.FromMilliseconds(25000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
         await Coroutine.Sleep(26000);
-      ]]></CodeChunk>
+      ]]>
+	  </CodeChunk>
     <CodeChunk Name="Move_Forward"><![CDATA[
         await Coroutine.Sleep(500);
         MovementManager.SetFacing(3.76f);

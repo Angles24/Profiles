@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Credits: kagepande -->
+
+<Profile>
+  <Name>Unlock DoH Classes</Name>
+  <KillRadius>50</KillRadius>
+  <BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+  <CodeChunks>
+  </CodeChunks>
+  <Order>
+   	
+<!--Unlocking Culinarian-->
+    <If Condition="not IsQuestCompleted(65727)">
+		<If Condition="not HasQuest(65727)">
+			<!-- <If Condition="not IsOnMap(128)">
+				<GetTo ZoneId="128" XYZ="-61.18506, 42.29994, -161.9528"/>
+			</If>
+			<If Condition="IsOnMap(128)">
+				<MoveTo Name="Charlys" Distance="1" UseMesh="True" XYZ="-61.18506, 42.29994, -161.9528"/>
+				<If Condition="IsQuestAcceptQualified(65727)">
+					<ConfirmTalkTo NpcId="1000946" QuestId="65727" XYZ="-61.18506, 42.29994, -161.9528"/>
+				</If>				
+			</If> -->
+			<GetTo ZoneId="128" XYZ="-61.18506, 42.29994, -161.9528"/>
+				<If Condition="IsQuestAcceptQualified(65727)">
+					<ConfirmTalkTo NpcId="1000946" QuestId="65727" XYZ="-61.18506, 42.29994, -161.9528"/>
+				</If>
+		</If>
+    </If>
+    <If Condition="not IsQuestCompleted(65807)">
+		<If Condition="not HasQuest(65807)">
+			<If Condition="not IsOnMap(128)">
+				<If Condition="not IsOnMap(129)">
+					<TeleportTo Name="Limsa Lominsa" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-63.99969, 42.01626, -129.1435"/>
+				</If>
+			</If>
+			<If Condition="IsOnMap(128)">
+				<MoveTo Name="Charlys" Distance="1" UseMesh="True" XYZ="-61.18506, 42.29994, -161.9528"/>
+				<If Condition="IsQuestAcceptQualified(65807)">
+					<PickupQuest NpcId="1000946" QuestId="65807" XYZ="-61.18506, 42.29994, -161.9528"/>
+				</If>
+				<If Condition="GetQuestStep(65807) == 255">
+					<ConfirmTurnIn QuestId="65807" StepId="255" NpcId="1000947" InteractDistance="1.0" XYZ="-54.52119, 44.17484, -149.4378"/>
+					<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Culinarian">
+							<ChangeClass Job="Culinarian" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Culinarian">
+							<RunCode Name="AutoEquip"/>
+							<RunCode Name="UpdateGearSet"/>
+						</If>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Done Unlocking Culinarian-->
+
+<!--Unlocking Armorer-->
+    <If Condition="not IsQuestCompleted(65722)">
+		<If Condition="not HasQuest(65722)">
+			<If Condition="not IsOnMap(128)">
+				<GetTo ZoneId="128" XYZ="-49.96643, 42.79987, 190.44"/>
+			</If>
+			<If Condition="IsOnMap(128)">
+				<MoveTo Name="G'wahnako" Distance="1" UseMesh="True" XYZ="-49.96643, 42.79987, 190.44"/>
+				<If Condition="IsQuestAcceptQualified(65722)">
+					<ConfirmTalkTo NpcId="1000998" QuestId="65722" XYZ="-49.96643, 42.79987, 190.44"/>
+				</If>
+			</If>
+		</If>
+    </If>
+    <If Condition="not IsQuestCompleted(65809)">
+		<If Condition="not HasQuest(65809)">
+			<If Condition="not IsOnMap(128)">
+				<If Condition="not IsOnMap(129)">
+					<TeleportTo Name="Limsa Lominsa" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-63.99969, 42.01626, -129.1435"/>
+				</If>
+			</If>
+			<If Condition="IsOnMap(128)">
+				<MoveTo Name="G'wahnako" Distance="1" UseMesh="True" XYZ="-49.96643, 42.79987, 190.44"/>
+				<If Condition="IsQuestAcceptQualified(65809)">
+					<PickupQuest NpcId="1000998" QuestId="65809" XYZ="-49.96643, 42.79987, 190.44"/>
+				</If>
+				<If Condition="GetQuestStep(65809) == 255">
+					<ConfirmTurnIn QuestId="65809" StepId="255" NpcId="1001000" InteractDistance="1.0" XYZ="-32.81106, 41.49998, 207.5591"/>
+					<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Armorer">
+							<ChangeClass Job="Armorer" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Armorer">
+							<RunCode Name="AutoEquip"/>
+							<RunCode Name="UpdateGearSet"/>
+						</If>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Done Unlocking Armorer-->
+
+<!--Unlocking Blacksmith-->
+    <If Condition="not IsQuestCompleted(65721)">
+		<If Condition="not HasQuest(65721)">
+			<If Condition="not IsOnMap(128)">
+				<GetTo ZoneId="128" XYZ="-50.23656, 42.79998, 192.5967"/>
+			</If>
+			<If Condition="IsOnMap(128)">
+				<MoveTo Name="Randwulf" Distance="1" UseMesh="True" XYZ="-50.23656, 42.79998, 192.5967"/>
+				<If Condition="IsQuestAcceptQualified(65721)">
+					<ConfirmTalkTo NpcId="1000995" QuestId="65721" XYZ="-50.23656, 42.79998, 192.5967"/>
+				</If>
+			</If>
+		</If>
+    </If>
+    <If Condition="not IsQuestCompleted(65827)">
+		<If Condition="not HasQuest(65827)">
+			<If Condition="not IsOnMap(128)">
+				<If Condition="not IsOnMap(129)">
+					<TeleportTo Name="Limsa Lominsa" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-63.99969, 42.01626, -129.1435"/>
+				</If>
+			</If>
+			<If Condition="IsOnMap(128)">
+				<MoveTo Name="Randwulf" Distance="1" UseMesh="True" XYZ="-50.23656, 42.79998, 192.5967"/>
+				<If Condition="IsQuestAcceptQualified(65827)">
+					<PickupQuest NpcId="1000995" QuestId="65827" XYZ="-50.23656, 42.79998, 192.5967"/>
+				</If>
+				<If Condition="GetQuestStep(65827) == 255">
+					<ConfirmTurnIn QuestId="65827" StepId="255" NpcId="1000997" InteractDistance="1.0" XYZ="-32.22669, 44.6637, 184.621"/>
+					<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Blacksmith">
+							<ChangeClass Job="BlackSmith" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.BlackSmith">
+							<RunCode Name="AutoEquip"/>
+							<RunCode Name="UpdateGearSet"/>
+						</If>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Done Unlocking Blacksmith-->
+
+<!--Unlocking Carpenter -->
+    <If Condition="not IsQuestCompleted(65720)">
+		<If Condition="not HasQuest(65720)">
+			<If Condition="not IsOnMap(132)">
+				<TeleportTo Name="New Gridania" AetheryteId="2" />
+			</If>
+			<If Condition="IsOnMap(132)">
+				<MoveTo Name="Corgg" Distance="1" UseMesh="True" XYZ="-17.67216, -3.25, 45.76995"/>
+				<If Condition="IsQuestAcceptQualified(65720)">
+					<ConfirmTalkTo NpcId="1000148" QuestId="65720" XYZ="-17.67216, -3.25, 45.76995"/>
+				</If>
+			</If>
+		</If>
+    </If>
+    <If Condition="not IsQuestCompleted(65674)">
+		<If Condition="not HasQuest(65674)">
+			<If Condition="not IsOnMap(132)">
+				<TeleportTo Name="New Gridania" AetheryteId="2" />
+			</If>
+			<If Condition="IsOnMap(132)">
+				<MoveTo Name="Corgg" Distance="1" UseMesh="True" XYZ="-17.67216, -3.25, 45.76995"/>
+				<If Condition="IsQuestAcceptQualified(65674)">
+					<PickupQuest NpcId="1000148" QuestId="65674" XYZ="-17.67216, -3.25, 45.76995"/>
+				</If>
+				<If Condition="GetQuestStep(65674) == 255">
+					<ConfirmTurnIn QuestId="65674" StepId="255" NpcId="1000153" InteractDistance="1.0" XYZ="-45.85313, -1.250001, 57.11108"/>
+					<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Carpenter">
+							<ChangeClass Job="Carpenter" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Carpenter">
+							<RunCode Name="AutoEquip"/>
+							<RunCode Name="UpdateGearSet"/>
+						</If>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Done Unlocking Carpenter-->
+
+<!--Unlocking Leatherworker-->
+    <If Condition="not IsQuestCompleted(65724)">
+		<If Condition="not HasQuest(65724)">
+			<If Condition="not IsOnMap(133)">
+				<If Condition="not IsOnMap(132)">
+					<TeleportTo Name="New Gridania" AetheryteId="2" />
+				</If>
+				<If Condition="IsOnMap(132)"> 
+					<MoveTo Name="Old Gridania" Distance="0" XYZ="12.20563, 1.286094, -17.51566"/>
+				</If>
+			</If>
+			<If Condition="IsOnMap(133)">
+				<MoveTo Name="Randall" Distance="1" UseMesh="True" XYZ="63.3223, 8, -145.0385"/>
+				<If Condition="IsQuestAcceptQualified(65724)">
+					<ConfirmTalkTo NpcId="1000352" QuestId="65724" XYZ="63.3223, 8, -145.0385"/>
+				</If>
+			</If>
+		</If>
+    </If>
+    <If Condition="not IsQuestCompleted(65641)">
+		<If Condition="not HasQuest(65641)">
+			<If Condition="not IsOnMap(133)">
+				<If Condition="not IsOnMap(132)">
+					<TeleportTo Name="New Gridania" AetheryteId="2" />
+				</If>
+				<If Condition="IsOnMap(132)"> 
+					<MoveTo Name="Old Gridania" Distance="0" XYZ="12.20563, 1.286094, -17.51566"/>
+				</If>
+			</If>
+			<If Condition="IsOnMap(133)">
+				<MoveTo Name="Randall" Distance="1" UseMesh="True" XYZ="63.3223, 8, -145.0385"/>
+				<If Condition="IsQuestAcceptQualified(65641)">
+					<PickupQuest NpcId="1000352" QuestId="65641" XYZ="63.3223, 8, -145.0385"/>
+				</If>
+				<If Condition="GetQuestStep(65641) == 255">
+					<ConfirmTurnIn QuestId="65641" StepId="255" NpcId="1000691" InteractDistance="1.0" XYZ="71.08187, 8, -165.4199"/>
+					<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Leatherworker">
+							<ChangeClass Job="Leatherworker" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Leatherworker">
+							<RunCode Name="AutoEquip"/>
+							<RunCode Name="UpdateGearSet"/>
+						</If>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Done Unlocking Leatherworker-->
+
+<!-- Unlocking Botanist -->
+    <If Condition="not IsQuestCompleted(65729)">
+		<If Condition="not HasQuest(65729)">
+			<If Condition="not IsOnMap(133)">
+				<If Condition="not IsOnMap(132)">
+					<TeleportTo Name="New Gridania" AetheryteId="2" />
+				</If>
+				<If Condition="IsOnMap(132)"> 
+					<MoveTo Name="Old Gridania" Distance="0" XYZ="12.20563, 1.286094, -17.51566"/>
+				</If>
+			</If>
+			<If Condition="IsOnMap(133)">
+				<MoveTo Name="Leanceault" Distance="1" UseMesh="True" XYZ="-237.854, 8, -145.268"/>
+				<If Condition="IsQuestAcceptQualified(65729)">
+					<ConfirmTalkTo NpcId="1000294" QuestId="65729" XYZ="-237.854, 8, -145.268"/>
+				</If>
+			</If>
+		</If>
+    </If>
+    <If Condition="not IsQuestCompleted(65539)">
+		<If Condition="not HasQuest(65539)">
+			<If Condition="not IsOnMap(133)">
+				<If Condition="not IsOnMap(132)">
+					<TeleportTo Name="New Gridania" AetheryteId="2" />
+				</If>
+				<If Condition="IsOnMap(132)"> 
+					<MoveTo Name="Old Gridania" Distance="0" XYZ="12.20563, 1.286094, -17.51566"/>
+				</If>
+			</If>
+			<If Condition="IsOnMap(133)">
+				<MoveTo Name="Leonceault" Distance="1" UseMesh="True" XYZ="-237.854, 8, -145.268"/>
+				<If Condition="IsQuestAcceptQualified(65539)">
+					<PickupQuest NpcId="1000294" QuestId="65539" XYZ="-237.854, 8, -145.268"/>
+				</If>
+				<If Condition="GetQuestStep(65539) == 255">
+					<ConfirmTurnIn QuestId="65539" StepId="255" NpcId="1000815" InteractDistance="1.0" XYZ="-233.4313, 6.248232, -168.6552"/>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Unlocking Goldsmith-->
+    <If Condition="not IsQuestCompleted(65723)">
+		<If Condition="not HasQuest(65723)">
+			<If Condition="not IsOnMap(131)">
+				<If Condition="not IsOnMap(130)">
+					<TeleportTo Name="Ul'dah" AetheryteId="9" />
+				</If>
+				<If Condition="IsOnMap(130)">
+					<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-9.443807, 10, -33.64059"/>					
+				</If>
+			</If>
+			<If Condition="IsOnMap(131)">
+				<MoveTo Name="Jemime" Distance="1" UseMesh="True" XYZ="-34.21239, 13.59995, 98.9277"/>
+				<If Condition="IsQuestAcceptQualified(65723)">
+					<ConfirmTalkTo NpcId="1002280" QuestId="65723" XYZ="-34.21239, 13.59995, 98.9277"/>
+				</If>
+			</If>
+		</If>
+	</If>
+    <If Condition="not IsQuestCompleted(66144)">
+		<If Condition="not HasQuest(66144)">
+			<If Condition="not IsOnMap(131)">
+				<If Condition="not IsOnMap(130)">
+					<TeleportTo Name="Ul'dah" AetheryteId="9" />
+				</If>
+				<If Condition="IsOnMap(130)">
+					<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-9.443807, 10, -33.64059"/>					
+				</If>
+			</If>
+			<If Condition="IsOnMap(131)">
+				<MoveTo Name="Jemime" Distance="1" UseMesh="True" XYZ="-34.21239, 13.59995, 98.9277"/>
+				<If Condition="IsQuestAcceptQualified(66144)">
+					<PickupQuest NpcId="1002280" QuestId="66144" XYZ="-34.21239, 13.59995, 98.9277"/>
+				</If>
+				<If Condition="GetQuestStep(66144) == 255">
+					<ConfirmTurnIn QuestId="66144" StepId="255" NpcId="1004093" InteractDistance="1.0" XYZ="-25.54107, 12.2, 109.7778"/>
+					<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Goldsmith">
+							<ChangeClass Job="Goldsmith" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Goldsmith">
+							<RunCode Name="AutoEquip"/>
+							<RunCode Name="UpdateGearSet"/>
+						</If>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Done Unlocking Goldsmith-->
+
+<!--Unlocking Weaver-->
+    <If Condition="not IsQuestCompleted(65725)">
+		<If Condition="not HasQuest(65725)">
+			<If Condition="not IsOnMap(131)">
+				<If Condition="not IsOnMap(130)">
+					<TeleportTo Name="Ul'dah" AetheryteId="9" />
+				</If>
+				<If Condition="IsOnMap(130)">
+					<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-9.443807, 10, -33.64059"/>					
+				</If>
+			</If>
+			<If Condition="IsOnMap(131)">
+				<MoveTo Name="Maronne" Distance="1" UseMesh="True" XYZ="136.8372, 7.591891, 97.83977"/>
+				<If Condition="IsQuestAcceptQualified(65725)">
+					<ConfirmTalkTo NpcId="1002283" QuestId="65725" XYZ="136.8372, 7.591891, 97.83977"/>
+				</If>
+			</If>
+		</If>
+    </If>
+    <If Condition="not IsQuestCompleted(66070)">
+		<If Condition="not HasQuest(66070)">
+			<If Condition="not IsOnMap(131)">
+				<If Condition="not IsOnMap(130)">
+					<TeleportTo Name="Ul'dah" AetheryteId="9" />
+				</If>
+				<If Condition="IsOnMap(130)">
+					<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-9.443807, 10, -33.64059"/>					
+				</If>
+			</If>
+			<If Condition="IsOnMap(131)">
+				<MoveTo Name="Maronne" Distance="1" UseMesh="True" XYZ="136.8372, 7.591891, 97.83977"/>
+				<If Condition="IsQuestAcceptQualified(66070)">
+					<PickupQuest NpcId="1002283" QuestId="66070" XYZ="136.8372, 7.591891, 97.83977"/>
+				</If>
+				<If Condition="GetQuestStep(66070) == 255">
+					<ConfirmTurnIn QuestId="66070" StepId="255" NpcId="1003818" InteractDistance="1.0" XYZ="156.6901, 7.792007, 100.3423"/>
+					<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Weaver">
+							<ChangeClass Job="Weaver" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Weaver">
+							<RunCode Name="AutoEquip"/>
+							<RunCode Name="UpdateGearSet"/>
+						</If>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Done Unlocking Weaver-->
+
+<!--Unlocking Alchemist-->
+    <If Condition="not IsQuestCompleted(65726)">
+		<If Condition="not HasQuest(65726)">
+			<If Condition="not IsOnMap(131)">
+				<If Condition="not IsOnMap(130)">
+					<TeleportTo Name="Ul'dah" AetheryteId="9" />
+				</If>
+				<If Condition="IsOnMap(130)">
+					<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-9.443807, 10, -33.64059"/>					
+				</If>
+			</If>
+			<If Condition="IsOnMap(131)">
+				<MoveTo Name="Deitrich" Distance="1" UseMesh="True" XYZ="-114.7261, 41.59998, 120.8445"/>
+				<If Condition="IsQuestAcceptQualified(65726)">
+					<ConfirmTalkTo NpcId="1002281" QuestId="65726" XYZ="-114.7261, 41.59998, 120.8445"/>
+				</If>
+			</If>
+      </If>
+    </If>
+    <If Condition="not IsQuestCompleted(66111)">
+		<If Condition="not HasQuest(66111)">
+			<If Condition="not IsOnMap(131)">
+				<If Condition="not IsOnMap(130)">
+					<TeleportTo Name="Ul'dah" AetheryteId="9" />
+				</If>
+				<If Condition="IsOnMap(130)">
+					<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-9.443807, 10, -33.64059"/>					
+				</If>
+			</If>
+			<If Condition="IsOnMap(131)">
+				<MoveTo Name="Deitrich" Distance="1" UseMesh="True" XYZ="-114.7261, 41.59998, 120.8445"/>
+				<If Condition="IsQuestAcceptQualified(66111)">
+					<PickupQuest NpcId="1002281" QuestId="66111" XYZ="-114.7261, 41.59998, 120.8445"/>
+				</If>
+				<If Condition="GetQuestStep(66111) == 255">
+					<ConfirmTurnIn QuestId="66111" StepId="255" NpcId="1002299" InteractDistance="1.0" XYZ="-98.68385, 40.2, 122.3508"/>
+					<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Alchemist">
+							<ChangeClass Job="Alchemist" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Alchemist">
+							<RunCode Name="AutoEquip"/>
+							<RunCode Name="UpdateGearSet"/>
+						</If>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Done Unlocking Alchemist-->
+
+<!--Unlocking Miner-->
+    <If Condition="not IsQuestCompleted(65728)">
+		<If Condition="not HasQuest(65728)">
+			<If Condition="not IsOnMap(131)">
+				<If Condition="not IsOnMap(130)">
+					<TeleportTo Name="Ul'dah" AetheryteId="9" />
+				</If>
+				<If Condition="IsOnMap(130)">
+					<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-9.443807, 10, -33.64059"/>					
+				</If>
+			</If>
+			<If Condition="IsOnMap(131)">
+				<MoveTo Name="Linette" Distance="1" UseMesh="True" XYZ="1.417394, 7.599999, 153.6795"/>
+				<If Condition="IsQuestAcceptQualified(65728)">
+					<ConfirmTalkTo NpcId="1002282" QuestId="65728" XYZ="1.417394, 7.599999, 153.6795"/>
+				</If>
+			</If>
+		</If>
+	</If>
+    <If Condition="not IsQuestCompleted(66133)">
+		<If Condition="not HasQuest(66133)">
+			<If Condition="not IsOnMap(131)">
+				<If Condition="not IsOnMap(130)">
+					<TeleportTo Name="Ul'dah" AetheryteId="9" />
+				</If>
+				<If Condition="IsOnMap(130)">
+					<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-9.443807, 10, -33.64059"/>					
+				</If>
+			</If>
+			<If Condition="IsOnMap(131)">
+				<MoveTo Name="Linette" Distance="1" UseMesh="True" XYZ="1.417394, 7.599999, 153.6795"/>
+				<If Condition="IsQuestAcceptQualified(66133)">
+					<PickupQuest NpcId="1002282" QuestId="66133" XYZ="1.417394, 7.599999, 153.6795"/>
+				</If>
+				<If Condition="GetQuestStep(66133) == 255">
+					<ConfirmTurnIn QuestId="66133" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.52736, 6.2, 157.8005"/>
+				</If>
+			</If>
+		</If>
+    </If>
+
+<!--Done Unlocking Miner-->
+
+	<LoadProfile Path="Start.xml"/>
+
+  </Order>
+  <CodeChunks>
+		<CodeChunk Name="AutoEquip">
+		<![CDATA[ 
+           var patternFinder = new GreyMagic.PatternFinder(Core.Memory);
+            IntPtr agentVtable = patternFinder.Find("48 8D 05 ? ? ? ? C6 43 ? ? 48 89 03 48 8B C3 C7 43 ? ? ? ? ? Add 3 TraceRelative");
+            int id = AgentModule.FindAgentIdByVtable(agentVtable);
+
+            AtkAddonControl windowByName = RaptureAtkUnitManager.GetWindowByName("RecommendEquip");
+
+            if (windowByName == null)
+            {
+                AgentModule.GetAgentInterfaceById(id).Toggle();
+            }
+
+            await Coroutine.Wait(10000, () => RaptureAtkUnitManager.GetWindowByName("RecommendEquip") != null);
+            
+            windowByName = RaptureAtkUnitManager.GetWindowByName("RecommendEquip");
+            
+            if (windowByName != null)
+            {
+                windowByName.SendAction(1, 3, 0);
+            }
+            
+            await Coroutine.Sleep(1000);
+			
+        ]]>
+		</CodeChunk>		
+		<CodeChunk Name="UpdateGearSet">
+		<![CDATA[ 
+		   var patternFinder = new GreyMagic.PatternFinder(Core.Memory);
+            IntPtr agentCharVtable = patternFinder.Find("48 8D 05 ? ? ? ? 89 77 ? Add 3 TraceRelative");
+			int idChar = AgentModule.FindAgentIdByVtable(agentCharVtable);
+
+			AtkAddonControl windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
+
+			if (windowByName == null)
+			{
+				AgentModule.GetAgentInterfaceById(idChar).Toggle();
+			}
+
+			await Coroutine.Wait(10000, () => RaptureAtkUnitManager.GetWindowByName("Character") != null);
+
+			windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
+
+			if (windowByName != null)
+			{
+				windowByName.SendAction(1, 3, 0xF);
+			}
+            
+            await Coroutine.Wait(5000, () => SelectYesno.IsOpen);
+
+            if (SelectYesno.IsOpen)
+                SelectYesno.Yes();
+
+			await Coroutine.Wait(5000, () => !SelectYesno.IsOpen);
+			
+            await Coroutine.Sleep(200);
+			
+			windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
+
+			if (windowByName != null)
+			{
+				AgentModule.GetAgentInterfaceById(idChar).Toggle();
+			}
+			
+		]]>
+		</CodeChunk>
+  </CodeChunks>
+</Profile>

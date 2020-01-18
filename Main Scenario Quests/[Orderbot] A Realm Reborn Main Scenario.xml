@@ -6063,7 +6063,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <GetTo ZoneId="156" XYZ="21.92719, 20.74698, -682.063"/>
       </If>
       <If Condition="IsOnMap(156) and not IsOnSubMap(0)">
-        <UseTransport Name="Slafborn" NpcId="1006530" InteractDistance="3.0" XYZ="21.92719, 20.74698, -682.063"/>
+        <UseTransport Name="Slafborn" NpcId="1006530" InteractDistance="3.0" XYZ="23.00332, 20.49897, -681.1971"/>
       </If>
       <TurnIn QuestId="66540" NpcId="1006555" XYZ="-2.761902, -158.5813, -1.632751"/>
     </If>
@@ -6109,6 +6109,8 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       <GetTo ZoneId="156" XYZ="-57.72491, 3.793993, -636.6827"/>
       <RunCode Name="Dismount"/>
       <TalkTo NpcId="1006559" XYZ="-57.72491, 3.793993, -636.6827" QuestId="66541" StepId="5"/>
+	  <MoveTo Distance="1" XYZ="-83.27718, 4.94419, -603.2766"/>
+	  <MoveTo Distance="1" XYZ="-119.6667, -2.24823, -605.5022"/>
       <MoveTo Distance="1" XYZ="-154.6501, -0.1790416, -640.8011"/>
       <MoveTo Distance="1" UseMesh="False" XYZ="-159.5489, 2.520941, -635.6184"/>
       <MoveTo Distance="1" UseMesh="False" XYZ="-162.4342, 7.829698, -626.2077"/>
@@ -10343,6 +10345,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <If Condition="HasQuest(65964) and not IsQuestCompleted(65964) and GetQuestStep(65964) == 255">
       <GetTo ZoneId="155" XYZ="264.9119, 302.2624, -223.7126"/>
       <SoTurnIn QuestId="65964" NpcId="1007603" XYZ="264.9119, 302.2624, -223.7126"/>
+	  <LoadProfile Path="[Orderbot] Heavensward Main Scenario 2.0.xml"/>	
     </If>
   </Order>
   <GrindAreas>

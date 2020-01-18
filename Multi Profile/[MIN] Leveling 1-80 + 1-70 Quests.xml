@@ -160,19 +160,7 @@
 			if  (!GearsetManager.GearSets.Any(i => i.InUse && i.Class == Core.Me.CurrentJob))
                 ff14bot.Managers.ChatManager.SendChat("/gs save");			
 		]]>
-		</CodeChunk>
-			<CodeChunk Name="Disable_Flight">
-      <![CDATA[
-        foreach (var plugin in PluginManager.Plugins.Where(p => p.Plugin.Name == "Enable Flight" || p.Plugin.Name == "启用飞行"))
-        {
-          try
-          {
-            if (!plugin.Enabled)  {  break;  }  else  {  plugin.Enabled = false;  }
-          }
-          catch (Exception ex) {  }
-        }
-      ]]>
-    </CodeChunk>
+		</CodeChunk>		
 	</CodeChunks>
 	<Order>
         
@@ -2471,10 +2459,9 @@
 
 		  			  <!-- Level 71-73 -->
 
-		  <While Condition="Core.Player.ClassLevel &lt; 81">
-			<RunCode Name="Disable_Flight"/>
+		  <While Condition="Core.Player.ClassLevel &lt; 73">
 			  <GetTo ZoneId="816" XYZ="-822.9684, 24.18817, -108.701" /> <!-- Farming Area -->			  
-				<RunCode Name="AutoEquip"/>							
+						<RunCode Name="AutoEquip"/>							
 			  <ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
 				  <GatherObject>Mineral Deposit</GatherObject>
 				  <HotSpots>
