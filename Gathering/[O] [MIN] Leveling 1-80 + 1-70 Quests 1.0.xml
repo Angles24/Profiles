@@ -2471,7 +2471,7 @@
 
 		  			  <!-- Level 71-73 -->
 
-		  <While Condition="Core.Player.ClassLevel &lt; 81">
+		  <While Condition="Core.Player.ClassLevel &lt; 73">
 			<RunCode Name="Disable_Flight"/>
 			  <GetTo ZoneId="816" XYZ="-822.9684, 24.18817, -108.701" /> <!-- Farming Area -->			  
 				<RunCode Name="AutoEquip"/>							
