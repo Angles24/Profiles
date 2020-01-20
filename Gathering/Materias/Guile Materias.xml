@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Profile:  [OrderBot] Hi-Cordial
+Authors:  Angles24
+Notes:    
+-->
+<!DOCTYPE Profile [
+<!-- Profile Settings -->
+
+ <!-- 0 = Guile VII // 1 = Guile VIII -->
+<!ENTITY Materia "0">
+]>
+<Profile>
+  <Name>[OrderBot] Guile </Name>
+  <BehaviorDirectory>..\Quest Behaviors</BehaviorDirectory>
+	<Order>
+		 <!-- Collectable and Echange for Materias -->
+		 
+	<If Condition="&Materia; == 0">	 		 
+		<If Condition="not HasAtLeast(25192,2000)">
+			<If Condition="SpecialCurrencyManager.GetCurrencyCount(SpecialCurrency.YellowGatherersScrips) &lt; 1501">
+				<Lisbeth Json="[{'Group':1,'Item':17834,'Amount':1500,'Enabled':true,'Type':'GatherMasterpiece'}]"/>
+			</If>
+			<!-- Gatherer's Grasp Materia VII -->
+			<If Condition="SpecialCurrencyManager.GetCurrencyCount(SpecialCurrency.YellowGatherersScrips) &gt; 1499">
+				<Lisbeth Json="[{'Group':1,'Item':25192,'Amount':6,'Enabled':true,'Type':'Exchange'}]"/>			
+			</If>
+		</If>
+	</If>
+		
+	<If Condition="&Materia; == 1">
+		<If Condition="not HasAtLeast(26733,2000)">
+			<If Condition="SpecialCurrencyManager.GetCurrencyCount(SpecialCurrency.WhiteGatherersScrips) &lt; 1501">
+				<Lisbeth Json="[{'Group':1,'Item':25200,'Amount':1500,'Enabled':true,'Type':'GatherMasterpiece'}]"/>
+			</If>
+			<!-- Gatherer's Grasp Materia VIII -->
+			<If Condition="SpecialCurrencyManager.GetCurrencyCount(SpecialCurrency.WhiteGatherersScrips) &gt; 1499">
+				<Lisbeth Json="[{'Group':1,'Item':26733,'Amount':3,'Enabled':true,'Type':'Exchange'}]"/>			
+			</If>
+		</If>
+	</If>		
+		
+	</Order>
+</Profile>
+
+		

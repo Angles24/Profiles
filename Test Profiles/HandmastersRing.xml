@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Profile:  [OrderBot] BuyHandmastersRing 
+Authors:  Kayla
+Notes:    If You want to go to a different vendor you'll need to change the NPCID in the first line of the CodeChunk `1012301` with the npcId of the vendor you want. As well as change the GetTo to move to in front of the vendor.
+-->
+<Profile>
+  <Name>[OrderBot] BuyHandmastersRing </Name>
+  <BehaviorDirectory>..\Quest Behaviors</BehaviorDirectory>
+	<Order>	
+	
+	<If Condition="HasAtLeast(12839,2)">
+		<GetTo ZoneId="478" XYZ="-18.14355, 206.4994, 53.8075"/>
+		<RunCode Name="Exchange"/>
+	</If>
+		
+	<While Condition="HasAtLeast(14120,1)">
+			<ExSalvage ItemId="14120"/>
+			<WaitTimer WaitTime="1"/>
+		</While>
+	
+	<If Condition="not HasAtLeast(12839,2)">
+		<Lisbeth Json="[{'Group':1,'Item':12839,'Amount':160,'Enabled':true,'Type':'Exchange'}]"/>
+	</If>	
+	
+	</Order>
+	<CodeChunks>
+		<CodeChunk Name="Exchange">
+			<![CDATA[ 
+            var npcId = GameObjectManager.GetObjectByNPCId(1012229);
+
+            if (!npcId.IsWithinInteractRange)
+            {
+                var _target = npcId.Location;
+                Navigator.PlayerMover.MoveTowards(_target);
+                while (_target.Distance2D(Core.Me.Location) >= 4)
+                {
+                    Navigator.PlayerMover.MoveTowards(_target);
+                    await Coroutine.Sleep(100);
+                }
+
+                Navigator.PlayerMover.MoveStop();
+            }
+
+            npcId.Interact();
+            
+            await Coroutine.Wait(5000, () => SelectIconString.IsOpen);
+            
+            SelectIconString.ClickSlot(2);
+            
+            await Coroutine.Sleep(700);
+            
+            var windowName = "ShopExchangeItem";
+            await Coroutine.Wait(5000, () => RaptureAtkUnitManager.GetWindowByName(windowName) != null);
+
+            AtkAddonControl windowByName = RaptureAtkUnitManager.GetWindowByName(windowName);
+
+            if (windowByName == null)
+                return;
+
+            var scrips = InventoryManager.FilledSlots.FirstOrDefault(i => i.RawItemId == 12839);
+            
+            if (scrips == null)
+                return;
+            
+            while (InventoryManager.FilledSlots.FirstOrDefault(i => i.RawItemId == 12839) != null && InventoryManager.FilledSlots.FirstOrDefault(i => i.RawItemId == 12839).Count >= 2 && InventoryManager.FreeSlots > 1)
+            {
+                windowByName = RaptureAtkUnitManager.GetWindowByName("ShopExchangeItem");
+                if (windowByName != null)
+                {
+                    windowByName.SendAction(3, 3, 0, 3, 0x4, 3, 1);
+                }
+
+                windowName = "ShopExchangeItemDialog";
+                await Coroutine.Wait(5000, () => RaptureAtkUnitManager.GetWindowByName(windowName) != null);
+                
+                windowByName = RaptureAtkUnitManager.GetWindowByName(windowName);
+                
+                if (windowByName == null)
+                    return;
+                
+				windowByName.SendAction(1,3,0);
+				
+                await Coroutine.Wait(5000, () => Request.IsOpen);
+
+                if (Request.IsOpen)
+                {
+                    scrips.Handover();
+                    await Coroutine.Wait(5000, () => Request.HandOverButtonClickable);
+                    Request.HandOver();
+                }
+
+                await Coroutine.Sleep(700);
+            }
+            windowByName = RaptureAtkUnitManager.GetWindowByName("ShopExchangeItem");
+            await Coroutine.Wait(5000, () => windowByName != null);
+			if (windowByName != null)
+				windowByName.SendAction(1, 3uL, 4294967295uL);			
+		]]>
+		</CodeChunk>
+  </CodeChunks>
+</Profile>
