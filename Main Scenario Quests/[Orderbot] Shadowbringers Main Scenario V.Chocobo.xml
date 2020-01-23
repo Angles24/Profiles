@@ -34,7 +34,7 @@ Added:	Chocobo quest and opening of Coffers
       <HandOver ItemId="2000085" QuestId="66698" StepId="3" NpcId="1000471" XYZ="-60.47156, 0.2, 6.301941"/>
     </If>
     <If Condition="HasQuest(66698) and not IsQuestCompleted(66698) and GetQuestStep(66698) == 4">
-      <If Condition="not HasAtLeast(4868, 2)">
+	  <If Condition="not HasAtLeast(4868, 2)">
         <GetTo ZoneId="148" XYZ="16.18976, -8.010208, -15.64056"/>
         <BuyItem ItemIds="4868" ItemCounts="98" DialogOption="4" NpcId="1000220" XYZ="16.18976, -8.010208, -15.64056"/>
       </If>
