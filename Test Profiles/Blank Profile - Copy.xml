@@ -4,12 +4,12 @@ Blank Profile
 -->
 <Profile>
 	<Name>Blank Profile</Name>
-	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>	
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+	<CodeChunks>	
+	</CodeChunks>	
 	<Order>	
 	
 	
 	
 	</Order>
-	<CodeChunks>	
-	</CodeChunks>
 </Profile>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Profile>
+	<Name>Levequests</Name>
+	<KillRadius>50</KillRadius>
+	<Order>
+
+        <If Condition="ItemCount(5371) &lt; 3">
+            
+        <Lisbeth Json="[
+            {'Item': 5371,
+               'Group': 0,
+               'Amount': 15,
+               'Collectable': false,
+               'QuickSynth': false,
+               'SuborderQuickSynth': false,
+               'Hq': false,
+               'Food': 0,
+               'Primary': true,
+               'Type': 'Carpenter',
+               'Enabled': true,
+               'Manual': 0,
+               'Medicine': 0},]" />
+        </If>
+        
+        <LgSwitchGearset Job="Carpenter" />
+        <While Condition="ExBuddy.Windows.GuildLeve.Allowances &gt; 0 and HqItemCount(5371) &gt; 2 and Core.Me.Levels[ClassJobType.Carpenter] &gt;= 20">
+            <If Condition="not IsOnMap(153)">
+                <GetTo ZoneId="153" XYZ="201.526,9.68945,-61.4184" />
+            </If>
+            <ExPickupGuildLeve LeveIds="50" LeveType="Tradecraft" NpcId="1000823" NpcLocation="201.526,9.68945,-61.4184" Timeout="5" />
+            <If Condition="not IsOnMap(153)">
+                <GetTo ZoneId="153" XYZ="167.725,9.21696,-45.9155" />
+            </If>
+            <ExTurnInGuildLeve NpcId="1001220" NpcLocation="167.725,9.21696,-45.9155" HqOnly="true"  />
+        </While>
+        
+
+        <If Condition="ItemCount(5371) &lt; 5">
+            
+        <Lisbeth Json="[
+            {'Item': 5371,
+               'Group': 0,
+               'Amount': 75,
+               'Collectable': false,
+               'QuickSynth': false,
+               'SuborderQuickSynth': false,
+               'Hq': false,
+               'Food': 0,
+               'Primary': true,
+               'Type': 'Carpenter',
+               'Enabled': true,
+               'Manual': 0,
+               'Medicine': 0},]" />
+        </If>
+        
+        <LgSwitchGearset Job="Carpenter" />
+        <While Condition="ExBuddy.Windows.GuildLeve.Allowances &gt; 0 and HqItemCount(5371) &gt; 4 and Core.Me.Levels[ClassJobType.Carpenter] &gt;= 25">
+            <If Condition="not IsOnMap(132)">
+                <GetTo ZoneId="132" XYZ="25.04,-8.01103,108.11" />
+            </If>
+            <ExPickupGuildLeve LeveIds="53" LeveType="Tradecraft" NpcId="1000101" NpcLocation="25.04,-8.01103,108.11" Timeout="5" />
+            <If Condition="not IsOnMap(132)">
+                <GetTo ZoneId="132" XYZ="13.9715,0.140278,2.10943" />
+            </If>
+            <ExTurnInGuildLeve NpcId="1001276" NpcLocation="13.9715,0.140278,2.10943" HqOnly="true"  />
+        </While>
+        
+
+        <If Condition="ItemCount(1845) &lt; 3">
+            
+        <Lisbeth Json="[
+            {'Item': 1845,
+               'Group': 0,
+               'Amount': 45,
+               'Collectable': false,
+               'QuickSynth': false,
+               'SuborderQuickSynth': false,
+               'Hq': false,
+               'Food': 0,
+               'Primary': true,
+               'Type': 'Carpenter',
+               'Enabled': true,
+               'Manual': 0,
+               'Medicine': 0},]" />
+        </If>
+        
+        <LgSwitchGearset Job="Carpenter" />
+        <While Condition="ExBuddy.Windows.GuildLeve.Allowances &gt; 0 and HqItemCount(1845) &gt; 2 and Core.Me.Levels[ClassJobType.Carpenter] &gt;= 30">
+            <If Condition="not IsOnMap(132)">
+                <GetTo ZoneId="132" XYZ="25.04,-8.01103,108.11" />
+            </If>
+            <ExPickupGuildLeve LeveIds="59" LeveType="Tradecraft" NpcId="1000101" NpcLocation="25.04,-8.01103,108.11" Timeout="5" />
+            <If Condition="not IsOnMap(132)">
+                <GetTo ZoneId="132" XYZ="13.9715,0.140278,2.10943" />
+            </If>
+            <ExTurnInGuildLeve NpcId="1001276" NpcLocation="13.9715,0.140278,2.10943" HqOnly="true"  />
+        </While>
+        
+	</Order>
+</Profile>
