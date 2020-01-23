@@ -2864,7 +2864,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67698) and not IsQuestCompleted(67698) and GetQuestStep(67698) == 255">
    <GetTo ZoneId="418" XYZ="125.9326, 24.45884, -5.539063"/>
-   <TurnIn QuestId="67698" NpcId="1016008" XYZ="125.9326, 24.45884, -5.539063" RewardSlot="AgainsttheDyingoftheLight;"/>
+   <TurnIn QuestId="67698" NpcId="1016008" XYZ="125.9326, 24.45884, -5.539063" RewardSlot="&AgainsttheDyingoftheLight;"/>
    <Dismount />
    <WaitTimer WaitTime="2" />
    <RunCode Name="Coffer" />
