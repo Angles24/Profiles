@@ -1769,7 +1769,7 @@
             <NoCombatMoveTo Name="Midnight Dew" XYZ="-26.84064, 206.4995, 28.67163" />
             <TalkTo QuestId="67620" StepId="2" NpcId="1012133" XYZ="-26.84064, 206.4995, 28.67163" />
           </If>
-          <If Condition="GetQuestStep(67620) == 3">
+          <While Condition="GetQuestStep(67620) == 3">
             <If Condition="not HqHasAtLeast(12538,3)">
               <If Condition="not IsOnMap(402)">
                 <GetTo ZoneId="402" XYZ="-710.4073, -187.544, -589.1729" />
@@ -1806,7 +1806,7 @@
               <NoCombatMoveTo Name="Goblin Trader" XYZ="59.67798, 207.1303, 3.311157" />
               <TurnIn ItemId="12538" RequiresHq="true" QuestId="67620" StepId="3" NpcId="1013958" XYZ="59.67798, 207.1303, 3.311157" />
             </If>
-          </If>
+          </While>
           <If Condition="GetQuestStep(67620) == 4">
             <If Condition="not IsOnMap(478)">
               <GetTo ZoneId="478" XYZ="68.67902, 207.3838, -6.457279" />
