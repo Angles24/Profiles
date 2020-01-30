@@ -33,7 +33,7 @@ Blank Profile
 	</CodeChunks>	
 	<Order>	
 	
-	<RunCode Name="Disable_Flight" />
+	<RunCode Name="Enable_Flight" />
 	
 	</Order>
 </Profile>
