@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Blank Profile
+-->
+<!DOCTYPE Profile [
+
+  <!ENTITY MinFish "5"> <!-- Minimum amount of fish to catch before changing spots. -->
+  <!ENTITY MaxFish "10"> <!-- Maximum amount of fish to catch before changing spots -->
+  <!ENTITY Sit "True"> <!-- Set this to "True" if you want to sit while fishing. -->
+
+]>
+<Profile>
+	<Name>Blank Profile</Name>
+	<CodeChunks>	
+	</CodeChunks>	
+	<Order>		
+	
+	<LogMessage Message="The Journey Begins! Remember to Check up on me!" />	
+			
+	<If Condition="ClassName != ClassJobType.Fisher">
+		<ChangeClass Job="Fisher" />
+	</If> 
+				
+    <If Condition="ClassName == ClassJobType.Fisher">
+		<WaitTimer WaitTime="2"/>	
+		<RunCode Name="AutoEquip"/>
+		<WaitTimer WaitTime="2"/>
+		<RunCode Name="UpdateGearSet"/>
+		<WaitTimer WaitTime="2"/>
+	
+	<!--Start - Level 65 Grind-->
+	<While Condition="Core.Player.ClassLevel &lt; 65">
+		<While Condition="not HasAtLeast(12668,1)">
+			<Lisbeth Json="[{'Id':1,'Group':1,'Item':12668,'Amount':3,'Enabled':true,'Type':'Exchange'}]"/>
+		</While>
+		<While Condition="not Core.Me.HasAura(46) and HasAtLeast(12668,1)">
+			<RunCode Name="CSManual"/>
+		</While>
+		<While Condition="not HasAtLeast(29717,5)">
+			<If Condition="(WorldManager.ZoneId == 901)">
+				<RunCode Name="Leave"/>
+				<WaitTimer waitTime="7"/>
+				<WaitWhile Condition="not GameObjectManager.GetObjectByNPCId(1031694)" />
+			</If>
+			<If Condition="WorldManager.ZoneId != 901">
+				<LogMessage Message="You need more Versatile Lure!" />
+				<GetTo ZoneId="129" XYZ="-397.8102, 3.099996, 79.60578" /> 
+				<BuyItem ItemId="29717" ItemCount="15" DialogOption="0" InteractDistance="3.0" NpcId="1005422" XYZ="-397.6349, 3.099996, 80.97961" />
+			</If>
+		</While>
+		<While Condition="Core.Player.ClassLevel &lt; 65 and HasAtLeast(29717,10) and Core.Me.HasAura(46)">
+			<If Condition="WorldManager.ZoneId != 901">
+				<LisbethTravel Area="The Diadem" Position="-553.6511, 329.8265, 562.2562"/>
+			</If>
+			<If Condition="WorldManager.ZoneId == 901">
+				<If Condition="Core.Player.ClassLevel &lt; 65 and HasAtLeast(29717,1)">
+					<LisbethTravel Area="The Diadem" Position="-553.6511, 329.8265, 562.2562"/>
+					<ExFish MinFish="&MinFish;" MaxFish="&MaxFish;" Stealth="True" Bait="Versatile Lure" Condition="Core.Player.ClassLevel &lt; 65 and HasAtLeast(29717,1) and Core.Me.HasAura(46)">
+						<FishSpots>
+							<FishSpot XYZ="-553.1573, 329.8265, 561.5015" Heading="2.646815" Sit="&Sit;" />
+							<FishSpot XYZ="-536.0193, 304.3223, 690.8101" Heading="0.9838769" Sit="&Sit;" />
+							<FishSpot XYZ="-561.6622, 329.8265, 601.4625" Heading="2.481561" Sit="&Sit;" />
+							<FishSpot XYZ="-537.2352, 304.6775, 686.505" Heading="1.395771" Sit="&Sit;" />
+							<FishSpot XYZ="-562.6907, 330.7975, 592.0357" Heading="2.550677" Sit="&Sit;" />
+							<FishSpot XYZ="-540.6711, 304.8059, 696.2794" Heading="0.3967462" Sit="&Sit;" />
+							<FishSpot XYZ="-548.6597, 329.8265, 594.0488" Heading="3.28581" Sit="&Sit;" />
+							<FishSpot XYZ="-535.6393, 304.5598, 694.5786" Heading="1.150729" Sit="&Sit;" />
+							<FishSpot XYZ="-554.8502, 330.5003, 584.5988" Heading="2.720323" Sit="&Sit;" />
+							<FishSpot XYZ="-538.7556, 304.2522, 702.1933" Heading="1.094182" Sit="&Sit;" />
+							<FishSpot XYZ="-540.5654, 330.6608, 582.7802" Heading="3.702595" Sit="&Sit;" />
+							<FishSpot XYZ="-523.6066, 304.4359, 692.4307" Heading="5.578282" Sit="&Sit;" />
+						</FishSpots>
+					</ExFish>
+				</If>
+			</If>
+		</While>
+	</While>
+	<!--End - Level 65 Grind-->
+	
+	<!-- Leave Diadem -->
+	<If Condition="(WorldManager.ZoneId == 901)">
+		<RunCode Name="Leave"/>
+		<WaitTimer waitTime="7"/>
+		<WaitWhile Condition="not GameObjectManager.GetObjectByNPCId(1031694)" />
+	</If>
+	
+	<!-- Turn in-->
+	<If Condition="WorldManager.ZoneId != 901">
+		<While Condition="(HasIshgardItem() &gt; 0) or (HasIshgardGatheringMining() &gt; 0) or (HasIshgardGatheringBotanist() &gt; 0) or (HasIshgardGatheringFisher() &gt; 0)">
+			<RunCode Name="TurnIn"/>
+		</While>	
+	</If>
+	
+	</If>
+	
+	</Order>
+	<CodeChunks>
+	<CodeChunk name="Leave">
+	<![CDATA[
+		if (DutyManager.InInstance)
+		{
+		DutyManager.LeaveActiveDuty();
+		if (await Coroutine.Wait(30000, () => CommonBehaviors.IsLoading))
+		{
+		await Coroutine.Yield();
+		await Coroutine.Wait(Timeout.Infinite, () => !CommonBehaviors.IsLoading);
+		await Coroutine.Sleep(1000);
+		}
+		}
+	]]>
+	</CodeChunk>
+	<CodeChunk Name="TurnIn">
+	<![CDATA[
+		Logging.Write("[Handin] calling");
+		await LlamaLibrary.IshgardHandinBase.HandinNew();
+		await LlamaLibrary.IshgardHandinBase.GatheringHandin();
+	]]>
+	</CodeChunk>
+		<CodeChunk Name="Desynth">
+			<![CDATA[
+				Logging.Write("[Desynth] calling");
+				await LlamaLibrary.Reduce.Reduce.Desynth();
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="SmallTalk">
+			<![CDATA[ 
+			    if (SelectString.IsOpen)
+				SelectString.ClickSlot((uint) (SelectString.LineCount - 1));
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Sneak">
+			<![CDATA[ SpellData data;
+				if (!Core.Me.HasAura(47) && ActionManager.CurrentActions.TryGetValue(305, out data) && ActionManager.CanCast(data, Core.Me)) ActionManager.DoAction(305, Core.Me);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="DisableMount">
+			<![CDATA[
+				ff14bot.Settings.CharacterSettings.Instance.UseMount = false;
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Dismount">
+			<![CDATA[ 
+				ff14bot.Managers.ActionManager.Dismount();
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="CSManual">
+		<![CDATA[
+			var _CSManual = InventoryManager.FilledSlots.FirstOrDefault(r => r.RawItemId == 12668);
+			if (_CSManual != null)  {  _CSManual.UseItem();  }
+			await Coroutine.Sleep(5000);
+		]]>
+		</CodeChunk>
+		<CodeChunk Name="RSManual">
+		<![CDATA[
+			var _RSManual = InventoryManager.FilledSlots.FirstOrDefault(r => r.RawItemId == 12668);
+			if (_RSManual != null)  {  _RSManual.UseItem();  }
+			await Coroutine.Sleep(5000);
+		]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableMount">
+			<![CDATA[
+				ff14bot.Settings.CharacterSettings.Instance.UseMount = true;
+			]]>
+		</CodeChunk>		
+		<CodeChunk Name="AutoEquip">
+            <![CDATA[ 
+				var patternFinder = new GreyMagic.PatternFinder(Core.Memory);
+				IntPtr agentVtable = patternFinder.Find("48 8D 05 ? ? ? ? C6 43 ? ? 48 89 03 48 8B C3 C7 43 ? ? ? ? ? Add 3 TraceRelative");
+				int id = AgentModule.FindAgentIdByVtable(agentVtable);
+
+				AtkAddonControl windowByName = RaptureAtkUnitManager.GetWindowByName("RecommendEquip");
+
+				if (windowByName == null)
+				{
+					AgentModule.GetAgentInterfaceById(id).Toggle();
+				}
+
+				await Coroutine.Wait(10000, () => RaptureAtkUnitManager.GetWindowByName("RecommendEquip") != null);
+            
+				windowByName = RaptureAtkUnitManager.GetWindowByName("RecommendEquip");
+            
+				if (windowByName != null)
+				{
+					windowByName.SendAction(1, 3, 0);
+				}
+        ]]>
+        </CodeChunk>
+		<CodeChunk Name="UpdateGearSet">
+			<![CDATA[ 
+				var patternFinder = new GreyMagic.PatternFinder(Core.Memory);
+				IntPtr agentCharVtable = patternFinder.Find("48 8D 05 ? ? ? ? 89 77 ? Add 3 TraceRelative");
+				int idChar = AgentModule.FindAgentIdByVtable(agentCharVtable);
+
+				AtkAddonControl windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
+
+				if (windowByName == null)
+				{
+					AgentModule.GetAgentInterfaceById(idChar).Toggle();
+				}
+
+				await Coroutine.Wait(5000, () => RaptureAtkUnitManager.GetWindowByName("Character") != null);
+
+				windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
+
+				if (windowByName != null)
+				{
+					windowByName.SendAction(1, 3, 0xF);
+				}
+            
+				await Coroutine.Wait(1000, () => SelectYesno.IsOpen);
+
+				if (SelectYesno.IsOpen)
+					SelectYesno.Yes();
+
+				await Coroutine.Wait(1000, () => !SelectYesno.IsOpen);
+			
+				await Coroutine.Sleep(200);
+			
+				windowByName = RaptureAtkUnitManager.GetWindowByName("Character");
+
+				if (windowByName != null)
+				{
+					AgentModule.GetAgentInterfaceById(idChar).Toggle();
+				}			
+		]]>
+		</CodeChunk>
+		<CodeChunk Name="FSHWeapon">
+			<![CDATA[ 
+				BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					if(slot.RawItemId == 2580)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+		]]>
+		</CodeChunk>
+	</CodeChunks>
+</Profile>

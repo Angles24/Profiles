@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Author: Angles24 / Kayla
+-->
+<Profile>
+	<Name>Facet Test Carpenter</Name>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>	
+	<Order>	
+	
+	<!-- Check to See if The Crystarium's Resolve is completed. -->
+	<If Condition="not IsQuestCompleted(68839)"> 
+		<RunCode Name="Profile2"/>	
+	</If>	
+	
+	<If Condition="ClassName != ClassJobType.Carpenter">
+		<ChangeClass Job="Carpenter" />
+	</If>
+	<If Condition="ClassName == ClassJobType.Carpenter">
+	
+	<!--70-->
+	<!-- Unlock Facet Quests -->
+		<If Condition="IsQuestCompleted(68839) and not HasQuest(69191) and not IsQuestCompleted(69191)"> 
+			<GetTo ZoneId="819" XYZ="-11.13549, 20.1973, -137.5722"/>
+			<If Condition="IsQuestAcceptQualified(69191)">
+				<PickupQuest NpcId="1027232" QuestId="69191" XYZ="-11.13549, 20.1973, -137.5722"/>
+			</If>
+		</If>
+		<If Condition="HasQuest(69191) and not IsQuestCompleted(69191) and GetQuestStep(69191) == 255"> 
+			<GetTo ZoneId="819" XYZ="-11.13549, 20.1973, -137.5722"/>
+			<TurnIn NpcId="1027232" XYZ="-11.13549, 20.1973, -137.5722" QuestId="69191"/>
+		</If>
+
+	<!-- Cherished Memories -->
+		<If Condition="IsQuestCompleted(69191) and not HasQuest(68766) and not IsQuestCompleted(68766)"> 
+			<GetTo ZoneId="819" XYZ="10.72388, 20.186, -142.1297"/>
+			<If Condition="IsQuestAcceptQualified(68766)">
+				<PickupQuest NpcId="1028326" QuestId="68766" XYZ="10.72388, 20.186, -142.1297"/>
+			</If>
+		</If>
+		<If Condition="HasQuest(68766) and not IsQuestCompleted(68766) and GetQuestStep(68766) == 1"> 
+			<GetTo ZoneId="819" XYZ="-20.51057, 19.99979, -30.27264"/>
+			<TalkTo NpcId="1028436" XYZ="-20.51057, 19.99979, -30.27264" QuestId="68766" StepId="1"/>
+		</If>
+		<If Condition="HasQuest(68766) and not IsQuestCompleted(68766) and GetQuestStep(68766) == 255"> 
+			<GetTo ZoneId="819" XYZ="8.44938, 20.186, -137.0098"/>
+			<TurnIn NpcId="1027234" XYZ="8.44938, 20.186, -137.0098" QuestId="68766"/>
+		</If>
+		
+	<!--70-75-->
+	<If Condition="Core.Me.Levels[ClassJobType.Carpenter] &lt; 75"> 
+		<!-- Turn your shit in. -->
+        <If Condition="HasIshgardItem() &gt; 0 and GetSkybuilderScrips() &lt; 9000">
+			<RunCode Name="TurnIn"/>
+        </If>
+		
+		<If Condition="GetSkybuilderScrips() &gt; 9000">
+			<LogMessage Message="SkyBuilders' Scripts Full." />
+			<RunCode Name="ScripFull"/>
+			<StopBot/>
+        </If>		
+		<!-- Skybuilders' Pedestal -->
+		<If Condition="Core.Me.Levels[ClassJobType.Carpenter] &gt; 69 and  Core.Me.Levels[ClassJobType.Carpenter] &lt; 75 and FreeItemSlots() &gt; 15">
+			<RunCode Name="Disable_Flight"/>
+			<If Condition="ClassName != ClassJobType.Carpenter">
+				<ChangeClass Job="Carpenter" />
+			</If>		
+			<If Condition="ClassName == ClassJobType.Carpenter">
+				<RunCode Name="AutoEquip"/>
+				<RunCode Name="UpdateGearSet"/>				
+				<If Condition="HasAtLeast(4632,1)">
+					<Lisbeth Json="[{'Group':1,'Item':28749,'Amount':10,'Enabled':true,'Type':'Carpenter','Collectable':false,'Manual':4632}]"/>
+				</If>
+				<If Condition="HasAtLeast(12667,1)">
+					<Lisbeth Json="[{'Group':1,'Item':28749,'Amount':10,'Enabled':true,'Type':'Carpenter','Collectable':false,'Manual':12667}]"/>
+				</If>
+				<If Condition="not HasAtLeast(4632,1) and not HasAtLeast(12667,1)">
+					<Lisbeth Json="[{'Group':1,'Item':28749,'Amount':10,'Enabled':true,'Type':'Carpenter','Collectable':false}]"/>
+				</If>
+			</If> 
+		</If>		
+		<If Condition="Core.Me.Levels[ClassJobType.Carpenter] &lt; 75">
+			<LoadProfile Path="Facet Test Carpenter.xml"/>
+		</If>
+	</If>
+		
+		
+	<!-- For Sentimental Reasons -->
+		<If Condition="IsQuestCompleted(68766) and not HasQuest(68767) and not IsQuestCompleted(68767) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 74"> 
+			<GetTo ZoneId="819" XYZ="8.44938, 20.186, -137.0098"/>
+			<If Condition="IsQuestAcceptQualified(68767) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 78">
+				<PickupQuest NpcId="1027234" QuestId="68767" XYZ="8.44938, 20.186, -137.0098"/>				
+			</If>
+			<If Condition="IsQuestAcceptQualified(68767) and Core.Me.Levels[ClassJobType.Carpenter] &lt; 79">
+				<!-- Turn your shit in. -->
+				<If Condition="HasIshgardItem() &gt; 0 and GetSkybuilderScrips() &lt; 9000">
+					<RunCode Name="TurnIn"/>
+				</If>		
+				<If Condition="GetSkybuilderScrips() &gt; 9000">
+					<LogMessage Message="SkyBuilders' Scripts Full." />
+					<RunCode Name="ScripFull"/>
+					<StopBot/>
+				</If>		
+				<!-- Skybuilders' Pedestal -->
+				<If Condition="Core.Me.Levels[ClassJobType.Carpenter] &gt; 69 and  Core.Me.Levels[ClassJobType.Carpenter] &lt; 79 and FreeItemSlots() &gt; 15">
+					<RunCode Name="Disable_Flight"/>
+					<If Condition="ClassName != ClassJobType.Carpenter">
+						<ChangeClass Job="Carpenter" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Carpenter">			
+						<If Condition="HasAtLeast(4632,1)">
+							<Lisbeth Json="[{'Group':1,'Item':28749,'Amount':10,'Enabled':true,'Type':'Carpenter','Collectable':false,'Manual':4632}]"/>
+						</If>
+						<If Condition="HasAtLeast(12667,1)">
+							<Lisbeth Json="[{'Group':1,'Item':28749,'Amount':10,'Enabled':true,'Type':'Carpenter','Collectable':false,'Manual':12667}]"/>
+						</If>
+						<If Condition="not HasAtLeast(4632,1) and not HasAtLeast(12667,1)">
+							<Lisbeth Json="[{'Group':1,'Item':28749,'Amount':10,'Enabled':true,'Type':'Carpenter','Collectable':false}]"/>
+						</If>
+					</If> 
+				</If>		
+				<If Condition="Core.Me.Levels[ClassJobType.Carpenter] &lt; 79">
+					<LoadProfile Path="Facet Test Carpenter.xml"/>
+				</If>				
+			</If>			
+			<If Condition="not IsQuestAcceptQualified(68767)">
+				<If Condition="not HqHasAtLeast(27240,6)">					
+					<Lisbeth Json="[{'Item': 27240,'Group': 0,'Amount': 6,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Carpenter','Enabled': true,'Manual': 0,'Medicine': 0}]"/>
+				</If>	
+				<If Condition="not HqHasAtLeast(27241,6)">
+					<Lisbeth Json="[{'Item': 27241,'Group': 0,'Amount': 6,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Carpenter','Enabled': true,'Manual': 0,'Medicine': 0}]"/>
+				</If>
+				<If Condition="not HqHasAtLeast(27242,6)">
+					<Lisbeth Json="[{'Item': 27242,'Group': 0,'Amount': 6,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Carpenter','Enabled': true,'Manual': 0,'Medicine': 0}]"/>
+				</If>
+				<If Condition="HqHasAtLeast(27240,6) and HqHasAtLeast(27241,6) and HqHasAtLeast(27242,6)">
+					<GetTo ZoneId="819" XYZ="8.44938, 20.186, -137.0098"/>
+					<If Condition="not IsQuestAcceptQualified(68767)">
+						<LogMessage Message="Do deliveries manually, then restart the profile." />
+						<RunCode Name="deliveries"/>
+						<StopBot/>
+					</If>
+				</If>
+			</If>
+		</If>
+		<If Condition="HasQuest(68767) and not IsQuestCompleted(68767) and GetQuestStep(68767) == 1"> 
+			<GetTo ZoneId="819" XYZ="-55.1815, 3.999817, 199.3806"/>
+			<TalkTo NpcId="1028438" XYZ="-55.1815, 3.999817, 199.3806" QuestId="68767" StepId="1"/>
+		</If>
+		<If Condition="HasQuest(68767) and not IsQuestCompleted(68767) and GetQuestStep(68767) == 2"> 
+			<GetTo ZoneId="819" XYZ="8.44938, 20.186, -137.0098"/>
+			<SoTalkTo NpcId="1027234" DialogOption="1" XYZ="8.44938, 20.186, -137.0098" QuestId="68767" StepId="2"/>
+			<If Condition="not HasHqItem(27245)">
+				<If Condition="HasAtLeast(26554,1)">
+					<Lisbeth Json="[{'Item': 27245,'Group': 0,'Amount': 6,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Carpenter','Enabled': true,'Manual': 26554,'Medicine': 0}]"/>
+				</If>
+				<If Condition="HasAtLeast(12667,1)">
+					<Lisbeth Json="[{'Item': 27245,'Group': 0,'Amount': 6,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Carpenter','Enabled': true,'Manual': 12667,'Medicine': 0}]"/>
+				</If>
+				<If Condition="not HasAtLeast(26554,1) and not HasAtLeast(12667,1)">
+					<Lisbeth Json="[{'Item': 27245,'Group': 0,'Amount': 6,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Carpenter','Enabled': true,'Manual': 0,'Medicine': 0}]"/>
+				</If>
+			</If>
+		</If>
+		<If Condition="HasHqItem(27245) and HasQuest(68767) and not IsQuestCompleted(68767) and GetQuestStep(68767) == 255">
+			<TurnIn ItemId="27245" NpcId="1027234" XYZ="8.44938, 20.186, -137.0098" QuestId="68767"/>
+		</If>
+		
+	<!-- The Notes of Bond Restoring -->
+		<If Condition="IsQuestCompleted(68767) and not HasQuest(68768) and not IsQuestCompleted(68768) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 79"> 
+			<GetTo ZoneId="819" XYZ="8.44938, 20.186, -137.0098"/>
+			<If Condition="IsQuestAcceptQualified(68768) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 79">
+				<PickupQuest NpcId="1027234" QuestId="68768" XYZ="8.44938, 20.186, -137.0098"/>				
+			</If>				
+		</If>
+		
+		<If Condition="IsQuestCompleted(68767) and not HasQuest(68768) and Core.Me.Levels[ClassJobType.Carpenter] &gt; 77">
+			<If Condition="not HqHasAtLeast(27243,6)">
+				<If Condition="HasAtLeast(26554,1)">
+					<Lisbeth Json="[{'Item': 27243,'Group': 0,'Amount': 6,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Carpenter','Enabled': true,'Manual': 26554,'Medicine': 0}]"/>
+				</If>
+				<If Condition="HasAtLeast(12667,1)">
+					<Lisbeth Json="[{'Item': 27243,'Group': 0,'Amount': 6,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Carpenter','Enabled': true,'Manual': 12667,'Medicine': 0}]"/>
+				</If>
+				<If Condition="not HasAtLeast(26554,1) and not HasAtLeast(12667,1)">
+					<Lisbeth Json="[{'Item': 27243,'Group': 0,'Amount': 6,'Collectable': false,'QuickSynth': false,'SuborderQuickSynth': false,'Hq': true,'Food': 0,'Primary': true,'Type': 'Carpenter','Enabled': true,'Manual': 0,'Medicine': 0}]"/>
+				</If>
+			</If>
+			<If Condition="HqHasAtLeast(27243,6)">
+				<GetTo ZoneId="819" XYZ="8.44938, 20.186, -137.0098"/>
+				<If Condition="not IsQuestAcceptQualified(68768)">
+					<LogMessage Message="Do deliveries manually, then restart the profile." />
+					<RunCode Name="deliveries"/>
+					<StopBot/>
+				</If>
+			</If>
+		</If>
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+	
+	</If>
+	</Order>
+	<CodeChunks>
+		<CodeChunk Name="Profile2">
+			<![CDATA[ 
+				Core.OverlayManager.AddToast(() => "You have not completed the quest The Crystarium's Resolve.\n Please run through Shadowbringers MSQ to complete the quest!", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
+				await Coroutine.Sleep(6000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="deliveries">
+			<![CDATA[ 
+				Core.OverlayManager.AddToast(() => "Do deliveries manually, then restart the profile.", TimeSpan.FromMilliseconds(10000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
+				await Coroutine.Sleep(6000);
+			]]>
+		</CodeChunk>
+	</CodeChunks>
+</Profile>

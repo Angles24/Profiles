@@ -1,0 +1,2320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+#####################################
+# Profile: [O] Class and Job Quests #
+#####################################
+# Authors: y2krazy                  #
+#          kagamihiiragi17          #
+#          hkme                     #
+#          Eficiente                #
+#          Angles24                 #
+#####################################
+# Version: 4.0.1                    #
+#####################################
+# Required Level: 1+                #
+#####################################
+# Required Setup:                   #
+#  LLamaLibrary for Quest Behaviors #
+#####################################
+-->
+<Profile>
+	<Name>[O] Class and Job Quests (v5.0.0)</Name>
+	<KillRadius>90</KillRadius>
+	<Order>
+	
+		<RunCode Name="Enable_Flight"/>
+	
+	
+	</Order>
+	<CodeChunks>
+		<CodeChunk Name="Enable_Flight">
+      <![CDATA[
+        foreach (var plugin in PluginManager.Plugins.Where(p => p.Plugin.Name == "Enable Flight" || p.Plugin.Name == "启用飞行"))
+        {
+          try
+          {
+            if (plugin.Enabled)  {  break;  }  else  {  plugin.Enabled = true;  }
+          }
+          catch (Exception ex) {  }
+        }
+      ]]>
+    </CodeChunk>
+	<CodeChunk Name="Disable_Flight">
+		<![CDATA[
+			foreach (var plugin in PluginManager.Plugins.Where(p => p.Plugin.Name == "Enable Flight" || p.Plugin.Name == "启用飞行"))
+			{
+			try
+			{
+				if (!plugin.Enabled)  {  break;  }  else  {  plugin.Enabled = false;  }
+			}
+			catch (Exception ex) {  }
+			}
+		]]>
+		</CodeChunk>
+		<CodeChunk Name="SmallTalk">
+			<![CDATA[ 
+			    if (SelectString.IsOpen)
+				SelectString.ClickSlot((uint) (SelectString.LineCount - 1));
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Learn_Unicorn">
+			<![CDATA[
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledSlots)
+				{
+					if(slot.RawItemId == 6269)
+					{
+						slot.UseItem();
+					}
+				}
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Camp_Tranquil_Jump">
+			<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.ActionManager.Dismount();
+					await Coroutine.Sleep(3000);
+				}
+				ff14bot.Managers.MovementManager.SetFacing(0.8310049f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(1500);
+				ff14bot.Managers.MovementManager.MoveStop();
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Return_of_the_Monk">
+			<![CDATA[ 
+				GameObject target;
+
+				await Coroutine.Sleep(1000);
+				target = GameObjectManager.GetObjectByNPCId(2008451);
+
+				target.Target();
+
+				await Coroutine.Sleep(1000);
+				ActionManager.DoAction(3546,target);
+				await Coroutine.Sleep(2000);
+				ActionManager.DoAction(3546,target);
+				await Coroutine.Sleep(2000);
+				ActionManager.DoAction(3546,target);
+				await Coroutine.Sleep(2000);
+				ActionManager.DoAction(3546,target);
+				await Coroutine.Sleep(2000);
+				ActionManager.DoAction(3546,target);
+				await Coroutine.Sleep(2000);
+				ActionManager.DoAction(3547,target);
+				await Coroutine.Sleep(12000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(5000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(5000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(15000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				if (ff14bot.RemoteWindows.SelectString.IsOpen)
+					ff14bot.RemoteWindows.SelectString.ClickSlot(0);
+				await Coroutine.Sleep(10000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(10000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Rogue_Hide">
+			<![CDATA[ SpellData data;
+				if (!Core.Me.HasAura(614) && ActionManager.CurrentActions.TryGetValue(2245, out data) && ActionManager.CanCast(data, Core.Me)) ActionManager.DoAction(2245, Core.Me);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Agelyss_River_Jump">
+			<![CDATA[
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.MovementManager.SetFacing(4.470354f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.MoveStop();
+				await Coroutine.Sleep(1000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="My_First_Mudra">
+			<![CDATA[ 
+				GameObject target;
+
+				await Coroutine.Sleep(1000);
+				target = GameObjectManager.GetObjectByNPCId(2004927);
+
+				target.Target();
+
+				await Coroutine.Sleep(1000);
+				if(!Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2259,target);
+					await Coroutine.Sleep(500);
+				}
+
+				if(Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2265,target);
+					await Coroutine.Sleep(500);
+				}
+				await Coroutine.Sleep(2000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Once_Upon_a_Time_in_Doma">
+			<![CDATA[ 
+				GameObject target;
+
+				await Coroutine.Sleep(1000);
+				target = GameObjectManager.GetObjectByNPCId(2004928);
+
+				target.Target();
+
+				await Coroutine.Sleep(1000);
+				if(!Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2259,target);
+					await Coroutine.Sleep(500);
+				}
+
+				if(Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2261,target);
+					await Coroutine.Sleep(500);
+				}
+				ActionManager.DoAction(2260,target);
+				await Coroutine.Sleep(2000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Once_Upon_a_Time_in_Doma2">
+			<![CDATA[ 
+				GameObject target;
+
+				await Coroutine.Sleep(1000);
+				target = GameObjectManager.GetObjectByNPCId(2004929);
+
+				target.Target();
+
+				await Coroutine.Sleep(1000);
+				if(!Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2261,target);
+					await Coroutine.Sleep(500);
+				}
+
+				if(Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2259,target);
+					await Coroutine.Sleep(500);
+				}
+				ActionManager.DoAction(2260,target);
+				await Coroutine.Sleep(2000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Ninja_Bathin_Jump">
+			<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.ActionManager.Dismount();
+					await Coroutine.Sleep(3000);
+				}
+				ff14bot.Managers.MovementManager.SetFacing(4.564095f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(1500);
+				ff14bot.Managers.MovementManager.MoveStop();
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Ninja_Assassin">
+			<![CDATA[ 
+				GameObject target;
+
+				await Coroutine.Sleep(1000);
+				target = GameObjectManager.GetObjectByNPCId(2005928);
+
+				target.Target();
+
+				await Coroutine.Sleep(1000);
+				if(!Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2259,target);
+					await Coroutine.Sleep(500);
+				}
+
+				if(Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2261,target);
+					await Coroutine.Sleep(500);
+				}
+				ActionManager.DoAction(2260,target);
+				await Coroutine.Sleep(5000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Ninja_Assassin2">
+			<![CDATA[ 
+				GameObject target;
+
+				await Coroutine.Sleep(1000);
+				target = GameObjectManager.GetObjectByNPCId(2005929);
+
+				target.Target();
+
+				await Coroutine.Sleep(1000);
+				if(!Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2259,target);
+					await Coroutine.Sleep(500);
+				}
+
+				if(Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2261,target);
+					await Coroutine.Sleep(500);
+				}
+				ActionManager.DoAction(2260,target);
+				await Coroutine.Sleep(5000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Ninja_Assassin3">
+			<![CDATA[ 
+				GameObject target;
+
+				await Coroutine.Sleep(1000);
+				target = GameObjectManager.GetObjectByNPCId(2005930);
+
+				target.Target();
+
+				await Coroutine.Sleep(1000);
+				if(!Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2259,target);
+					await Coroutine.Sleep(500);
+				}
+
+				if(Core.Me.HasAura(496))
+				{
+					ActionManager.DoAction(2261,target);
+					await Coroutine.Sleep(500);
+				}
+				ActionManager.DoAction(2260,target);
+				await Coroutine.Sleep(5000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="The_Threat_of_Perplexity">
+			<![CDATA[ 
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.MovementManager.SetFacing(2.2807f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(3000);
+				ff14bot.Managers.MovementManager.MoveStop();
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="The_Threat_of_Perplexity2">
+			<![CDATA[ 
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.MovementManager.SetFacing(4.86791f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(2000);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(3000);
+				ff14bot.Managers.MovementManager.MoveStop();
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="RayaOSenna">
+			<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.ActionManager.Dismount();
+					await Coroutine.Sleep(3000);
+				}
+				ff14bot.Managers.MovementManager.SetFacing(0.9891489f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.MoveStop();
+        	]]>
+		</CodeChunk>
+		<CodeChunk Name="The_Last_Remnants">
+			<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.ActionManager.Dismount();
+					await Coroutine.Sleep(3000);
+				}
+				ff14bot.Managers.MovementManager.SetFacing(5.425516f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(250);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(2000);
+				ff14bot.Managers.MovementManager.MoveStop();
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="In_the_Image_of_the_Ancients">
+			<![CDATA[ 
+				foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot1 = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.Head];
+					BagSlot EquipSlot3 = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.Hands];
+					BagSlot EquipSlot5 = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.Legs];
+					BagSlot EquipSlot6 = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.Feet];
+					if(slot.RawItemId == 2905)
+					{
+						slot.Move(EquipSlot1);
+						await Coroutine.Sleep(2000);
+					}
+					if(slot.RawItemId == 3689)
+					{
+						slot.Move(EquipSlot3);
+						await Coroutine.Sleep(2000);
+					}
+					if(slot.RawItemId == 3466)
+					{
+						slot.Move(EquipSlot5);
+						await Coroutine.Sleep(2000);
+					}
+					if(slot.RawItemId == 3897)
+					{
+						slot.Move(EquipSlot6);
+						await Coroutine.Sleep(2000);
+					}
+				}
+		]]>
+		</CodeChunk>
+		<CodeChunk Name="Yearn_for_the_Urn">
+			<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.ActionManager.Dismount();
+					await Coroutine.Sleep(3000);
+				}
+				ff14bot.Managers.MovementManager.SetFacing(2.213207f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.MoveStop();
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableAstrologianQuest">
+			<![CDATA[ 
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.GameObjectManager.GetObjectByNPCId(1012222).Interact();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				if (ff14bot.RemoteWindows.SelectYesno.IsOpen)
+					ff14bot.RemoteWindows.SelectYesno.ClickYes();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(500);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				if (ff14bot.RemoteWindows.SelectYesno.IsOpen)
+					ff14bot.RemoteWindows.SelectYesno.ClickYes();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(500);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(10000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableDarkKnightQuest">
+			<![CDATA[ 
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.GameObjectManager.GetObjectByNPCId(1014873).Interact();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(500);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				if (ff14bot.RemoteWindows.SelectYesno.IsOpen)
+					ff14bot.RemoteWindows.SelectYesno.ClickYes();
+				await Coroutine.Sleep(6000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(10000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="This_Little_Sword_of_Mine">
+			<![CDATA[ 
+				SpellData data;
+				if (!Core.Me.HasAura(79) && ActionManager.CurrentActions.TryGetValue(28, out data) && ActionManager.CanCast(data, Core.Me)) ActionManager.DoAction(28, Core.Me);
+		]]>
+		</CodeChunk>
+		<CodeChunk Name="In_Memories_We_Walked">
+			<![CDATA[ 
+				GameObject target;
+
+				await Coroutine.Sleep(1000);
+				target = GameObjectManager.GetObjectByNPCId(2008661);
+
+				target.Target();
+
+				await Coroutine.Sleep(1000);
+				ActionManager.DoAction(3632,target);
+				await Coroutine.Sleep(20000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(8000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(5000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				if (ff14bot.RemoteWindows.SelectString.IsOpen)
+					ff14bot.RemoteWindows.SelectString.ClickSlot(0);
+				await Coroutine.Sleep(8000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(12000);
+			]]>
+		</CodeChunk>
+        <CodeChunk Name="The_Orphans_and_the_Broken_Blade">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68453) == 5)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete The Orphans and the Broken Blade duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="In_Thals_Name">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68108) == 2)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the In Thal's Name duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Raising_the_Sword">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68111) == 1)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Raising the Sword duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+		<CodeChunk Name="Lance_of_Fury_Jump">
+			<![CDATA[
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.MovementManager.SetFacing(3.290965f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.MovementManager.Jump();
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.MovementManager.MoveStop();
+				await Coroutine.Sleep(1000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableMachinistQuest">
+			<![CDATA[ 
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.GameObjectManager.GetObjectByNPCId(1014577).Interact();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(500);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				if (ff14bot.RemoteWindows.SelectYesno.IsOpen)
+					ff14bot.RemoteWindows.SelectYesno.ClickYes();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(10000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Looking_the_Part">
+			<![CDATA[ 
+				foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot3 = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.Hands];
+					BagSlot EquipSlot5 = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.Legs];
+					BagSlot EquipSlot6 = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.Feet];
+					if(slot.RawItemId == 3684)
+					{
+						slot.Move(EquipSlot3);
+						await Coroutine.Sleep(2000);
+					}
+					if(slot.RawItemId == 3460)
+					{
+						slot.Move(EquipSlot5);
+						await Coroutine.Sleep(2000);
+					}
+					if(slot.RawItemId == 3891)
+					{
+						slot.Move(EquipSlot6);
+						await Coroutine.Sleep(2000);
+					}
+				}
+		]]>
+		</CodeChunk>
+
+        <!-- Job Check -->
+
+        <CodeChunk Name="EquipBRDCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 4546)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="EquipBLMCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 4548)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="EquipDRGCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 4545)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="EquipMNKCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 4543)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="EquipNINCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 7886)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="EquipPLDCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 4542)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="EquipSCHCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 4550)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="EquipSMNCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 4549)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="EquipWARCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 4544)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="EquipWHMCrystal">
+            <![CDATA[ 
+                await Coroutine.Sleep(1000);
+                BagSlot EquipSlot = InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+
+                foreach(BagSlot slot in InventoryManager.FilledInventoryAndArmory)
+                {
+                if(slot.RawItemId == 4547)
+                {
+                    slot.Move(EquipSlot);
+                }
+                }
+                await Coroutine.Sleep(1000);
+            ]]>
+        </CodeChunk>
+
+		<!-- Duties -->
+
+        <CodeChunk Name="Quarantine">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67208) == 2)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Quarantine duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Forward_the_Royal_Marines">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67212) == 3)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Forward, the Royal Marines duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+		<CodeChunk Name="A_Safe_Place_to_Hide">
+			<![CDATA[ 
+				GameObject target;
+
+				await Coroutine.Sleep(1000);
+				target = GameObjectManager.GetObjectByNPCId(1021910);
+
+				target.Target();
+
+				await Coroutine.Sleep(1000);
+				ActionManager.DoAction(189,target);
+				await Coroutine.Sleep(15000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(9000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(8000);
+				if (ff14bot.RemoteWindows.SelectString.IsOpen)
+					ff14bot.RemoteWindows.SelectString.ClickSlot(0);
+				await Coroutine.Sleep(5000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(6000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(1000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(6000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(6000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(3000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(10000);
+			]]>
+		</CodeChunk>
+        <CodeChunk Name="In_Loving_Memory">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68461) == 1)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the In Loving Memory duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Our_Unsung_Heroes">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68463) == 1)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Our Unsung Heroes duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Austerities_of_Earth">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(66628) == 1)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Austerities of Earth duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="An_Art_for_the_Living">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68165) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the An Art for the Living duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="The_Ballad_of_Oblivion">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67254) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete The Ballad of Oblivion duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Slings_and_Arrows">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67552) == 5)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Slings and Arrows duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Spearheading_Initiatives">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67555) == 2)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Spearheading Initiatives duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Come_Rain_or_Shine">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67947) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Come Rain or Shine duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Foxfire">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67949) == 3)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Foxfire duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Heart_of_the_Forest">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(66620) == 1)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Heart of the Forest duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="A_Journey_of_Purification">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67256) == 2)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the A Journey of Purification duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Hands_of_Healing">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67261) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Hands of Healing duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="What_She_Always_Wanted">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67954) == 5)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the What She Always Wanted duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Ishgardian_Justice">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67590) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Ishgardian Justice duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="The_Rematch">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(65801) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete The Rematch duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Dragoons_Fate">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67231) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Dragoon's Fate duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Dark_as_the_Night_Sky">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68449) == 5)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Dark as the Night Sky duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Dragon_Sound">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68450) == 1)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Dragon Sound duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="And_My_Axe">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(66137) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the And My Axe duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Stained_in_Scarlet">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68118) == 6)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Stained in Scarlet duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Nightkin">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68121) == 3)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Nightkin duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="With_Heart_and_Steel">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68123) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the With Heart and Steel duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Stray_into_the_Shadows">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(65662) == 6)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Stray into the Shadows duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Stifled_Screams">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(65680) == 5)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Stifled Screams duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Cloying_Victory">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(65691) == 1)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Cloying Victory duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="In_Her_Defense">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67224) == 6)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the In Her Defense duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+		<CodeChunk Name="Ninja_Bathin_Redux">
+			<![CDATA[ 
+				MovementManager.SetFacing(1.585401f);
+				MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(1000);
+				MovementManager.Jump();
+				await Coroutine.Sleep(1000);
+				MovementManager.Jump();
+				await Coroutine.Sleep(1000);
+				MovementManager.MoveStop();
+        	]]>
+		</CodeChunk>
+        <CodeChunk Name="The_Face_of_True_Evil">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68101) == 3)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete The Face of True Evil duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Matsuba_Mayhem">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68104) == 6)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Matsuba Mayhem duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="The_Battle_on_Bekko">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(68106) == 3)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete The Battle on Bekko duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="The_Threat_of_Superiority">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(65886) == 4)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete The Threat of Superiority duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Facing_Your_Demons">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(65889) == 5)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Facing Your Demons duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+        <CodeChunk Name="Destruction_in_the_Name_of_Justice">
+            <![CDATA[ 
+                while (ConditionParser.GetQuestStep(67218) == 5)
+                {
+                    System.Windows.Media.Color textColor = System.Windows.Media.Color.FromRgb(29,213,226);
+                    System.Windows.Media.Color shadowColor = System.Windows.Media.Color.FromRgb(13,106,175);
+                    Core.OverlayManager.AddToast(() => "[Class and Job Quests]\nPlease manually complete the Destruction in the Name of Justice duty!", TimeSpan.FromMilliseconds(25000), textColor, shadowColor, new System.Windows.Media.FontFamily("Gautami"));
+                    await Coroutine.Sleep(26000);
+                }
+            ]]>
+        </CodeChunk>
+	</CodeChunks>
+	<GrindAreas>
+		<GrindArea name="My_First_Grimoire">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="74.16445, 49.43915, 131.389" name="Wharf Rats" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="417" /> <!-- Wharf Rat -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Grimoire2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="154.2236, 58.79901, 285.3297" name="Aureliae" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="563" /> <!-- Aurelia -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Grimoire3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="154.2236, 58.79901, 285.3297" name="Little Ladybugs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="49" /> <!-- Little Ladybug -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Whats_in_the_Box">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="387.0847, 65.40367, -99.18919" name="Wild Dodos" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="393" /> <!-- Wild Dodo -->
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Whats_in_the_Box2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="387.0847, 65.40367, -99.18919" name="Tiny Mandragoras" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="405" /> <!-- Tiny Mandragora -->
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Tactical_Planning">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="724.6773, 24.88592, 434.6457" name="Roselings" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="400" /> <!-- Roseling -->
+			</TargetMobs>
+			<MinLevel>10</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Tactical_Planning2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="679.9136, 35.84999, 381.1215" name="Wild Jackals" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="399" /> <!-- Wild Jackal -->
+			</TargetMobs>
+			<MinLevel>10</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Over_the_Rails">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="204.2725, -36.40237, 306.1722" name="Shifty-eyed Vagrants" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="1107" /> <!-- Shifty-eyed Vagrant -->
+			</TargetMobs>
+			<MinLevel>15</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea Name="Allagan_Attire">
+			<HotSpots>
+				<HotSpot Radius="90" XYZ="503.2882, -12.35117, -343.1907" Name="Allagan Mirrorknight" />
+			</HotSpots>
+			<TargetMobs>
+				<TargetMob Id="2054" /> <!-- Allagan Mirrorknight -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea Name="Allagan_Attire2">
+			<HotSpots>
+				<HotSpot Radius="90" XYZ="496.4521, -2.546422, -472.0378" Name="Allagan Mirrorknight" />
+			</HotSpots>
+			<TargetMobs>
+				<TargetMob Id="2054" /> <!-- Allagan Mirrorknight -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea Name="Allagan_Attire3">
+			<HotSpots>
+				<HotSpot Radius="90" XYZ="373.5256, -5.242633, -484.7029" Name="Allagan Mirrorknight" />
+			</HotSpots>
+			<TargetMobs>
+				<TargetMob Id="2054" /> <!-- Allagan Mirrorknight -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea Name="Mad_Bad_and_Ebon_clad">
+			<HotSpots>
+				<HotSpot XYZ="15.79303, 5.66782, 277.2411" Name="Ebon-clad Summoner and Ifrit-Egi" />
+			</HotSpots>
+			<TargetMobs>
+				<TargetMob Id="1402" Weight="2000" /> <!-- Ifrit-Egi -->
+				<TargetMob Id="4124" Weight="1000" /> <!-- Ebon-clad Summoner -->
+			</TargetMobs>
+			<MinLevel>56</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Bow">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="67.86556, 4.228151, -206.8018" name="Ground Squirrels" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="37" /> <!-- Ground Squirrel -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Bow2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="67.86556, 4.228151, -206.8018" name="Little Ladybugs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="49" /> <!-- Little Ladybug -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Bow3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="67.86556, 4.228151, -206.8018" name="Forest Funguars" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="47" /> <!-- Forest Funguar -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="A_Matter_of_Perspective">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="290.5708, -25.79398, 198.3533" name="Opo-opos" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="5" />
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="A_Matter_of_Perspective2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="310.3286, -8.678427, -12.22035" name="Microchus" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="32" />
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea Name="School_of_Hard_Nocks">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-463.7145, 7.505338, 244.168" Name="Tree Slugs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="39" /> <!-- Tree Slug -->
+			</TargetMobs>
+			<MinLevel>8</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea Name="School_of_Hard_Nocks2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-505.7623, 11.60868, 127.5668" Name="Northern Vultures" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="12" /> <!-- Northern Vulture -->
+			</TargetMobs>
+			<MinLevel>9</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Training_with_Leih">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-412.6497, 4.37473, 270.7103" name="Tree Slugs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="39" /> <!-- Tree Slug -->
+			</TargetMobs>
+			<MinLevel>10</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Training_with_Leih2">
+			<Hotspots>
+				<Hotspot Radius="180" XYZ="-497.3567, 9.216993, 107.6097" name="Northern Vultures" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="12" /> <!-- Northern Vulture -->
+			</TargetMobs>
+			<MinLevel>10</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="On_the_Road_Again">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="28.85474, 6.65556, 421.4694" name="Balanoses" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4074" /> <!-- Balanos -->
+			</TargetMobs>
+			<MinLevel>50</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Requiem_on_Ice">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-778.0118, 112.0165, -580.5295" name="Marked Ice Dragons" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4076" /> <!-- Marked Ice Dragon -->
+			</TargetMobs>
+			<MinLevel>54</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Empty_Nest">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="500.1144, 161.6116, -320.0275" name="Wild-eyed Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4117" Weight="2000" /> <!-- Wild-eyed Mage -->
+				<TargetMob Id="4116" Weight="1000" /> <!-- Wild-eyed Swordsman -->
+			</TargetMobs>
+			<MinLevel>52</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Cane">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="78.65437, 5.179691, -211.1119" name="Ground Squirrels" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="37" /> <!-- Ground Squirrel -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Cane2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="78.65437, 5.179691, -211.1119" name="Little Ladybugs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="49" /> <!-- Little Ladybug -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Cane3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="78.65437, 5.179691, -211.1119" name="Forest Funguars" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="47" /> <!-- Forest Funguar -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="The_Wages_of_Mercy">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-824.979, 243.968, -215.8694" name="Dishonored Temple Knights" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4123" /> <!-- Dishonored Temple Knight -->
+			</TargetMobs>
+			<MinLevel>50</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="The_Knight_and_the_Maiden_Fair">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-377.6918, -183.4834, 672.1146" name="Gastornises" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3495" /> <!-- Gastornis -->
+			</TargetMobs>
+			<MinLevel>52</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Gladius">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-120.001, 5.346663, 244.9141" name="Star Marmots" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="262" /> <!-- Star Marmot -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Gladius2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-120.001, 5.346663, 244.9141" name="Huge Hornets" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="632" /> <!-- Huge Hornet -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Gladius3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="47.62748, 2.513385, 317.5547" name="Snapping Shrews" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="318" /> <!-- Snapping Shrew -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Uldahs_Most_Wanted">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-139.4218, 4.019726, 205.0354" name="Duskwight Freelancers" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="923" /> <!-- Duskwight Freelancer -->
+			</TargetMobs>
+			<MinLevel>10</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="That_Old_Familiar_Feeling">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-220.9354, -38.40747, 63.91992" name="Amalj'aa Ravagers" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="1177" /> <!-- Amalj'aa Ravager -->
+			</TargetMobs>
+			<MinLevel>15</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="On_Holy_Ground">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="62.974, 54.60642, 284.9011" name="Alacran Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="1305" /> <!-- Chastity of the Alacran -->
+			</TargetMobs>
+			<MinLevel>25</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea Name="All_According_to_Plan">
+			<Hotspots>
+				<Hotspot XYZ="-45.69584, -176.8011, 753.654" Name="Death's Embrace Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4097" Weight="2000" /> <!-- Death's Embrace Poisoner -->
+				<TargetMob Id="1893" Weight="1000" /> <!-- Death's Embrace Executioner -->
+			</TargetMobs>
+			<MinLevel>58</MinLevel>
+			<MaxLevel>61</MaxLevel>
+			</GrindArea>
+		<GrindArea Name="All_According_to_Plan2">
+			<Hotspots>
+				<Hotspot XYZ="205.7752, -176.3989, 722.2908" Name="Death's Embrace Torturer and Manipulated Gaze" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4098" Weight="2000" /> <!-- Death's Embrace Torturer -->
+				<TargetMob Id="4099" Weight="1000" /> <!-- Manipulated Gaze -->
+			</TargetMobs>
+			<MinLevel>58</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Spear">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="78.65437, 5.179691, -211.1119" name="Ground Squirrels" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="37" /> <!-- Ground Squirrel -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Spear2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="78.65437, 5.179691, -211.1119" name="Little Ladybugs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="49" /> <!-- Little Ladybug -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Spear3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="78.65437, 5.179691, -211.1119" name="Forest Funguars" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="47" /> <!-- Forest Funguar -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Lance_of_Destiny">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-154.8154, -1.509783, 170.3436 " name="Wild Boars" />
+				<Hotspot Radius="90" XYZ="-231.7074, 5.31071, 85.58307" name="Wild Boars" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="16" /> <!-- Wild Boar -->
+			</TargetMobs>
+			<MinLevel>20</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Questions_and_Lancers">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-28.36085, -51.55588, 435.245" name="Balloons" />
+			</Hotspots>
+			<Blackspots>
+				<Blackspot Radius="15" XYZ="-46.34167, -53.21189, 495.2316" name="Qiqirn Mobs" />
+			</Blackspots>
+			<TargetMobs>
+				<TargetMob Id="17" /> <!-- Balloon -->
+			</TargetMobs>
+			<MinLevel>25</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Unfading_Skies">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="485.9236, 248.1806, -268.6656" name="Straggler Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="2034" Weight="2000" /> <!-- Miteling Straggler -->
+				<TargetMob Id="2033" Weight="1000" /> <!-- Banemite Straggler -->
+			</TargetMobs>
+			<MinLevel>40</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Double_Dragoon">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="591.2107, 331.3911, -447.776" name="Unspeaking Swordsman" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="2035" /> <!-- Unspeaking Swordsman -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Double_Dragoon2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="654.5358, 305.091, -354.1161" name="Giant Captive" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="2036" /> <!-- Giant Captive -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Double_Dragoon3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="622.0645, 287.8614, -317.8912" name="Gigas Captive" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="2037" /> <!-- Gigas Captive -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Days_of_Azure">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="468.5892, 166.28, 256.733" name="Horde Skirmisher" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4086" />
+			</TargetMobs>
+			<MinLevel>52</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Days_of_Azure2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="197.4059, 184.0085, -102.8001" name="Horde Skirmisher Captain" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4087" />
+			</TargetMobs>
+			<MinLevel>52</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Sanguine_Dragoon">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="396.3531, -50.87535, 73.04492" name="Gaunt Figure" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3894" />
+			</TargetMobs>
+			<MinLevel>58</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Always_the_Last_Place_You_Look">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-233.5089, 44.33062, 519.0966" name="Jungle Midge Clouds" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4113" /> <!-- Jungle Midge Cloud -->
+			</TargetMobs>
+			<MinLevel>35</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Always_the_Last_Place_You_Look2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-234.0276, 44.33062, 539.8184" name="Jungle Midge Clouds" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4113" /> <!-- Jungle Midge Cloud -->
+			</TargetMobs>
+			<MinLevel>35</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Always_the_Last_Place_You_Look3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-205.829, 45.80396, 517.2045" name="Jungle Goobbue" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4114" /> <!-- Jungle Goobbue -->
+			</TargetMobs>
+			<MinLevel>35</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Wheels_of_Justice">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="576.4706, -37.67381, -134.783" name="Violent Wretch and Wretched Lapdog" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4310" /> <!-- Wretched Lapdog -->
+				<TargetMob Id="4309" /> <!-- Violent Wretch -->
+			</TargetMobs>
+			<MinLevel>56</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Axe">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="15.40125, 42.52365, 118.8592" name="Wharf Rats" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="417" /> <!-- Wharf Rat -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Axe2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="53.59859, 52.37904, 208.1335" name="Lost Lambs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="392" /> <!-- Lost Lamb -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Axe3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="96.12958, 47.24583, 166.6722" name="Little Ladybugs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="49" /> <!-- Little Ladybug -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Wake_of_Destruction">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="410.5915, 75.36475, -329.3518" name="Galagos" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="408" /> <!-- Galago -->
+			</TargetMobs>
+			<MinLevel>10</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="The_Mountain_that_Strides">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="348.3481, -18.60083, 168.3833" name="Cattle Tyrants" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="1315" /> <!-- Cattle Tyrant -->
+			</TargetMobs>
+			<MinLevel>20</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="The_Mountain_that_Strides2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="297.3831, -14.29773, 148.8517" name="Cattle Tyrants" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="1315" /> <!-- Cattle Tyrant -->
+			</TargetMobs>
+			<MinLevel>20</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Embracing_the_Beast">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="158.8861, 4.253643, 831.1633" name="Giant Sandworm" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="2010" /> <!-- Giant Sandworm -->
+			</TargetMobs>
+			<MinLevel>35</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Hora">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-120.001, 5.346663, 244.9141" name="Star Marmots" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="262" /> <!-- Star Marmot -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Hora2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-120.001, 5.346663, 244.9141" name="Huge Hornets" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="632" /> <!-- Huge Hornet -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Hora3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="47.62748, 2.513385, 317.5547" name="Snapping Shrews" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="318" /> <!-- Snapping Shrew -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Harder_than_Rock">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="224.0176, 52.23157, 41.36719" name="Earth Sprite" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="113" /> <!-- Earth Sprite -->
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Harder_than_Rock2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="259.0524, 53.42175, 25.40625" name="Earth Sprite" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="113" /> <!-- Earth Sprite -->
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Harder_than_Rock3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="245.7159, 52.47571, 58.09106" name="Earth Sprite" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="113" /> <!-- Earth Sprite -->
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Harder_than_Rock4">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="224.7196, 52.04846, 79.45361" name="Earth Sprite" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="113" /> <!-- Earth Sprite -->
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Burning_Up_the_Quarter_Malm">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-243.1457, 28, -105.9213" name="Qiqirn Shellsweepers" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="266" /> <!-- Qiqirn Shellsweeper -->
+			</TargetMobs>
+			<MinLevel>10</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="The_Spirit_Is_Willing">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="297.1484, -19.71835, -134.486" name="Toxic Toads" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="216" /> <!-- Toxic Toad -->
+			</TargetMobs>
+			<MinLevel>15</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Keeping_the_Spirit_Alive">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-228.8396, -27.8172, 250.1411" name="Hornet Clouds" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="696" /> <!-- Hornet Cloud -->
+			</TargetMobs>
+			<MinLevel>20</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Keeping_the_Spirit_Alive2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-242.4201, -26.13879, 229.1752" name="Hornet Clouds" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="696" /> <!-- Hornet Cloud -->
+			</TargetMobs>
+			<MinLevel>20</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Keeping_the_Spirit_Alive3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-215.9915, -29.49573, 203.7842" name="Hornet Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="696" Weight="2000" /> <!-- Hornet Cloud -->
+				<TargetMob Id="950" Weight="1000" /> <!-- Gila Monster -->
+			</TargetMobs>
+			<MinLevel>20</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Return_of_the_Holyfist">
+			<Hotspots>
+				<Hotspot Radius="180" XYZ="-276.5637, 8.205684, 671.5793" name="Sandworms" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="290" /> <!-- Sandworm -->
+			</TargetMobs>
+			<MinLevel>30</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Good_Vibrations">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-74.08258, 2.606998, 716.3958" name="Mercenary Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="675" /> <!-- Mindful Mercenary -->
+				<TargetMob Id="674" /> <!-- Menacing Mercenary -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="The_Legend_Continues">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="207.5378, 18.12324, -608.7587" name="Silvertear Cobra" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4094" /> <!-- Silvertear Cobra -->
+			</TargetMobs>
+			<MinLevel>50</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="The_Legend_Continues2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="205.9509, -22.99126, -449.2408" name="Lightning Sprites" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4093" /> <!-- Lightning Sprite -->
+			</TargetMobs>
+			<MinLevel>50</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Lets_Talk_about_Sects">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-142.2294, 1.391692, -654.139" name="Mysterious Assailants" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4422" /> <!-- Mysterious Assailant -->
+			</TargetMobs>
+			<MinLevel>52</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Lets_Talk_about_Sects2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-223.4073, 4.145869, -628.3207" name="Mysterious Assailants" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4422" /> <!-- Mysterious Assailant -->
+			</TargetMobs>
+			<MinLevel>52</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Lets_Talk_about_Sects3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-253.8034, -5.454714, -542.8702" name="Mysterious Assailants" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4422" /> <!-- Mysterious Assailant -->
+			</TargetMobs>
+			<MinLevel>52</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Stabbers_in_Yer_Fambles">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="53.59859, 52.37904, 208.1335" name="Lost Lambs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="392" /> <!-- Lost Lamb -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Stabbers_in_Yer_Fambles2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="15.40125, 42.52365, 118.8592" name="Wharf Rats" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="417" /> <!-- Wharf Rat -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Stabbers_in_Yer_Fambles3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="12.399, 42.39729, 44.50257" name="Pugils" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="640" /> <!-- Pugil -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="A_Dainty_Dilemma">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="175.0169, 53.05838, 259.4992" name="Aureliae" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="563" />
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="A_Dainty_Dilemma2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="118.9046, 50.17718, 4.801124" name="Goblin Gamblers" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3099" />
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Grinners_in_the_Mist">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="7.217468, 57.91382, -307.1183" name="Qiqirn Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3184" /> <!-- Qiqirn Roostkeep -->
+				<TargetMob Id="3183" /> <!-- Qiqirn Plucker -->
+			</TargetMobs>
+			<MinLevel>20</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Sweet_Sorrows">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="508.2322, 95.95811, -449.8207" name="Kobold Doorman" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3185" /> <!-- Kobold Doorman -->
+			</TargetMobs>
+			<MinLevel>25</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Market_for_Death">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-436.4631, -2.000525, 48.40558" name="Bloody Executioner Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3154" Weight="2000" /> <!-- Bloody Executioner Leech -->
+				<TargetMob Id="3153" Weight="1000" /> <!-- Bloody Executioner Deckhand -->
+			</TargetMobs>
+			<MinLevel>30</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Tough_Guys">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-188.4642, 30.72319, -685.1759" name="Imperial Shadow" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3166" /> <!-- Imperial Shadow -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Tough_Guys2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="491.0505, 68.14364, -198.5046" name="Imperial Shadow" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3166" /> <!-- Imperial Shadow -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Tough_Guys3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="516.6855, 9.414734, 351.1252" name="Imperial Shadow" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3166" /> <!-- Imperial Shadow -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Tough_Guys4">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="209.2164, -2.07005, 260.3036" name="Imperial Shadow" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3166" /> <!-- Imperial Shadow -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Tough_Guys5">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-76.98181, 64.50076, -241.5656" name="Imperial Shadow" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="3166" /> <!-- Imperial Shadow -->
+			</TargetMobs>
+			<MinLevel>45</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Medieval_Espionage">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="508.7509, 95.94249, -450.2785" name="Qiqirn Nogbeater" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4090" /> <!-- Qiqirn Nogbeater -->
+			</TargetMobs>
+			<MinLevel>56</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="True_Enlightenment">
+			<Hotspots>
+				<Hotspot Radius="250" XYZ="577.1782, 8.791731, 407.5306" name="Doman Weasels" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="5758" /> <!-- Doman Weasel -->
+			</TargetMobs>
+			<MinLevel>68</MinLevel>
+			<MaxLevel>71</MaxLevel>
+		</GrindArea> 
+		<GrindArea name="My_First_Scepter">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-120.001, 5.346663, 244.9141" name="Star Marmots" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="262" /> <!-- Star Marmot -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Scepter2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-120.001, 5.346663, 244.9141" name="Huge Hornets" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="632" /> <!-- Huge Hornet -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="My_First_Scepter3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="47.62748, 2.513385, 317.5547" name="Snapping Shrews" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="318" /> <!-- Snapping Shrew -->
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="The_Threat_of_Paucity">
+			<Hotspots>
+				<Hotspot Radius="180" XYZ="151.9343, -2, -219.2622" name="Efts" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="289" /> <!-- Eft -->
+			</TargetMobs>
+			<MinLevel>10</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Facing_Your_Demons">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-392.3248, 23.55769, -546.9902" name="Mormo's Missionary" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="1213" /> <!-- Mormo's Missionary -->
+			</TargetMobs>
+			<MinLevel>30</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Taking_the_Black">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-72.67877, -32.05927, -46.83002" name="Deepvoid Souls" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="2038" /> <!-- Deepvoid Soul -->
+			</TargetMobs>
+			<MinLevel>30</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea Name="A_Cunning_Plan">
+			<Hotspots>
+				<Hotspot XYZ="399.0996, -3.4, 11.21539" Name="Defiant Mage" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4079" /> <!-- Defiant Mage -->
+			</TargetMobs>
+			<MinLevel>54</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea Name="Black_Squawk_Down">
+			<Hotspots>
+				<Hotspot XYZ="-175.1278, -61.86741, 371.9996" Name="Defiant Mage" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4079" /> <!-- Defiant Mage -->
+			</TargetMobs>
+			<MinLevel>56</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Pirates_of_Shallow_Water">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-235.458, -37.52221, 549.3752" name="Serpent Reaver Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4102" Weight="2000" /> <!-- Serpent Reaver Blueeye -->
+				<TargetMob Id="4101" Weight="1000" /> <!-- Serpent Reaver Bluetail -->
+			</TargetMobs>
+			<MinLevel>55</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Pirates_of_Shallow_Water2">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-276.6003, -37.4717, 586.9688" name="Serpent Reaver Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4102" Weight="2000" /> <!-- Serpent Reaver Blueeye -->
+				<TargetMob Id="4101" Weight="1000" /> <!-- Serpent Reaver Bluetail -->
+			</TargetMobs>
+			<MinLevel>55</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Pirates_of_Shallow_Water3">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-235.458, -37.52221, 549.3752" name="Reaver Mobs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4104" Weight="2000" /> <!-- Reaver Coeurl  -->
+				<TargetMob Id="4103" Weight="1000" /> <!-- Serpent Reaver Bluefin -->
+			</TargetMobs>
+			<MinLevel>55</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Slap_and_Chop">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="352.8289, 24.48975, -137.3322" name="Kobolds" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="4105" Weight="2000" /> <!-- Fugleman  -->
+				<TargetMob Id="4106" Weight="1000" /> <!-- Prelate -->
+			</TargetMobs>
+			<MinLevel>55</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+	</GrindAreas>
+</Profile>

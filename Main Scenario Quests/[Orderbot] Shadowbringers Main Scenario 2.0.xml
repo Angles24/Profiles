@@ -3693,6 +3693,23 @@ Added:	Chocobo quest and opening of Coffers
       <UseTransport InteractDistance="3.0" NpcId="2002881" XYZ="21.13373, 22.32391, -631.281"/>
       <TurnIn QuestId="69190" NpcId="1031257" XYZ="-2.426208, 7.450581E-09, -9.10968"/>
     </If>
+	
+		<If Condition="IsQuestCompleted(68836) or Core.Player.ClassLevel &lt; 73">
+			<LoadProfile Path="[Orderbot] Trust_71.xml"/>
+		</If>
+		<If Condition="not IsQuestCompleted(68848) or Core.Player.ClassLevel &lt; 75">
+			<LoadProfile Path="[Orderbot] Trust_73.xml"/>
+		</If>
+		<If Condition="not IsQuestCompleted(68876) or Core.Player.ClassLevel &lt; 77">
+			<LoadProfile Path="[Orderbot] Trust_75.xml"/>
+		</If>
+		<If Condition="not IsQuestCompleted(69157) or Core.Player.ClassLevel &lt; 79">
+			<LoadProfile Path="[Orderbot] Trust_77.xml"/>
+		</If>
+		<If Condition="not IsQuestCompleted(69179) or Core.Player.ClassLevel &lt; 80">
+			<LoadProfile Path="[Orderbot] [Orderbot] Trust_79.xml"/>
+		</If>	
+		
   </Order>
   <GrindAreas>
     <GrindArea Name="68850">

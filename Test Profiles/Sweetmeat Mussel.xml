@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Blank Profile
+-->
+<Profile>
+	<Name>Blank Profile</Name>
+	<Order>	
+	
+	
+	<ExFish Snagging="true" Bait="Squid Strip"  >
+		<Keeper>
+			<Keepers Name="Sweetmeat Mussel"/>
+		</Keeper>
+		<FishSpots>
+			<FishSpot XYZ="-484.3373, 184.7756, -553.0657" Heading="3.6" Sit="True" />			
+		</FishSpots>
+	</ExFish>
+		
+	
+	
+	</Order>
+	<CodeChunks>
+	</CodeChunks>
+</Profile>

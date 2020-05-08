@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Blank Profile
+-->
+<Profile>
+	<Name>Blank Profile</Name>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>	
+	<Order>	
+	
+	<RunCode Name="SwitchDoLJob"/>
+		
+	
+	
+	</Order>
+	<CodeChunks>
+	<CodeChunk Name="SwitchDoHJob">
+		<![CDATA[ 
+			var DoH = Enumerable.Range(8, 7);
+			var gearSets = GearsetManager.GearSets.Where(i => i.InUse && DoH.Contains((int)i.Class) && Core.Player.Levels[i.Class] > 50);
+			if (gearSets.Any())
+			{
+				gearSets.First().Activate();
+				await Coroutine.Sleep(2000);
+			}
+		]]>
+		</CodeChunk>
+		<CodeChunk Name="SwitchDoLJob">
+			<![CDATA[ 
+				var DoL = Enumerable.Range(16, 3);
+				var gearSets = GearsetManager.GearSets.Where(i => i.InUse && DoL.Contains((int)i.Class) && Core.Player.Levels[i.Class] > 55);
+
+				if (gearSets.Any())
+				{
+					gearSets.First().Activate();
+					await Coroutine.Sleep(2000);
+				}
+			]]>
+		</CodeChunk>
+	</CodeChunks>
+</Profile>

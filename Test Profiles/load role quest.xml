@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Blank Profile
+-->
+<Profile>
+	<Name>Blank Profile</Name>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>	
+	<Order>	
+	
+	<!--Role Quest Load-->
+		<If Condition="Core.Me.Levels[ClassJobType.WhiteMage] or Core.Me.Levels[ClassJobType.Scholar] or Core.Me.Levels[ClassJobType.Astrologian] and not IsQuestCompleted(68808) and Core.Player.ClassLevel &lt; 80">
+			<LoadProfile Path="[Orderbot] Healer Role Quests.xml"/>
+		</If>
+		<If Condition="Core.Me.Levels[ClassJobType.BlackMage] or Core.Me.Levels[ClassJobType.Summoner] or Core.Me.Levels[ClassJobType.RedMage] and not IsQuestCompleted(69164) and Core.Player.ClassLevel &lt; 80">
+			<LoadProfile Path="[Orderbot] Magical DPS Role Quests.xml"/>
+		</If>
+		<If Condition="Core.Me.Levels[ClassJobType.Monk] or Core.Me.Levels[ClassJobType.Dragoon] or Core.Me.Levels[ClassJobType.Ninja] or Core.Me.Levels[ClassJobType.Samurai] or Core.Me.Levels[ClassJobType.Bard] or Core.Me.Levels[ClassJobType.Machinist] or Core.Me.Levels[ClassJobType.Dancer] and not IsQuestCompleted(68814) and Core.Player.ClassLevel &lt; 80">
+			<LoadProfile Path="[Orderbot] Physical DPS Role Quests.xml"/>
+		</If>
+		<If Condition="Core.Me.Levels[ClassJobType.Paladin] or Core.Me.Levels[ClassJobType.Warrior] or Core.Me.Levels[ClassJobType.DarkKnight] or Core.Me.Levels[ClassJobType.Gunbreaker] and not IsQuestCompleted(68784) and Core.Player.ClassLevel &lt; 80">
+			<LoadProfile Path="[Orderbot] Tank Role Quests.xml"/>
+		</If>
+
+		
+	
+	
+	</Order>
+	<CodeChunks>
+	</CodeChunks>
+</Profile>

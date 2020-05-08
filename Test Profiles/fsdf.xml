@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Profile [
+<!ENTITY BTN_Hinterland "0">
+]><Profile>
+	<Name>Diadem</Name>
+	<CodeChunks>
+		<CodeChunk name="MIN">
+			<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 3");	await Buddy.Coroutines.Coroutine.Sleep(2000); ]]>
+		</CodeChunk>
+		<CodeChunk name="BTN">
+			<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 11");	await Buddy.Coroutines.Coroutine.Sleep(2000); ]]>
+		</CodeChunk>
+
+	</CodeChunks>
+	<Order>
+		<!-- <RunCode Name="MIN"/> -->
+		<!-- <MoveTo XYZ="189.0067, 293.9472, -759.0294"/> -->
+		<ExGather While="ItemCount(12557) &lt; 999999" GatherIncrease="Yield" CordialType="HiCordial" DisableRotationOverride="true">
+			<GatherObjects>
+				<GatherObject>Mineral Deposit</GatherObject>
+				<GatherObject>Rocky Outcrop</GatherObject>
+			</GatherObjects>
+			<ItemNames>
+				<ItemName>Grade 2 Skybuilders' Cloud Drop Water</ItemName>
+				<ItemName>Grade 2 Skybuilders' Crystal-clear Rock Salt</ItemName>
+				<ItemName>Grade 2 Skybuilders' Darksteel Ore</ItemName>
+				<ItemName>Grade 2 Skybuilders' Lutinite</ItemName>
+				<ItemName>Grade 2 Skybuilders' Basalt</ItemName>
+				<!-- <ItemName>Grade 2 Artisanal Skybuilders' Spring Water</ItemName> -->
+				<!-- <ItemName>Grade 2 Artisanal Skybuilders' Aurum Regis Sand</ItemName> -->
+				<!-- <ItemName>Grade 2 Artisanal Skybuilders' Jade</ItemName> -->
+				<!-- <ItemName>Grade 2 Artisanal Skybuilders' Rock Salt</ItemName> -->
+				<!-- <ItemName>Grade 2 Artisanal Skybuilders' Cloudstone</ItemName> -->
+			</ItemNames>
+			<GatherRotation>BreadsYield</GatherRotation>
+			<GatherSpots>
+				<!-- <IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="391.7935, 288.6404, -754.6933" nodeLocation="410.3569, 291.0311, -741.2588"/> -->
+				<!-- <IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="343.3103, 290.3507, -717.9788" nodeLocation="390.3035, 289.8267, -754.6026"/> -->
+			</GatherSpots>
+			<HotSpots>
+				<HotSpot XYZ="273.1792, 301.8901, -643.363" Radius="20"/>
+				<HotSpot XYZ="329.4773, 291.1088, -662.4397" Radius="20"/>
+				<HotSpot XYZ="348.5063, 301.7278, -712.3388" Radius="20"/>
+				<HotSpot XYZ="355.3604, 296.0789, -706.8473" Radius="20"/>
+				<HotSpot XYZ="406.5034, 298.9525, -759.423" Radius="20"/>
+				<HotSpot XYZ="362.9074, 305.4957, -778.6994" Radius="30"/>
+				<HotSpot XYZ="483.5443, 204.8911, -675.0781" Radius="20"/>
+				<HotSpot XYZ="452.0918, 203.6788, -649.3358" Radius="20"/>
+				<HotSpot XYZ="509.0131, 215.7544, -632.9777" Radius="50"/>
+				<HotSpot XYZ="552.3458, 211.2162, -605.5204" Radius="20"/>
+				<HotSpot XYZ="562.7504, 197.9021, -564.1349" Radius="20"/>
+				<HotSpot XYZ="537.1392, 203.1831, -527.6988" Radius="20"/>
+				<HotSpot XYZ="603.2167, 221.3396, -492.1075" Radius="20"/>
+				<HotSpot XYZ="616.2633, 202.1429, -519.8621" Radius="50"/>
+			</HotSpots>
+		</ExGather>
+	</Order>
+</Profile>

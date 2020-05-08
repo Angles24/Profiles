@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+New Trust
+-->
+<Profile>
+	<Name>New Trust</Name>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>	
+	<Order>	
+	
+	<While Condition="IsOnMap(898)">
+		
+		<RunCode Name="WaitForDutyStarted"/>
+		
+		<MoveTo XYZ="-96.20823, 103.5996, 379.7348" />
+		<!--<MoveTo XYZ="-86.90301, 103.4671, 367.944" Distance="0.1" />
+		<MoveTo XYZ="-41.17644, 93.80567, 348.6605" />-->
+		<MoveTo XYZ="-39.47894, 95, 292.851" />
+		<Grind GrindRef="Unknown" PostCombatDelay="2.0" While="ObjectExistsWithId(9261)"/>
+		<!--<MoveTo XYZ="-40.10204, 95, 275.5677" Distance="0.1" />-->
+		<RunCode name="LootChest"/>
+		<!--<MoveTo XYZ="-34.37956, 101.9648, 249.127" />
+		<MoveTo XYZ="-12.14176, 112.154, 223.6228" />-->
+		<MoveTo XYZ="-1.117456, 107.6673, 200.4215" />
+		<!--<MoveTo XYZ="21.52625, 100, 146.9623" />
+		<MoveTo XYZ="25.68478, 98.99987, 123.9028" />-->
+		<MoveTo XYZ="21.32611, 99.13336, 127.8231" Distance="0.1" />
+		<!--<MoveTo XYZ="37.43042, 99.99231, 140.5508" Distance="0.1" />-->
+		<RunCode name="LootChest"/>
+		<!--<MoveTo XYZ="25.68478, 98.99987, 123.9028" />-->
+		<MoveTo XYZ="39.95791, 99, 97.34079" />
+		<!--<MoveTo XYZ="22.27045, 99.76739, 69.52525" />-->
+		<MoveTo XYZ="53.17788, 105, 16.57866" Distance="0.1" />
+		<RunCode name="LootChest"/>
+		<!--<MoveTo XYZ="25.17173, 105, 14.69266" />-->
+		<MoveTo XYZ="23.90462, 110, -75.93576" />		
+		<Grind GrindRef="Kyklops" PostCombatDelay="2.0" While="ObjectExistsWithId(9263)"/>
+	
+	</While>
+		
+	
+	
+	</Order>
+	<GrindAreas>
+		<GrindArea Name="Unknown">
+			<Hotspots>
+				<Hotspot XYZ="-39.47894, 95, 292.851" Radius="120"/>
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="9261"/>
+			</TargetMobs>
+			<MinLevel/>
+			<MaxLevel/>
+		</GrindArea>
+		<GrindArea Name="Kyklops">
+			<Hotspots>
+				<Hotspot XYZ="-39.47894, 95, 292.851" Radius="120"/>
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="9263"/>
+			</TargetMobs>
+			<MinLevel/>
+			<MaxLevel/>
+		</GrindArea>
+	</GrindAreas>
+	<CodeChunks>
+		<CodeChunk Name="WaitForDutyStarted">
+		<![CDATA[
+			var _duty = DirectorManager.ActiveDirector as ff14bot.Directors.InstanceContentDirector;
+			while (!_duty.InstanceStarted)  {  await Coroutine.Yield();  }
+		]]>
+		</CodeChunk>
+		<CodeChunk name="LootChest">
+		<![CDATA[
+			var _chest = GameObjectManager.GetObjectsOfType<Treasure>().Where(r => r.Distance() < 50 && (r.Name == "宝箱" || r.Name == "Treasure Coffer" || r.Name == "treasure coffer"));
+			if (_chest.Any())
+			{
+			var box = _chest.FirstOrDefault();
+			while (Core.Me.Distance(box.Location) > 1f)
+			{
+			await CommonTasks.MoveTo(box.Location);
+			await Coroutine.Yield();
+			}
+    
+			Navigator.PlayerMover.MoveStop();
+			Poi.Current = new Poi(box, PoiType.Kill);
+			Poi.Current.Unit.Interact();					
+			await Coroutine.Sleep(1000);		
+			}
+		]]>
+		</CodeChunk>
+	</CodeChunks>
+</Profile>

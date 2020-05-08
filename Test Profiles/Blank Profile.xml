@@ -7,9 +7,41 @@ Blank Profile
 	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>	
 	<Order>	
 	
+	<If Condition="not HasQuest() and not IsQuestCompleted()">
+		<GetTo ZoneId="" XYZ=""/>
+		<If Condition="IsQuestAcceptQualified()">
+			<PickupQuest NpcId="" QuestId="" XYZ=""/>
+		</If>
+    </If>
+    <If Condition="HasQuest() and not IsQuestCompleted() and GetQuestStep() == 1">
+		<GetTo ZoneId="" XYZ=""/>
+		<TalkTo NpcId="" XYZ="" QuestId="" StepId=""/>
+    </If>
+    <If Condition="HasQuest() and not IsQuestCompleted() and GetQuestStep() == 2">
+		<GetTo ZoneId="" XYZ=""/>
+		<UseObject NpcId="" XYZ="" QuestId="" StepId=""/>
+    </If>
+    <If Condition="HasQuest() and not IsQuestCompleted() and GetQuestStep() == 3">
+		<GetTo ZoneId="" XYZ=""/>
+		<HandOver ItemId="" QuestId="" StepId="" NpcId="" XYZ=""/>
+    </If>
+    <If Condition="HasQuest() and not IsQuestCompleted() and GetQuestStep() == 4">
+		<If Condition="not HasAtLeast()">
+			<GetTo ZoneId="" XYZ=""/>
+			<BuyItem ItemIds="" ItemCounts="" DialogOption="" NpcId="" XYZ=""/>
+		</If>
+		<GetTo ZoneId="" XYZ=""/>
+		<RunCode Name=""/>
+		<Grind GrindRef="" PostCombatDelay="3.0" While="HasQuest() and not IsQuestCompleted() and GetQuestStep() == 4"/>
+	</If>
+    <If Condition="HasQuest() and not IsQuestCompleted() and GetQuestStep() == 255">
+		<GetTo ZoneId="" XYZ=""/>
+		<TurnIn QuestId="" NpcId="" XYZ=""/>
+    </If>
+		
 	
 	
 	</Order>
-	<CodeChunks>	
+	<CodeChunks>
 	</CodeChunks>
 </Profile>

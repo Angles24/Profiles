@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Blank Profile
+-->
+<Profile>
+	<Name>AutoEquip</Name>
+	<Order>	
+	
+	<ChangeClass Job="Carpenter"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Blacksmith"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Armorer"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Goldsmith"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Letherworker"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Weaver"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Alchemist"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Culinarian"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Miner"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Botanist"/>
+	<AutoEquip UpdateGearSet="true"/>
+	<WaitTimer WaitTime="2"/>
+	<ChangeClass Job="Fisher"/>
+	<AutoEquip UpdateGearSet="true"/>
+		
+	
+	
+	</Order>
+	<CodeChunks>
+	</CodeChunks>
+</Profile>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Authors:  Kayla / Angles24 
+-->
+<Profile>
+  <Name>Crafting Carpenter to 51</Name>
+  <BehaviorDirectory>..\Quest Behaviors</BehaviorDirectory>
+	<Order>
+		<While Condition="(ItemCount(12557) &lt; 999999) or (HasIshgardGatheringMining() &gt; 0) or (HasIshgardGatheringBotanist() &gt; 0)">
+			<If Condition="WorldManager.ZoneId != 901">
+				<ChangeClass Job="Miner" />
+				<GetTo XYZ="-17.82406, -16, 141.3146" ZoneId="886"/>
+				<While Condition="(HasIshgardItem() &gt; 0) or (HasIshgardGatheringMining() &gt; 0) or (HasIshgardGatheringBotanist() &gt; 0)">
+					<RunCode Name="TurnIn"/>
+				</While>
+				<If Condition="ClassName == ClassJobType.Miner">
+					<RunCode Name="TalkToAurvael"/>
+					<CommenceDuty/>
+					<WaitWhile Condition="not GameObjectManager.GetObjectByNPCId(1032912)" />
+				</If>
+			</If>			
+			
+			<If Condition="ClassName != ClassJobType.Botanist">
+				<ChangeClass Job="Botanist" />
+			</If>	
+			<If Condition="ClassName == ClassJobType.Botanist">
+				<ExGather While="ItemCount(29894) &lt; 50" GatherIncrease="Yield" CordialType="HiCordial" DisableRotationOverride="true">
+					<GatherObjects>
+						<GatherObject>Mature Tree</GatherObject>
+					</GatherObjects>
+					<ItemNames>
+						<ItemName>Grade 2 Skybuilders' Switch</ItemName>						
+					</ItemNames>
+					<Slot>0</Slot>
+					<GatherRotation>BreadsYield</GatherRotation>
+					<GatherSpots>
+						<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-375.761, 14.98226, -293.0414" nodeLocation="-371.678, 16.55341, -289.5726"/>
+						<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-471.9567, 31.53765, -195.024" nodeLocation="-474.0813, 36.16517, -197.5451"/>
+						<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="580.1122, 194.896, -515.4001" nodeLocation="576.639, 190.6327, -511.2142"/>
+						<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-415.0732, 326.1051, 567.0018" nodeLocation="-416.2058, 323.0404, 570.8769"/>
+					</GatherSpots>
+					<HotSpots>
+						<HotSpot XYZ="-653.2227, 290.7744, -223.1081" Radius="200"/>
+						<HotSpot XYZ="-576.0533, 42.58722, -242.4232" Radius="200"/>
+						<HotSpot XYZ="-430.5968, 39.8698, -250.4067" Radius="200"/>
+						<HotSpot XYZ="-304.7499, 12.10334, -414.1722" Radius="200"/>
+						<HotSpot XYZ="-178.8463, 10.44475, -384.1756" Radius="200"/>
+						<HotSpot XYZ="-76.741, -3.885065, -575.5424" Radius="200"/>
+						<HotSpot XYZ="80.53232, -27.89701, -536.0591" Radius="200"/>
+						<HotSpot XYZ="242.7178, 307.4116, -767.3734" Radius="200"/>
+						<HotSpot XYZ="331.5598, 306.7274, -716.5558" Radius="200"/>
+						<HotSpot XYZ="503.2967, 213.6036, -634.0513" Radius="200"/>
+						<HotSpot XYZ="561.2983, 202.7114, -537.2527" Radius="200"/>
+						<HotSpot XYZ="628.4214, 265.1828, -411.7659" Radius="200"/>
+						<HotSpot XYZ="678.8664, 233.7594, -284.9577" Radius="200"/>
+						<HotSpot XYZ="683.7798, 238.4381, -148.6178" Radius="200"/>
+						<HotSpot XYZ="484.5226, 3.692119, 238.4082" Radius="200"/>
+						<HotSpot XYZ="556.2301, 7.178873, 363.3633" Radius="200"/>
+						<HotSpot XYZ="379.1937, 6.917282, 432.6039" Radius="200"/>
+						<HotSpot XYZ="221.2629, 97.59468, 525.8244" Radius="200"/>
+						<HotSpot XYZ="52.3545, 120.0204, 603.4967" Radius="200"/>
+						<HotSpot XYZ="-107.7678, 126.1804, 569.1833" Radius="200"/>
+						<HotSpot XYZ="-349.1422, 331.2413, 549.7596" Radius="200"/>
+						<HotSpot XYZ="-559.0954, 344.5622, 519.8137" Radius="200"/>
+						<HotSpot XYZ="-534.9729, 344.2489, 378.6904" Radius="200"/>
+						<HotSpot XYZ="-717.2181, 281.8416, -85.57783" Radius="200"/>
+						<HotSpot XYZ="-632.4493, 296.5706, -159.9563" Radius="200"/>						
+					</HotSpots>
+				</ExGather>	
+			</If>
+
+			<!-- Leave Diadem -->
+			<If Condition="(WorldManager.ZoneId == 901)">
+				<FlyTo XYZ="-666.2858, 285.6824, -162.3013" Land="true" Dismount="true" ArrivalTolerance="0.1"/>
+				<MoveTo XYZ="-669.5704, 285.3826, -172.7843"/>
+				<RunCode Name="Leave"/>
+				<RunCode Name="Leave"/>
+				<WaitTimer waitTime="7"/>
+				<WaitWhile Condition="not GameObjectManager.GetObjectByNPCId(1031694)" />
+			</If>
+
+			<!-- Turn in-->
+			<While Condition="(HasIshgardItem() &gt; 0) or (HasIshgardGatheringMining() &gt; 0) or (HasIshgardGatheringBotanist() &gt; 0)">
+				<RunCode Name="TurnIn"/>
+			</While>
+
+			<While Condition="ItemCount(29840) &gt; 49">
+				<!-- Grade 2 Plywood -->
+				<Lisbeth Json="[{'Group':1,'Item':29792,'Amount':10,'Enabled':true,'Type':'Carpenter','Collectable':false}]"/>
+
+				<!-- Turn in-->
+				<While Condition="(HasIshgardItem() &gt; 0) or (HasIshgardGatheringMining() &gt; 0) or (HasIshgardGatheringBotanist() &gt; 0)">
+					<RunCode Name="TurnIn"/>
+				</While>
+			</While>
+		</While>
+	</Order>
+	<CodeChunks>
+		<CodeChunk Name="TalkToAurvael">
+			<![CDATA[ 
+				await Buddy.Coroutines.Coroutine.Sleep(1000);
+				ff14bot.Managers.GameObjectManager.GetObjectByNPCId(1031694).Interact();
+				if (await Coroutine.Wait(1000, () => Talk.DialogOpen))
+				{
+					Talk.Next();
+				}
+				await Buddy.Coroutines.Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.SelectString.ClickLineContains("Travel");
+				await Buddy.Coroutines.Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.SelectYesno.ClickYes();
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Leave">
+			<![CDATA[ 
+				await Buddy.Coroutines.Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.SelectYesno.ClickYes();
+				await Buddy.Coroutines.Coroutine.Sleep(2000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="TurnIn">
+			<![CDATA[
+			Logging.Write("[Handin] calling");
+			await LlamaLibrary.IshgardHandinBase.HandinNew();
+			await LlamaLibrary.IshgardHandinBase.GatheringHandin();
+		]]>
+		</CodeChunk>
+	</CodeChunks>
+</Profile>

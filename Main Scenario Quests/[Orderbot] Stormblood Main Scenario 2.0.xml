@@ -13,7 +13,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
                     2: Aiming
                     3: Healing
 					4: Casting-->
-<!ENTITY TheDarknessBelow "3">
+<!ENTITY TheDarknessBelow "2">
 
 
 <!-- Rewards Armor 370 ilvl
@@ -29,7 +29,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
                     2: Healing
                     3: Casting           
 -->
-<!ENTITY GosetsuandTsuyu "2">	
+<!ENTITY GosetsuandTsuyu "1">	
 ]>
 <Profile>
   <Name>[OrderBot] Stormblood Main Scenario 2.0</Name>

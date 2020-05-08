@@ -1,22 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<!-- Credits: kagepande -->
+<!-- 
+Credits: kagepande 
+Required Setup: LLamaLibrary for Quest Behaviors
+-->
 
 <Profile>
   <Name>Unlock all classes </Name>
   <KillRadius>50</KillRadius>
-  <BehaviorDirectory>./Custom</BehaviorDirectory>
-  <CodeChunks>
-  </CodeChunks>
+   <GrindAreas>
+   <GrindArea name="Gunblade">
+         <Hotspots>
+	    <Hotspot Radius="50" XYZ="-218.7991, 11.85537, 19.4552" name="Gunblade" />
+         </Hotspots>
+         <TargetMobs>
+            <TargetMob id="8877"  /> <!-- name="Vicious Highwayman"-->
+         </TargetMobs>
+         <MinLevel>50</MinLevel>
+         <MaxLevel>63</MaxLevel>
+    </GrindArea>
+	</GrindAreas>
   <Order>
     <LogMessage Message="The Journey Begins! Remember to Check up on me!"/>
 	
 <!-- Unlocking classes in Limsa Lominsa -->
 
-
-<!--Unlocking Rogue-->
-	<If Condition="not Core.Player.CurrentJob == Enums.ClassJobType.Rogue">
+	<!--Unlocking Rogue-->
 		<If Condition="not IsQuestCompleted(65637)">
+		<LogMessage Message="[ROG] Unlocking your Rogue job!" />
 			<If Condition="not HasQuest(65637)">
 				<If Condition="not IsOnMap(129)">
 					<TeleportTo Name="Limsa Lominsa" AetheryteId="8" />
@@ -24,7 +35,7 @@
 				<If Condition="IsOnMap(129)">
 					<MoveTo Name="Lonwoerd" Distance="1" UseMesh="True" XYZ="-148.6992, 2.905223, 241.7078"/>
 					<If Condition="IsQuestAcceptQualified(65637)">
-						<ConfirmTalkTo NpcId="1009944" QuestId="65637" XYZ="-148.6992, 2.905223, 241.7078"/>
+						<LLTalkTo NpcId="1009944" QuestId="65637" XYZ="-148.6992, 2.905223, 241.7078"/>
 					</If>
 				</If>
 			</If>
@@ -37,13 +48,21 @@
 				<If Condition="IsOnMap(129)">
 					<MoveTo Name="Lonwoerd" Distance="1" UseMesh="True" XYZ="-148.6992, 2.905223, 241.7078"/>
 					<If Condition="IsQuestAcceptQualified(65638)">
-						<PickupQuest NpcId="1009944" QuestId="65638" XYZ="-148.6992, 2.905223, 241.7078"/>
+						<LLPickupQuest NpcId="1009944" QuestId="65638" XYZ="-148.6992, 2.905223, 241.7078"/>
 						<If Condition="IsOnMap(129) and IsOnSubMap(0)">
 							<UseTransport NpcId="1009944" InteractDistance="2.0" XYZ="-148.6992, 2.905223, 241.7078"/>
 						</If>
 					</If>
 					<If Condition="GetQuestStep(65638) == 255">
-						<ConfirmTurnIn QuestId="65638" StepId="255" NpcId="1009943" InteractDistance="1.0" XYZ="-155.1694, -129.4397, 265.0255"/>
+						<LLTurnIn QuestId="65638" StepId="255" NpcId="1009943" InteractDistance="1.0" XYZ="-155.1694, -129.4397, 265.0255"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Rogue">
+							<ChangeClass Job="Rogue" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Rogue">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 						<If Condition="IsOnMap(129) and IsOnSubMap(1427)">
 						   <UseTransport NpcId="2004936" InteractDistance="2.0" XYZ="-152.0483, -129.4397, 258.218"/>
 						</If>
@@ -51,52 +70,54 @@
 				</If>
 			</If>
 		</If>
-	</If>
+	<!--Done Unlocking Rogue-->
 
-<!--Done Unlocking Rogue-->
-
-<!--Unlocking Fisher-->
-	<If Condition="IsQuestAcceptQualified(66670)">
+	<!--Unlocking Fisher-->
 		<If Condition="not IsQuestCompleted(66670)">
+		<LogMessage Message="[FSH] Unlocking your Fisher job!" />
 			<If Condition="not HasQuest(66670)">
 				<If Condition="not IsOnMap(129)">
 					<TeleportTo Name="Limsa Lominsa" AetheryteId="8" />
 				</If>
 				<If Condition="IsOnMap(129)">
-					<GetTo ZoneId="129" XYZ="-166.4096, 4.54997, 152.0395"/>
-					<MoveTo Name="N'nmulika" Distance="1" UseMesh="True" XYZ="-166.4096, 4.54997, 152.0395"/>
+					<GetTo ZoneId="129" XYZ="-166.7397, 4.550005, 152.6919" /> <!-- N'nmulika-->
 					<If Condition="IsQuestAcceptQualified(66670)">
-						<ConfirmTalkTo NpcId="1000859" QuestId="66670" XYZ="-166.4096, 4.54997, 152.0395"/>
+						<LLTalkTo NpcId="1000859" QuestId="66670" XYZ="-166.4096, 4.54997, 152.0395"/>
 					</If>
 				</If>
 			</If>
 		</If>
-	</If>
-	<If Condition="IsQuestAcceptQualified(66643)">
+		<If Condition="IsQuestAcceptQualified(66643)">
 		<If Condition="not IsQuestCompleted(66643)">
 			<If Condition="not HasQuest(66643)">
 				<If Condition="not IsOnMap(129)">
 					<TeleportTo Name="Limsa Lominsa" AetheryteId="8" />
 				</If>
 				<If Condition="IsOnMap(129)">
-					<GetTo ZoneId="129" XYZ="-166.4096, 4.54997, 152.0395"/>
-					<MoveTo Name="N'nmulika" Distance="1" UseMesh="True" XYZ="-166.4096, 4.54997, 152.0395"/>
+					<GetTo ZoneId="129" XYZ="-166.7397, 4.550005, 152.6919" /> <!-- N'nmulika-->
 					<If Condition="IsQuestAcceptQualified(66643)">
-						<PickupQuest NpcId="1000859" QuestId="66643" XYZ="-166.4096, 4.54997, 152.0395"/>
+						<LLPickupQuest NpcId="1000859" QuestId="66643" XYZ="-166.4096, 4.54997, 152.0395"/>
 					</If>
 					<If Condition="GetQuestStep(66643) == 255">
-						<ConfirmTurnIn QuestId="66643" StepId="255" NpcId="1000857" InteractDistance="1.0" XYZ="-166.1612, 4.550006, 165.4742"/>
+						<LLTurnIn QuestId="66643" StepId="255" NpcId="1000857" InteractDistance="1.0" XYZ="-166.1612, 4.550006, 165.4742"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Fisher">
+							<ChangeClass Job="Fisher" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Fisher">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 					</If>
 				</If>
 			</If>
 		</If>
 	</If>
+	<!--Done Unlocking Fisher-->
 
-<!--Done Unlocking Fisher-->
-
-<!--Unlocking Arcanist-->
-	<If Condition="not Core.Player.CurrentJob == Enums.ClassJobType.Arcanist">
+	<!--Unlocking Arcanist-->
 		<If Condition="not IsQuestCompleted(65987)">
+		<LogMessage Message="[ACN] Unlocking your Arcanist job!" />
 			<If Condition="not HasQuest(65987)">
 				<If Condition="not IsOnMap(129)">
 					<TeleportTo Name="Limsa Lominsa" AetheryteId="8" />
@@ -105,7 +126,7 @@
 					<GetTo ZoneId="129" XYZ="-336.2534, 12.89976, 4.122925"/>
 					<MoveTo Name="Murie" Distance="1" UseMesh="True" XYZ="-336.2534, 12.89976, 4.122925"/>
 					<If Condition="IsQuestAcceptQualified(65987)">
-						<ConfirmTalkTo NpcId="1000895" QuestId="65987" XYZ="-336.2534, 12.89976, 4.122925"/>
+						<LLTalkTo NpcId="1000895" QuestId="65987" XYZ="-336.2534, 12.89976, 4.122925"/>
 					</If>
 				</If>
 			</If>
@@ -118,20 +139,27 @@
 				<If Condition="IsOnMap(129)">
 					<MoveTo Name="Murie" Distance="1" UseMesh="True" XYZ="-336.2534, 12.89976, 4.122925"/>
 					<If Condition="IsQuestAcceptQualified(65988)">
-						<PickupQuest NpcId="1000895" QuestId="65988" XYZ="-336.2534, 12.89976, 4.122925"/>
+						<LLPickupQuest NpcId="1000895" QuestId="65988" XYZ="-336.2534, 12.89976, 4.122925"/>
 					</If>
 					<If Condition="GetQuestStep(65988) == 255">
-						<ConfirmTurnIn QuestId="65988" StepId="255" NpcId="1000909" InteractDistance="1.0" XYZ="-328.4879, 12.89976, 9.217857"/>
+						<LLTurnIn QuestId="65988" StepId="255" NpcId="1000909" InteractDistance="1.0" XYZ="-328.4879, 12.89976, 9.217857"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Arcanist">
+							<ChangeClass Job="Arcanist" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Arcanist">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 					</If>
 				</If>
 			</If>
 		</If>
-	</If>
+	<!--Done Unlocking Arcanist-->
 
-<!--Done Unlocking Arcanist-->
-
-<!--Unlocking Culinarian-->
-    <If Condition="not IsQuestCompleted(65727)">
+	<!--Unlocking Culinarian-->
+		<If Condition="not IsQuestCompleted(65727)">
+		<LogMessage Message="[CUL] Unlocking your Culinarian job!" />
 		<If Condition="not HasQuest(65727)">
 			<If Condition="not IsOnMap(128)">
 				<GetTo ZoneId="128" XYZ="-61.18506, 42.29994, -161.9528"/>
@@ -139,12 +167,12 @@
 			<If Condition="IsOnMap(128)">
 				<MoveTo Name="Charlys" Distance="1" UseMesh="True" XYZ="-61.18506, 42.29994, -161.9528"/>
 				<If Condition="IsQuestAcceptQualified(65727)">
-					<ConfirmTalkTo NpcId="1000946" QuestId="65727" XYZ="-61.18506, 42.29994, -161.9528"/>
+					<LLTalkTo NpcId="1000946" QuestId="65727" XYZ="-61.18506, 42.29994, -161.9528"/>
 				</If>
 			</If>
 		</If>
     </If>
-    <If Condition="not IsQuestCompleted(65807)">
+		<If Condition="not IsQuestCompleted(65807)">
 		<If Condition="not HasQuest(65807)">
 			<If Condition="not IsOnMap(128)">
 				<If Condition="not IsOnMap(129)">
@@ -157,20 +185,27 @@
 			<If Condition="IsOnMap(128)">
 				<MoveTo Name="Charlys" Distance="1" UseMesh="True" XYZ="-61.18506, 42.29994, -161.9528"/>
 				<If Condition="IsQuestAcceptQualified(65807)">
-					<PickupQuest NpcId="1000946" QuestId="65807" XYZ="-61.18506, 42.29994, -161.9528"/>
+					<LLPickupQuest NpcId="1000946" QuestId="65807" XYZ="-61.18506, 42.29994, -161.9528"/>
 				</If>
 				<If Condition="GetQuestStep(65807) == 255">
-					<ConfirmTurnIn QuestId="65807" StepId="255" NpcId="1000947" InteractDistance="1.0" XYZ="-54.52119, 44.17484, -149.4378"/>
+					<LLTurnIn QuestId="65807" StepId="255" NpcId="1000947" InteractDistance="1.0" XYZ="-54.52119, 44.17484, -149.4378"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Culinarian">
+						<ChangeClass Job="Culinarian" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Culinarian">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
+	<!--Done Unlocking Culinarian-->
 
-<!--Done Unlocking Culinarian-->
-
-<!--Unlocking Marauder-->
-	<If Condition="not Core.Player.CurrentJob == Enums.ClassJobType.Marauder">
+	<!--Unlocking Marauder-->
 		<If Condition="not IsQuestCompleted(65715)">
+		<LogMessage Message="[MRD] Unlocking your Marauder job!" />
 			<If Condition="not HasQuest(65715)">
 				<If Condition="not IsOnMap(128)">
 					<GetTo ZoneId="128" XYZ="-7.439562, 44.99988, -247.1327"/>
@@ -179,7 +214,7 @@
 					
 					<MoveTo Name="Blauthota" Distance="1" UseMesh="True" XYZ="-7.439562, 44.99988, -247.1327"/>
 					<If Condition="IsQuestAcceptQualified(65715)">
-						<ConfirmTalkTo NpcId="1000926" QuestId="65715" XYZ="-7.439562, 44.99988, -247.1327"/>
+						<LLTalkTo NpcId="1000926" QuestId="65715" XYZ="-7.439562, 44.99988, -247.1327"/>
 					</If>
 				</If>
 			</If>
@@ -197,20 +232,27 @@
 				<If Condition="IsOnMap(128)">
 					<MoveTo Name="Blauthota" Distance="1" UseMesh="True" XYZ="-7.439562, 44.99988, -247.1327"/>
 					<If Condition="IsQuestAcceptQualified(65846)">
-						<PickupQuest NpcId="1000926" QuestId="65846" XYZ="-7.439562, 44.99988, -247.1327"/>
+						<LLPickupQuest NpcId="1000926" QuestId="65846" XYZ="-7.439562, 44.99988, -247.1327"/>
 					</If>
 					<If Condition="GetQuestStep(65846) == 255">
-						<ConfirmTurnIn QuestId="65846" StepId="255" NpcId="1000927" InteractDistance="1.0" XYZ="-1.611296, 44.99989, -253.8586"/>
+						<LLTurnIn QuestId="65846" StepId="255" NpcId="1000927" InteractDistance="1.0" XYZ="-1.611296, 44.99989, -253.8586"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Marauder">
+							<ChangeClass Job="Marauder" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Marauder">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 					</If>
 				</If>
 			</If>
 		</If>
-	</If>
+	<!--Done Unlocking Marauder-->
 
-<!--Done Unlocking Marauder-->
-
-<!--Unlocking Armorer-->
-    <If Condition="not IsQuestCompleted(65722)">
+	<!--Unlocking Armorer-->
+		<If Condition="not IsQuestCompleted(65722)">
+		<LogMessage Message="[ARM] Unlocking your Armorer job!" />
 		<If Condition="not HasQuest(65722)">
 			<If Condition="not IsOnMap(128)">
 				<GetTo ZoneId="128" XYZ="-49.96643, 42.79987, 190.44"/>
@@ -218,12 +260,12 @@
 			<If Condition="IsOnMap(128)">
 				<MoveTo Name="G'wahnako" Distance="1" UseMesh="True" XYZ="-49.96643, 42.79987, 190.44"/>
 				<If Condition="IsQuestAcceptQualified(65722)">
-					<ConfirmTalkTo NpcId="1000998" QuestId="65722" XYZ="-49.96643, 42.79987, 190.44"/>
+					<LLTalkTo NpcId="1000998" QuestId="65722" XYZ="-49.96643, 42.79987, 190.44"/>
 				</If>
 			</If>
 		</If>
     </If>
-    <If Condition="not IsQuestCompleted(65809)">
+		<If Condition="not IsQuestCompleted(65809)">
 		<If Condition="not HasQuest(65809)">
 			<If Condition="not IsOnMap(128)">
 				<If Condition="not IsOnMap(129)">
@@ -236,19 +278,27 @@
 			<If Condition="IsOnMap(128)">
 				<MoveTo Name="G'wahnako" Distance="1" UseMesh="True" XYZ="-49.96643, 42.79987, 190.44"/>
 				<If Condition="IsQuestAcceptQualified(65809)">
-					<PickupQuest NpcId="1000998" QuestId="65809" XYZ="-49.96643, 42.79987, 190.44"/>
+					<LLPickupQuest NpcId="1000998" QuestId="65809" XYZ="-49.96643, 42.79987, 190.44"/>
 				</If>
 				<If Condition="GetQuestStep(65809) == 255">
-					<ConfirmTurnIn QuestId="65809" StepId="255" NpcId="1001000" InteractDistance="1.0" XYZ="-32.81106, 41.49998, 207.5591"/>
+					<LLTurnIn QuestId="65809" StepId="255" NpcId="1001000" InteractDistance="1.0" XYZ="-32.81106, 41.49998, 207.5591"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Armorer">
+						<ChangeClass Job="Armorer" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Armorer">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
+	<!--Done Unlocking Armorer-->
 
-<!--Done Unlocking Armorer-->
-
-<!--Unlocking Blacksmith-->
-    <If Condition="not IsQuestCompleted(65721)">
+	<!--Unlocking Blacksmith-->
+		<If Condition="not IsQuestCompleted(65721)">
+		<LogMessage Message="[BSM] Unlocking your Blacksmith job!" />
 		<If Condition="not HasQuest(65721)">
 			<If Condition="not IsOnMap(128)">
 				<GetTo ZoneId="128" XYZ="-50.23656, 42.79998, 192.5967"/>
@@ -256,12 +306,12 @@
 			<If Condition="IsOnMap(128)">
 				<MoveTo Name="Randwulf" Distance="1" UseMesh="True" XYZ="-50.23656, 42.79998, 192.5967"/>
 				<If Condition="IsQuestAcceptQualified(65721)">
-					<ConfirmTalkTo NpcId="1000995" QuestId="65721" XYZ="-50.23656, 42.79998, 192.5967"/>
+					<LLTalkTo NpcId="1000995" QuestId="65721" XYZ="-50.23656, 42.79998, 192.5967"/>
 				</If>
 			</If>
 		</If>
     </If>
-    <If Condition="not IsQuestCompleted(65827)">
+		<If Condition="not IsQuestCompleted(65827)">
 		<If Condition="not HasQuest(65827)">
 			<If Condition="not IsOnMap(128)">
 				<If Condition="not IsOnMap(129)">
@@ -274,34 +324,30 @@
 			<If Condition="IsOnMap(128)">
 				<MoveTo Name="Randwulf" Distance="1" UseMesh="True" XYZ="-50.23656, 42.79998, 192.5967"/>
 				<If Condition="IsQuestAcceptQualified(65827)">
-					<PickupQuest NpcId="1000995" QuestId="65827" XYZ="-50.23656, 42.79998, 192.5967"/>
+					<LLPickupQuest NpcId="1000995" QuestId="65827" XYZ="-50.23656, 42.79998, 192.5967"/>
 				</If>
 				<If Condition="GetQuestStep(65827) == 255">
-					<ConfirmTurnIn QuestId="65827" StepId="255" NpcId="1000997" InteractDistance="1.0" XYZ="-32.22669, 44.6637, 184.621"/>
+					<LLTurnIn QuestId="65827" StepId="255" NpcId="1000997" InteractDistance="1.0" XYZ="-32.22669, 44.6637, 184.621"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Blacksmith">
+						<ChangeClass Job="Blacksmith" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Blacksmith">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
-
-<!--Done Unlocking Blacksmith-->
+	<!--Done Unlocking Blacksmith-->
 
 
 <!-- Unlocking classes in Gridania -->
 
-<!-- Archer's Guild Aetherite -->
-<!--	<If Condition="not Managers.WorldManager.HasAetheryteId(25)">
-        <If Condition="not IsOnMap(132)">
-          <TeleportTo Name="New Gridania" AetheryteId="2" />
-        </If>
-        <If Condition="IsOnMap(132)">
-			<UseObject NpcId="25" UseTimes="1" BlacklistAfter="True" UseDistance="2" XYZ="164.0471, -2.355699, 85.37688" Radius="10"/>
-		</If>
-	</If>
--->
-	
-<!-- Unlocking Archer -->
-	<If Condition="not Core.Player.CurrentJob == Enums.ClassJobType.Archer">
+	<!-- Unlocking Archer -->
 		<If Condition="not IsQuestCompleted(65717)">
+		<LogMessage Message="[ARC] Unlocking your Archer job!" />
 			<If Condition="not HasQuest(65717)">
 				<If Condition="not IsOnMap(132)">
 					<TeleportTo Name="New Gridania" AetheryteId="2" />
@@ -309,7 +355,7 @@
 				<If Condition="IsOnMap(132)">
 					<MoveTo Name="Athelyna" Distance="1" UseMesh="True" XYZ="197.336, 0, 44.09909"/>
 					<If Condition="IsQuestAcceptQualified(65717)">
-						<ConfirmTalkTo NpcId="1000197" QuestId="65717" XYZ="197.336, 0, 44.09909"/>
+						<LLTalkTo NpcId="1000197" QuestId="65717" XYZ="197.336, 0, 44.09909"/>
 					</If>
 				</If>
 			</If>
@@ -322,19 +368,27 @@
 				<If Condition="IsOnMap(132)">
 					<MoveTo Name="Athelyna" Distance="1" UseMesh="True" XYZ="197.336, 0, 44.09909"/>
 					<If Condition="IsQuestAcceptQualified(65667)">
-						<PickupQuest NpcId="1000197" QuestId="65667" XYZ="197.336, 0, 44.09909"/>
+						<LLPickupQuest NpcId="1000197" QuestId="65667" XYZ="197.336, 0, 44.09909"/>
 					</If>
 					<If Condition="GetQuestStep(65667) == 255">
-						<ConfirmTurnIn QuestId="65667" StepId="255" NpcId="1000200" InteractDistance="1.0" XYZ="211.6598, 0.9999956, 35.18959"/>
+						<LLTurnIn QuestId="65667" StepId="255" NpcId="1000200" InteractDistance="1.0" XYZ="211.6598, 0.9999956, 35.18959"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Archer">
+							<ChangeClass Job="Archer" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Archer">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 					</If>
 				</If>
 			</If>
 		</If>
-	</If>
-<!-- Done Unlocking Archer -->
+	<!-- Done Unlocking Archer -->
 
-<!--Unlocking Carpenter -->
-    <If Condition="not IsQuestCompleted(65720)">
+	<!--Unlocking Carpenter -->
+		<If Condition="not IsQuestCompleted(65720)">
+		<LogMessage Message="[CRP] Unlocking your Carpenter job!" />
 		<If Condition="not HasQuest(65720)">
 			<If Condition="not IsOnMap(132)">
 				<TeleportTo Name="New Gridania" AetheryteId="2" />
@@ -342,12 +396,12 @@
 			<If Condition="IsOnMap(132)">
 				<MoveTo Name="Corgg" Distance="1" UseMesh="True" XYZ="-17.67216, -3.25, 45.76995"/>
 				<If Condition="IsQuestAcceptQualified(65720)">
-					<ConfirmTalkTo NpcId="1000148" QuestId="65720" XYZ="-17.67216, -3.25, 45.76995"/>
+					<LLTalkTo NpcId="1000148" QuestId="65720" XYZ="-17.67216, -3.25, 45.76995"/>
 				</If>
 			</If>
 		</If>
     </If>
-    <If Condition="not IsQuestCompleted(65674)">
+		<If Condition="not IsQuestCompleted(65674)">
 		<If Condition="not HasQuest(65674)">
 			<If Condition="not IsOnMap(132)">
 				<TeleportTo Name="New Gridania" AetheryteId="2" />
@@ -355,19 +409,27 @@
 			<If Condition="IsOnMap(132)">
 				<MoveTo Name="Corgg" Distance="1" UseMesh="True" XYZ="-17.67216, -3.25, 45.76995"/>
 				<If Condition="IsQuestAcceptQualified(65674)">
-					<PickupQuest NpcId="1000148" QuestId="65674" XYZ="-17.67216, -3.25, 45.76995"/>
+					<LLPickupQuest NpcId="1000148" QuestId="65674" XYZ="-17.67216, -3.25, 45.76995"/>
 				</If>
 				<If Condition="GetQuestStep(65674) == 255">
-					<ConfirmTurnIn QuestId="65674" StepId="255" NpcId="1000153" InteractDistance="1.0" XYZ="-45.85313, -1.250001, 57.11108"/>
+					<LLTurnIn QuestId="65674" StepId="255" NpcId="1000153" InteractDistance="1.0" XYZ="-45.85313, -1.250001, 57.11108"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Carpenter">
+						<ChangeClass Job="Carpenter" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Carpenter">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
+	<!--Done Unlocking Carpenter-->
 
-<!--Done Unlocking Carpenter-->
-
-<!--Unlocking Leatherworker-->
-    <If Condition="not IsQuestCompleted(65724)">
+	<!--Unlocking Leatherworker-->
+		<If Condition="not IsQuestCompleted(65724)">
+		<LogMessage Message="[LTW] Unlocking your Leatherworker job!" />
 		<If Condition="not HasQuest(65724)">
 			<If Condition="not IsOnMap(133)">
 				<If Condition="not IsOnMap(132)">
@@ -380,12 +442,12 @@
 			<If Condition="IsOnMap(133)">
 				<MoveTo Name="Randall" Distance="1" UseMesh="True" XYZ="63.3223, 8, -145.0385"/>
 				<If Condition="IsQuestAcceptQualified(65724)">
-					<ConfirmTalkTo NpcId="1000352" QuestId="65724" XYZ="63.3223, 8, -145.0385"/>
+					<LLTalkTo NpcId="1000352" QuestId="65724" XYZ="63.3223, 8, -145.0385"/>
 				</If>
 			</If>
 		</If>
     </If>
-    <If Condition="not IsQuestCompleted(65641)">
+		<If Condition="not IsQuestCompleted(65641)">
 		<If Condition="not HasQuest(65641)">
 			<If Condition="not IsOnMap(133)">
 				<If Condition="not IsOnMap(132)">
@@ -398,20 +460,27 @@
 			<If Condition="IsOnMap(133)">
 				<MoveTo Name="Randall" Distance="1" UseMesh="True" XYZ="63.3223, 8, -145.0385"/>
 				<If Condition="IsQuestAcceptQualified(65641)">
-					<PickupQuest NpcId="1000352" QuestId="65641" XYZ="63.3223, 8, -145.0385"/>
+					<LLPickupQuest NpcId="1000352" QuestId="65641" XYZ="63.3223, 8, -145.0385"/>
 				</If>
 				<If Condition="GetQuestStep(65641) == 255">
-					<ConfirmTurnIn QuestId="65641" StepId="255" NpcId="1000691" InteractDistance="1.0" XYZ="71.08187, 8, -165.4199"/>
+					<LLTurnIn QuestId="65641" StepId="255" NpcId="1000691" InteractDistance="1.0" XYZ="71.08187, 8, -165.4199"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Leatherworker">
+						<ChangeClass Job="Leatherworker" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Leatherworker">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
+	<!--Done Unlocking Leatherworker-->
 
-<!--Done Unlocking Leatherworker-->
-
-<!--Unlocking Conjurer-->
-	<If Condition="not Core.Player.CurrentJob == Enums.ClassJobType.Conjurer">
+	<!--Unlocking Conjurer-->
 		<If Condition="not IsQuestCompleted(65718)">
+		<LogMessage Message="[CNJ] Unlocking your Conjurer job!" />
 			<If Condition="not HasQuest(65718)">
 				<If Condition="not IsOnMap(133)">
 					<If Condition="not IsOnMap(132)">
@@ -424,7 +493,7 @@
 				<If Condition="IsOnMap(133)">
 					<MoveTo Name="Madelle" Distance="1" UseMesh="True" XYZ="-234.5071, -4.000002, -6.916752"/>
 					<If Condition="IsQuestAcceptQualified(65718)">
-						<ConfirmTalkTo NpcId="1000323" QuestId="65718" XYZ="-234.5071, -4.000002, -6.916752"/>
+						<LLTalkTo NpcId="1000323" QuestId="65718" XYZ="-234.5071, -4.000002, -6.916752"/>
 					</If>
 				</If>
 			</If>
@@ -442,21 +511,27 @@
 				<If Condition="IsOnMap(133)">
 					<MoveTo Name="Madelle" Distance="1" UseMesh="True" XYZ="-234.5071, -4.000002, -6.916752"/>
 					<If Condition="IsQuestAcceptQualified(65669)">
-						<PickupQuest NpcId="1000323" QuestId="65669" XYZ="-234.5071, -4.000002, -6.916752"/>
+						<LLPickupQuest NpcId="1000323" QuestId="65669" XYZ="-234.5071, -4.000002, -6.916752"/>
 					</If>
 					<If Condition="GetQuestStep(65669) == 255">
-						<ConfirmTurnIn QuestId="65669" StepId="255" NpcId="1000692" InteractDistance="1.0" XYZ="-256.956, -5.774297, -25.042"/>
+						<LLTurnIn QuestId="65669" StepId="255" NpcId="1000692" InteractDistance="1.0" XYZ="-256.956, -5.774297, -25.042"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Conjurer">
+							<ChangeClass Job="Conjurer" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Conjurer">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 					</If>
 				</If>
 			</If>
 		</If>
-	</If>
+	<!--Done Unlocking Conjurer-->
 
-<!--Done Unlocking Conjurer-->
-
-
-<!-- Unlocking Botanist -->
-    <If Condition="not IsQuestCompleted(65729)">
+	<!-- Unlocking Botanist -->
+		<If Condition="not IsQuestCompleted(65729)">
+		<LogMessage Message="[BTN] Unlocking your Botanist job!" />
 		<If Condition="not HasQuest(65729)">
 			<If Condition="not IsOnMap(133)">
 				<If Condition="not IsOnMap(132)">
@@ -469,12 +544,12 @@
 			<If Condition="IsOnMap(133)">
 				<MoveTo Name="Leanceault" Distance="1" UseMesh="True" XYZ="-237.854, 8, -145.268"/>
 				<If Condition="IsQuestAcceptQualified(65729)">
-					<ConfirmTalkTo NpcId="1000294" QuestId="65729" XYZ="-237.854, 8, -145.268"/>
+					<LLTalkTo NpcId="1000294" QuestId="65729" XYZ="-237.854, 8, -145.268"/>
 				</If>
 			</If>
 		</If>
     </If>
-    <If Condition="not IsQuestCompleted(65539)">
+		<If Condition="not IsQuestCompleted(65539)">
 		<If Condition="not HasQuest(65539)">
 			<If Condition="not IsOnMap(133)">
 				<If Condition="not IsOnMap(132)">
@@ -487,19 +562,27 @@
 			<If Condition="IsOnMap(133)">
 				<MoveTo Name="Leonceault" Distance="1" UseMesh="True" XYZ="-237.854, 8, -145.268"/>
 				<If Condition="IsQuestAcceptQualified(65539)">
-					<PickupQuest NpcId="1000294" QuestId="65539" XYZ="-237.854, 8, -145.268"/>
+					<LLPickupQuest NpcId="1000294" QuestId="65539" XYZ="-237.854, 8, -145.268"/>
 				</If>
 				<If Condition="GetQuestStep(65539) == 255">
-					<ConfirmTurnIn QuestId="65539" StepId="255" NpcId="1000815" InteractDistance="1.0" XYZ="-233.4313, 6.248232, -168.6552"/>
+					<LLTurnIn QuestId="65539" StepId="255" NpcId="1000815" InteractDistance="1.0" XYZ="-233.4313, 6.248232, -168.6552"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Botanist">
+						<ChangeClass Job="Botanist" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Botanist">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
-<!-- Done Unlocking Botanist -->
+	<!-- Done Unlocking Botanist -->
 
-<!-- Unlocking Lancer -->
-	<If Condition="not Core.Player.CurrentJob == Enums.ClassJobType.Lancer">
+	<!-- Unlocking Lancer -->
 		<If Condition="not IsQuestCompleted(65716)">
+		<LogMessage Message="[LNC] Unlocking your Lancer job!" />
 			<If Condition="not HasQuest(65716)">
 				<If Condition="not IsOnMap(133)">
 					<If Condition="not IsOnMap(132)">
@@ -512,7 +595,7 @@
 				<If Condition="IsOnMap(133)">
 					<MoveTo Name="Jillian" Distance="1" UseMesh="True" XYZ="143.75, 15.5, -267.9585"/>
 					<If Condition="IsQuestAcceptQualified(65716)">
-						<ConfirmTalkTo NpcId="1000251" QuestId="65716" XYZ="143.75, 15.5, -267.9585"/>
+						<LLTalkTo NpcId="1000251" QuestId="65716" XYZ="143.75, 15.5, -267.9585"/>
 					</If>
 				</If>
 			</If>
@@ -530,22 +613,30 @@
 				<If Condition="IsOnMap(133)">
 					<MoveTo Name="Jillian" Distance="1" UseMesh="True" XYZ="143.75, 15.5, -267.9585"/>
 					<If Condition="IsQuestAcceptQualified(65668)">
-						<PickupQuest NpcId="1000251" QuestId="65668" XYZ="143.75, 15.5, -267.9585"/>
+						<LLPickupQuest NpcId="1000251" QuestId="65668" XYZ="143.75, 15.5, -267.9585"/>
 					</If>
 					<If Condition="GetQuestStep(65668) == 255">
-						<ConfirmTurnIn QuestId="65668" StepId="255" NpcId="1000254" InteractDistance="1.0" XYZ="158.2932, 15.90042, -272.3665"/>
+						<LLTurnIn QuestId="65668" StepId="255" NpcId="1000254" InteractDistance="1.0" XYZ="158.2932, 15.90042, -272.3665"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Lancer">
+							<ChangeClass Job="Lancer" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Lancer">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 					</If>
 				</If>
 			</If>
 		</If>
-	</If>
-<!-- Done Unlocking Lancer -->
+	<!-- Done Unlocking Lancer -->
+
 
 <!-- Unlocking classes in Ul'dah-->
 
-<!--Unlocking Thaumaturge-->
-	<If Condition="not Core.Player.CurrentJob == Enums.ClassJobType.Thaumaturge">
+	<!--Unlocking Thaumaturge-->
 		<If Condition="not IsQuestCompleted(65719)">
+		<LogMessage Message="[THM] Unlocking your Thaumaturge job!" />
 			<If Condition="not HasQuest(65719)">
 				<If Condition="not IsOnMap(130)">
 					<TeleportTo Name="Ul'dah" AetheryteId="9" />
@@ -553,12 +644,12 @@
 				<If Condition="IsOnMap(130)">
 					<MoveTo Name="Yayake" Distance="1" UseMesh="True" XYZ="-197.8095, 18, 61.88784"/>
 					<If Condition="IsQuestAcceptQualified(65719)">
-						<ConfirmTalkTo NpcId="1002279" QuestId="65719" XYZ="-197.8095, 18, 61.88784"/>
+						<LLTalkTo NpcId="1002279" QuestId="65719" XYZ="-197.8095, 18, 61.88784"/>
 					</If>
 				</If>
 			</If>
 		</If>
-		<If Condition="not IsQuestCompleted(65880)">
+		<If Condition="not IsQuestCompleted(65880)"> 
 			<If Condition="not HasQuest(65880)">
 				<If Condition="not IsOnMap(130)">
 					<TeleportTo Name="Ul'dah" AetheryteId="9" />
@@ -566,20 +657,27 @@
 				<If Condition="IsOnMap(130)">
 					<MoveTo Name="Yatake" Distance="1" UseMesh="True" XYZ="-197.8095, 18, 61.88784"/>
 					<If Condition="IsQuestAcceptQualified(65880)">
-						<PickupQuest NpcId="1002279" QuestId="65880" XYZ="-197.8095, 18, 61.88784"/>
+						<LLPickupQuest NpcId="1002279" QuestId="65880" XYZ="-197.8095, 18, 61.88784"/>
 					</If>
 					<If Condition="GetQuestStep(65880) == 255">
-						<ConfirmTurnIn QuestId="65880" StepId="255" NpcId="1001709" InteractDistance="1.0" XYZ="-239.8579, 18.7, 82.89022"/>
+						<LLTurnIn QuestId="65880" StepId="255" NpcId="1001709" InteractDistance="1.0" XYZ="-239.8579, 18.7, 82.89022"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Thaumaturge">
+							<ChangeClass Job="Thaumaturge" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Thaumaturge">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 					</If>
 				</If>
 			</If>
 		</If>
-	</If>
-<!--Done Unlocking Thaumaturge-->
+	<!--Done Unlocking Thaumaturge-->
 
-<!--Unlocking Pugilist-->
-	<If Condition="not Core.Player.CurrentJob == Enums.ClassJobType.Pugilist">
+	<!--Unlocking Pugilist-->
 		<If Condition="not IsQuestCompleted(65714)">
+		<LogMessage Message="[PUG] Unlocking your Pugilist job!" />
 			<If Condition="not HasQuest(65714)">
 				<If Condition="not IsOnMap(130)">
 					<TeleportTo Name="Ul'dah" AetheryteId="9" />
@@ -587,7 +685,7 @@
 				<If Condition="IsOnMap(130)">
 					<MoveTo Name="Gagaruna" Distance="1" UseMesh="True" XYZ="-86.9456, 2.099863, -51.57794"/>
 					<If Condition="IsQuestAcceptQualified(65714)">
-						<ConfirmTalkTo NpcId="1001286" QuestId="65714" XYZ="-86.9456, 2.099863, -51.57794"/>
+						<LLTalkTo NpcId="1001286" QuestId="65714" XYZ="-86.9456, 2.099863, -51.57794"/>
 					</If>
 				</If>
 			</If>
@@ -600,20 +698,27 @@
 				<If Condition="IsOnMap(130)">
 					<MoveTo Name="Gagaruna" Distance="1" UseMesh="True" XYZ="-86.9456, 2.099863, -51.57794"/>
 					<If Condition="IsQuestAcceptQualified(66068)">
-						<PickupQuest NpcId="1001286" QuestId="66068" XYZ="-86.9456, 2.099863, -51.57794"/>
+						<LLPickupQuest NpcId="1001286" QuestId="66068" XYZ="-86.9456, 2.099863, -51.57794"/>
 					</If>
 					<If Condition="GetQuestStep(66068) == 255">
-						<ConfirmTurnIn QuestId="66068" StepId="255" NpcId="1003817" InteractDistance="1.0" XYZ="-76.29147, 2.000005, -42.58416"/>
+						<LLTurnIn QuestId="66068" StepId="255" NpcId="1003817" InteractDistance="1.0" XYZ="-76.29147, 2.000005, -42.58416"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Pugalist">
+							<ChangeClass Job="Pugalist" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Pugalist">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 					</If>
 				</If>
 			</If>
 		</If>
-	</If>
-<!--Done Unlocking Pugilist-->
+	<!--Done Unlocking Pugilist-->
 	
-<!--Unlocking Gladiator-->
-	<If Condition="not Core.Player.CurrentJob == Enums.ClassJobType.Gladiator">
+	<!--Unlocking Gladiator-->
 		<If Condition="not IsQuestCompleted(65713)">
+		<LogMessage Message="[GLD] Unlocking your Gladiator job!" />
 			<If Condition="not HasQuest(65713)">
 				<If Condition="not IsOnMap(131)">
 					<If Condition="not IsOnMap(130)">
@@ -626,7 +731,7 @@
 				<If Condition="IsOnMap(131)">
 					<MoveTo Name="Lulutsu" Distance="1" UseMesh="True" XYZ="-95.37389, 6.599854, 25.39494"/>
 					<If Condition="IsQuestAcceptQualified(65713)">
-						<ConfirmTalkTo NpcId="1002277" QuestId="65713" XYZ="-95.37389, 6.599854, 25.39494"/>
+						<LLTalkTo NpcId="1002277" QuestId="65713" XYZ="-95.37389, 6.599854, 25.39494"/>
 					</If>
 				</If>
 			</If>
@@ -644,19 +749,27 @@
 				<If Condition="IsOnMap(131)">
 					<MoveTo Name="Lulutsu" Distance="1" UseMesh="True" XYZ="-95.37389, 6.599854, 25.39494"/>
 					<If Condition="IsQuestAcceptQualified(65821)">
-						<PickupQuest NpcId="1002277" QuestId="65821" XYZ="-95.37389, 6.599854, 25.39494"/>
+						<LLPickupQuest NpcId="1002277" QuestId="65821" XYZ="-95.37389, 6.599854, 25.39494"/>
 					</If>
 					<If Condition="GetQuestStep(65821) == 255">
-						<ConfirmTurnIn QuestId="65821" StepId="255" NpcId="1001739" InteractDistance="1.0" XYZ="-95.20937, 6.500001, 38.19135"/>
+						<LLTurnIn QuestId="65821" StepId="255" NpcId="1001739" InteractDistance="1.0" XYZ="-95.20937, 6.500001, 38.19135"/>
+						<WaitTimer WaitTime="2"/>
+						<If Condition="ClassName != ClassJobType.Gladiator">
+							<ChangeClass Job="Gladiator" />
+						</If>		
+						<If Condition="ClassName == ClassJobType.Gladiator">
+							<AutoEquip UpdateGearSet="true"/>
+							<WaitTimer WaitTime="5"/>
+						</If>
 					</If>
 				</If>
 			</If>
 		</If>
-	</If>
-<!--Done Unlocking Gladiator-->
+	<!--Done Unlocking Gladiator-->
 	
-<!--Unlocking Goldsmith-->
-    <If Condition="not IsQuestCompleted(65723)">
+	<!--Unlocking Goldsmith-->
+		<If Condition="not IsQuestCompleted(65723)">
+		<LogMessage Message="[GSM] Unlocking your Goldsmith job!" />
 		<If Condition="not HasQuest(65723)">
 			<If Condition="not IsOnMap(131)">
 				<If Condition="not IsOnMap(130)">
@@ -669,12 +782,12 @@
 			<If Condition="IsOnMap(131)">
 				<MoveTo Name="Jemime" Distance="1" UseMesh="True" XYZ="-34.21239, 13.59995, 98.9277"/>
 				<If Condition="IsQuestAcceptQualified(65723)">
-					<ConfirmTalkTo NpcId="1002280" QuestId="65723" XYZ="-34.21239, 13.59995, 98.9277"/>
+					<LLTalkTo NpcId="1002280" QuestId="65723" XYZ="-34.21239, 13.59995, 98.9277"/>
 				</If>
 			</If>
 		</If>
 	</If>
-    <If Condition="not IsQuestCompleted(66144)">
+		<If Condition="not IsQuestCompleted(66144)">
 		<If Condition="not HasQuest(66144)">
 			<If Condition="not IsOnMap(131)">
 				<If Condition="not IsOnMap(130)">
@@ -687,19 +800,27 @@
 			<If Condition="IsOnMap(131)">
 				<MoveTo Name="Jemime" Distance="1" UseMesh="True" XYZ="-34.21239, 13.59995, 98.9277"/>
 				<If Condition="IsQuestAcceptQualified(66144)">
-					<PickupQuest NpcId="1002280" QuestId="66144" XYZ="-34.21239, 13.59995, 98.9277"/>
+					<LLPickupQuest NpcId="1002280" QuestId="66144" XYZ="-34.21239, 13.59995, 98.9277"/>
 				</If>
 				<If Condition="GetQuestStep(66144) == 255">
-					<ConfirmTurnIn QuestId="66144" StepId="255" NpcId="1004093" InteractDistance="1.0" XYZ="-25.54107, 12.2, 109.7778"/>
+					<LLTurnIn QuestId="66144" StepId="255" NpcId="1004093" InteractDistance="1.0" XYZ="-25.54107, 12.2, 109.7778"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Goldsmith">
+						<ChangeClass Job="Goldsmith" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Goldsmith">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
+	<!--Done Unlocking Goldsmith-->
 
-<!--Done Unlocking Goldsmith-->
-
-<!--Unlocking Miner-->
-    <If Condition="not IsQuestCompleted(65728)">
+	<!--Unlocking Miner-->
+		<If Condition="not IsQuestCompleted(65728)">
+		<LogMessage Message="[MIN] Unlocking your Miner job!" />
 		<If Condition="not HasQuest(65728)">
 			<If Condition="not IsOnMap(131)">
 				<If Condition="not IsOnMap(130)">
@@ -712,12 +833,12 @@
 			<If Condition="IsOnMap(131)">
 				<MoveTo Name="Linette" Distance="1" UseMesh="True" XYZ="1.417394, 7.599999, 153.6795"/>
 				<If Condition="IsQuestAcceptQualified(65728)">
-					<ConfirmTalkTo NpcId="1002282" QuestId="65728" XYZ="1.417394, 7.599999, 153.6795"/>
+					<LLTalkTo NpcId="1002282" QuestId="65728" XYZ="1.417394, 7.599999, 153.6795"/>
 				</If>
 			</If>
 		</If>
 	</If>
-    <If Condition="not IsQuestCompleted(66133)">
+		<If Condition="not IsQuestCompleted(66133)">
 		<If Condition="not HasQuest(66133)">
 			<If Condition="not IsOnMap(131)">
 				<If Condition="not IsOnMap(130)">
@@ -730,20 +851,27 @@
 			<If Condition="IsOnMap(131)">
 				<MoveTo Name="Linette" Distance="1" UseMesh="True" XYZ="1.417394, 7.599999, 153.6795"/>
 				<If Condition="IsQuestAcceptQualified(66133)">
-					<PickupQuest NpcId="1002282" QuestId="66133" XYZ="1.417394, 7.599999, 153.6795"/>
+					<LLPickupQuest NpcId="1002282" QuestId="66133" XYZ="1.417394, 7.599999, 153.6795"/>
 				</If>
 				<If Condition="GetQuestStep(66133) == 255">
-					<ConfirmTurnIn QuestId="66133" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.52736, 6.2, 157.8005"/>
+					<LLTurnIn QuestId="66133" StepId="255" NpcId="1002298" InteractDistance="1.0" XYZ="-16.52736, 6.2, 157.8005"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Miner">
+						<ChangeClass Job="Miner" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Miner">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
+	<!--Done Unlocking Miner-->
 
-<!--Done Unlocking Miner-->
-
-
-<!--Unlocking Weaver-->
-    <If Condition="not IsQuestCompleted(65725)">
+	<!--Unlocking Weaver-->
+		<If Condition="not IsQuestCompleted(65725)">
+		<LogMessage Message="[WVR] Unlocking your Weaver job!" />
 		<If Condition="not HasQuest(65725)">
 			<If Condition="not IsOnMap(131)">
 				<If Condition="not IsOnMap(130)">
@@ -756,12 +884,12 @@
 			<If Condition="IsOnMap(131)">
 				<MoveTo Name="Maronne" Distance="1" UseMesh="True" XYZ="136.8372, 7.591891, 97.83977"/>
 				<If Condition="IsQuestAcceptQualified(65725)">
-					<ConfirmTalkTo NpcId="1002283" QuestId="65725" XYZ="136.8372, 7.591891, 97.83977"/>
+					<LLTalkTo NpcId="1002283" QuestId="65725" XYZ="136.8372, 7.591891, 97.83977"/>
 				</If>
 			</If>
 		</If>
     </If>
-    <If Condition="not IsQuestCompleted(66070)">
+		<If Condition="not IsQuestCompleted(66070)">
 		<If Condition="not HasQuest(66070)">
 			<If Condition="not IsOnMap(131)">
 				<If Condition="not IsOnMap(130)">
@@ -774,19 +902,27 @@
 			<If Condition="IsOnMap(131)">
 				<MoveTo Name="Maronne" Distance="1" UseMesh="True" XYZ="136.8372, 7.591891, 97.83977"/>
 				<If Condition="IsQuestAcceptQualified(66070)">
-					<PickupQuest NpcId="1002283" QuestId="66070" XYZ="136.8372, 7.591891, 97.83977"/>
+					<LLPickupQuest NpcId="1002283" QuestId="66070" XYZ="136.8372, 7.591891, 97.83977"/>
 				</If>
 				<If Condition="GetQuestStep(66070) == 255">
-					<ConfirmTurnIn QuestId="66070" StepId="255" NpcId="1003818" InteractDistance="1.0" XYZ="156.6901, 7.792007, 100.3423"/>
+					<LLTurnIn QuestId="66070" StepId="255" NpcId="1003818" InteractDistance="1.0" XYZ="156.6901, 7.792007, 100.3423"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Weaver">
+						<ChangeClass Job="Weaver" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Weaver">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
+	<!--Done Unlocking Weaver-->
 
-<!--Done Unlocking Weaver-->
-
-<!--Unlocking Alchemist-->
-    <If Condition="not IsQuestCompleted(65726)">
+	<!--Unlocking Alchemist-->
+		<If Condition="not IsQuestCompleted(65726)">
+		<LogMessage Message="[ALC] Unlocking your Alchemist job!" />
 		<If Condition="not HasQuest(65726)">
 			<If Condition="not IsOnMap(131)">
 				<If Condition="not IsOnMap(130)">
@@ -799,12 +935,12 @@
 			<If Condition="IsOnMap(131)">
 				<MoveTo Name="Deitrich" Distance="1" UseMesh="True" XYZ="-114.7261, 41.59998, 120.8445"/>
 				<If Condition="IsQuestAcceptQualified(65726)">
-					<ConfirmTalkTo NpcId="1002281" QuestId="65726" XYZ="-114.7261, 41.59998, 120.8445"/>
+					<LLTalkTo NpcId="1002281" QuestId="65726" XYZ="-114.7261, 41.59998, 120.8445"/>
 				</If>
 			</If>
       </If>
     </If>
-    <If Condition="not IsQuestCompleted(66111)">
+		<If Condition="not IsQuestCompleted(66111)">
 		<If Condition="not HasQuest(66111)">
 			<If Condition="not IsOnMap(131)">
 				<If Condition="not IsOnMap(130)">
@@ -817,16 +953,440 @@
 			<If Condition="IsOnMap(131)">
 				<MoveTo Name="Deitrich" Distance="1" UseMesh="True" XYZ="-114.7261, 41.59998, 120.8445"/>
 				<If Condition="IsQuestAcceptQualified(66111)">
-					<PickupQuest NpcId="1002281" QuestId="66111" XYZ="-114.7261, 41.59998, 120.8445"/>
+					<LLPickupQuest NpcId="1002281" QuestId="66111" XYZ="-114.7261, 41.59998, 120.8445"/>
 				</If>
 				<If Condition="GetQuestStep(66111) == 255">
-					<ConfirmTurnIn QuestId="66111" StepId="255" NpcId="1002299" InteractDistance="1.0" XYZ="-98.68385, 40.2, 122.3508"/>
+					<LLTurnIn QuestId="66111" StepId="255" NpcId="1002299" InteractDistance="1.0" XYZ="-98.68385, 40.2, 122.3508"/>
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Alchemist">
+						<ChangeClass Job="Alchemist" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Alchemist">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
 				</If>
 			</If>
 		</If>
     </If>
+	<!--Done Unlocking Alchemist-->
 
-<!--Done Unlocking Alchemist-->
 
-  </Order>
+<!-- Unlocking Heavensward Classes-->
+
+	<!-- Heavensward Check -->
+	    <If Condition="not IsQuestCompleted(65964)">
+            <LogMessage Message="[Pre-Requisite Check] You haven't completed the Before the Fall quest yet!" />
+            <LogMessage Message="[Pre-Requisite Check] Please complete A Realm Reborn and proceed to Heavensward if you would like to unlock Astralogian, Dark Knight, and Machinist jobs!" />
+            <LLStopBot/>
+        </If>
+	<!--End Heavensward Check -->
+
+	<!--Unlocking Astralogian -->
+		<If Condition="not IsQuestCompleted(67548)">
+
+            <LogMessage Message="[AST] Unlocking your Astrologian job!" />
+
+            <If Condition="not HasQuest(67548)">
+                <GetTo ZoneId="419" XYZ="202.3804, -5.399966, -58.9151" /> <!-- Jannequinard -->
+                <RunCode Name="Stairway_to_the_Heavens" />
+                <If Condition="IsQuestAcceptQualified(67548)">
+                    <LLPickupQuest NpcId="1012222" QuestId="67548" XYZ="202.3804, -5.399966, -58.9151" />
+                </If>
+            </If>
+            <If Condition="HasQuest(67548)">
+                <If Condition="GetQuestStep(67548) == 1">
+                    <GetTo ZoneId="419" XYZ="202.3804, -5.399966, -58.9151" /> <!-- Jannequinard -->
+                    <LLTalkTo NpcId="1012222" XYZ="202.3804, -5.399966, -58.9151" QuestId="67548" StepId="1" />
+                </If>
+                <While Condition="GetQuestStep(67548) == 2">
+                    <GetTo ZoneId="419" XYZ="195.0865, -5.399962, -65.65961" /> <!-- Heurriette -->
+                    <LLTalkTo NpcId="1012221" XYZ="195.0865, -5.399962, -65.65961" QuestId="67548" StepId="2" />
+                    <LLTalkTo NpcId="1012223" XYZ="188.7083, -5.399966, -68.83344" QuestId="67548" StepId="2" />
+                    <LLTalkTo NpcId="1012224" XYZ="175.1277, -5.434915, -57.93854" QuestId="67548" StepId="2" />
+                </While>
+                <If Condition="GetQuestStep(67548) == 3">
+                    <GetTo ZoneId="419" XYZ="202.3804, -5.399966, -58.9151" /> <!-- Jannequinard -->
+                    <LLTalkTo NpcId="1012222" XYZ="202.3804, -5.399966, -58.9151" QuestId="67548" StepId="3" />
+                </If>
+                <If Condition="GetQuestStep(67548) == 4">
+                    <GetTo ZoneId="155" XYZ="198.6571, 293.33, 418.5701" /> <!-- Jannequinard -->
+                    <LLTalkTo NpcId="1014980" XYZ="198.6571, 293.33, 418.5701" QuestId="67548" StepId="4" />
+                </If>
+                <If Condition="GetQuestStep(67548) == 5">
+                    <GetTo ZoneId="153" XYZ="182.9709, 7.488976, -46.83002" /> <!-- Jannequinard -->
+                    <LLTalkTo NpcId="1014931" XYZ="182.9709, 7.488976, -46.83002" QuestId="67548" StepId="5" />
+                </If>
+                <If Condition="GetQuestStep(67548) == 255">
+                    <GetTo ZoneId="153" XYZ="184.4968, 14.11746, 51.92639" /> <!-- Quimperain -->
+                    <LLTurnIn QuestId="67548" NpcId="1014925" XYZ="184.4968, 14.11746, 51.92639" />
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Astralogian">
+						<ChangeClass Job="Astralogian" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Astralogian">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
+                </If>
+            </If>
+        </If>
+	<!--Done Unlocking Astralogian -->
+	
+	<!--Unlocking Dark Knight -->
+		<If Condition="not IsQuestCompleted(67589)">
+            <LogMessage Message="[DRK] Unlocking your Dark Knight job!" />
+            <If Condition="not HasQuest(67589)">
+                <GetTo ZoneId="419" XYZ="101.5792, 12.4182, -117.6013" /> <!-- Ishgardian Citizen -->
+                <RunCode Name="Our_End" />
+                <If Condition="IsQuestAcceptQualified(67589)">
+                    <LLPickupQuest NpcId="1014873" QuestId="67589" XYZ="101.5792, 12.4182, -117.6013" />
+                </If>
+            </If>
+            <If Condition="HasQuest(67589)">
+                <If Condition="GetQuestStep(67589) == 1">
+                    <GetTo ZoneId="418" XYZ="5.783081, -2.080677, 45.39551" /> <!-- Punctilious Temple Knight -->
+                    <LLTalkTo NpcId="1014876" XYZ="5.783081, -2.080677, 45.39551" QuestId="67589" StepId="1" />
+                </If>
+                <If Condition="GetQuestStep(67589) == 255">
+                    <GetTo ZoneId="418" XYZ="6.912292, -1.921014, 47.2876" /> <!-- Fray -->
+                    <LLTurnIn QuestId="67589" NpcId="1014875" XYZ="6.912292, -1.921014, 47.2876" />
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.DarkKnight">
+						<ChangeClass Job="DarkKnight" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.DarkKnight">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
+                </If>
+            </If>
+        </If>
+	<!--Done Unlocking Dark Knight -->
+	
+	<!--Unlocking Machinist -->
+	    <If Condition="not IsQuestCompleted(67232)">
+
+            <LogMessage Message="[MST] Unlocking your Machinist job!" />
+
+            <If Condition="not HasQuest(67232)">
+                <GetTo ZoneId="418" XYZ="-154.3146, 16.99999, -53.3609" /> <!-- Stephanivien -->
+                <RunCode Name="Savior_of_Skysteel" />
+                <If Condition="IsQuestAcceptQualified(67232)">
+                    <LLPickupQuest NpcId="1014577" QuestId="67232" XYZ="-154.3146, 16.99999, -53.3609" />
+                </If>
+            </If>
+            <If Condition="HasQuest(67232)">
+                <If Condition="GetQuestStep(67232) == 1">
+                    <GetTo ZoneId="418" XYZ="-154.3146, 16.99999, -53.3609" /> <!-- Stephanivien -->
+                    <LLTalkTo NpcId="1014577" XYZ="-154.3146, 16.99999, -53.3609" QuestId="67232" StepId="1" />
+                </If>
+                <If Condition="GetQuestStep(67232) == 2">
+                    <GetTo ZoneId="180" XYZ="-73.16705, 64.60867, -248.0965" /> <!-- Stephanivien -->
+                    <LLTalkTo NpcId="1014731" XYZ="-73.16705, 64.60867, -248.0965" QuestId="67232" StepId="2" />
+                </If>
+                <While Condition="GetQuestStep(67232) == 3">
+                    <GetTo ZoneId="180" XYZ="-98.43597, 64.48862, -215.5642" /> <!-- Grinning Private -->
+                    <LLTalkTo NpcId="1014733" XYZ="-98.43597, 64.48862, -215.5642" QuestId="67232" StepId="3" />
+                    <LLTalkTo NpcId="1014735" XYZ="-112.6269, 64.39167, -200.1221" QuestId="67232" StepId="3" />
+                    <LLTalkTo NpcId="1014734" XYZ="-147.8141, 64.37568, -220.5692" QuestId="67232" StepId="3" />
+                </While>
+                <If Condition="GetQuestStep(67232) == 4">
+                    <GetTo ZoneId="180" XYZ="-73.16705, 64.60867, -248.0965" /> <!-- Stephanivien -->
+                    <LLTalkTo NpcId="1014731" XYZ="-73.16705, 64.60867, -248.0965" QuestId="67232" StepId="4" />
+                </If>
+                <If Condition="GetQuestStep(67232) == 255">
+                    <GetTo ZoneId="180" XYZ="-99.25995, 62.38235, -182.7878" /> <!-- Stephanivien -->
+                    <LLTurnIn QuestId="67232" NpcId="1014736" XYZ="-99.25995, 62.38235, -182.7878" />
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Machinist">
+						<ChangeClass Job="Machinist" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Machinist">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
+                </If>
+            </If>
+        </If>
+
+
+<!-- Unlocking Stormblood Classes-->
+
+	<!-- Stormblood Check -->
+		<If Condition="not IsQuestCompleted(67895)">
+            <LogMessage Message="[Pre-Requisite Check] You haven't completed The Far Edge of Fate quest yet!" />
+            <LogMessage Message="[Pre-Requisite Check] Please complete Heavensward and proceed to Stormblood if you would like to unlock your Red Mage and Samurai jobs!" />
+            <StopBot/>
+        </If>
+	<!--End Stormblood Check -->
+	
+	<!--Unlocking Red Mage -->
+		<If Condition="not IsQuestCompleted(68112)">
+
+            <LogMessage Message="[RDM] Unlocking your Red Mage job!" />
+
+            <If Condition="not HasQuest(68112)">
+                <GetTo ZoneId="131" XYZ="146.1051, 4, 25.22314" /> <!-- Distraught Lass -->
+                <If Condition="IsQuestAcceptQualified(68112)">
+                    <LLPickupQuest NpcId="1021425" QuestId="68112" XYZ="146.1051, 4, 25.22314" />
+                </If>
+            </If>
+            <If Condition="HasQuest(68112)">
+                <If Condition="GetQuestStep(68112) == 1">
+                    <GetTo ZoneId="141" XYZ="124.0405, 5.292755, 559.6552" /> <!-- Well-dressed Lass -->
+                    <LLTalkTo NpcId="1021426" XYZ="124.0405, 5.292755, 559.6552" QuestId="68112" StepId="1" />
+                </If>
+                <If Condition="GetQuestStep(68112) == 2">
+                    <GetTo ZoneId="141" XYZ="125.719, 5.292949, 558.9531" /> <!-- Red-garbed Traveler -->
+                    <LLTalkTo NpcId="1021434" XYZ="125.719, 5.292949, 558.9531" QuestId="68112" StepId="2" />
+                </If>
+                <If Condition="GetQuestStep(68112) == 3">
+                	<GetTo ZoneId="131" XYZ="146.1051, 4, 25.22314" /> <!-- Distraught Lass -->
+                    <LLTalkTo NpcId="1021435" XYZ="146.1051, 4, 25.22314" QuestId="68112" StepId="3" />
+                </If>
+                <If Condition="GetQuestStep(68112) == 4">
+                    <GetTo ZoneId="141" XYZ="-96.84906, -11.35, -47.3183" /> <!-- X'rhun Tia -->
+                    <LLTalkTo NpcId="1021438" XYZ="-96.84906, -11.35, -47.3183" QuestId="68112" StepId="4" />
+                </If>
+                <If Condition="GetQuestStep(68112) == 255">
+                    <GetTo ZoneId="141" XYZ="-96.84906, -11.35, -47.3183" /> <!-- X'rhun Tia -->
+                    <LLTurnIn QuestId="68112" NpcId="1021438" XYZ="-96.84906, -11.35, -47.3183" />
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.RedMage">
+						<ChangeClass Job="RedMage" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.RedMage">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
+                </If>
+            </If>
+        </If>
+	<!--Done Unlocking Red Mage -->
+	
+	<!--Unlocking Samurai -->
+		<If Condition="not IsQuestCompleted(68095)">
+
+            <LogMessage Message="[SAM] Unlocking your Samurai job!" />
+
+            <If Condition="not HasQuest(68095)">
+                <GetTo ZoneId="130" XYZ="-98.43597, 4, -104.9974" /> <!-- Ul'dahn Citizen -->
+                <If Condition="IsQuestAcceptQualified(68095)">
+                    <LLPickupQuest NpcId="1021829" QuestId="68095" XYZ="-98.43597, 4, -104.9974" />
+                </If>
+            </If>
+            <If Condition="HasQuest(68095)">
+                <If Condition="GetQuestStep(68095) == 1">
+                    <GetTo ZoneId="131" XYZ="-102.0677, 6.984566, 12.00879" /> <!-- Silver-tongued Showmaster -->
+                    <LLTalkTo NpcId="1021830" XYZ="-102.0677, 6.984566, 12.00879" QuestId="68095" StepId="1" />
+                </If>
+                <If Condition="GetQuestStep(68095) == 255">
+                    <GetTo ZoneId="131" XYZ="-89.28058, 2.150003, 59.73901" /> <!-- Far Eastern Elder -->
+                    <LLTurnIn QuestId="68095" NpcId="1021834" XYZ="-89.28058, 2.150003, 59.73901" />
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.Samurai">
+						<ChangeClass Job="Samurai" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.Samurai">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
+                </If>
+            </If>
+        </If>
+	<!--Done Unlocking Samurai -->
+	
+	<!--Unlocking Blue Mage-->
+		<If Condition="not IsQuestCompleted(68728)">
+			<LogMessage Message="[BLM] Unlocking your Blue Mage job!" />
+			<If Condition="not HasQuest(68728)">
+				<GetTo ZoneId="129" XYZ="-65.26305, 18.00033, -9.833294" /> <!-- Zealous Yellowjacket-->
+				<If Condition="IsQuestAcceptQualified(68728)">
+					<LLPickupQuest NpcId="1026928" QuestId="68728" XYZ="-65.26305, 18.00033, -9.833294" />
+				</If>
+			</If>
+			<If Condition="HasQuest(68728)">
+                <If Condition="GetQuestStep(68728) == 1">
+                    <GetTo ZoneId="134" XYZ="-69.93115, 43.91302, -3.271984" /> <!-- Zealous Yellowjacket-->
+                    <LLTalkTo InteractDistance="3.0" QuestId="68728" StepId="1" NpcId="1026929" XYZ="-69.87109, 43.83883, -5.661133" />
+                </If>
+				<If Condition="GetQuestStep(68728) == 2">
+					<GetTo ZoneId="134" XYZ="170.8552, 62.7655, 275.2574" /> <!-- Zealous Yellowjacket-->
+					<LLTalkTo InteractDistance="3.0" QuestId="68728" StepId="2" NpcId="1026936" XYZ="170.8552, 62.7655, 275.2574" />
+				</If>
+				<If Condition="GetQuestStep(68728) == 3">
+					<GetTo ZoneId="135" XYZ="156.6338, 12.12639, 649.3781" /> <!-- Zealous Yellowjacket-->
+					<LLTalkTo InteractDistance="3.0" QuestId="68728" StepId="3" NpcId="1028430" XYZ="156.6338, 12.12639, 649.3781" />
+				</If>
+				<If Condition="GetQuestStep(68728) == 4">
+					<GetTo ZoneId="135" XYZ="-85.40479, 2.542797, 728.542" /> <!-- Zealous Yellowjacket-->
+					<LLTalkTo InteractDistance="3.0" QuestId="68728" StepId="4" NpcId="1026930" XYZ="-85.40479, 2.542797, 728.542" />
+				</If>
+				<If Condition="GetQuestStep(68728) == 255">
+					<GetTo ZoneId="135" XYZ="-105.9129, 1.572371, 750.0571" /> <!-- Martyn-->
+					<LLTurnIn QuestId="68728" NpcId="1026932" XYZ="-105.9129, 1.572371, 750.0571" />
+					<WaitTimer WaitTime="2"/>
+					<If Condition="ClassName != ClassJobType.BlueMage">
+						<ChangeClass Job="BlueMage" />
+					</If>		
+					<If Condition="ClassName == ClassJobType.BlueMage">
+						<AutoEquip UpdateGearSet="true"/>
+						<WaitTimer WaitTime="5"/>
+					</If>
+				</If>
+            </If>
+		</If>
+	<!--Done Unlocking Blue Mage-->
+	
+	
+<!-- Unlocking Shadowbringers Classes -->
+
+	<!--Unlocking Dancer-->
+		<If Condition="not IsQuestCompleted(68785)">
+		<LogMessage Message="[DNC] Unlocking your Dancer job!" />
+			<GetTo ZoneId="129" XYZ="-70.89236, 20.00033, 41.06253"/>
+			<If Condition="IsQuestAcceptQualified(68785)">
+				<LLPickupQuest QuestId="68785" NpcId="1028721" XYZ="-70.54254, 20.00033, 42.16064"/>
+			</If>
+		</If>
+		<If Condition="HasQuest(68785) and not IsQuestCompleted(68785) and GetQuestStep(68785) == 1">
+			<If Condition="not IsOnMap(129)">
+				<GetTo ZoneId="129" XYZ="-112.0576, 5.999999, 188.3807"/>
+			</If>
+			<LLTalkTo NpcId="1028723" XYZ="-112.1386, 6, 189.6848" QuestId="68785" StepId="1"/>
+		</If>
+		<If Condition="HasQuest(68785) and not IsQuestCompleted(68785) and GetQuestStep(68785) == 2">
+			<If Condition="not IsOnMap(129)">
+				<GetTo ZoneId="129" XYZ="-112.1142, 5.999999, 185.6542"/>
+			</If>
+			<UseObject NpcId="2009763" XYZ="-112.0165, 6.027222, 184.863" QuestId="68785" StepId="2"/>
+		</If>
+		<If Condition="HasQuest(68785) and not IsQuestCompleted(68785) and GetQuestStep(68785) == 255">
+			<If Condition="not IsOnMap(129)">
+				<GetTo ZoneId="129" XYZ="-105.5038, 5.999999, 194.248"/>
+			</If>
+			<LLTurnIn QuestId="68785" NpcId="1028724" XYZ="-104.3259, 5.999999, 195.941"/>
+			<WaitTimer WaitTime="2"/>
+			<If Condition="ClassName != ClassJobType.Dancer">
+				<ChangeClass Job="Dancer" />
+			</If>		
+			<If Condition="ClassName == ClassJobType.Dancer">
+				<AutoEquip UpdateGearSet="true"/>
+				<WaitTimer WaitTime="5"/>
+			</If>
+		</If>
+	<!--End Unlocking Dancer -->
+
+	<!--Unlocking Gunbreaker-->
+		<If Condition="not IsQuestCompleted(68797)">
+		<LogMessage Message="[GNB] Unlocking your Gunbreaker job!" />
+			<If Condition="not HasQuest(68797)">
+				<GetTo ZoneId="132" XYZ="15.74765, -1.504427, 39.0001" /> <!-- Gods' Quiver Bow-->
+				<If Condition="IsQuestAcceptQualified(68797)">
+					<LLPickupQuest QuestId="68797" NpcId="1029028" XYZ="15.74765, -1.504427, 39.0001"/>
+				</If>
+			</If>
+			<If Condition="GetQuestStep(68797) == 1">
+				<GetTo ZoneId="152" XYZ="-244.1596, 5.935669, 80.03345" />
+				<UseObject NpcIds="2010237" XYZ="-244.1596, 5.935669, 80.03345"  Radius="25"  QuestId="68797" StepId="1"/>
+			</If>
+			<If Condition="GetQuestStep(68797) == 2">
+				<GetTo ZoneId="152" XYZ="-218.1137, 11.81297, 18.75217" /> <!-- Vicious Highwayman-->
+				<Grind grindRef="Gunblade" while="GetQuestStep(68797) == 2" />
+			</If>
+			<If Condition="GetQuestStep(68797) == 3">
+				<GetTo ZoneId="152" XYZ="-214.6487, 11.98001, 25.40625" /> <!-- Weary Swordsman-->
+				<LLTalkTo InteractDistance="3.0" QuestId="68797" StepId="3" NpcId="1029029" XYZ="-214.6487, 11.98001, 25.40625" />
+			</If>
+			<If Condition="GetQuestStep(68797) == 255">
+				<GetTo ZoneId="152" XYZ="-214.6793, 11.97104, 25.19263" /> <!-- Radovan-->
+				<LLTurnIn QuestId="68797" NpcId="1029033" XYZ="-214.6793, 11.97104, 25.19263" />
+				<WaitTimer WaitTime="2"/>
+				<If Condition="ClassName != ClassJobType.Gunbreaker">
+					<ChangeClass Job="Gunbreaker" />
+				</If>		
+				<If Condition="ClassName == ClassJobType.Gunbreaker">
+					<AutoEquip UpdateGearSet="true"/>
+					<WaitTimer WaitTime="5"/>
+				</If>
+			</If>
+		</If>
+	<!--End Unlocking Gunbreaker-->
+
+
+ </Order>
+  <CodeChunks>
+		<CodeChunk Name="Stairway_to_the_Heavens">
+			<![CDATA[ 
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.GameObjectManager.GetObjectByNPCId(1012222).Interact();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				if (ff14bot.RemoteWindows.SelectYesno.IsOpen)
+					ff14bot.RemoteWindows.SelectYesno.ClickYes();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(500);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				if (ff14bot.RemoteWindows.SelectYesno.IsOpen)
+					ff14bot.RemoteWindows.SelectYesno.ClickYes();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(500);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(10000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Our_End">
+			<![CDATA[ 
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.GameObjectManager.GetObjectByNPCId(1014873).Interact();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(500);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				if (ff14bot.RemoteWindows.SelectYesno.IsOpen)
+					ff14bot.RemoteWindows.SelectYesno.ClickYes();
+				await Coroutine.Sleep(6000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(10000);
+			]]>
+		</CodeChunk>
+		<CodeChunk Name="Savior_of_Skysteel">
+			<![CDATA[ 
+				await Coroutine.Sleep(1000);
+				ff14bot.Managers.GameObjectManager.GetObjectByNPCId(1014577).Interact();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(500);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(2000);
+				if (ff14bot.RemoteWindows.SelectYesno.IsOpen)
+					ff14bot.RemoteWindows.SelectYesno.ClickYes();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(4000);
+				ff14bot.RemoteWindows.Talk.Next();
+				await Coroutine.Sleep(10000);
+			]]>
+		</CodeChunk>
+	</CodeChunks>
 </Profile>

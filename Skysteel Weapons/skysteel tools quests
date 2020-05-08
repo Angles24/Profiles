@@ -1,0 +1,58 @@
+
+--PICKUP QUEST
+Mislaid Plans 69384
+Pre Quest - Towards the Firmament - 69208
+npc id - 1032897
+XYZ - 418 150.3899, -20, 64.72313
+Dialog - 1 ??
+
+--STEP 255
+npc id - 1032898
+XYZ - 418 -163.47, 16.97958, -29.31262
+Choose class first
+OPEN COFFER
+
+--PICKUP QUEST
+Work It Harder, Make It Better - 69385
+Pre Quest - 69384
+npc id - 1032898
+XYZ - 418 -163.47, 16.97958, -29.31262
+
+
+29612 - skysteel saw
+29613 - skysteel cross-pein hammer
+29614 - skysteel raising hammer
+29615 - skysteel lapidary hammer
+29616 - skysteel round knife
+29617 - skysteel needle
+29618 - skysteel alembic
+29619 - skysteel frypan
+29620 - skysteel hatchet
+29621 - skysteel pickaxe
+29622 - skysteel fishing rod
+
+29623 - skysteel saw +1
+29624 - skysteel cross-pein hammer +1
+29625 - skysteel raising hammer +1
+29626 - skysteel lapidary hammer +1
+29627 - skysteel round knife +1
+29628 - skysteel needle +1
+29629 - skysteel alembic +1
+29630 - skysteel frypan +1
+29631 - skysteel hatchet +1
+29632 - skysteel pickaxe +1
+29633 - skysteel fishing rod +1
+
+29634 - dragonsung saw
+29635 - dragonsung cross-pein hammer
+29636 - dragonsung raising hammer
+29637 - dragonsung lapidary hammer
+29638 - dragonsung round knife
+29639 - dragonsung needle
+29640 - dragonsung alembic
+29641 - dragonsung skillet
+29642 - dragonsung hatchet
+29643 - dragonsung pickaxe
+29644 - dragonsung fishing rod
+
+

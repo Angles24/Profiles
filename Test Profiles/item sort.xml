@@ -6,25 +6,17 @@ Blank Profile
 	<Name>Blank Profile</Name>
 	<Order>	
 	
-	
-		<If Condition="not IsOnMap(137) or IsOnMap(137)">
-									<GetTo ZoneId="478" XYZ="79.79,207.03,1.59" />
-								</If>
-		
-	
+		<RunCode Name="Sort"/>
 	
 	</Order>
 	<CodeChunks>
-	<CodeChunk Name="SkysteelARM3">
+	<CodeChunk Name="Sort">
 		<![CDATA[ 
-				BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
-				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
-				{
-					if(slot.RawItemId == 29636)
-					{
-						slot.Move(EquipSlot);
-					}
-				}
+				await Buddy.Coroutines.Coroutine.Sleep(1000);
+				ff14bot.Managers.ChatManager.SendChat("/itemsort condition inventory hq des");
+				await Buddy.Coroutines.Coroutine.Sleep(1000);
+				ff14bot.Managers.ChatManager.SendChat("/itemsort execute inventory");
+				await Buddy.Coroutines.Coroutine.Sleep(1000);
 		]]>
 	</CodeChunk>
 	<CodeChunk Name="SwitchCombatJob">

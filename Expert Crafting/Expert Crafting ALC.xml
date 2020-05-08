@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Authors: Angles24 
+-->
+<!DOCTYPE Profile [<!-- Profile Settings -->
+
+<!ENTITY craftsmans_command_7 "200">
+<!ENTITY craftsmans_command_8 "100">
+<!ENTITY craftsmans_competence_7 "200">
+<!ENTITY craftsmans_competence_8 "100">
+<!ENTITY craftsmans_cunning_7 "200">
+<!ENTITY craftsmans_cunning_8 "100">
+]>
+<Profile>
+<Name>Expert Crafting ALC</Name>
+<Order>	
+
+	<!-- Buy -->
+	<If Condition="(ItemCount(25196) &lt; &craftsmans_command_7;) and (ItemCount(28063) &gt; 240)"> <!-- 28063 = Skybuilders Scrip -->
+		<BuyWhiteScriptItem ItemId="25196" />
+	</If>
+	<If Condition="(ItemCount(26737) &lt; &craftsmans_command_8;) and (ItemCount(28063) &gt; 300)">
+		<BuyWhiteScriptItem ItemId="26737" />
+	</If>
+	<If Condition="(ItemCount(25194) &lt; &craftsmans_competence_7;) and (ItemCount(28063) &gt; 240)">
+		<BuyWhiteScriptItem ItemId="25194" />
+	</If>
+	<If Condition="(ItemCount(26735) &lt; &craftsmans_competence_8;) and (ItemCount(28063) &gt; 300)">
+		<BuyWhiteScriptItem ItemId="26735" />
+	</If>
+	<If Condition="(ItemCount(25195) &lt; &craftsmans_cunning_7;) and (ItemCount(28063) &gt; 240)">
+		<BuyWhiteScriptItem ItemId="25195" />
+	</If>
+	<If Condition="(ItemCount(26736) &lt; &craftsmans_cunning_8;) and (ItemCount(28063) &gt; 300)">
+		<BuyWhiteScriptItem ItemId="26736" />
+	</If>
+	
+	<!-- Scrips Full -->
+	<If Condition="GetSkybuilderScrips() &gt; 9000">
+		<LogMessage Message="SkyBuilders' Scripts Full." />
+		<RunCode Name="ScripFull"/>
+		<LLStopBot/>
+    </If>
+
+	<!-- Turn in-->
+	<While Condition="(HasIshgardItem() &gt; 0) or (HasIshgardGatheringMining() &gt; 0) or (HasIshgardGatheringBotanist() &gt; 0)">
+		<RunCode Name="TurnIn"/>
+	</While>	
+	
+	<!-- Buy -->
+	<If Condition="(ItemCount(25196) &lt; &craftsmans_command_7;) and (ItemCount(28063) &gt; 240)">
+		<BuyWhiteScriptItem ItemId="25196" />
+	</If>
+	<If Condition="(ItemCount(26737) &lt; &craftsmans_command_8;) and (ItemCount(28063) &gt; 300)">
+		<BuyWhiteScriptItem ItemId="26737" />
+	</If>
+	<If Condition="(ItemCount(25194) &lt; &craftsmans_competence_7;) and (ItemCount(28063) &gt; 240)">
+		<BuyWhiteScriptItem ItemId="25194" />
+	</If>
+	<If Condition="(ItemCount(26735) &lt; &craftsmans_competence_8;) and (ItemCount(28063) &gt; 300)">
+		<BuyWhiteScriptItem ItemId="26735" />
+	</If>
+	<If Condition="(ItemCount(25195) &lt; &craftsmans_cunning_7;) and (ItemCount(28063) &gt; 240)">
+		<BuyWhiteScriptItem ItemId="25195" />
+	</If>
+	<If Condition="(ItemCount(26736) &lt; &craftsmans_cunning_8;) and (ItemCount(28063) &gt; 300)">
+		<BuyWhiteScriptItem ItemId="26736" />
+	</If>
+	
+	<!-- Scrips Full -->
+	<If Condition="GetSkybuilderScrips() &gt; 9000">
+		<LogMessage Message="SkyBuilders' Scripts Full." />
+		<RunCode Name="ScripFull"/>
+		<LLStopBot/>
+    </If>
+	
+	<!-- Grade 2 Artisanal Skybuilders' Remedies -->	
+	<If Condition="HasAtLeast(29891,125) and HasAtLeast(29881,250) and HasAtLeast(29884,250) and HasAtLeast(29886,250)">
+		<Lisbeth Json="[{'Group':1,'Item':29838,'Amount':25,'Enabled':true,'Type':'Alchemist'}]"/>	
+	</If>
+	
+	<!-- Turn in-->
+	<While Condition="(HasIshgardItem() &gt; 0) or (HasIshgardGatheringMining() &gt; 0) or (HasIshgardGatheringBotanist() &gt; 0)">
+		<RunCode Name="TurnIn"/>
+	</While>
+
+	<!-- Buy -->
+	<If Condition="(ItemCount(25196) &lt; &craftsmans_command_7;) and (ItemCount(28063) &gt; 240)">
+		<BuyWhiteScriptItem ItemId="25196" />
+	</If>
+	<If Condition="(ItemCount(26737) &lt; &craftsmans_command_8;) and (ItemCount(28063) &gt; 300)">
+		<BuyWhiteScriptItem ItemId="26737" />
+	</If>
+	<If Condition="(ItemCount(25194) &lt; &craftsmans_competence_7;) and (ItemCount(28063) &gt; 240)">
+		<BuyWhiteScriptItem ItemId="25194" />
+	</If>
+	<If Condition="(ItemCount(26735) &lt; &craftsmans_competence_8;) and (ItemCount(28063) &gt; 300)">
+		<BuyWhiteScriptItem ItemId="26735" />
+	</If>
+	<If Condition="(ItemCount(25195) &lt; &craftsmans_cunning_7;) and (ItemCount(28063) &gt; 240)">
+		<BuyWhiteScriptItem ItemId="25195" />
+	</If>
+	<If Condition="(ItemCount(26736) &lt; &craftsmans_cunning_8;) and (ItemCount(28063) &gt; 300)">
+		<BuyWhiteScriptItem ItemId="26736" />
+	</If>
+	
+	<!-- Scrips Full -->
+	<If Condition="GetSkybuilderScrips() &gt; 9000">
+		<LogMessage Message="SkyBuilders' Scripts Full." />
+		<RunCode Name="ScripFull"/>
+		<LLStopBot/>
+    </If>
+	
+	<!-- Reload Profile -->
+	<If Condition="HasAtLeast(29891,125) and HasAtLeast(29881,250) and HasAtLeast(29884,250) and HasAtLeast(29886,250)">
+		<LLoadProfile Path="Expert Crafting ALC.xml"/>
+	</If>	
+	
+	<!-- Finish Left over Materials -->
+	<While Condition="HasAtLeast(29891,5) and HasAtLeast(29881,10) and HasAtLeast(29884,10) and HasAtLeast(29886,10)">
+		<Lisbeth Json="[{'Group':1,'Item':29838,'Amount':1,'Enabled':true,'Type':'Alchemist'}]"/>	
+	</While>	
+	
+	<!-- Turn in-->
+	<While Condition="(HasIshgardItem() &gt; 0) or (HasIshgardGatheringMining() &gt; 0) or (HasIshgardGatheringBotanist() &gt; 0)">
+		<RunCode Name="TurnIn"/>
+	</While>
+				
+</Order>
+<CodeChunks>
+	<CodeChunk Name="ScripFull">
+	<![CDATA[
+		Core.OverlayManager.AddToast(() => "SkyBuilder's Scrips Full.", TimeSpan.FromMilliseconds(25000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
+		await Coroutine.Sleep(26000);
+	]]>
+	</CodeChunk>
+	<CodeChunk Name="TurnIn">
+	<![CDATA[
+		Logging.Write("[Handin] calling");
+		await LlamaLibrary.IshgardHandinBase.HandinNew();
+		await LlamaLibrary.IshgardHandinBase.GatheringHandin();
+	]]>
+	</CodeChunk>
+</CodeChunks>
+</Profile>

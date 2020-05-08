@@ -29,7 +29,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
                     2: Black Mage
                     3: Summoner
 					4: Gil-->
-<!ENTITY ASpectaclefortheAges "3">
+<!ENTITY ASpectaclefortheAges "4">
 
     <!-- Rewards Weapons 240 ilvl
                     0: White Mage
@@ -37,7 +37,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
                     2: Astroligan
                     3: Red Mage
 					4: Gil-->
-<!ENTITY ForThoseWeCanYetSave "1">
+<!ENTITY ForThoseWeCanYetSave "4">
 
     <!-- Rewards Armor Coffer 240 ilvl
                     0: Fending
@@ -52,7 +52,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
                     1: Healing
                     2: Casting
                     3: Gil-->
-<!ENTITY TheManWithin "1">
+<!ENTITY TheManWithin "3">
 
     <!-- Rewards Accessories Coffer 240 ilvl
                     0: Fending
@@ -65,7 +65,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
                     1: Healing
                     2: Casting
                     3: Gil-->
-<!ENTITY AsGoesLightSoGoesDarkness "1">
+<!ENTITY AsGoesLightSoGoesDarkness "3">
 ]>
 <Profile>
  <Name>[OrderBot] Heavensward Main Scenario 2.0</Name>
