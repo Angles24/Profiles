@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Profile>
+  <Name>[OrderBot][Trust] Holminster Switch</Name>
+  <Author>Sodimm</Author>
+  <Order>
+	<If Condition="HasQuest(68836) and not IsQuestCompleted(68836) and GetQuestStep(68836) == 4">
+      <If Condition="not IsOnMap(837)">
+		<GetTo ZoneId="813" XYZ="680.6741, 101.6722, -708.5827"/>
+		<RunCode Name="AutoEquip"/>
+		<RunCode Name="Enable_Trust"/>		
+		<RunCode Name="Trust71"/>
+        <RunCode name="Plugin" />
+        <WaitTimer waitTime="10" />
+        <RunCode name="EnterDuty2" />
+        <CommenceDuty />
+      </If>
+      <If Condition="IsOnMap(837)">
+        <MoveTo Name="Boss Arena 1" XYZ="-14.97225, 0, 256.1643" Distance="1" />
+        <WaitTimer WaitTime="5" />
+        <Grind GrindRef="ForgivenDissonance" PostCombatDelay="3.0" While="ObjectExistsWithId(8299)" />
+        <MoveTo Name="Coffer 2" XYZ="-4.867676, -1.266479, 106.4011" />
+        <MoveTo Name="Coffer 3" XYZ="70.51184, -4.621257, -2.243164" />
+        <MoveTo Name="Boss Arena 2" XYZ="77.6781, -1.192093E-07, -65.8133" Distance="1" />
+        <WaitTimer WaitTime="5" />
+        <Grind GrindRef="Tesleen" PostCombatDelay="3.0" While="ObjectExistsWithId(8300)" />
+        <MoveTo Name="Coffer 5" XYZ="86.13721, 0.503479, -189.4714" />
+        <MoveTo Name="Coffer 6" XYZ="72.95526, 1.077698, -323.1012" />
+        <MoveTo Name="Boss Arena 3" XYZ="133.8575, 23, -447.7664" Distance="1" />
+        <Grind GrindRef="Philia" PostCombatDelay="3.0" While="ObjectExistsWithId(8301)" />
+        <RunCode name="LeaveDuty" />
+      </If>
+    </If>
+	
+    <If Condition="IsQuestCompleted(68836) and Core.Player.ClassLevel &lt; 73">
+      <If Condition="not IsOnMap(837)">
+	    <RunCode Name="AutoEquip"/>
+        <RunCode name="Enable_Trust" />
+		<RunCode name="Plugin" />
+        <WaitTimer waitTime="10" />
+        <RunCode name="EnterDuty" />
+        <CommenceDuty />
+      </If>
+      <If Condition="IsOnMap(837)">
+        <MoveTo Name="Boss Arena 1" XYZ="-14.97225, 0, 256.1643" Distance="1" />
+        <WaitTimer WaitTime="5" />
+        <Grind GrindRef="ForgivenDissonance" PostCombatDelay="3.0" While="ObjectExistsWithId(8299)" />
+        <MoveTo Name="Coffer 2" XYZ="-4.867676, -1.266479, 106.4011" />
+        <MoveTo Name="Coffer 3" XYZ="70.51184, -4.621257, -2.243164" />
+        <MoveTo Name="Boss Arena 2" XYZ="77.6781, -1.192093E-07, -65.8133" Distance="1" />
+        <WaitTimer WaitTime="5" />
+        <Grind GrindRef="Tesleen" PostCombatDelay="3.0" While="ObjectExistsWithId(8300)" />
+        <MoveTo Name="Coffer 5" XYZ="86.13721, 0.503479, -189.4714" />
+        <MoveTo Name="Coffer 6" XYZ="72.95526, 1.077698, -323.1012" />
+        <MoveTo Name="Boss Arena 3" XYZ="133.8575, 23, -447.7664" Distance="1" />
+        <Grind GrindRef="Philia" PostCombatDelay="3.0" While="ObjectExistsWithId(8301)" />
+        <RunCode name="LeaveDuty" />
+      </If>
+    </If>
+	
+	<RunCode name="Disable_Trust" />
+	<ALoadProfile Path="[Orderbot] Shadowbringers Main Scenario 3.0.xml"/>
+	
+  </Order>
+  <GrindAreas>
+    <GrindArea Name="ForgivenDissonance">
+      <Hotspots>
+        <Hotspot XYZ="-14.02307, 2.384186E-07, 231.9219" Radius="120" />
+      </Hotspots>
+      <TargetMobs>
+        <TargetMob Id="8299" />
+      </TargetMobs>
+      <MinLevel />
+      <MaxLevel />
+    </GrindArea>
+    <GrindArea Name="Tesleen">
+      <Hotspots>
+        <Hotspot XYZ="78.32446, 0, -88.88385" Radius="120" />
+      </Hotspots>
+      <TargetMobs>
+        <TargetMob Id="8300" />
+      </TargetMobs>
+      <MinLevel />
+      <MaxLevel />
+    </GrindArea>
+    <GrindArea Name="Philia">
+      <Hotspots>
+        <Hotspot XYZ="133.7482, 23.01, -472.4284" Radius="120" />
+      </Hotspots>
+      <TargetMobs>
+        <TargetMob Id="8301" />
+        <TargetMob Id="8570" Weight="999" />
+      </TargetMobs>
+      <MinLevel />
+      <MaxLevel />
+    </GrindArea>
+  </GrindAreas>
+  <CodeChunks>
+    <CodeChunk Name="Plugin">
+      <![CDATA[
+        var plugin = PluginManager.Plugins.Where(p => p.Plugin.Name == "Trust" || p.Plugin.Name == "亲信战友");
+        var text1 = string.Empty;
+        var text2 = string.Empty;
+#if RB_CN
+        text1 = "近战如果打不到BOSS,另一个DPS带琳,添加吃食物,在trust设置里设置食物";
+        text2 = "你必须在Plugins文件夹里存在Trust/亲信战友的插件";
+#else
+        text1 = "There may be difficulty with Melee DPS on Bosses. Set your food via the settings if required.";
+        text2 = "This profile will not work without the Trust plugin being installed, and enabled.";
+#endif
+        Core.OverlayManager.AddToast(() => text1, TimeSpan.FromMilliseconds(5000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
+
+        if (!plugin.Any())
+        {
+          Core.OverlayManager.AddToast(() => text2, TimeSpan.FromMilliseconds(5000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
+        }
+      ]]>
+    </CodeChunk>
+    <CodeChunk Name="EnterDuty">
+      <![CDATA[
+        var win = RaptureAtkUnitManager.GetWindowByName("Dawn");
+        if(win == null)
+        {
+//#if RB_CN
+//          var Id = 310;
+//#else
+          var Id = 314;
+//#endif
+          AgentModule.ToggleAgentInterfaceById(Id);
+        }
+
+        await Coroutine.Sleep(1000);
+
+        win = RaptureAtkUnitManager.GetWindowByName("Dawn");
+        if(win != null)
+        {
+          win.SendAction(2,3,15,4,0);//最后是副本选择0-5 (Indexed 0-5)
+          await Coroutine.Sleep(100);
+          RaptureAtkUnitManager.GetWindowByName("Dawn").SendAction(1,3,14);
+        }
+      ]]>
+    </CodeChunk>
+	<CodeChunk Name="EnterDuty2">
+      <![CDATA[
+	    if (SelectString.IsOpen) {  SelectString.ClickSlot(1);  }
+		await Coroutine.Sleep(5000);
+		
+        var win = RaptureAtkUnitManager.GetWindowByName("Dawn");
+        if(win == null)
+        {
+//#if RB_CN
+//          var Id = 310;
+//#else
+          var Id = 314;
+//#endif
+          AgentModule.ToggleAgentInterfaceById(Id);
+        }
+
+        await Coroutine.Sleep(1000);
+
+        win = RaptureAtkUnitManager.GetWindowByName("Dawn");
+        if(win != null)
+        {
+          RaptureAtkUnitManager.GetWindowByName("Dawn").SendAction(1,3,14);
+        }
+      ]]>
+    </CodeChunk>
+    <CodeChunk Name="LeaveDuty">
+      <![CDATA[
+        DutyManager.LeaveActiveDuty();
+        await Coroutine.Sleep(5000);
+      ]]>
+    </CodeChunk>
+	<CodeChunk Name="Disable_Trust">
+      <![CDATA[
+        foreach (var plugin in PluginManager.Plugins.Where(p => p.Plugin.Name == "Trust"))
+        {
+          try
+          {
+            if (!plugin.Enabled)  {  break;  }  else  {  plugin.Enabled = false;  }
+          }
+          catch (Exception ex) {  }
+        }
+      ]]>
+    </CodeChunk>
+	<CodeChunk Name="Enable_Trust">
+      <![CDATA[
+        foreach (var plugin in PluginManager.Plugins.Where(p => p.Plugin.Name == "Trust"))
+        {
+          try
+          {
+            if (plugin.Enabled)  {  break;  }  else  {  plugin.Enabled = true;  }
+          }
+          catch (Exception ex) {  }
+        }
+      ]]>
+    </CodeChunk>
+	<CodeChunk Name="Trust71">
+		<![CDATA[ 
+            var npcId = GameObjectManager.GetObjectByNPCId(1029846);
+            if (!npcId.IsWithinInteractRange)
+            {
+                var _target = npcId.Location;
+                Navigator.PlayerMover.MoveTowards(_target);
+                if (_target.Distance2D(Core.Me.Location) >= 4)
+                {
+                    Navigator.PlayerMover.MoveTowards(_target);
+                    await Coroutine.Sleep(100);
+                }
+                Navigator.PlayerMover.MoveStop();
+            }			
+			npcId.Interact();	
+			await Coroutine.Sleep(5000);
+				
+			if (SelectString.IsOpen) {  SelectString.ClickSlot(1);  }
+			await Coroutine.Sleep(5000);
+		]]>
+		</CodeChunk>
+		<CodeChunk Name="AutoEquip">
+            <![CDATA[ 
+            var patternFinder = new GreyMagic.PatternFinder(Core.Memory);
+            IntPtr agentVtable = patternFinder.Find("48 8D 05 ? ? ? ? C6 43 ? ? 48 89 03 48 8B C3 C7 43 ? ? ? ? ? Add 3 TraceRelative");
+            int id = AgentModule.FindAgentIdByVtable(agentVtable);
+
+            AtkAddonControl windowByName = RaptureAtkUnitManager.GetWindowByName("RecommendEquip");
+
+            if (windowByName == null)
+            {
+                AgentModule.GetAgentInterfaceById(id).Toggle();
+            }
+
+            await Coroutine.Wait(10000, () => RaptureAtkUnitManager.GetWindowByName("RecommendEquip") != null);
+            
+            windowByName = RaptureAtkUnitManager.GetWindowByName("RecommendEquip");
+            
+            if (windowByName != null)
+            {
+                windowByName.SendAction(1, 3, 0);
+            }
+            ]]>
+        </CodeChunk>	
+  </CodeChunks>
+</Profile>
