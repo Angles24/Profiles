@@ -2814,7 +2814,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       </If>
     </If>
     <If Condition="HasQuest(66583) and not IsQuestCompleted(66583) and GetQuestStep(66583) == 255">
-	  <GetTo ZoneId="212" XYZ="39.29187, 1.214808, 0.8086548"/>
+	  <GetTo ZoneId="212" XYZ="-2.822998, -3.000001, -56.22955"/>
       <LLTurnIn QuestId="66583" NpcId="1007478" XYZ="-2.822998, -3.000001, -56.22955"/>
     </If>
     <!-- Ifrit Bleeds, We Can Kill It (Level 50) -->
