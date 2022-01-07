@@ -6583,7 +6583,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       </If>
     </If>
     <If Condition="HasQuest(66572) and not IsQuestCompleted(66572) and GetQuestStep(66572) == 1">
-      <GetTo ZoneId="212" XYZ="-467.277, 22.99698, -475.2117"/>
+      <GetTo ZoneId="140" XYZ="-467.277, 22.99698, -475.2117"/>
       <LLTalkTo NpcId="1006578" XYZ="-467.277, 22.99698, -475.2117"/>
     </If>
     <If Condition="HasQuest(66572) and not IsQuestCompleted(66572) and GetQuestStep(66572) == 2">
