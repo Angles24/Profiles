@@ -2660,7 +2660,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       <If Condition="not IsOnMap(155)">
 		<TeleportTo Name="Camp Dragon Head" AetheryteId="23"/>
       </If>
-      <LisbethTravel ZoneId="155" XYZ="-433.5032, 210.7882, -221.7906"/>
+      <LisbethTravel ZoneId="155" XYZ="-433.3384, 211, -225.6437"/>
       <LLTalkTo NpcId="1009984" XYZ="-431.1742, 233.4727, -201.0071" QuestId="65622" StepId="1"/>
     </If>
     <If Condition="HasQuest(65622) and not IsQuestCompleted(65622) and GetQuestStep(65622) == 2">
@@ -2668,7 +2668,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		<TeleportTo Name="Camp Dragon Head" AetheryteId="23"/>
       </If>
       <If Condition="IsOnMap(155)">
-        <LisbethTravel ZoneId="155" XYZ="-433.5032, 210.7882, -221.7906"/>
+        <LisbethTravel ZoneId="155" XYZ="-433.3384, 211, -225.6437"/>
       </If>
       <LisbethTravel ZoneId="155" XYZ="237.5786, 302, -199.944"/>
       <LLTalkTo NpcId="1006384" XYZ="263.5996, 303.1, -199.9695" QuestId="65622" StepId="2"/>
@@ -2805,6 +2805,17 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       <LLTurnIn QuestId="65625" NpcId="1008969" XYZ="0.9917603, -1.995725, -45.70081"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
+    </If>
+    <!-- A Recurring Problem (Level 50) -->
+    <If Condition="IsQuestCompleted(66060) and not HasQuest(66583) and not IsQuestCompleted(66583)">	  
+      <GetTo ZoneId="212" XYZ="39.29187, 1.214808, 0.8086548"/>
+      <If Condition="IsQuestAcceptQualified(66583)">
+        <PickUpQuest NpcId="1006693" QuestId="66583" XYZ="39.29187, 1.214808, 0.8086548"/>
+      </If>
+    </If>
+    <If Condition="HasQuest(66583) and not IsQuestCompleted(66583) and GetQuestStep(66583) == 255">
+	  <GetTo ZoneId="212" XYZ="39.29187, 1.214808, 0.8086548"/>
+      <LLTurnIn QuestId="66583" NpcId="1007478" XYZ="-2.822998, -3.000001, -56.22955"/>
     </If>
     <!-- Ifrit Bleeds, We Can Kill It (Level 50) -->
     <If Condition="IsQuestCompleted(66583) and not HasQuest(66584) and not IsQuestCompleted(66584)">
