@@ -3478,13 +3478,14 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       </If>
       <LisbethTravel ZoneId="155" XYZ="237.5786, 302, -199.944"/>
       <LLTalkTo NpcId="1006384" XYZ="263.5996, 303.1, -199.9695" QuestId="65908" StepId="1"/>
+      <MoveTo XYZ="223.9285, 312, -240.9699"/>
     </If>
     <If Condition="HasQuest(65908) and not IsQuestCompleted(65908) and GetQuestStep(65908) == 2">
       <If Condition="not IsOnMap(155) and not IsOnMap(395)">
 		<TeleportTo Name="Camp Dragon Head" AetheryteId="23"/>
       </If>
       <If Condition="IsOnMap(155)">
-        <LisbethTravel ZoneId="155" XYZ="223.9285, 312, -240.9699"/>
+        <LisbethTravel ZoneId="155" XYZ="264.9119, 302.2624, -223.7126"/>
         <UseTransport InteractDistance="3.0" NpcId="1007603" XYZ="264.9119, 302.2624, -223.7126"/>
       </If>
       <LLTalkTo NpcId="1009974" XYZ="3.860474, 0.01498271, -0.01531982" QuestId="65908" StepId="2"/>
@@ -3604,7 +3605,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       <If Condition="not IsOnMap(156)">
 		<TeleportTo Name="Revenant's Toll" AetheryteId="24"/>
       </If>
-      <LisbethTravel ZoneId="156" XYZ="47.74548, 20.66574, -685.1759"/>
+      <LisbethTravel ZoneId="156" XYZ="41.30397, 20.49479, -681.7035"/>
       <LLTalkTo NpcId="1010958" XYZ="47.74548, 20.66574, -685.1759" QuestId="65927" UseTimes="1" BlacklistAfter="True"/>
     </If>
     <If Condition="HasQuest(65927) and not IsQuestCompleted(65927) and GetQuestStep(65927) == 255">
@@ -3797,16 +3798,10 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       <LLTalkTo NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" QuestId="65957" StepId="2"/>
     </If>
     <If Condition="HasQuest(65957) and not IsQuestCompleted(65957) and GetQuestStep(65957) == 3">
-      <If Condition="not IsOnMap(134)">
-		<TeleportTo Name="Summerford Farms" AetheryteId="52"/>
-      </If>
       <LisbethTravel ZoneId="134" XYZ="-1.022339, 29.55664, 172.9609"/>
       <UseObject NpcId="2005073" XYZ="-1.022339, 29.55664, 172.9609" QuestId="65957" StepId="3"/>
     </If>
     <If Condition="HasQuest(65957) and not IsQuestCompleted(65957) and GetQuestStep(65957) == 4">
-      <If Condition="not IsOnMap(134)">
-		<TeleportTo Name="Summerford Farms" AetheryteId="52"/>
-      </If>
       <LisbethTravel ZoneId="134" XYZ="124.7424, 45.74832, 135.7594"/>
       <LLTalkTo NpcId="1010981" XYZ="124.7424, 45.74832, 135.7594" QuestId="65957" StepId="4"/>
     </If>
