@@ -146,8 +146,9 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 	  <If Condition="not IsOnMap(137)">
 		<TeleportTo Name="Costa Del Sol" AetheryteId="11"/>
 	  </If>
-      <LisbethTravel ZoneId="137" XYZ="-25.86407, 71.75401, -36.78955"/>
+      <LisbethTravel ZoneId="137" XYZ="-27.72625, 70.38649, -19.36484"/>
       <LLTalkTo NpcId="1006306" XYZ="-25.86407, 71.75401, -36.78955" QuestId="69410" UseTimes="1" BlacklistAfter="True"/>
+      <MoveTo XYZ="-27.72625, 70.38649, -19.36484"/>
     </If>
     <If Condition="HasQuest(69410) and not IsQuestCompleted(69410) and GetQuestStep(69410) == 3 and GetQuestById(69410).GetTodoArgs(3, 0).Item1 == 1">	   
 	  <If Condition="not IsOnMap(137)">
@@ -387,7 +388,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66726) and not IsQuestCompleted(66726) and GetQuestStep(66726) == 7">
 	  <UserDialog QuestId="66726" StepId="7" DialogText="Please manually complete the trial: Lv. 50 Thornmarch (Hard). \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
+	  <WaitWhile Condition="not GetQuestStep(66726) == 255"/>
     </If>
     <If Condition="HasQuest(66726) and not IsQuestCompleted(66726) and GetQuestStep(66726) == 255">
       <If Condition="not IsOnMap(153)">
@@ -1147,7 +1148,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66897) and not IsQuestCompleted(66897) and GetQuestStep(66897) == 1">
 	  <UserDialog QuestId="66897" StepId="1" DialogText="Please manually complete the trial: Lv. 50 The Whorleater (Hard). \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="HasQuest(66897) and not IsQuestCompleted(66897) and GetQuestStep(66897) == 255">
       <If Condition="not IsOnMap(129) and not IsOnSubMap(351)">
@@ -1488,7 +1488,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(69421) and not IsQuestCompleted(69421) and GetQuestStep(69421) == 5">
 	  <UserDialog QuestId="69421" StepId="5" DialogText="Please manually complete the trial: Lv. 50 The Striking Tree (Hard). \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="HasQuest(69421) and not IsQuestCompleted(69421) and GetQuestStep(69421) == 255">
       <If Condition="not IsOnMap(152)">
@@ -2355,7 +2354,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(65611) and not IsQuestCompleted(65611) and GetQuestStep(65611) == 4">
 	  <UserDialog QuestId="65611" StepId="4" DialogText="Please manually complete the dungeon: Lv. 50 Snowcloak. \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="HasQuest(65611) and not IsQuestCompleted(65611) and GetQuestStep(65611) == 255">
       <If Condition="not IsOnMap(155)">
@@ -2644,7 +2642,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(65620) and not IsQuestCompleted(65620) and GetQuestStep(65620) == 4">
 	  <UserDialog QuestId="65620" StepId="4" DialogText="Please manually complete the trial: Lv. 50 Akh Afah Amphitheatre (Hard). \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="HasQuest(65620) and not IsQuestCompleted(65620) and GetQuestStep(65620) == 255">
       <WaitWhile Condition="QuestLogManager.InCutscene"/>
@@ -3085,7 +3082,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(65902) and not IsQuestCompleted(65902) and GetQuestStep(65902) == 3">
 	  <UserDialog QuestId="65902" StepId="3" DialogText="Please manually complete the dungeon: Lv. 50 The Keeper of the Lake. \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="HasQuest(65902) and not IsQuestCompleted(65902) and GetQuestStep(65902) == 5">
       <If Condition="not IsOnMap(156)">
@@ -3281,7 +3277,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(65905) and not IsQuestCompleted(65905) and GetQuestStep(65905) == 3">
 	  <UserDialog QuestId="65905" StepId="3" DialogText="Please manually complete the trial: Lv. 50 The Chrysalis. \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="HasQuest(65905) and not IsQuestCompleted(65905) and GetQuestStep(65905) == 255">
       <If Condition="not IsOnMap(156) and not IsOnMap(351)">
@@ -3682,7 +3677,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(65955) and not IsQuestCompleted(65955) and GetQuestStep(65955) == 1">
 	  <UserDialog QuestId="65955" StepId="1" DialogText="Please manually complete the trial: Lv. 50 The Steps of Faith. \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="HasQuest(65955) and not IsQuestCompleted(65955) and GetQuestStep(65955) == 3">
       <If Condition="not IsOnMap(155)">
@@ -4211,7 +4205,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="GetQuestStep(66738) == 2">
 	  <UserDialog QuestId="66738" StepId="2" DialogText="Please manually complete the raid: Lv. 50 Labyrinth of the Ancients. \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="GetQuestStep(66738) == 255">
       <If Condition="not IsOnMap(156)">
@@ -4276,7 +4269,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="GetQuestStep(67010) == 4">
 	  <UserDialog QuestId="67010" StepId="4" DialogText="Please manually complete the raid: Lv. 50 Syrcus Tower. \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="GetQuestStep(67010) == 255">
       <If Condition="not IsOnMap(156)">
@@ -4319,7 +4311,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="GetQuestStep(66030) == 3">
 	  <UserDialog QuestId="66030" StepId="3" DialogText="Please manually complete the raid: Lv. 50 The World of Darkness. \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Rowena's Representative in Limsa Lominsa Lower Decks ( 9  , 11 )"/>
-      <!--<RunCode Name="Announce_Manual_Completion"/>-->
     </If>
     <If Condition="GetQuestStep(66030) == 255">
       <If Condition="not IsOnMap(156)">
@@ -5020,10 +5011,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
           await CommonTasks.StopAndDismount();
           await Coroutine.Sleep(500);
         }
-      ]]></CodeChunk>
-    <CodeChunk Name="Announce_Manual_Completion"><![CDATA[ 
-        Core.OverlayManager.AddToast(() => "Please complete the next Quest Objective manually.", TimeSpan.FromMilliseconds(25000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
-        await Coroutine.Sleep(26000);
       ]]></CodeChunk>
     <CodeChunk Name="Announce_Do_Hard_Mode"><![CDATA[ 
         Core.OverlayManager.AddToast(() => "Please complete the unlocked Hard Mode Trial to progress the Main Scenario.", TimeSpan.FromMilliseconds(25000), System.Windows.Media.Color.FromRgb(29,213,226), System.Windows.Media.Color.FromRgb(13,106,175), new System.Windows.Media.FontFamily("Gautami"));
