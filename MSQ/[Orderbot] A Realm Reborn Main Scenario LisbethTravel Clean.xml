@@ -984,7 +984,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		<TeleportTo Name="Aleport" AetheryteId="14"/>
       </If>
       <LisbethTravel ZoneId="138" XYZ="-34.92792, -19.7605, -129.0456"/>
-      <LLUseItem NpcIds="2003585,2003586,2003587,2003588,2003589" ItemId="2001213" Radius="250" QuestId="66893" StepId="2">
+      <UseItem NpcIds="2003585,2003586,2003587,2003588,2003589" ItemId="2001213" Radius="250" QuestId="66893" StepId="2">
         <HotSpots>
           <HotSpot XYZ="-34.92792, -19.7605, -129.0456" Radius="10"/>
           <HotSpot XYZ="-47.62347, -22.87329, -152.7886" Radius="10"/>
