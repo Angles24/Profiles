@@ -1120,17 +1120,12 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       <LLTalkTo NpcId="1008679" XYZ="-1.205505, 1.604133, -3.830017" QuestId="66896" StepId="2"/>
     </If>
     <If Condition="HasQuest(66896) and not IsQuestCompleted(66896) and GetQuestStep(66896) == 3">
-      <If Condition="not IsOnMap(135)">
-		<TeleportTo Name="Moraby Drydocks" AetheryteId="10"/>
-      </If>
       <LisbethTravel ZoneId="135" XYZ="702.3369, 65.78333, -287.6122"/>
       <NoCombatMoveTo XYZ="712.8556, 66.027, -279.0723"/>
       <LLTalkTo NpcId="1008692" XYZ="712.8556, 66.027, -279.0723" QuestId="66896" StepId="3"/>
+      <MoveTo XYZ="702.3369, 65.78333, -287.6122"/>
     </If>
     <If Condition="HasQuest(66896) and not IsQuestCompleted(66896) and GetQuestStep(66896) == 255">
-      <If Condition="not IsOnMap(135)">
-		<TeleportTo Name="Moraby Drydocks" AetheryteId="10"/>
-      </If>
       <LisbethTravel ZoneId="135" XYZ="155.4741, 8.973627, 584.1306"/>
       <LLTurnIn QuestId="66896" NpcId="1008693" XYZ="155.4741, 8.973627, 584.1306"/>
 	  <LLSmallTalk/>
@@ -1138,9 +1133,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <!-- Lord of the Whorl (Level 50) -->
     <If Condition="IsQuestCompleted(66896) and not HasQuest(66897) and not IsQuestCompleted(66897)">
-      <If Condition="not IsOnMap(135)">
-		<TeleportTo Name="Moraby Drydocks" AetheryteId="10"/>
-      </If>
       <LisbethTravel ZoneId="135" XYZ="155.4741, 8.973627, 584.1306"/>
       <If Condition="IsQuestAcceptQualified(66897)">
         <LLPickUpQuest NpcId="1008693" QuestId="66897" XYZ="155.4741, 8.973627, 584.1306"/>
@@ -1268,7 +1260,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       <If Condition="not IsOnMap(141)">
 		<TeleportTo Name="Black Brush Station" AetheryteId="53"/>
       </If>
-      <LisbethTravel ZoneId="141" XYZ="177.203, -1, -317.8607"/>
+      <LisbethTravel ZoneId="141" XYZ="171.4941, -1, -308.6611"/>
       <LLTalkTo NpcId="1006359" XYZ="177.203, -1, -317.8607" QuestId="66979" StepId="4"/>
     </If>
     <If Condition="HasQuest(66979) and not IsQuestCompleted(66979) and GetQuestStep(66979) == 5">
@@ -1969,6 +1961,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       </If>
 	  <WaitTimer WaitTime="3"/>
       <LLTalkTo NpcId="1009021" XYZ="2.914429, -1.995725, -42.13019" QuestId="66996" StepId="3"/>
+	  <LLSmallTalk/>
     </If>
     <If Condition="HasQuest(66996) and not IsQuestCompleted(66996) and GetQuestStep(66996) == 255">
       <If Condition="not IsOnMap(156) and not IsOnMap(351)">
