@@ -2909,8 +2909,8 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		<GetTo ZoneId="180" XYZ="-111.1653, 64.23981, -222.5562"/>
       </If>
       <LisbethTravel ZoneId="180" XYZ="71.19046, 55.66157, -519.173"/>
-      <LisbethTravel ZoneId="180" XYZ="144.4336, 27.1674, -622.5881"/>
-      <LLTurnIn QuestId="66694" NpcId="2002583" XYZ="144.3961, 29.03784, -622.4918"/>
+      <NoCombatMoveTo ZoneId="180" XYZ="141.9557, 27.41842, -620.7488"/>
+      <LLTurnIn QuestId="66694" NpcId="2002583" XYZ="141.9557, 27.41842, -620.7488"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
     </If>
