@@ -596,6 +596,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    </SimpleDuty>
   </While>
   <If Condition="HasQuest(67133) and not IsQuestCompleted(67133) and GetQuestStep(67133) == 255">
+   <WaitWhile Condition="Managers.QuestLogManager.InCutscene"/>
    <GetTo ZoneId="419" XYZ="120.6531, 14.95313, -156.6339"/>
    <LLTurnIn QuestId="67133" NpcId="1012381" XYZ="120.6531, 14.95313, -156.6339"/>
    <LLSmallTalk/>
