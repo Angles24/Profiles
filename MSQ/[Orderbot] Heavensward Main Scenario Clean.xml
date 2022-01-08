@@ -1081,29 +1081,16 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 			<UseObject NpcId="2005536" XYZ="402.0293, 191.5159, 561.4252" Condition="not IsAetherCurrentCompleted(397,8)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(397,7)">
-        <GetTo ZoneId="397" XYZ="435.6338, 171.2269, -554.9074"/>
-		<Dismount/>
-		<WaitTimer WaitTime="1"/>
-		<RunCode Name="AetherCurrent5"/>
-		<WaitTimer WaitTime="1"/>
-		<MoveTo Name="Aether Current #5" XYZ="436.0315, 170.1193, -545.9077" UseMesh="False"/>
-		<WaitTimer WaitTime="1"/>
-		<MoveTo Name="Aether Current #5" XYZ="445.1338, 171.2269, -545.1742" UseMesh="False"/>
-		<WaitTimer WaitTime="1"/>
-		<MoveTo Name="Aether Current #5" XYZ="443.9939, 171.2269, -533.9135" UseMesh="False"/>
-		<WaitTimer WaitTime="1"/>
-		<MoveTo Name="Aether Current #5" XYZ="450.0945, 171.2269, -536.9135" UseMesh="False"/>
-		<WaitTimer WaitTime="1"/>
-			<UseObject NpcId="2006187" XYZ="451.5297, 171.2214, -535.6985" Condition="not IsAetherCurrentCompleted(397,7)"/>
-		<RunCode Name="AetherCurrent5Complete"/>
+        <GetTo ZoneId="397" XYZ="424.9484, 164.2938, -536.9192"/>
+			<UseObject NpcId="2006187" XYZ="424.9484, 164.2938, -536.9192" Condition="not IsAetherCurrentCompleted(397,7)"/>
+		</If>
+		<If Condition="not IsAetherCurrentCompleted(397,6)">
+        <GetTo ZoneId="397" XYZ="-332.9061, 126.8177, -29.95355"/>
+			<UseObject NpcId="2006189" XYZ="-332.9061, 126.8177, -29.95355" Condition="not IsAetherCurrentCompleted(397,6)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(397,5)">
         <GetTo ZoneId="397" XYZ="-660.1511, 135.5153, -376.6384"/>
 			<UseObject NpcId="2006190" XYZ="-660.1511, 135.5153, -376.6384" Condition="not IsAetherCurrentCompleted(397,5)"/>
-		</If>
-		<If Condition="not IsAetherCurrentCompleted(397,6)">
-        <GetTo ZoneId="397" XYZ="-334.0353, 133.9894, -10.14728"/>
-			<UseObject NpcId="2006189" XYZ="-334.0353, 133.9894, -10.14728" Condition="not IsAetherCurrentCompleted(397,6)"/>
 		</If>
 		<LogMessage Message="You've attuned to the Aether Currents in Coerthas Western Highlands!"/>		
 	</If>
