@@ -1288,10 +1288,12 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <UseTransport InteractDistance="3.0" NpcId="2005446" XYZ="-9.079163, -127.7333, 734.0046"/>
    </If>
    <MoveTo UseMesh="False" XYZ="5.850327, -2.384186E-07, -0.7740318"/>
+   <MoveTo UseMesh="False" XYZ="-6.210298, -0.02968235, 19.89979"/>
    <WaitWhile Condition="HasQuest(67152) and not IsQuestCompleted(67152) and not GetQuestStep(67152) == 3"/>
   </If>
   <If Condition="HasQuest(67152) and not IsQuestCompleted(67152) and GetQuestStep(67152) == 3">
     <UserDialog QuestId="67152" StepId="3" DialogText="Please manually complete the trial: Lv. 53 Thok ast Thok (Hard)."/>
+	<WaitWhile Condition="not GetQuestStep(67152) == 5"/>
   </If>
   <If Condition="HasQuest(67152) and not IsQuestCompleted(67152) and GetQuestStep(67152) == 5">
    <GetTo ZoneId="398" XYZ="-10.9408, -128.9908, 728.2673"/>
@@ -1320,6 +1322,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67153) and not IsQuestCompleted(67153) and GetQuestStep(67153) == 3">
     <UserDialog QuestId="67153" StepId="3" DialogText="Please manually complete the dungeon: Lv. 53 Sohm Al."/>
+	<WaitWhile Condition="not GetQuestStep(67153) == 255"/>
   </If>
   <If Condition="HasQuest(67153) and not IsQuestCompleted(67153) and GetQuestStep(67153) == 255">
    <If Condition="not IsOnMap(398) and not IsOnMap(400)">
@@ -1981,6 +1984,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67170) and not IsQuestCompleted(67170) and GetQuestStep(67170) == 2">
     <UserDialog QuestId="67170" StepId="2" DialogText="Please manually complete the dungeon: Lv. 55 The Aery."/>
+	<WaitWhile Condition="not GetQuestStep(67170) == 255"/>
   </If>
   <If Condition="HasQuest(67170) and not IsQuestCompleted(67170) and GetQuestStep(67170) == 255">
    <GetTo ZoneId="400" XYZ="550.4386, -1.191689, -354.9401"/>
@@ -2365,6 +2369,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67176) and not IsQuestCompleted(67176) and GetQuestStep(67176) == 3">
     <UserDialog QuestId="67176" StepId="3" DialogText="Please manually complete the dungeon: Lv. 57 The Vault."/>
+	<WaitWhile Condition="not GetQuestStep(67176) == 5"/>
   </If>
   <If Condition="HasQuest(67176) and not IsQuestCompleted(67176) and GetQuestStep(67176) == 5">
    <GetTo ZoneId="419" XYZ="-6.790344, 42.34489, -207.0497"/>
@@ -2596,6 +2601,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67183) and not IsQuestCompleted(67183) and GetQuestStep(67183) == 4">
     <UserDialog QuestId="67183" StepId="4" DialogText="Please manually complete the trial: Lv. 57 The Limitless Blue (Hard)."/>
+	<WaitWhile Condition="not GetQuestStep(67183) == 255"/>
   </If>
   <If Condition="HasQuest(67183) and not IsQuestCompleted(67183) and GetQuestStep(67183) == 255">
    <If Condition="not IsOnMap(401) and not Managers.WorldManager.HasAetheryteId(73)">
@@ -3142,6 +3148,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67196) and not IsQuestCompleted(67196) and GetQuestStep(67196) == 4">
     <UserDialog QuestId="67196" StepId="4" DialogText="Please manually complete the dungeon: Lv. 59 The Great Gubal Library."/>
+	<WaitWhile Condition="not GetQuestStep(67196) == 255"/>
   </If>
   <If Condition="HasQuest(67196) and not IsQuestCompleted(67196) and GetQuestStep(67196) == 255">
    <If Condition="not IsOnMap(463)">
@@ -3832,9 +3839,11 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67205) and not IsQuestCompleted(67205) and GetQuestStep(67205) == 3">
     <UserDialog QuestId="67205" StepId="3" DialogText="Please manually complete the dungeon and the following trial: Lv. 60 The Aetherochemical Research Facility and The Singularity Reactor."/>
+	<WaitWhile Condition="not GetQuestStep(67205) == 5"/>
   </If>
   <If Condition="HasQuest(67205) and not IsQuestCompleted(67205) and GetQuestStep(67205) == 5">
     <UserDialog QuestId="67205" StepId="5" DialogText="Please manually complete the trial: Lv. 60 The Singularity Reactor."/>
+	<WaitWhile Condition="not GetQuestStep(67205) == 255"/>
   </If>
   <If Condition="HasQuest(67205) and not IsQuestCompleted(67205) and GetQuestStep(67205) == 255">
    <If Condition="not IsOnMap(433)">

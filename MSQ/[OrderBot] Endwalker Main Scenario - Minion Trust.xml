@@ -31,7 +31,7 @@
 
 <!DOCTYPE Profile [
 <!-- Profile Settings -->
-<!ENTITY OpenCoffers "0">
+<!ENTITY OpenCoffers "1">
 ]>
 
 <Profile>
@@ -893,6 +893,14 @@
 				<MoveTo XYZ="3.059902, 1.907349E-06, 4.101292"/>
 				<LLTurnIn QuestId="69912" NpcId="1038589" XYZ="4.074097, 1.907349E-06, 2.029419"/>
 				<LLSmallTalk/>
+				<Dismount />
+				<WaitTimer WaitTime="3" />
+				<If condition="&OpenCoffers; == 1">
+					<RunCode Name="Coffer" />
+				</If>	
+				<WaitTimer waitTime="1" />
+				<AutoInventoryEquip/>
+				<WaitTimer waitTime="1" />
 			</If>
 		</If>
 		
@@ -918,14 +926,6 @@
 				<UseObject NpcId="2011956" XYZ="-632.0439, -0.01531982, -659.6018" QuestId="69913" StepId="2"/>
 			</If>
 			<If Condition="GetQuestStep(69913) == 3">
-				<Dismount />
-				<WaitTimer WaitTime="3" />
-				<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
-				</If>	
-				<WaitTimer waitTime="1" />
-				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
 				<UserDialog IsAutoDefend="False" QuestId="69913" StepId="3" DialogText="Please manually complete the dungeon: Lv. 81 Tower of Zot."/>
 				<WaitWhile Condition="not GetQuestStep(69913) == 255"/>
 			</If>
@@ -1680,6 +1680,14 @@
 				<GetTo ZoneId="958" XYZ="-368.5879, 22.22248, 402.2648"/>
 				<LLTurnIn QuestId="69930" NpcId="1039933" XYZ="-369.2531, 22.20836, 403.7689"/>
 				<LLSmallTalk/>
+				<Dismount />
+				<WaitTimer WaitTime="3" />
+				<If condition="&OpenCoffers; == 1">
+					<RunCode Name="Coffer" />
+				</If>	
+				<WaitTimer waitTime="1" />
+				<AutoInventoryEquip/>
+				<WaitTimer waitTime="1" />
 			</If>
 		</If>
 		
@@ -1707,14 +1715,6 @@
 				<UseObject NpcId="2012112" XYZ="-516.7163, -190.0206, -675.288" QuestId="69931" StepId="3"/>
 			</If>
 			<If Condition="GetQuestStep(69931) == 4">
-			<Dismount />
-			<WaitTimer WaitTime="3" />
-							<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
-				</If>	
-			<WaitTimer waitTime="1" />
-			<AutoInventoryEquip/>
-			<WaitTimer waitTime="1" />
 				<UserDialog IsAutoDefend="False" QuestId="69931" StepId="4" DialogText="Please manually complete the dungeon: Lv. 83 The Tower of Babil."/>
 				<WaitWhile Condition="not GetQuestStep(69931) == 255"/>
 			</If>
@@ -1844,6 +1844,14 @@
 				<GetTo ZoneId="959" XYZ="183.3293, 58.91098, 430.4285"/>
 				<LLTurnIn QuestId="69933" NpcId="1039984" XYZ="183.3981, 58.83443, 427.2982"/>
 				<LLSmallTalk/>
+				<Dismount />
+				<WaitTimer WaitTime="3" />
+				<If condition="&OpenCoffers; == 1">
+					<RunCode Name="Coffer" />
+				</If>	
+				<WaitTimer waitTime="1" />
+				<AutoInventoryEquip/>
+				<WaitTimer waitTime="1" />
 			</If>
 		</If>	
 
@@ -1863,15 +1871,7 @@
 				<WaitWhile condition="GetQuestStep(69934) == 1"/>
 			</If>
 			<If Condition="GetQuestStep(69934) == 2">
-			<Dismount />
-			<WaitTimer WaitTime="3" />
-							<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
-				</If>	
-			<WaitTimer waitTime="1" />
-			<AutoInventoryEquip/>
-			<WaitTimer waitTime="1" />
-				<UserDialog QuestId="69934" StepId="1" DialogText="Please manually complete the trial: Lv. 83 The Dark Inside."/>
+				<UserDialog QuestId="69934" StepId="2" DialogText="Please manually complete the trial: Lv. 83 The Dark Inside."/>
 				<WaitWhile Condition="not GetQuestStep(69934) == 255"/>
 			</If>
 			<If Condition="GetQuestStep(69934) == 255">
@@ -2296,6 +2296,14 @@
 				<GetTo ZoneId="962" XYZ="-100.2083, 3.933468, 3.339709"/>
 				<LLTurnIn QuestId="69944" NpcId="1038588" XYZ="-101.7625, 4.357494, 0.7476196"/>
 				<LLSmallTalk/>
+				<Dismount />
+				<WaitTimer WaitTime="3" />
+				<If condition="&OpenCoffers; == 1">
+					<RunCode Name="Coffer" />
+				</If>	
+				<WaitTimer waitTime="1" />
+				<AutoInventoryEquip/>
+				<WaitTimer waitTime="1" />
 			</If>
     </If>
 		
@@ -2322,14 +2330,6 @@
 				<LLTalkTo NpcId="1038978" XYZ="202.3499, 1.769995, 757.7172" QuestId="69945" StepId="3"/>
 			</If>
 			<If Condition="GetQuestStep(69945) == 4">
-			<Dismount />
-			<WaitTimer WaitTime="3" />
-							<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
-				</If>	
-			<WaitTimer waitTime="1" />
-			<AutoInventoryEquip/>
-			<WaitTimer waitTime="1" />
 				<UserDialog IsAutoDefend="False" QuestId="69945" StepId="4" DialogText="Please manually complete the dungeon: Lv. 85 Vanaspati."/>
 				<WaitWhile Condition="not GetQuestStep(69945) == 255"/>
 			</If>
@@ -3515,6 +3515,14 @@
 				<GetTo ZoneId="961" XYZ="506.5868, 151.481, -306.5848"/>
 				<LLTurnIn QuestId="69972" NpcId="1040151" XYZ="504.3563, 151.5689, -303.8834"/>
 				<LLSmallTalk/>
+				<Dismount />
+				<WaitTimer WaitTime="3" />
+				<If condition="&OpenCoffers; == 1">
+					<RunCode Name="Coffer" />
+				</If>	
+				<WaitTimer waitTime="1" />
+				<AutoInventoryEquip/>
+				<WaitTimer waitTime="1" />
 			</If>
     </If>
 
@@ -3532,14 +3540,6 @@
 				<LLTalkTo NpcId="1040154" XYZ="-401.236, 329.783, -760.3418" QuestId="69973" StepId="1"/>
 			</If>
 			<If Condition="GetQuestStep(69973) == 2">
-			<Dismount />
-			<WaitTimer WaitTime="3" />
-							<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
-				</If>	
-			<WaitTimer waitTime="1" />
-			<AutoInventoryEquip/>
-			<WaitTimer waitTime="1" />
 				<UserDialog IsAutoDefend="False" QuestId="69973" StepId="1" DialogText="Please manually complete the dungeon: Lv. 87 Ktisis Hyperboreia."/>
 				<WaitWhile Condition="not GetQuestStep(69973) == 255"/>
 			</If>
@@ -3981,6 +3981,14 @@
 				<GetTo ZoneId="956" XYZ="-408.6238, -220.1825, 302.1053"/>
 				<LLTurnIn QuestId="69984" NpcId="1040478" XYZ="-406.9734, -220.1835, 304.1886"/>
 				<LLSmallTalk/>
+				<Dismount />
+				<WaitTimer WaitTime="3" />
+				<If condition="&OpenCoffers; == 1">
+					<RunCode Name="Coffer" />
+				</If>	
+				<WaitTimer waitTime="1" />
+				<AutoInventoryEquip/>
+				<WaitTimer waitTime="1" />
 			</If>
     </If>
 
@@ -3998,14 +4006,6 @@
 				<LLTalkTo NpcId="1040487" XYZ="-234.6991, -224.3827, 349.0195" QuestId="69985" StepId="1"/>
 			</If>
 			<If Condition="GetQuestStep(69985) == 2">
-				<Dismount />
-				<WaitTimer WaitTime="1" />
-								<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
-				</If>	
-				<WaitTimer waitTime="1" />
-				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
 				<UserDialog IsAutoDefend="False" QuestId="69985" StepId="2" DialogText="Please manually complete the dungeon: Lv. 89 The Aitiascope."/>
 				<WaitWhile Condition="not GetQuestStep(69985) == 4"/>
 			</If>
@@ -4567,6 +4567,14 @@
 				<GetTo ZoneId="960" XYZ="1.86478, 637.1029, 4.291153"/>
 				<LLTurnIn QuestId="69999" NpcId="1041173" XYZ="1.663208, 637.103, 5.233826"/>
 				<LLSmallTalk/>
+				<Dismount />
+				<WaitTimer WaitTime="3" />
+				<If condition="&OpenCoffers; == 1">
+					<RunCode Name="Coffer" />
+				</If>	
+				<WaitTimer waitTime="1" />
+				<AutoInventoryEquip/>
+				<WaitTimer waitTime="1" />
 			</If>
     </If>
 
@@ -4580,14 +4588,6 @@
         </If>
       </If>
 			<If Condition="GetQuestStep(70000) == 1">
-				<Dismount />
-				<WaitTimer WaitTime="3" />
-								<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
-				</If>	
-				<WaitTimer waitTime="1" />
-				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
 				<UserDialog IsAutoDefend="False" QuestId="70000" StepId="1" DialogText="Please manually complete the following duties: \n\nDungeon: Lv. 90 The Dead Ends\nTrial: Lv. 90 The Final Day\nSolo Duty: Fight Zenos"/>
 				<WaitWhile Condition="not GetQuestStep(70000) == 3"/>
 			</If>
