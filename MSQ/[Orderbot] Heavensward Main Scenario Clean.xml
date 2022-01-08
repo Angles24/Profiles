@@ -494,7 +494,25 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <UseObject NpcId="2005419" XYZ="299.8245, -115.8313, 424.7349" QuestId="67131" StepId="2"/>
   </If>
   <If Condition="HasQuest(67131) and not IsQuestCompleted(67131) and GetQuestStep(67131) == 3">
-   <GetTo ZoneId="401" XYZ="531.1816, -99.84944, 349.9656"/>
+      <If Condition="not DutyManager.InInstance">
+		<GetTo ZoneId="401" XYZ="531.1816, -99.84944, 349.9656"/>
+        <RunCode Name="DutyCommence"/>
+      </If>
+      <If Condition="DutyManager.InInstance">
+		  <MoveTo UseMesh="False" ZoneId="401" XYZ="615.512, -128.0629, 233.2909"/>
+		  <MoveTo UseMesh="False" ZoneId="401" XYZ="632.9345, -111.5916, 160.9406"/>	
+		  <MoveTo ZoneId="401" XYZ="659.3574, -65.53652, -123.3998"/>		
+		  <WaitWhile Condition="Core.Player.InCombat"/>		  
+		  <UseObject NpcId="2005710" XYZ="659.3574, -65.53652, -123.3998" Condition="not Core.Player.InCombat" UseTimes="1" BlacklistAfter="True" />
+		  <Grind GrindRef="67131" PostCombatDelay="5.0" While="not GetQuestStep(67131) == 255"/>
+		  <!--<WaitTimer WaitTime="10"/>	
+		  <MoveTo ZoneId="401" XYZ="683.6423, -65.53652, -88.35236"/>
+		  <WaitTimer WaitTime="5"/>			
+		  <MoveTo ZoneId="401" XYZ="727.4737, -70.55422, -20.15596"/>	
+		  <WaitTimer WaitTime="5"/>	
+		  <MoveTo ZoneId="401" XYZ="708.4626, -85.6245, 30.1816"/>	-->
+      </If>	
+   <!--<GetTo ZoneId="401" XYZ="531.1816, -99.84944, 349.9656"/>
    <LLSimpleDuty InteractNpcId="1012366" XYZ="531.1816, -99.84944, 349.9656" QuestId="67131" StepId="3">
     <InteractObjects>
      <InteractObject Name="Brambleweed Rope" NpcId="2005710"/>
@@ -507,7 +525,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
      <TargetMob Id="3502" Weight="2000"/>
      <TargetMob Id="4128" Weight="1000"/>
     </TargetMobs>
-   </LLSimpleDuty>
+   </LLSimpleDuty>-->
    <WaitWhile Condition="HasQuest(67131) and not IsQuestCompleted(67131) and not GetQuestStep(67131) == 255"/>
   </If>
   <If Condition="HasQuest(67131) and not IsQuestCompleted(67131) and GetQuestStep(67131) == 255">
@@ -564,7 +582,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <GetTo ZoneId="418" XYZ="124.4678, 24.45884, 0.4729614"/>
    <LLTalkTo NpcId="1012380" XYZ="124.4678, 24.45884, 0.4729614" QuestId="67133" StepId="2"/>
   </If>
-  <If Condition="HasQuest(67133) and not IsQuestCompleted(67133) and GetQuestStep(67133) == 3">
+  <While Condition="HasQuest(67133) and not IsQuestCompleted(67133) and GetQuestStep(67133) == 3">
    <GetTo ZoneId="419" XYZ="120.6531, 14.95313, -156.6339"/>
    <SimpleDuty InteractNpcId="1012381" XYZ="120.6531, 14.95313, -156.6339" QuestId="67133" StepId="3">
     <HotSpots>
@@ -576,7 +594,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
      <TargetMob Id="3850" Weight="1000"/>
     </TargetMobs>
    </SimpleDuty>
-  </If>
+  </While>
   <If Condition="HasQuest(67133) and not IsQuestCompleted(67133) and GetQuestStep(67133) == 255">
    <GetTo ZoneId="419" XYZ="120.6531, 14.95313, -156.6339"/>
    <LLTurnIn QuestId="67133" NpcId="1012381" XYZ="120.6531, 14.95313, -156.6339"/>
@@ -3950,6 +3968,48 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 				await Buddy.Coroutines.Coroutine.Sleep(1000);
 		]]>
 		</CodeChunk>
+    <CodeChunk Name="DutyCommence">
+      <![CDATA[
+        Logging.Write("Commencing duty.");
+        uint[] npcIds = { 1006416, 1012366 };
+        var dutyNpc = GameObjectManager.GameObjects.Where(r => r.IsTargetable && npcIds.Contains(r.NpcId)).OrderBy(r => r.Distance()).FirstOrDefault();
+        while (Core.Me.Location.Distance2D(dutyNpc.Location) > 1.5f)
+        {
+          await Coroutine.Yield();
+          Navigator.PlayerMover.MoveTowards(dutyNpc.Location);
+        }
+        Navigator.PlayerMover.MoveStop();
+        dutyNpc.Interact();
+        await Coroutine.Wait(5000, () => Talk.DialogOpen || DifficultySelectYesNo.IsOpen || SelectYesno.IsOpen);
+        while (!(DifficultySelectYesNo.IsOpen || SelectYesno.IsOpen))
+        {
+          Talk.Next();
+          await Coroutine.Yield();
+        }
+        await Coroutine.Wait(5000, () => DifficultySelectYesNo.IsOpen || SelectYesno.IsOpen);
+        if (DifficultySelectYesNo.IsOpen) { DifficultySelectYesNo.Proceed(2); }
+        else if (SelectYesno.IsOpen) { SelectYesno.Yes(); }
+        else
+        {
+         Logging.Write("Duty window didn't open.");
+         TreeRoot.Stop();
+        }
+        await Coroutine.Wait(2000, () => CommonBehaviors.IsLoading);
+        await Coroutine.Wait(-1, () => !CommonBehaviors.IsLoading);
+        while (QuestLogManager.InCutscene)
+        {
+          ff14bot.RemoteAgents.AgentCutScene.Instance.PromptSkip();
+          if (ff14bot.RemoteAgents.AgentCutScene.Instance.CanSkip && SelectString.IsOpen) { SelectString.ClickSlot(0); }
+          if (Talk.DialogOpen) { Talk.Next(); }
+          await Coroutine.Yield();
+        }
+        await Coroutine.Wait(2000, () => CommonBehaviors.IsLoading);
+        await Coroutine.Wait(-1, () => !CommonBehaviors.IsLoading);
+        await Coroutine.Wait(10000, () => !Core.Me.HasAura(1268));
+        Logging.Write("Duty commenced.");
+        await Coroutine.Sleep(1500);
+      ]]>
+    </CodeChunk>
  </CodeChunks>
  <GrindAreas>
   <GrindArea Name="Deepeye">
@@ -4105,6 +4165,16 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 			</TargetMobs>
 			<MinLevel>54</MinLevel>
 			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="67131">
+		<HotSpots>
+			<HotSpot XYZ="659.3574, -65.53652, -123.3998" Radius="60"/>
+		</HotSpots>
+			<TargetMobs>
+				<TargetMob Id="3503" Weight="3000"/>
+				<TargetMob Id="3502" Weight="2000"/>
+				<TargetMob Id="4128" Weight="1000"/>
+			</TargetMobs>
 		</GrindArea>
  </GrindAreas>
 </Profile>
