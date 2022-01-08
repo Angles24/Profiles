@@ -2138,9 +2138,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 					<AutoInventoryEquip/>
 				</If>
 			</If>
-		<If Condition="not IsOnMap(400)">
-			<GetTo ZoneId="400" XYZ="252.6177, -42.16244, 590.2133"/><!-- Moghome -->
-		</If>		<If Condition="not IsAetherCurrentCompleted(400,8)">
+		<If Condition="not IsAetherCurrentCompleted(400,8)">
         <GetTo ZoneId="400" XYZ="421.1894, -43.04549, 661.7982"/>
 			<UseObject NpcId="2006216" XYZ="421.1894, -43.04549, 661.7982" Condition="not IsAetherCurrentCompleted(400,8)"/>
 		</If>
@@ -2378,7 +2376,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   <If Condition="HasQuest(67176) and not IsQuestCompleted(67176) and GetQuestStep(67176) == 6">
    <If Condition="not IsOnMap(433)">
     <GetTo ZoneId="419" XYZ="17.99036, 16.00967, -9.567444"/>
-    <UseTransport InteractDistance="3.0" NpcId="1011217" XYZ="17.99036, 16.00967, -9.567444"/>
+    <UseTransport InteractDistance="3.0" NpcId="1013101" XYZ="17.99036, 16.00967, -9.567444" UseTimes="1" BlacklistAfter="True"/>
    </If>
    <WaitWhile Condition="HasQuest(67176) and not IsQuestCompleted(67176) and not GetQuestStep(67176) == 255"/>
   </If>
@@ -2514,6 +2512,10 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
     <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
    </If>
+   <GetTo ZoneId="401" XYZ="-754.1985, -14.21407, -180.186"/>
+   <MoveTo ZoneId="401" XYZ="-735.8688, -30.77407, -224.6429" UseMesh="False"/>
+   <MoveTo ZoneId="401" XYZ="-703.0826, -44.77136, -227.7237" UseMesh="False"/>
+   <MoveTo ZoneId="401" XYZ="-702.553, -58.60114, -263.1318" UseMesh="False"/>
    <GetTo ZoneId="401" XYZ="-650.9346, -58.6966, -337.2397"/>
    <LLTalkTo NpcId="1013090" XYZ="-650.9346, -58.6966, -337.2397" QuestId="67181" StepId="2"/>
   </If>
@@ -2580,6 +2582,8 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
     <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
    </If>
+   <GetTo ZoneId="401" XYZ="-555.3919, -52.29293, -430.8823"/>
+   <MoveTo ZoneId="401" XYZ="-512.9859, -37.93283, -406.9482" UseMesh="False"/>
    <GetTo ZoneId="401" XYZ="-542.7787, -37.11544, -386.7094"/>
    <LLTalkTo NpcId="1012064" XYZ="-542.7787, -37.11544, -386.7094" QuestId="67183" StepId="1"/>
   </If>
@@ -2588,6 +2592,12 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
     <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
    </If>
+   <GetTo ZoneId="401" XYZ="-512.9859, -37.93283, -406.9482"/>
+   <MoveTo ZoneId="401" XYZ="-555.3919, -52.29293, -430.8823" UseMesh="False"/>
+   <GetTo ZoneId="401" XYZ="-388.0158, -55.30107, -612.6802"/>
+   <MoveTo ZoneId="401" XYZ="-364.2079, -42.77096, -633.5755" UseMesh="False"/>
+   <MoveTo ZoneId="401" XYZ="-338.5004, -28.77532, -607.3351" UseMesh="False"/>
+   <MoveTo ZoneId="401" XYZ="-290.4832, -14.16158, -629.2758" UseMesh="False"/>
    <GetTo ZoneId="401" XYZ="-155.6268, -14.15378, -541.558"/>
    <LLTalkTo NpcId="1013386" XYZ="-155.6268, -14.15378, -541.558" QuestId="67183" StepId="2"/>
   </If>
@@ -2610,6 +2620,57 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    </If>
    <GetTo ZoneId="401" XYZ="-156.6644, -14.15376, -543.0228"/>
    <LLTurnIn QuestId="67183" NpcId="1014575" XYZ="-156.6644, -14.15376, -543.0228"/>
+   <LLSmallTalk/>
+   <AutoInventoryEquip/>
+  </If>
+  <!-- A Difference of Opinion (Level 57) -->
+  <If Condition="IsQuestCompleted(67183) and not HasQuest(67184) and not IsQuestCompleted(67184)">
+   <If Condition="not IsOnMap(401) and not Managers.WorldManager.HasAetheryteId(73)">
+    <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
+    <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
+   </If>
+   <GetTo ZoneId="401" XYZ="-156.6644, -14.15376, -543.0228"/>
+   <If Condition="IsQuestAcceptQualified(67184)">
+    <LLPickUpQuest NpcId="1014575" QuestId="67184" XYZ="-156.6644, -14.15376, -543.0228"/>
+   </If>
+  </If>
+  <If Condition="HasQuest(67184) and not IsQuestCompleted(67184) and GetQuestStep(67184) == 1">
+   <If Condition="not IsOnMap(401) and not Managers.WorldManager.HasAetheryteId(73)">
+    <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
+    <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
+   </If>
+   <GetTo ZoneId="401" XYZ="-582.6353, -52.0946, -447.1351"/>
+   <LLTalkTo NpcId="1013100" XYZ="-582.6353, -52.0946, -447.1351" QuestId="67184" StepId="1"/>
+  </If>
+  <If Condition="HasQuest(67184) and not IsQuestCompleted(67184) and GetQuestStep(67184) == 255">
+   <If Condition="not IsOnMap(401) and not Managers.WorldManager.HasAetheryteId(73)">
+    <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
+    <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
+   </If>
+   <TeleportTo Name="Ok' Zundu" AetheryteId="73" Force="True"/>
+   <GetTo ZoneId="401" XYZ="-388.0158, -55.30107, -612.6802"/>
+   <MoveTo ZoneId="401" XYZ="-364.2079, -42.77096, -633.5755" UseMesh="False"/>
+   <MoveTo ZoneId="401" XYZ="-338.5004, -28.77532, -607.3351" UseMesh="False"/>
+   <MoveTo ZoneId="401" XYZ="-290.4832, -14.16158, -629.2758" UseMesh="False"/>
+   <GetTo Zoneid="401" XYZ="-155.9319, -14.15376, -542.1378"/>
+   <LLTurnIn QuestId="67184" NpcId="1012195" XYZ="-155.9319, -14.15376, -542.1378"/>
+   <LLSmallTalk/>
+   <AutoInventoryEquip/>
+  </If>
+  <!-- One Good Turn (Level 57) -->
+  <If Condition="IsQuestCompleted(67184) and not HasQuest(67185) and not IsQuestCompleted(67185)">
+   <If Condition="not IsOnMap(401) and not Managers.WorldManager.HasAetheryteId(73)">
+    <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
+    <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
+   </If>
+   <GetTo ZoneId="401" XYZ="-155.6268, -14.15378, -541.558"/>
+   <If Condition="IsQuestAcceptQualified(67185)">
+    <LLPickUpQuest NpcId="1013386" QuestId="67185" XYZ="-155.6268, -14.15378, -541.558"/>
+   </If>
+  </If>
+  <If Condition="HasQuest(67185) and not IsQuestCompleted(67185) and GetQuestStep(67185) == 255">
+   <GetTo ZoneId="419" XYZ="162.89, -15.13437, 37.0946"/>
+   <LLTurnIn QuestId="67185" NpcId="1013111" XYZ="162.89, -15.13437, 37.0946"/>
    <LLSmallTalk/>
    <AutoInventoryEquip/>
   </If>
@@ -2708,6 +2769,10 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 							</If>
 						</If>
 					</If>
+				   <GetTo ZoneId="401" XYZ="-388.0158, -55.30107, -612.6802"/>
+				   <MoveTo ZoneId="401" XYZ="-364.2079, -42.77096, -633.5755" UseMesh="False"/>
+				   <MoveTo ZoneId="401" XYZ="-338.5004, -28.77532, -607.3351" UseMesh="False"/>
+				   <MoveTo ZoneId="401" XYZ="-290.4832, -14.16158, -629.2758" UseMesh="False"/>
 					<NoCombatMoveTo Name="Gurglegrass" XYZ="204.8523, 12.74121, -596.2158"/>
 					<UseObject NpcIds="2005824,2005825,2005826" QuestId="67445" StepId="1">
 						<HotSpots>
@@ -2731,6 +2796,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 							</If>
 						</If>
 					</If>
+					<TeleportTo Name="Ok' Zundu" AetheryteId="73" Force="True"/>
 					<NoCombatMoveTo Name="Ganu Vali" XYZ="-647.0283, -51.05719, -417.7463"/>
 					<LLTurnIn QuestId="67445" NpcId="1012069" ItemId="2001670" XYZ="-647.0283, -51.05719, -417.7463"/>
 					<LLSmallTalk/>
@@ -2805,10 +2871,22 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 			</If>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(401,8)">
+		<TeleportTo Name="Ok' Zundu" AetheryteId="73" Force="True"/> 
+        <GetTo ZoneId="401" XYZ="-701.7735, -58.55827, -262.7887"/>
+        <MoveTo ZoneId="401" XYZ="-703.2999, -44.77136, -224.2907" UseMesh="False"/>
+        <MoveTo ZoneId="401" XYZ="-739.8525, -30.77407, -225.4978" UseMesh="False"/>
+        <MoveTo ZoneId="401" XYZ="-742.0502, -27.19359, -206.858" UseMesh="False"/>
+        <MoveTo ZoneId="401" XYZ="-755.5894, -14.18909, -180.0195" UseMesh="False"/>
         <GetTo ZoneId="401" XYZ="-747.097, -57.11456, 163.8361"/>
 			<UseObject NpcId="2006228" XYZ="-747.097, -57.11456, 163.8361" Condition="not IsAetherCurrentCompleted(401,8)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(401,7)">
+		<TeleportTo Name="Ok' Zundu" AetheryteId="73" Force="True"/> 
+        <GetTo ZoneId="401" XYZ="-701.7735, -58.55827, -262.7887"/>
+        <MoveTo ZoneId="401" XYZ="-703.2999, -44.77136, -224.2907" UseMesh="False"/>
+        <MoveTo ZoneId="401" XYZ="-739.8525, -30.77407, -225.4978" UseMesh="False"/>
+        <MoveTo ZoneId="401" XYZ="-742.0502, -27.19359, -206.858" UseMesh="False"/>
+        <MoveTo ZoneId="401" XYZ="-755.5894, -14.18909, -180.0195" UseMesh="False"/>
         <GetTo ZoneId="401" XYZ="-754.3656, -13.87734, -120.4015"/>
 		<Dismount/>
 		<RunCode Name="AetherCurrent5.2"/>
@@ -2816,63 +2894,27 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 			<UseObject NpcId="2006229" XYZ="-759.4263, -9.201294, -110.8568" Condition="not IsAetherCurrentCompleted(401,7)"/>
 			<MoveTo XYZ="-753.8975, -13.87735, -119.7341" Distance="1" UseMesh="False"/>
 		</If>
-		<If Condition="not IsAetherCurrentCompleted(401,5)">
+		<If Condition="not IsAetherCurrentCompleted(401,5)">	
+		<TeleportTo Name="Ok' Zundu" AetheryteId="73" Force="True"/> 
+	    <GetTo ZoneId="401" XYZ="-555.3919, -52.29293, -430.8823"/>
+	    <MoveTo ZoneId="401" XYZ="-512.9859, -37.93283, -406.9482" UseMesh="False"/>
         <GetTo ZoneId="401" XYZ="-564.8127, -36.698, -349.0807"/>
-			<UseObject NpcId="2006234" XYZ="-564.8127, -36.698, -349.0807" Condition="not IsAetherCurrentCompleted(401,5)"/>
+			<UseObject NpcId="2006234" XYZ="-564.8127, -36.698, -349.0807" Condition="not IsAetherCurrentCompleted(401,5)"/>   
+		<GetTo ZoneId="401" XYZ="-512.9859, -37.93283, -406.9482"/>
+		<MoveTo ZoneId="401" XYZ="-555.3919, -52.29293, -430.8823" UseMesh="False"/>
 		</If>
-		<If Condition="not IsAetherCurrentCompleted(401,6)">
+		<If Condition="not IsAetherCurrentCompleted(401,6)">	
+		<TeleportTo Name="Ok' Zundu" AetheryteId="73" Force="True"/>  
+	    <GetTo ZoneId="401" XYZ="-388.0158, -55.30107, -612.6802"/>
+	    <MoveTo ZoneId="401" XYZ="-364.2079, -42.77096, -633.5755" UseMesh="False"/>
+	    <MoveTo ZoneId="401" XYZ="-338.5004, -28.77532, -607.3351" UseMesh="False"/>
+	    <MoveTo ZoneId="401" XYZ="-290.4832, -14.16158, -629.2758" UseMesh="False"/>
         <GetTo ZoneId="401" XYZ="-180.3159, -14.96918, -543.1144"/>
 			<UseObject NpcId="2006231" XYZ="-180.3159, -14.96918, -543.1144" Condition="not IsAetherCurrentCompleted(401,6)"/>
 		</If>
 		<LogMessage Message="You've attuned to the Aether Currents in The Sea of Clouds!"/>
 	</If>
   
-  <!-- A Difference of Opinion (Level 57) -->
-  <If Condition="IsQuestCompleted(67183) and not HasQuest(67184) and not IsQuestCompleted(67184)">
-   <If Condition="not IsOnMap(401) and not Managers.WorldManager.HasAetheryteId(73)">
-    <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
-    <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
-   </If>
-   <GetTo ZoneId="401" XYZ="-156.6644, -14.15376, -543.0228"/>
-   <If Condition="IsQuestAcceptQualified(67184)">
-    <LLPickUpQuest NpcId="1014575" QuestId="67184" XYZ="-156.6644, -14.15376, -543.0228"/>
-   </If>
-  </If>
-  <If Condition="HasQuest(67184) and not IsQuestCompleted(67184) and GetQuestStep(67184) == 1">
-   <If Condition="not IsOnMap(401) and not Managers.WorldManager.HasAetheryteId(73)">
-    <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
-    <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
-   </If>
-   <GetTo ZoneId="401" XYZ="-582.6353, -52.0946, -447.1351"/>
-   <LLTalkTo NpcId="1013100" XYZ="-582.6353, -52.0946, -447.1351" QuestId="67184" StepId="1"/>
-  </If>
-  <If Condition="HasQuest(67184) and not IsQuestCompleted(67184) and GetQuestStep(67184) == 255">
-   <If Condition="not IsOnMap(401) and not Managers.WorldManager.HasAetheryteId(73)">
-    <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
-    <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
-   </If>
-   <GetTo Zoneid="401" XYZ="-155.9319, -14.15376, -542.1378"/>
-   <LLTurnIn QuestId="67184" NpcId="1012195" XYZ="-155.9319, -14.15376, -542.1378"/>
-   <LLSmallTalk/>
-   <AutoInventoryEquip/>
-  </If>
-  <!-- One Good Turn (Level 57) -->
-  <If Condition="IsQuestCompleted(67184) and not HasQuest(67185) and not IsQuestCompleted(67185)">
-   <If Condition="not IsOnMap(401) and not Managers.WorldManager.HasAetheryteId(73)">
-    <GetTo ZoneId="419" XYZ="147.3258, -12.63491, -12.40564"/>
-    <UseTransport InteractDistance="3.0" NpcId="1011212" XYZ="147.3258, -12.63491, -12.40564"/>
-   </If>
-   <GetTo ZoneId="401" XYZ="-155.6268, -14.15378, -541.558"/>
-   <If Condition="IsQuestAcceptQualified(67185)">
-    <LLPickUpQuest NpcId="1013386" QuestId="67185" XYZ="-155.6268, -14.15378, -541.558"/>
-   </If>
-  </If>
-  <If Condition="HasQuest(67185) and not IsQuestCompleted(67185) and GetQuestStep(67185) == 255">
-   <GetTo ZoneId="419" XYZ="162.89, -15.13437, 37.0946"/>
-   <LLTurnIn QuestId="67185" NpcId="1013111" XYZ="162.89, -15.13437, 37.0946"/>
-   <LLSmallTalk/>
-   <AutoInventoryEquip/>
-  </If>
   <!-- An Engineering Enterprise (Level 57) -->
   <If Condition="IsQuestCompleted(67185) and not HasQuest(67186) and not IsQuestCompleted(67186)">
    <GetTo ZoneId="419" XYZ="162.005, -15.13437, 38.52893"/>
