@@ -1,0 +1,18 @@
+local multiRefObjects = {}
+local obj1 = {
+   ["quests"] = {
+      [1] = {
+         ["level"] = 1,
+         ["steps"] = {
+            [1] = {
+               ["type"] = "start",
+			   ["mapid"] = 128;
+               ["condition"] = {
+                  ["false"] = true,
+               },
+            },
+         },
+      },
+   },
+}
+return obj1

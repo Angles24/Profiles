@@ -1,0 +1,9 @@
+Copy UserDialog.cs to your RB Quest Behaviour folder, make sure you restart RB for it to take affect.
+
+Copy Noop.info to to MINIONAPP\Bots\FFXIVMinion64\LuaMods\ffxivminion\QuestProfiles, reload LUA if minion is already attached in game or attach it if its not.
+
+For Minion, Select Quest as the Bot Mode, select your desired Skill Profile and select noop as the Quest Profile.
+
+On Minion Trust make sure Trust Quest Mode is selected.
+
+For RB, load the Endwalker Trust profile and away you go!

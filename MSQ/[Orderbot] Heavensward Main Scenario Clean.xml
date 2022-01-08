@@ -3825,7 +3825,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <LLTalkTo NpcId="1012850" XYZ="-62.88245, 271.2328, -5.661133" QuestId="67205" StepId="2"/>
   </If>
   <If Condition="HasQuest(67205) and not IsQuestCompleted(67205) and GetQuestStep(67205) == 3">
-    <UserDialog QuestId="67205" StepId="3" DialogText="Please manually complete the dungeon and the following trial: Lv. 60 The Aetherochemical Research Facility & The Singularity Reactor."/>
+    <UserDialog QuestId="67205" StepId="3" DialogText="Please manually complete the dungeon and the following trial: Lv. 60 The Aetherochemical Research Facility and The Singularity Reactor."/>
   </If>
   <If Condition="HasQuest(67205) and not IsQuestCompleted(67205) and GetQuestStep(67205) == 5">
     <UserDialog QuestId="67205" StepId="5" DialogText="Please manually complete the trial: Lv. 60 The Singularity Reactor."/>
@@ -3838,7 +3838,16 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <LLTurnIn QuestId="67205" NpcId="1012857" XYZ="0.7476196, 0.02225424, 4.623413"/>
    <LLSmallTalk/>
    <AutoInventoryEquip/>
-  </If>
+  </If>  
+	
+    <If Condition="not IsQuestCompleted(67205)">
+	  <UserDialog DialogText="Hi, you are seeing this because you either lack the level to continue on the MSQ questline or some sort of error occurred. \n\nIf you lack the levels please do the following below and than restart the profile. \n\n   1. Run your class quest profile to gain more skills and maybe level up. \n\n   2. Do the daily Duty roulette manually for the bonus EXP. \n\n   3. Run floors 1-10 in Palace of the Dead (Potd) this is the 'Deep Dungeon' botbase, to unlock the Potd please load the oderbot profile located in your RB Director/Botbases/Deep Dungeon/Profiles "/>	  
+    </If>
+	
+    <If Condition="IsQuestCompleted(67205)">
+	  <LLoadProfile Path="[Orderbot] Heavensward Main Scenario LisbethTravel Clean.xml"/>
+    </If>
+	
  </Order>
  <CodeChunks>
   <CodeChunk Name="Announce_Manual_Completion">

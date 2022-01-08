@@ -1432,6 +1432,16 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <LLSmallTalk/>
    <AutoInventoryEquip/>
   </If>
+	
+    <If Condition="not IsQuestCompleted(67895)">
+	  <UserDialog DialogText="Hi, you are seeing this because you either lack the level to continue on the MSQ questline or some sort of error occurred. \n\nIf you lack the levels please do the following below and than restart the profile. \n\n   1. Run your class quest profile to gain more skills and maybe level up. \n\n   2. Do the daily Duty roulette manually for the bonus EXP. \n\n   3. Run floors 1-10 in Palace of the Dead (Potd) this is the 'Deep Dungeon' botbase, to unlock the Potd please load the oderbot profile located in your RB Director/Botbases/Deep Dungeon/Profiles "/>	  
+    </If>
+	
+    <If Condition="IsQuestCompleted(67895)">
+				<LLStopBot/>
+	  <LLoadProfile Path="[Orderbot] Heavensward Main Scenario LisbethTravel Clean.xml"/>
+    </If>  
+  
  </Order>
  <CodeChunks>
   <CodeChunk Name="Announce_Manual_Completion">

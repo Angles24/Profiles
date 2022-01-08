@@ -2747,6 +2747,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(65781) and not IsQuestCompleted(65781) and GetQuestStep(65781) == 4">
 	  <UserDialog QuestId="65781" StepId="4" DialogText="Please manually complete the dungeon: Lv. 15 Satasha."/>
+	  <WaitWhile Condition="not GetQuestStep(65781) == 255"/>
     </If>
     <If Condition="HasQuest(65781) and not IsQuestCompleted(65781) and GetQuestStep(65781) == 255">
       <GetTo ZoneId="128" XYZ="16.20745, 40.19998, -5.131207"/>
@@ -2780,6 +2781,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66213) and not IsQuestCompleted(66213) and GetQuestStep(66213) == 2">
 	  <UserDialog QuestId="66213" StepId="2" DialogText="Please manually complete the dungeon: Lv. 16 Tam-Tara Deepcroft."/>
+	  <WaitWhile Condition="not GetQuestStep(66213) == 255"/>
     </If>
     <If Condition="HasQuest(66213) and not IsQuestCompleted(66213) and GetQuestStep(66213) == 255">
       <GetTo ZoneId="132" XYZ="25.54354, -8, 115.3249"/>
@@ -2817,6 +2819,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66196) and not IsQuestCompleted(66196) and GetQuestStep(66196) == 3">
 	  <UserDialog QuestId="66196" StepId="3" DialogText="Please manually complete the dungeon: Lv. 17 Copperbell Mines."/>
+	  <WaitWhile Condition="not GetQuestStep(66196) == 4"/>
     </If>
     <If Condition="HasQuest(66196) and not IsQuestCompleted(66196) and GetQuestStep(66196) == 4">
       <GetTo ZoneId="130" XYZ="23.11737, 6.999991, -86.53394"/>
@@ -3114,6 +3117,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(65879) and not IsQuestCompleted(65879) and GetQuestStep(65879) == 4">
 	  <UserDialog QuestId="65879" StepId="4" DialogText="Please manually complete the trial: Lv. 20 The Bowl of Embers."/>
+	  <WaitWhile Condition="not GetQuestStep(65879) == 5"/>
     </If>
     <If Condition="HasQuest(65879) and not IsQuestCompleted(65879) and GetQuestStep(65879) == 5">
       <If Condition="IsOnSubMap(255)">
@@ -3302,6 +3306,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <If Condition="HasQuest(66237) and not IsQuestCompleted(66237) and GetQuestStep(66237) == 2">
       <GetTo ZoneId="129" XYZ="45.82075, 20, -4.997596"/>
 	  <UserDialog QuestId="66237" StepId="2" DialogText="Please interact with the Chocobo and name it."/>
+	  <WaitWhile Condition="not GetQuestStep(66237) == 255"/>
     </If>
     <If Condition="HasQuest(66237) and not IsQuestCompleted(66237) and GetQuestStep(66237) == 255">
       <GetTo ZoneId="129" XYZ="45.82075, 20, -4.997596"/>
@@ -3669,6 +3674,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66050) and not IsQuestCompleted(66050) and GetQuestStep(66050) == 2">
 	  <UserDialog QuestId="66050" StepId="2" DialogText="Please manually complete the dungeon: Lv. 24 The Thousand Maws of Toto-Rak."/>
+	  <WaitWhile Condition="not GetQuestStep(66050) == 255"/>
     </If>
     <If Condition="HasQuest(66050) and not IsQuestCompleted(66050) and GetQuestStep(66050) == 255">
       <GetTo ZoneId="153" XYZ="-167.4839, 9.869229, -80.15215"/>
@@ -4244,6 +4250,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66337) and not IsQuestCompleted(66337) and GetQuestStep(66337) == 2">
 	  <UserDialog QuestId="66337" StepId="2" DialogText="Please manually complete the dungeon: Lv. 28 Haukke Manor."/>
+	  <WaitWhile Condition="not GetQuestStep(66337) == 4"/>
     </If>
     <If Condition="HasQuest(66337) and not IsQuestCompleted(66337) and GetQuestStep(66337) == 4">
       <GetTo ZoneId="133" XYZ="36.81995, 16.35147, -334.5846"/>
@@ -4531,6 +4538,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66368) and not IsQuestCompleted(66368) and GetQuestStep(66368) == 3">
 	  <UserDialog QuestId="66368" StepId="3" DialogText="Please manually complete the dungeon: Lv. 32 Brayflox's Longstop."/>
+	  <WaitWhile Condition="not GetQuestStep(66368) == 4"/>
     </If>
     <If Condition="HasQuest(66368) and not IsQuestCompleted(66368) and GetQuestStep(66368) == 4">
       <GetTo ZoneId="137" XYZ="-334.6151, 69.69995, 153.7957"/>
@@ -4811,6 +4819,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66393) and not IsQuestCompleted(66393) and GetQuestStep(66393) == 2">
 	  <UserDialog QuestId="66393" StepId="2" DialogText="Please manually complete the trial: Lv. 32 The Naval."/>
+	  <WaitWhile Condition="not GetQuestStep(66393) == 255"/>
     </If>
     <If Condition="HasQuest(66393) and not IsQuestCompleted(66393) and GetQuestStep(66393) == 255">
       <GetTo ZoneId="139" XYZ="427.634, 4.115109, 85.92346"/>
@@ -5556,6 +5565,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66488) and not IsQuestCompleted(66488) and GetQuestStep(66488) == 3">
 	  <UserDialog QuestId="66488" StepId="3" DialogText="Please manually complete the dungeon: Lv. 41 The Stone Vigil."/>
+	  <WaitWhile Condition="not GetQuestStep(66488) == 255"/>
     </If>
     <If Condition="HasQuest(66488) and not IsQuestCompleted(66488) and GetQuestStep(66488) == 255">
       <If Condition="not IsOnMap(132)">
@@ -6009,6 +6019,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66055) and not IsQuestCompleted(66055) and GetQuestStep(66055) == 2">
 	  <UserDialog QuestId="66055" StepId="2" DialogText="Please manually complete the trial: Lv. 44 The Howling Eye."/>
+	  <WaitWhile Condition="not GetQuestStep(66055) == 255"/>
     </If>
     <If Condition="HasQuest(66055) and not IsQuestCompleted(66055) and GetQuestStep(66055) == 255">
       <If Condition="not IsOnMap(130) and not IsOnSubMap(654)">
@@ -6664,6 +6675,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(69409) and not IsQuestCompleted(69409) and GetQuestStep(69409) == 2">
 	  <UserDialog QuestId="69409" StepId="2" DialogText="Please manually complete the dungeon: Lv. 50 Castrum Meridian. Please note this will take 25 minutes to complete the duty. \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Auriana in Mor Dhona ( 22.7  , 6.6 )"/>
+	  <WaitWhile Condition="not GetQuestStep(69409) == 255"/>
     </If>
     <If Condition="HasQuest(69409) and not IsQuestCompleted(69409) and GetQuestStep(69409) == 255">
       <GetTo ZoneId="147" XYZ="-294.8196, 88, -225.1774"/>
@@ -6684,6 +6696,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(66060) and not IsQuestCompleted(66060) and GetQuestStep(66060) == 2">
 	  <UserDialog QuestId="66060" StepId="2" DialogText="Please manually complete the dungeon: Lv. 50 The Praetorium. Please note this will take 45 minutes to complete the duty. \n\nThe next level 50 Dungeons and Trials will award you with Allagan Tomestone of Poetics which can be exchanged for gear from the NPC Auriana in Mor Dhona ( 22.7  , 6.6 )"/>
+	  <WaitWhile Condition="not GetQuestStep(66060) == 255"/>
     </If>
     <If Condition="HasQuest(66060) and not IsQuestCompleted(66060) and GetQuestStep(66060) == 255">
       <GetTo ZoneId="212" XYZ="39.26135, 1.214808, 0.8086548"/>
@@ -6692,14 +6705,13 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 	  <AutoInventoryEquip/>
     </If>
 	
-    <If Condition="not IsQuestCompleted(65964)">
+    <If Condition="not IsQuestCompleted(66060)">
 	  <UserDialog DialogText="Hi, you are seeing this because you either lack the level to continue on the MSQ questline or some sort of error occurred. \n\nIf you lack the levels please do the following below and than restart the profile. \n\n   1. Run your class quest profile to gain more skills and maybe level up. \n\n   2. Do the daily Duty roulette manually for the bonus EXP. \n\n   3. Run floors 1-10 in Palace of the Dead (Potd) this is the 'Deep Dungeon' botbase, to unlock the Potd please load the oderbot profile located in your RB Director/Botbases/Deep Dungeon/Profiles "/>	  
     </If>
 	
-    <If Condition="IsQuestCompleted(65964)">
-	  <UserDialog DialogText="Congrats on completer the ARR MSQ questline."/>	  
-    </If>
-	
+    <If Condition="IsQuestCompleted(66060)">
+	  <LLoadProfile Path="[Orderbot] A Realm Reborn Main Scenario LisbethTravel Clean.xml"/>  
+    </If>	
 	
   </Order>
   <GrindAreas>
