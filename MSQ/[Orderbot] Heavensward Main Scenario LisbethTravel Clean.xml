@@ -1434,11 +1434,11 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <LLPickUpQuest NpcId="1018043" QuestId="67894" XYZ="-1.14447, 7.450581E-09, -3.280701"/>
    </If>
   </If>
-  <If Condition="HasQuest(67894) and not IsQuestCompleted(67894) and GetQuestStep(67894) == 1">
+  <While Condition="HasQuest(67894) and not IsQuestCompleted(67894) and GetQuestStep(67894) == 1">
    <GetTo ZoneId="156" XYZ="127.7333, -15.35372, -421.1338"/>
-   <UserDialog QuestId="67894" StepId="1" DialogText="Please manually complete the Solo Duty."/>
-   <WaitWhile Condition="not GetQuestStep(67894) == 3"/>
-   <!--	  
+   <!--	<UserDialog QuestId="67894" StepId="1" DialogText="Please manually complete the Solo Duty."/>
+   <WaitWhile Condition="not GetQuestStep(67894) == 3"/>-->
+    
       <LLSimpleDuty InteractNpcId="1018044" XYZ="127.7333, -15.35372, -421.1338" QuestId="67894" StepId="1">
         <HotSpots>
           <HotSpot XYZ="-0.09591391, 29, 0.1687869" Radius="90"/>
@@ -1453,9 +1453,11 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
           <TargetMob Id="5577" Weight="2000"/>
           <TargetMob Id="5576" Weight="1000"/>
         </TargetMobs>
-      </LLSimpleDuty>
-      <WaitWhile Condition="HasQuest(67894) and not IsQuestCompleted(67894) and not GetQuestStep(67894) == 3"/>    
-      -->
+      </LLSimpleDuty>  
+      
+  </While>
+  <If Condition="HasQuest(67894) and not IsQuestCompleted(67894) and GetQuestStep(67894) == 2">
+      <WaitWhile Condition="not GetQuestStep(67894) == 3"/> 
   </If>
   <If Condition="HasQuest(67894) and not IsQuestCompleted(67894) and GetQuestStep(67894) == 3">
    <If Condition="not IsOnMap(636)">
@@ -1504,7 +1506,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    </If>
    <LLTurnIn QuestId="67895" NpcId="1018331" XYZ="-2.639893, 7.450581E-09, -7.400635"/>
    <LLSmallTalk/>
-   <AutoInventoryEquip/>
   </If>
 	
     <If Condition="not IsQuestCompleted(67895)">
@@ -1513,7 +1514,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 	
     <If Condition="IsQuestCompleted(67895)">
 				<LLStopBot/>
-	  <LLoadProfile Path="[Orderbot] Heavensward Main Scenario LisbethTravel Clean.xml"/>
+	  <LLoadProfile Path="[Orderbot] Stormblood Main Scenario Clean.xml"/>
     </If>  
   
  </Order>
