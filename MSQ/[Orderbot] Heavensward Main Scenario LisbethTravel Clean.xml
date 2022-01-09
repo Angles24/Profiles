@@ -8,6 +8,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 <Profile>
  <Name>[OrderBot] Heavensward Main Scenario 2.0</Name>
  <Order>
+		
   <BotSettings AutoEquip="0"/>
   <!-- An Uncertain Future (Level 60) -->
   <If Condition="IsQuestCompleted(67205) and not HasQuest(67692) and not IsQuestCompleted(67692)">

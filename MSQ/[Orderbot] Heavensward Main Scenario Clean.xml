@@ -431,7 +431,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <GetTo ZoneId="401" XYZ="299.8245, -115.8313, 424.7349"/>
    <UseObject NpcId="2005419" XYZ="299.8245, -115.8313, 424.7349" QuestId="67131" StepId="2"/>
   </If>
-  <If Condition="HasQuest(67131) and not IsQuestCompleted(67131) and GetQuestStep(67131) == 3">
+  <While Condition="HasQuest(67131) and not IsQuestCompleted(67131) and GetQuestStep(67131) == 3">
       <If Condition="not DutyManager.InInstance">
 		<GetTo ZoneId="401" XYZ="531.1816, -99.84944, 349.9656"/>
         <RunCode Name="DutyCommence"/>
@@ -442,13 +442,13 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		  <MoveTo ZoneId="401" XYZ="659.3574, -65.53652, -123.3998"/>		
 		  <WaitWhile Condition="Core.Player.InCombat"/>		  
 		  <UseObject NpcId="2005710" XYZ="659.3574, -65.53652, -123.3998" Condition="not Core.Player.InCombat" UseTimes="1" BlacklistAfter="True" />
-		  <Grind GrindRef="67131" PostCombatDelay="5.0" While="not GetQuestStep(67131) == 255"/>
-		  <!--<WaitTimer WaitTime="10"/>	
+		  <!--<Grind GrindRef="67131" PostCombatDelay="5.0" While="DutyManager.InInstance and not GetQuestStep(67131) == 255"/>-->
+		  <WaitTimer WaitTime="10"/>	
 		  <MoveTo ZoneId="401" XYZ="683.6423, -65.53652, -88.35236"/>
 		  <WaitTimer WaitTime="5"/>			
 		  <MoveTo ZoneId="401" XYZ="727.4737, -70.55422, -20.15596"/>	
 		  <WaitTimer WaitTime="5"/>	
-		  <MoveTo ZoneId="401" XYZ="708.4626, -85.6245, 30.1816"/>	-->
+		  <MoveTo ZoneId="401" XYZ="708.4626, -85.6245, 30.1816"/>
       </If>	
    <!--<GetTo ZoneId="401" XYZ="531.1816, -99.84944, 349.9656"/>
    <LLSimpleDuty InteractNpcId="1012366" XYZ="531.1816, -99.84944, 349.9656" QuestId="67131" StepId="3">
@@ -464,8 +464,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
      <TargetMob Id="4128" Weight="1000"/>
     </TargetMobs>
    </LLSimpleDuty>-->
-   <WaitWhile Condition="HasQuest(67131) and not IsQuestCompleted(67131) and not GetQuestStep(67131) == 255"/>
-  </If>
+  </While>
   <If Condition="HasQuest(67131) and not IsQuestCompleted(67131) and GetQuestStep(67131) == 255">
    <GetTo ZoneId="401" XYZ="-678.2483, -110.6741, 481.7731"/>
    <LLTurnIn QuestId="67131" NpcId="1012367" XYZ="-678.2483, -110.6741, 481.7731"/>
