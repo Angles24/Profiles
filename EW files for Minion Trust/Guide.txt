@@ -2,6 +2,8 @@ Copy UserDialog.cs to your RB Quest Behaviour folder, make sure you restart RB f
 
 Copy Noop.info to to MINIONAPP\Bots\FFXIVMinion64\LuaMods\ffxivminion\QuestProfiles, reload LUA if minion is already attached in game or attach it if its not.
 
+Delete the NAV folders for the Endwalker zones in MINIONAPP\Bots\FFXIVMinion64\Navigation. Old Sharlayan, Labarynthos, Thavnir, Radz-at-Hans, Mare L(moon), Garlemeld, Elpis, Ultima Thule.
+
 For Minion, Select Quest as the Bot Mode, select your desired Skill Profile and select noop as the Quest Profile.
 
 On Minion Trust make sure Trust Quest Mode is selected.

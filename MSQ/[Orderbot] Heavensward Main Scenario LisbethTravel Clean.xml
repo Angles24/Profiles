@@ -1513,7 +1513,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
 	
     <If Condition="IsQuestCompleted(67895)">
-				<LLStopBot/>
 	  <LLoadProfile Path="[Orderbot] Stormblood Main Scenario Clean.xml"/>
     </If>  
   

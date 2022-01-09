@@ -4427,28 +4427,28 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <If Condition="HasQuest(68499) and not IsQuestCompleted(68499) and GetQuestStep(68499) == 1 and GetQuestById(68499).GetTodoArgs(1, 0).Item1 == 1">
       <If Condition="not IsOnMap(621)">
         <TeleportTo Name="The Ala Mhigan Quarter" AetheryteId="103"/>
-        <LisbethTravel ZoneId="" XYZ="585.3512, 70, 564.0801"/>
+        <LisbethTravel ZoneId="621" XYZ="585.3512, 70, 564.0801"/>
       </If>
       <LLTalkTo NpcId="1024131" XYZ="585.3512, 70, 564.0801" QuestId="68499"/>
     </If>
     <If Condition="HasQuest(68499) and not IsQuestCompleted(68499) and GetQuestStep(68499) == 1 and GetQuestById(68499).GetTodoArgs(1, 0).Item1 == 2">
       <If Condition="not IsOnMap(621)">
         <TeleportTo Name="The Ala Mhigan Quarter" AetheryteId="103"/>
-        <LisbethTravel ZoneId="" XYZ="683.7109, 70, 540.5508"/>
+        <LisbethTravel ZoneId="621" XYZ="683.7109, 70, 540.5508"/>
       </If>
       <LLTalkTo NpcId="1024132" XYZ="683.7109, 70, 540.5508" QuestId="68499"/>
     </If>
     <If Condition="HasQuest(68499) and not IsQuestCompleted(68499) and GetQuestStep(68499) == 2">
       <If Condition="not IsOnMap(621)">
         <TeleportTo Name="The Ala Mhigan Quarter" AetheryteId="103"/>
-        <LisbethTravel ZoneId="" XYZ="745.2048, 69.99999, 489.7687"/>
+        <LisbethTravel ZoneId="621" XYZ="745.2048, 69.99999, 489.7687"/>
       </If>
       <LLTalkTo NpcId="1024133" XYZ="745.2048, 69.99999, 489.7687" QuestId="68499" StepId="2"/>
     </If>
     <If Condition="HasQuest(68499) and not IsQuestCompleted(68499) and GetQuestStep(68499) == 255">
       <If Condition="not IsOnMap(621)">
         <TeleportTo Name="The Ala Mhigan Quarter" AetheryteId="103"/>
-        <LisbethTravel ZoneId="" XYZ="530.8156, 70, 576.0128"/>
+        <LisbethTravel ZoneId="621" XYZ="530.8156, 70, 576.0128"/>
       </If>
 	  <If Condition="Core.Me.CurrentJob == ClassJobType.Paladin or Core.Me.CurrentJob == ClassJobType.Warrior or Core.Me.CurrentJob == ClassJobType.DarkKnight or Core.Me.CurrentJob == ClassJobType.Gunbreaker">
         <LLTurnIn QuestId="68499" NpcId="1024103" InteractDistance="3.0" XYZ="532.494, 70, 576.1653" RewardSlot="0"/>
@@ -4489,14 +4489,14 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       <If Condition="not IsOnMap(621)">
         <TeleportTo Name="The Ala Mhigan Quarter" AetheryteId="103"/>
       </If>
-      <LisbethTravel ZoneId="" XYZ="208.0513, -0.3, 339.9064"/>
+      <LisbethTravel ZoneId="621" XYZ="208.0513, -0.3, 339.9064"/>
       <LLTalkTo NpcId="1024134" XYZ="207.8431, -0.3, 338.5519" QuestId="68500" StepId="1"/>
     </If>
     <If Condition="HasQuest(68500) and not IsQuestCompleted(68500) and GetQuestStep(68500) == 2">
       <If Condition="not IsOnMap(621)">
         <TeleportTo Name="The Ala Mhigan Quarter" AetheryteId="103"/>
       </If>
-      <LisbethTravel ZoneId="" XYZ="94.86054, -0.6, -25.66903" ArrivalTolerance="0.5" AllowedVariance="1.0" IgnoreIndoors="True"/>
+      <LisbethTravel ZoneId="621" XYZ="94.86054, -0.6, -25.66903" ArrivalTolerance="0.5" AllowedVariance="1.0" IgnoreIndoors="True"/>
       <RunCode Name="68500a"/>
       <UseObject NpcId="2009052" XYZ="144.976, -270.985, -12.28351" UseDistance="5.0" QuestId="68500" StepId="2"/>
     </If>
@@ -4505,7 +4505,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <If Condition="not IsOnMap(621)">
           <TeleportTo Name="The Ala Mhigan Quarter" AetheryteId="103"/>
         </If>
-        <LisbethTravel ZoneId="" XYZ="94.86054, -0.6, -25.66903" ArrivalTolerance="0.5" AllowedVariance="1.0" IgnoreIndoors="True"/>
+        <LisbethTravel ZoneId="621" XYZ="94.86054, -0.6, -25.66903" ArrivalTolerance="0.5" AllowedVariance="1.0" IgnoreIndoors="True"/>
         <RunCode Name="68500a"/>
       </If>
       <RunCode Name="68500b"/>
@@ -5084,7 +5084,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <TeleportTo Name="The House of the Fierce" AetheryteId="108" Force="True"/>
         <MoveTo XYZ="328.5023, 21.67948, -552.327"/>
       </If>
-      <LisbethTravel ZoneId="" XYZ="-260.6088, 53.21751, -645.594"/>
+      <LisbethTravel ZoneId="614" XYZ="-260.6088, 53.21751, -645.594"/>
       <LLTalkTo NpcId="1024983" XYZ="-260.6088, 53.21751, -645.594" QuestId="68563" StepId="2"/>
     </If>
     <If Condition="HasQuest(68563) and not IsQuestCompleted(68563) and GetQuestStep(68563) == 3">
@@ -5251,7 +5251,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <If Condition="HasQuest(68607) and not IsQuestCompleted(68607) and GetQuestStep(68607) == 1 and GetQuestById(68607).GetTodoArgs(1, 0).Item1 == 1">
       <If Condition="not IsOnMap(614)">
         <TeleportTo Name="Namai" AetheryteId="107" Force="True"/>
-        <LisbethTravel ZoneId="" XYZ="-244.3313, 16.63217, 507.9664"/>
+        <LisbethTravel ZoneId="614" XYZ="-244.3313, 16.63217, 507.9664"/>
       </If>
       <LLTalkTo NpcId="1019303" XYZ="-308.9495, 17.73554, 512.4742" QuestId="68607"/>
     </If>
@@ -6016,6 +6016,15 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
     </If>
+	
+    <If Condition="not IsQuestCompleted(68721)">
+	  <UserDialog DialogText="Hi, you are seeing this because you either lack the level to continue on the MSQ questline or some sort of error occurred. \n\nIf you lack the levels please do the following below and than restart the profile. \n\n   1. Run your class quest profile to gain more skills and maybe level up. \n\n   2. Do the daily Duty roulette manually for the bonus EXP. \n\n   3. Run floors 1-10 in Palace of the Dead (Potd) this is the 'Deep Dungeon' botbase, to unlock the Potd please load the oderbot profile located in your RB Director/Botbases/Deep Dungeon/Profiles "/>	  
+    </If>
+	
+    <If Condition="IsQuestCompleted(68721)">
+	<LLStopBot/>
+	  <LLoadProfile Path="[Orderbot] Stormblood Main Scenario Clean.xml"/>
+    </If>  
 	
   </Order>
   <GrindAreas>
