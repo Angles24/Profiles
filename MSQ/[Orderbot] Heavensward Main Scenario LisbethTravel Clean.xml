@@ -5,68 +5,6 @@ Authors:  Sodimm, y2krazy, kagamihiiragi17
 Version:  1.3.5
 Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 -->
-<!DOCTYPE Profile [
-<!-- Profile Settings -->
- <!-- Rewards Weapons 240 ilvl
-                    0: Paladin
-                    1: Warrior
-                    2: Dark Knight
-                    3: Samurai
-					4: Gil-->
-<!ENTITY Consequences "4">
-
-<!-- Rewards Weapons 240 ilvl
-                    0: Monk
-                    1: Dragoon
-                    2: Ninja
-					3: Paladin
-					4: Gil-->
-<!ENTITY Choices "4">
-
-    <!-- Rewards Weapons 240 ilvl
-                    0: Bard
-                    1: Mechanist
-                    2: Black Mage
-                    3: Summoner
-					4: Gil-->
-<!ENTITY ASpectaclefortheAges "4">
-
-    <!-- Rewards Weapons 240 ilvl
-                    0: White Mage
-                    1: Scholar
-                    2: Astroligan
-                    3: Red Mage
-					4: Gil-->
-<!ENTITY ForThoseWeCanYetSave "4">
-
-    <!-- Rewards Armor Coffer 240 ilvl
-                    0: Fending
-                    1: Maiming
-                    2: Striking
-                    3: Scouting
-					4: Gil-->
-<!ENTITY CausesandCosts "4">
-
-    <!-- Rewards Armor Coffer 240 ilvl
-                    0: Aiming
-                    1: Healing
-                    2: Casting
-                    3: Gil-->
-<!ENTITY TheManWithin "3">
-
-    <!-- Rewards Accessories Coffer 240 ilvl
-                    0: Fending
-                    1: Slaying
-                    2: Gil-->
-<!ENTITY AgainsttheDyingoftheLight "2">
-
-    <!-- Rewards Accessories Coffer 240 ilvl
-                    0: Aiming
-                    1: Healing
-                    2: Casting
-                    3: Gil-->
-<!ENTITY AsGoesLightSoGoesDarkness "3">
-]>
 <Profile>
  <Name>[OrderBot] Heavensward Main Scenario 2.0</Name>
  <Order>
@@ -162,8 +100,9 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    <LLTalkTo NpcId="1012405" XYZ="587.7927, -50.62399, 70.72546" QuestId="67695" StepId="2"/>
   </If>
   <If Condition="HasQuest(67695) and not IsQuestCompleted(67695) and GetQuestStep(67695) == 3 and not IsTodoChecked(67695, 3, 0)">
-   <LisbethTravel ZoneId="398" XYZ="470.0236, -49.89133, 20.37079"/>
+   <LisbethTravel ZoneId="398" XYZ="471.3523, -51.1414, 36.97595"/>
    <HandOver ItemId="2001899" QuestId="67695" StepId="3" NpcId="1011916" XYZ="470.0236, -49.89133, 20.37079"/>
+   <MoveTo ZoneId="398" XYZ="471.3523, -51.1414, 36.97595"/>
   </If>
   <If Condition="HasQuest(67695) and not IsQuestCompleted(67695) and GetQuestStep(67695) == 3 and not IsTodoChecked(67695, 3, 1)">
    <LisbethTravel ZoneId="398" XYZ="535.3016, -51.34064, 65.29333"/>
@@ -264,7 +203,15 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67698) and not IsQuestCompleted(67698) and GetQuestStep(67698) == 255">
    <GetTo ZoneId="418" XYZ="125.9326, 24.45884, -5.539063"/>
-   <LLTurnIn QuestId="67698" NpcId="1016008" XYZ="125.9326, 24.45884, -5.539063" RewardSlot="&AgainsttheDyingoftheLight;"/>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Paladin or Core.Me.CurrentJob == ClassJobType.DarkKnight or Core.Me.CurrentJob == ClassJobType.Warrior">
+     <LLTurnIn QuestId="67698" NpcId="1016008" XYZ="125.9326, 24.45884, -5.539063" RewardSlot="0"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Monk or Core.Me.CurrentJob == ClassJobType.Dragoon or Core.Me.CurrentJob == ClassJobType.Samurai">
+     <LLTurnIn QuestId="67698" NpcId="1016008" XYZ="125.9326, 24.45884, -5.539063" RewardSlot="1"/>
+   </If>
+   <If Condition="HasQuest(67698) and not IsQuestCompleted(67698) and GetQuestStep(67698) == 255">
+     <LLTurnIn QuestId="67698" NpcId="1016008" XYZ="125.9326, 24.45884, -5.539063" RewardSlot="2"/>
+   </If>
    <LLSmallTalk/>
    <Dismount />
    <WaitTimer WaitTime="2" />
@@ -280,7 +227,33 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    </If>
   </If>
   <If Condition="HasQuest(67699) and not IsQuestCompleted(67699) and GetQuestStep(67699) == 1">
-   <GetTo ZoneId="419" XYZ="-182.3911, -0.2309884, -70.72565"/>
+      <If Condition="not DutyManager.InInstance">
+		<GetTo ZoneId="419" XYZ="-182.3911, -0.2309884, -70.72565"/>
+        <RunCode Name="DutyCommence"/>
+      </If>
+      <If Condition="DutyManager.InInstance">	
+		<MoveTo XYZ="3.641848, -299.9818, 70.64926"/>
+		<Grind GrindRef="67699" PostCombatDelay="3.0" While="Core.Player.InCombat"/>
+		<MoveTo XYZ="31.8648, -299.9991, 29.71552"/>
+		<Grind GrindRef="67699" PostCombatDelay="3.0" While="Core.Player.InCombat"/>
+		<MoveTo XYZ="52.0344, -299.9846, -22.10899"/>
+		<Grind GrindRef="67699" PostCombatDelay="3.0" While="Core.Player.InCombat"/>
+		<MoveTo XYZ="41.26277, -299.5644, -30.82588"/>
+		<Grind GrindRef="67699" PostCombatDelay="3.0" While="Core.Player.InCombat"/>
+		<MoveTo XYZ="-20.76196, -292.1118, -98.87001"/>
+		<WaitWhile Condition="QuestLogManager.InCutscene"/>
+		<MoveTo XYZ="-51.41252, -299.9846, -39.24566"/>
+		<Grind GrindRef="67699" PostCombatDelay="3.0" While="Core.Player.InCombat"/>
+		<UseObject NpcId="2006752" XYZ="-52.26221, -300.0008, -27.8783" UseTimes="1" BlacklistAfter="True" />	
+		<MoveTo XYZ="56.46749, -299.9846, -69.4538"/>
+		<Grind GrindRef="67699" PostCombatDelay="3.0" While="Core.Player.InCombat"/>
+		<UseObject NpcId="2006752" XYZ="56.9314, -300.0077, -73.68585" UseTimes="1" BlacklistAfter="True" />	
+		<MoveTo XYZ="-10.07583, -291.9497, -100.0011"/>
+		<Grind GrindRef="67699" PostCombatDelay="3.0" While="Core.Player.InCombat"/>	
+		<MoveTo XYZ="-1.156969, -282.345, -150.6964"/>	
+		<WaitWhile Condition="not GetQuestStep(67699) == 3"/>
+      </If>
+   <!--<GetTo ZoneId="419" XYZ="-182.3911, -0.2309884, -70.72565"/>
    <LLSimpleDuty InteractNpcId="1016034" XYZ="-182.3911, -0.2309884, -70.72565" QuestId="67699" StepId="1">
     <InteractObjects>
      <InteractObject Name="Refugees" NpcId="2006752"/>
@@ -306,7 +279,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
      <TargetMob Id="4597" Weight="1000"/>
     </TargetMobs>
    </LLSimpleDuty>
-   <WaitWhile Condition="HasQuest(67699) and not IsQuestCompleted(67699) and not GetQuestStep(67699) == 3"/>
+   <WaitWhile Condition="HasQuest(67699) and not IsQuestCompleted(67699) and not GetQuestStep(67699) == 3"/>-->
   </If>
   <If Condition="HasQuest(67699) and not IsQuestCompleted(67699) and GetQuestStep(67699) == 3">
    <GetTo ZoneId="419" XYZ="-3.097595, 27.79051, -140.3677"/>
@@ -317,7 +290,18 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     <GetTo ZoneId="419" XYZ="17.99036, 16.00967, -9.567444"/>
     <UseTransport InteractDistance="3.0" NpcId="1011217" XYZ="17.99036, 16.00967, -9.567444"/>
    </If>
-   <LLTurnIn QuestId="67699" NpcId="1016050" XYZ="0.7476196, 0.02225424, 4.623413" RewardSlot="&AsGoesLightSoGoesDarkness;"/>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Bard or Core.Me.CurrentJob == ClassJobType.Machinist or Core.Me.CurrentJob == ClassJobType.Ninja">
+     <LLTurnIn QuestId="67699" NpcId="1016050" XYZ="0.7476196, 0.02225424, 4.623413" RewardSlot="0"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.WhiteMage or Core.Me.CurrentJob == ClassJobType.Scholar or Core.Me.CurrentJob == ClassJobType.Astrologian">
+     <LLTurnIn QuestId="67699" NpcId="1016050" XYZ="0.7476196, 0.02225424, 4.623413" RewardSlot="1"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.BlackMage or Core.Me.CurrentJob == ClassJobType.Summoner or Core.Me.CurrentJob == ClassJobType.RedMage">
+     <LLTurnIn QuestId="67699" NpcId="1016050" XYZ="0.7476196, 0.02225424, 4.623413" RewardSlot="2"/>
+   </If>
+   <If Condition="HasQuest(67699) and not IsQuestCompleted(67699) and GetQuestStep(67699) == 255">
+     <LLTurnIn QuestId="67699" NpcId="1016050" XYZ="0.7476196, 0.02225424, 4.623413" RewardSlot="3"/>
+   </If>
    <LLSmallTalk/>
    <Dismount />
    <WaitTimer WaitTime="2" />
@@ -407,6 +391,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67768) and not IsQuestCompleted(67768) and GetQuestStep(67768) == 3">
     <UserDialog QuestId="67768" StepId="3" DialogText="Please manually complete the dungeon: Lv. 60 The Antitower."/>
+	<WaitWhile Condition="not GetQuestStep(67768) == 255"/>
   </If>
   <If Condition="HasQuest(67768) and not IsQuestCompleted(67768) and GetQuestStep(67768) == 255">
    <If Condition="not IsOnMap(463)">
@@ -530,8 +515,9 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
    </If>
   </If>
   <If Condition="HasQuest(67773) and not IsQuestCompleted(67773) and GetQuestStep(67773) == 1">
-   <LisbethTravel ZoneId="397" XYZ="540.3677, 217.9083, 769.0393"/>
+   <LisbethTravel ZoneId="397" XYZ="514.3465, 217.9515, 773.4603"/>
    <LLTalkTo NpcId="1016069" XYZ="540.3677, 217.9083, 769.0393" QuestId="67773" StepId="1"/>
+   <MoveTo ZoneId="397" XYZ="514.3465, 217.9515, 773.4603"/>
   </If>
   <If Condition="HasQuest(67773) and not IsQuestCompleted(67773) and GetQuestStep(67773) == 2">
    <LisbethTravel ZoneId="397" XYZ="477.3784, 223.926, 872.6787"/>
@@ -539,7 +525,21 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67773) and not IsQuestCompleted(67773) and GetQuestStep(67773) == 255">
    <LisbethTravel ZoneId="397" XYZ="507.1641, 217.9515, 769.9243"/>
-   <LLTurnIn QuestId="67773" NpcId="1016579" XYZ="507.1641, 217.9515, 769.9243" RewardSlot="&Consequences;"/>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Paladin">   
+	<LLTurnIn QuestId="67773" NpcId="1016579" XYZ="507.1641, 217.9515, 769.9243" RewardSlot="0"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Warrior">   
+	<LLTurnIn QuestId="67773" NpcId="1016579" XYZ="507.1641, 217.9515, 769.9243" RewardSlot="1"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.DarkKnight">   
+	<LLTurnIn QuestId="67773" NpcId="1016579" XYZ="507.1641, 217.9515, 769.9243" RewardSlot="2"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Samurai">   
+	<LLTurnIn QuestId="67773" NpcId="1016579" XYZ="507.1641, 217.9515, 769.9243" RewardSlot="3"/>
+   </If>  
+   <If Condition="HasQuest(67773) and not IsQuestCompleted(67773) and GetQuestStep(67773) == 255">
+    <LLTurnIn QuestId="67773" NpcId="1016579" XYZ="507.1641, 217.9515, 769.9243" RewardSlot="4"/>
+   </If>
    <LLSmallTalk/>
    <Dismount />
    <WaitTimer WaitTime="2" />
@@ -583,7 +583,21 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67774) and not IsQuestCompleted(67774) and GetQuestStep(67774) == 255">
    <GetTo ZoneId="418" XYZ="112.5352, 24.39169, -2.914551"/>
-   <LLTurnIn QuestId="67774" NpcId="1016583" XYZ="112.5352, 24.39169, -2.914551" RewardSlot="&Choices;"/>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Monk">
+     <LLTurnIn QuestId="67774" NpcId="1016583" XYZ="112.5352, 24.39169, -2.914551" RewardSlot="0"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Dragoon">
+     <LLTurnIn QuestId="67774" NpcId="1016583" XYZ="112.5352, 24.39169, -2.914551" RewardSlot="1"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Ninja">
+     <LLTurnIn QuestId="67774" NpcId="1016583" XYZ="112.5352, 24.39169, -2.914551" RewardSlot="2"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Paladin">
+     <LLTurnIn QuestId="67774" NpcId="1016583" XYZ="112.5352, 24.39169, -2.914551" RewardSlot="3"/>
+   </If>
+   <If Condition="HasQuest(67774) and not IsQuestCompleted(67774) and GetQuestStep(67774) == 255">
+     <LLTurnIn QuestId="67774" NpcId="1016583" XYZ="112.5352, 24.39169, -2.914551" RewardSlot="4"/>
+   </If>
    <LLSmallTalk/>
    <Dismount />
    <WaitTimer WaitTime="2" />
@@ -604,7 +618,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67775) and not IsQuestCompleted(67775) and GetQuestStep(67775) == 2">
    <LisbethTravel ZoneId="155" XYZ="-133.9285, 304.1539, -300.8317"/>
-   <SimpleDuty InteractNpcId="1016587" XYZ="-133.9285, 304.1539, -300.8317" QuestId="67775" StepId="2">
+   <LLSimpleDuty InteractNpcId="1016587" XYZ="-133.9285, 304.1539, -300.8317" QuestId="67775" StepId="2">
     <HotSpots>
      <HotSpot XYZ="-41.52696, 298.9, -208.9486" Radius="90"/>
      <HotSpot XYZ="-34.72089, 298.9, -206.1401" Radius="90"/>
@@ -619,7 +633,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
      <TargetMob Id="4743" Weight="1000"/>
      <TargetMob Id="4739"/>
     </TargetMobs>
-   </SimpleDuty>
+   </LLSimpleDuty>
    <WaitWhile Condition="HasQuest(67775) and not IsQuestCompleted(67775) and not GetQuestStep(67775) == 4"/>
   </If>
   <If Condition="HasQuest(67775) and not IsQuestCompleted(67775) and GetQuestStep(67775) == 4">
@@ -628,7 +642,21 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67775) and not IsQuestCompleted(67775) and GetQuestStep(67775) == 255">
    <LisbethTravel ZoneId="155" XYZ="-136.6445, 304.1538, -308.3696"/>
-   <LLTurnIn QuestId="67775" NpcId="1016588" XYZ="-136.6445, 304.1538, -308.3696" RewardSlot="&ASpectaclefortheAges;"/>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Bard">
+     <LLTurnIn QuestId="67775" NpcId="1016588" XYZ="-136.6445, 304.1538, -308.3696" RewardSlot="0"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Machinist">
+     <LLTurnIn QuestId="67775" NpcId="1016588" XYZ="-136.6445, 304.1538, -308.3696" RewardSlot="1"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.BlackMage">
+     <LLTurnIn QuestId="67775" NpcId="1016588" XYZ="-136.6445, 304.1538, -308.3696" RewardSlot="2"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Summoner">
+     <LLTurnIn QuestId="67775" NpcId="1016588" XYZ="-136.6445, 304.1538, -308.3696" RewardSlot="3"/>
+   </If>
+   <If Condition="HasQuest(67775) and not IsQuestCompleted(67775) and GetQuestStep(67775) == 255">
+     <LLTurnIn QuestId="67775" NpcId="1016588" XYZ="-136.6445, 304.1538, -308.3696" RewardSlot="4"/>
+   </If>
    <LLSmallTalk/>
    <Dismount />
    <WaitTimer WaitTime="2" />
@@ -653,7 +681,21 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67776) and not IsQuestCompleted(67776) and GetQuestStep(67776) == 255">
    <LisbethTravel ZoneId="397" XYZ="501.976, 217.9515, 762.7222"/>
-   <LLTurnIn QuestId="67776" NpcId="1016590" XYZ="501.976, 217.9515, 762.7222" RewardSlot="&ForThoseWeCanYetSave;"/>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.WhiteMage">
+     <LLTurnIn QuestId="67776" NpcId="1016590" XYZ="501.976, 217.9515, 762.7222" RewardSlot="0"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Scholar">
+     <LLTurnIn QuestId="67776" NpcId="1016590" XYZ="501.976, 217.9515, 762.7222" RewardSlot="1"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Astrologian">
+     <LLTurnIn QuestId="67776" NpcId="1016590" XYZ="501.976, 217.9515, 762.7222" RewardSlot="2"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.RedMage">
+     <LLTurnIn QuestId="67776" NpcId="1016590" XYZ="501.976, 217.9515, 762.7222" RewardSlot="3"/>
+   </If>
+   <If Condition="HasQuest(67776) and not IsQuestCompleted(67776) and GetQuestStep(67776) == 255">
+     <LLTurnIn QuestId="67776" NpcId="1016590" XYZ="501.976, 217.9515, 762.7222" RewardSlot="4"/>
+   </If>
    <LLSmallTalk/>
    <Dismount />
    <WaitTimer WaitTime="2" />
@@ -684,7 +726,21 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67777) and not IsQuestCompleted(67777) and GetQuestStep(67777) == 255">
    <GetTo ZoneId="419" XYZ="14.8775, 16.00967, -4.196289"/>
-   <LLTurnIn QuestId="67777" NpcId="1013227" XYZ="14.8775, 16.00967, -4.196289" RewardSlot="&CausesandCosts;"/>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Paladin or Core.Me.CurrentJob == ClassJobType.Warrior or Core.Me.CurrentJob == ClassJobType.DarkKnight">
+     <LLTurnIn QuestId="67777" NpcId="1013227" XYZ="14.8775, 16.00967, -4.196289" RewardSlot="0"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Dragoon">
+     <LLTurnIn QuestId="67777" NpcId="1013227" XYZ="14.8775, 16.00967, -4.196289" RewardSlot="1"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Monk or Core.Me.CurrentJob == ClassJobType.Samurai">
+     <LLTurnIn QuestId="67777" NpcId="1013227" XYZ="14.8775, 16.00967, -4.196289" RewardSlot="2"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Ninja">
+     <LLTurnIn QuestId="67777" NpcId="1013227" XYZ="14.8775, 16.00967, -4.196289" RewardSlot="3"/>
+   </If>
+   <If Condition="HasQuest(67777) and not IsQuestCompleted(67777) and GetQuestStep(67777) == 255">
+     <LLTurnIn QuestId="67777" NpcId="1013227" XYZ="14.8775, 16.00967, -4.196289" RewardSlot="4"/>
+   </If>
    <Dismount />
    <WaitTimer WaitTime="2" />
    <RunCode Name="Coffer" />
@@ -712,7 +768,18 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67778) and not IsQuestCompleted(67778) and GetQuestStep(67778) == 255">
    <GetTo ZoneId="418" XYZ="109.7275, 24.38438, -4.715088"/>
-   <LLTurnIn QuestId="67778" NpcId="1016818" XYZ="109.7275, 24.38438, -4.715088" RewardSlot="&TheManWithin;"/>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.Bard or Core.Me.CurrentJob == ClassJobType.Machinist">
+     <LLTurnIn QuestId="67778" NpcId="1016818" XYZ="109.7275, 24.38438, -4.715088" RewardSlot="0"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.WhiteMage or Core.Me.CurrentJob == ClassJobType.Scholar or Core.Me.CurrentJob == ClassJobType.Astrologian">
+     <LLTurnIn QuestId="67778" NpcId="1016818" XYZ="109.7275, 24.38438, -4.715088" RewardSlot="1"/>
+   </If>
+   <If Condition="Core.Me.CurrentJob == ClassJobType.BlackMage or Core.Me.CurrentJob == ClassJobType.Summoner or Core.Me.CurrentJob == ClassJobType.RedMage">
+     <LLTurnIn QuestId="67778" NpcId="1016818" XYZ="109.7275, 24.38438, -4.715088" RewardSlot="2"/>
+   </If>
+   <If Condition="HasQuest(67778) and not IsQuestCompleted(67778) and GetQuestStep(67778) == 255">
+     <LLTurnIn QuestId="67778" NpcId="1016818" XYZ="109.7275, 24.38438, -4.715088" RewardSlot="3"/>
+   </If>
    <LLSmallTalk/>
    <Dismount />
    <WaitTimer WaitTime="2" />
@@ -762,6 +829,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67780) and not IsQuestCompleted(67780) and GetQuestStep(67780) == 5">
     <UserDialog QuestId="67780" StepId="5" DialogText="Please manually complete the dungeon: Lv. 60 Sohr Khai."/>
+	<WaitWhile Condition="not GetQuestStep(67780) == 255"/>
   </If>
   <If Condition="HasQuest(67780) and not IsQuestCompleted(67780) and GetQuestStep(67780) == 255">
    <LisbethTravel ZoneId="400" XYZ="-758.3887, 123.7287, 210.7728"/>
@@ -779,6 +847,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67781) and not IsQuestCompleted(67781) and GetQuestStep(67781) == 2">
     <UserDialog QuestId="67781" StepId="2" DialogText="Please manually complete the trial: Lv. 60 The Final Steps of Faith."/>
+	<WaitWhile Condition="not GetQuestStep(67781) == 255"/>
   </If>
   <If Condition="HasQuest(67781) and not IsQuestCompleted(67781) and GetQuestStep(67781) == 255">
    <GetTo ZoneId="418" XYZ="7.400574, 1.279123, 104.3563"/>
@@ -885,6 +954,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67878) and not IsQuestCompleted(67878) and GetQuestStep(67878) == 3">
     <UserDialog QuestId="67878" StepId="3" DialogText="Please manually complete the dungeon: Lv. 60 Xelphatol."/>
+	<WaitWhile Condition="not GetQuestStep(67878) == 4"/>
   </If>
   <If Condition="HasQuest(67878) and not IsQuestCompleted(67878) and GetQuestStep(67878) == 4">
    <LisbethTravel ZoneId="155" XYZ="248.4015, 302, -260.853"/>
@@ -1001,6 +1071,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67881) and not IsQuestCompleted(67881) and GetQuestStep(67881) == 8">
     <UserDialog QuestId="67881" StepId="8" DialogText="Please manually complete the Solo Duty."/>
+	<WaitWhile Condition="not GetQuestStep(67881) == 255"/>
   </If>
   <If Condition="HasQuest(67881) and not IsQuestCompleted(67881) and GetQuestStep(67881) == 255">
    <LisbethTravel ZoneId="180" XYZ="-48.29486, 64.43991, -235.5841"/>
@@ -1275,6 +1346,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   </If>
   <If Condition="HasQuest(67890) and not IsQuestCompleted(67890) and GetQuestStep(67890) == 6">
     <UserDialog QuestId="67890" StepId="6" DialogText="Please manually complete the dungeon: Lv. 60 Baelsar's Wall."/>
+	<WaitWhile Condition="not GetQuestStep(67890) == 255"/>
   </If>
   <If Condition="HasQuest(67890) and not IsQuestCompleted(67890) and GetQuestStep(67890) == 255">
    <GetTo ZoneId="152" XYZ="39.59705, 6.826768, 489.8602"/>
@@ -1364,8 +1436,9 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
   <If Condition="HasQuest(67894) and not IsQuestCompleted(67894) and GetQuestStep(67894) == 1">
    <GetTo ZoneId="156" XYZ="127.7333, -15.35372, -421.1338"/>
    <UserDialog QuestId="67894" StepId="1" DialogText="Please manually complete the Solo Duty."/>
+   <WaitWhile Condition="not GetQuestStep(67894) == 3"/>
    <!--	  
-      <SimpleDuty InteractNpcId="1018044" XYZ="127.7333, -15.35372, -421.1338" QuestId="67894" StepId="1">
+      <LLSimpleDuty InteractNpcId="1018044" XYZ="127.7333, -15.35372, -421.1338" QuestId="67894" StepId="1">
         <HotSpots>
           <HotSpot XYZ="-0.09591391, 29, 0.1687869" Radius="90"/>
         </HotSpots>
@@ -1379,7 +1452,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
           <TargetMob Id="5577" Weight="2000"/>
           <TargetMob Id="5576" Weight="1000"/>
         </TargetMobs>
-      </SimpleDuty>
+      </LLSimpleDuty>
       <WaitWhile Condition="HasQuest(67894) and not IsQuestCompleted(67894) and not GetQuestStep(67894) == 3"/>    
       -->
   </If>
@@ -1544,6 +1617,48 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 				await Buddy.Coroutines.Coroutine.Sleep(1000);
 		]]>
 		</CodeChunk>
+    <CodeChunk Name="DutyCommence">
+      <![CDATA[
+        Logging.Write("Commencing duty.");
+        uint[] npcIds = { 1016034 };
+        var dutyNpc = GameObjectManager.GameObjects.Where(r => r.IsTargetable && npcIds.Contains(r.NpcId)).OrderBy(r => r.Distance()).FirstOrDefault();
+        while (Core.Me.Location.Distance2D(dutyNpc.Location) > 1.5f)
+        {
+          await Coroutine.Yield();
+          Navigator.PlayerMover.MoveTowards(dutyNpc.Location);
+        }
+        Navigator.PlayerMover.MoveStop();
+        dutyNpc.Interact();
+        await Coroutine.Wait(5000, () => Talk.DialogOpen || DifficultySelectYesNo.IsOpen || SelectYesno.IsOpen);
+        while (!(DifficultySelectYesNo.IsOpen || SelectYesno.IsOpen))
+        {
+          Talk.Next();
+          await Coroutine.Yield();
+        }
+        await Coroutine.Wait(5000, () => DifficultySelectYesNo.IsOpen || SelectYesno.IsOpen);
+        if (DifficultySelectYesNo.IsOpen) { DifficultySelectYesNo.Proceed(2); }
+        else if (SelectYesno.IsOpen) { SelectYesno.Yes(); }
+        else
+        {
+         Logging.Write("Duty window didn't open.");
+         TreeRoot.Stop();
+        }
+        await Coroutine.Wait(2000, () => CommonBehaviors.IsLoading);
+        await Coroutine.Wait(-1, () => !CommonBehaviors.IsLoading);
+        while (QuestLogManager.InCutscene)
+        {
+          ff14bot.RemoteAgents.AgentCutScene.Instance.PromptSkip();
+          if (ff14bot.RemoteAgents.AgentCutScene.Instance.CanSkip && SelectString.IsOpen) { SelectString.ClickSlot(0); }
+          if (Talk.DialogOpen) { Talk.Next(); }
+          await Coroutine.Yield();
+        }
+        await Coroutine.Wait(2000, () => CommonBehaviors.IsLoading);
+        await Coroutine.Wait(-1, () => !CommonBehaviors.IsLoading);
+        await Coroutine.Wait(10000, () => !Core.Me.HasAura(1268));
+        Logging.Write("Duty commenced.");
+        await Coroutine.Sleep(1500);
+      ]]>
+    </CodeChunk>
  </CodeChunks>
  <GrindAreas>
   <GrindArea Name="Deepeye">
@@ -1699,6 +1814,28 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 			</TargetMobs>
 			<MinLevel>54</MinLevel>
 			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+		<GrindArea name="67699">
+			<HotSpots>
+				 <HotSpot XYZ="-0.1123043, -299.9818, 74.09485" Radius="90"/>
+				 <HotSpot XYZ="51.6317, -299.9846, 29.44277" Radius="90"/>
+				 <HotSpot XYZ="51.84348, -299.9846, -28.51695" Radius="90"/>
+				 <HotSpot XYZ="-0.1548252, -299.9818, -69.30103" Radius="90"/>
+				 <HotSpot XYZ="-18.08327, -291.9597, -98.92325" Radius="90"/>
+				 <HotSpot XYZ="-52.26221, -300.0008, -27.8783" Radius="10"/>
+				 <HotSpot XYZ="56.9314, -300.0077, -73.68585" Radius="10"/>
+				 <HotSpot XYZ="-0.1337083, -291.9376, -100.1734" Radius="90"/>
+				 <HotSpot XYZ="-0.2571545, -282.345, -152.9014" Radius="90"/>
+			</HotSpots>
+			<TargetMobs>
+				 <TargetMob Id="3843" Weight="7000"/>
+				 <TargetMob Id="4401" Weight="6000"/>
+				 <TargetMob Id="3842" Weight="5000"/>
+				 <TargetMob Id="3841" Weight="4000"/>
+				 <TargetMob Id="4598" Weight="3000"/>
+				 <TargetMob Id="4599" Weight="2000"/>
+				 <TargetMob Id="4597" Weight="1000"/>
+				</TargetMobs>
 		</GrindArea>
  </GrindAreas>
 </Profile>
