@@ -488,14 +488,10 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(68172) and not IsQuestCompleted(68172) and GetQuestStep(68172) == 2">
       <GetTo ZoneId="635" XYZ="90.34732, 0.6972612, -96.49107"/>
-      <UseObject NpcIds="2007954, 2007951, 2007953, 2007952" QuestId="68172" StepId="2">
-        <HotSpots>
-          <HotSpot XYZ="90.34732, 0.6972612, -96.49107" Radius="20"/>
-          <HotSpot XYZ="25.12825, -0.3958505, -119.1466" Radius="20"/>
-          <HotSpot XYZ="-33.55567, 10.25893, 101.5524" Radius="20"/>
-          <HotSpot XYZ="-33.48893, -0.168239, -15.87731" Radius="20"/>
-        </HotSpots>
-      </UseObject>
+      <UseObject NpcId="2007954" XYZ="90.34732, 0.6972612, -96.49107" QuestId="68172" StepId="2" Condition="GetQuestById(68172).QuestI8A == 0"/>
+      <UseObject NpcId="2007951" XYZ="25.12825, -0.3958505, -119.1466" QuestId="68172" StepId="2" Condition="GetQuestById(68172).QuestI8A == 1"/>
+      <UseObject NpcId="2007952" XYZ="-33.48893, -0.168239, -15.87731" QuestId="68172" StepId="2" Condition="GetQuestById(68172).QuestI8A == 2"/>
+      <UseObject NpcId="2007953" XYZ="-33.55567, 10.25893, 101.5524" QuestId="68172" StepId="2" Condition="GetQuestById(68172).QuestI8A == 3"/>
     </If>
     <!-- Ye Wayward Brothers (Level 60) -->
     <If Condition="HasQuest(68173) and not IsQuestCompleted(68173) and GetQuestStep(68173) == 255">
@@ -1058,8 +1054,12 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(68016) and not IsQuestCompleted(68016) and GetQuestStep(68016) == 4 and GetQuestById(68016).GetTodoArgs(4, 0).Item1 == 0">
       <TeleportTo Name="Onkoro" AetheryteId="106" Force="True"/>
-      <GetTo ZoneId="613" XYZ="14.03102, 5.349393, -483.1364"/>
+      <GetTo ZoneId="613" XYZ="29.54791, 1.185594, -506.974"/>
+      <MoveTo ZoneId="613" XYZ="28.77423, 5.064557, -490.7842" UseMesh="False" Distance="0.5"/>
+      <MoveTo ZoneId="613" XYZ="14.05574, 5.064557, -490.4783" UseMesh="False" Distance="0.5"/>
+      <MoveTo ZoneId="613" XYZ="13.71418, 5.349393, -483.7969" UseMesh="False" Distance="0.5"/>
       <LLTalkTo NpcId="1021508" XYZ="14.03102, 5.349393, -483.1364" QuestId="68016"/>
+      <MoveTo ZoneId="613" XYZ="16.69025, -0.5, -527.4459" UseMesh="False" Distance="0.5"/>
     </If>
     <If Condition="HasQuest(68016) and not IsQuestCompleted(68016) and GetQuestStep(68016) == 4">
       <GetTo ZoneId="613" XYZ="1.474887, 2.922473, -607.5394"/>
@@ -1249,127 +1249,57 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
       <LLTalkTo NpcId="1019969" XYZ="322.5031, -120.3922, -299.9959" QuestId="68020" StepId="1"/>
     </If>
     <If Condition="HasQuest(68020) and not IsQuestCompleted(68020) and GetQuestStep(68020) == 255">
-      <If Condition="not MovementManager.IsDiving">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-      </If>
-      <RunCode Name="68020"/>
-      <Dismount/>
+      <LisbethTravel ZoneId="613" XYZ="19.38696, -197.5218, -143.6913"/>	 
       <LLTurnIn QuestId="68020" InteractDistance="3.0" NpcId="1019970" XYZ="19.38696, -197.5218, -143.6913"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
     </If>
     <!-- Forever and Ever Apart (Level 63) -->
     <If Condition="IsQuestCompleted(68020) and not HasQuest(68021) and not IsQuestCompleted(68021)">
-      <If Condition="not IsOnSubMap(2772) and not IsOnSubMap(2750)">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-        <RunCode Name="68020"/>
-        <Dismount/>
-      </If>
+      <LisbethTravel ZoneId="613" XYZ="19.38696, -197.5218, -143.6913"/>	 
       <If Condition="IsQuestAcceptQualified(68021)">
         <LLPickUpQuest QuestId="68021" InteractDistance="3.0" NpcId="1019970" XYZ="19.38696, -197.5218, -143.6913"/>
       </If>
     </If>
     <If Condition="HasQuest(68021) and not IsQuestCompleted(68021) and GetQuestStep(68021) == 1">
-      <If Condition="not IsOnSubMap(2772) and not IsOnSubMap(2750)">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-        <RunCode Name="68020"/>
-        <Dismount/>
-      </If>
+      <LisbethTravel ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>	 
       <LLTalkTo NpcId="1019197" XYZ="-8.819601, -187.0837, -97.10515" QuestId="68021" StepId="1"/>
     </If>
     <If Condition="HasQuest(68021) and not IsQuestCompleted(68021) and GetQuestStep(68021) == 255">
-      <If Condition="not IsOnSubMap(2772) and not IsOnSubMap(2750)">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-        <RunCode Name="68020"/>
-        <Dismount/>
-      </If>
+      <LisbethTravel ZoneId="613" XYZ="20.0561, -197.5654, -145.2908"/>	  
       <LLTurnIn QuestId="68021" InteractDistance="3.0" NpcId="1019971" XYZ="20.0561, -197.5654, -145.2908"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
     </If>
     <!-- In Darkness the Magatama Dreams (Level 63) -->
     <If Condition="IsQuestCompleted(68021) and not HasQuest(68022) and not IsQuestCompleted(68022)">
-      <If Condition="not IsOnSubMap(2772) and not IsOnSubMap(2750)">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-        <RunCode Name="68020"/>
-        <Dismount/>
-      </If>
+      <LisbethTravel ZoneId="613" XYZ="20.0561, -197.5654, -145.2908"/>	  
       <If Condition="IsQuestAcceptQualified(68022)">
         <LLPickUpQuest QuestId="68022" InteractDistance="3.0" NpcId="1019971" XYZ="20.0561, -197.5654, -145.2908"/>
       </If>
     </If>
     <If Condition="HasQuest(68022) and not IsQuestCompleted(68022) and GetQuestStep(68022) == 1">
-      <If Condition="not IsOnSubMap(2772) and not IsOnSubMap(2750)">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-        <RunCode Name="68020"/>
-        <Dismount/>
-      </If>
-      <MoveTo XYZ="16.39985, -197.9525, -151.5875" Distance="1.0"/>
-      <RunCode Name="ExitSuiNoSato"/>
-      <!--<RunCode Name="68022"/>-->
-      <GetTo ZoneId="613" XYZ="-227.8907, -178.209, 184.7923"/>	  
+      <LisbethTravel ZoneId="613" XYZ="-227.8907, -178.209, 184.7923"/>	  
       <LLTalkTo NpcId="1019978" XYZ="-227.8907, -178.209, 184.7923" QuestId="68022" StepId="1"/>
     </If>
     <If Condition="HasQuest(68022) and not IsQuestCompleted(68022) and GetQuestStep(68022) == 2">
-      <If Condition="not IsOnSubMap(2750) and not IsOnSubMap(2780)">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-        <RunCode Name="68020"/>
-        <Dismount/>
-        <MoveTo XYZ="16.39985, -197.9525, -151.5875" Distance="1.0"/>
-        <RunCode Name="ExitSuiNoSato"/>
-        <RunCode Name="68022a"/>
-      </If>
+      <LisbethTravel ZoneId="613" XYZ="-227.8907, -178.209, 184.7923"/>	  
       <RunCode Name="68022b"/>
       <WaitWhile Condition="HasQuest(68022) and not IsQuestCompleted(68022) and not GetQuestStep(68022) == 3"/>
     </If>
     <If Condition="HasQuest(68022) and not IsQuestCompleted(68022) and GetQuestStep(68022) == 3">
-      <If Condition="not IsOnSubMap(2750) and not IsOnSubMap(2780)">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-        <RunCode Name="68020"/>
-        <Dismount/>
-        <MoveTo XYZ="16.39985, -197.9525, -151.5875" Distance="1.0"/>
-        <RunCode Name="ExitSuiNoSato"/>
-        <RunCode Name="68022a"/>
-        <RunCode Name="68022b"/>
-      </If>
+      <LisbethTravel ZoneId="613" XYZ="-220.7139, -192.9991, 221.7045"/>	  
       <UseObject NpcId="2007920" XYZ="-220.7139, -192.9991, 221.7045" QuestId="68022" StepId="3"/>
-      <RunCode Name="68022c"/>
     </If>
     <If Condition="HasQuest(68022) and not IsQuestCompleted(68022) and GetQuestStep(68022) == 255">
-      <If Condition="not IsOnSubMap(2750) and not IsOnSubMap(2780)">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-        <RunCode Name="68020"/>
-        <Dismount/>
-        <MoveTo XYZ="16.39985, -197.9525, -151.5875" Distance="1.0"/>
-        <RunCode Name="ExitSuiNoSato"/>
-        <!--<RunCode Name="68022"/>-->
-        <GetTo ZoneId="613" XYZ="-227.9416, -178.0988, 185.002"/>
-      </If>
+      <LisbethTravel ZoneId="613" XYZ="-227.9416, -178.0988, 185.002"/>	  
       <LLTurnIn ItemIds="2002095" QuestId="68022" InteractDistance="3.0" NpcId="1019978" XYZ="-227.9416, -178.0988, 185.002"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
     </If>
     <!-- The Whims of the Divine (Level 63) -->
     <If Condition="IsQuestCompleted(68022) and not HasQuest(68023) and not IsQuestCompleted(68023)">
-      <If Condition="not IsOnSubMap(2750) and not IsOnSubMap(2780)">
-        <GetTo ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>
-        <UseTransport InteractDistance="2.0" NpcId="1021614" XYZ="321.4923, -120.3948, -299.794"/>
-        <RunCode Name="68020"/>
-        <Dismount/>
-        <MoveTo XYZ="16.39985, -197.9525, -151.5875" Distance="1.0"/>
-        <RunCode Name="ExitSuiNoSato"/>
-        <!--<RunCode Name="68022"/>-->
-        <GetTo ZoneId="613" XYZ="-227.9416, -178.0988, 185.002"/>
-      </If>
+      <LisbethTravel ZoneId="613" XYZ="-227.9416, -178.0988, 185.002"/>
       <If Condition="IsQuestAcceptQualified(68023)">
         <LLPickUpQuest QuestId="68023" InteractDistance="3.0" NpcId="1019978" XYZ="-227.9416, -178.0988, 185.002"/>
       </If>
@@ -1386,92 +1316,46 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <!-- Breaking and Delivering (Level 63) -->
     <If Condition="IsQuestCompleted(68023) and not HasQuest(68024) and not IsQuestCompleted(68024)">
-      <GetTo ZoneId="613" XYZ="322.83, -120.035, -248.6773"/>
+      <LisbethTravel ZoneId="613" XYZ="322.83, -120.035, -248.6773"/>
       <If Condition="IsQuestAcceptQualified(68024)">
         <LLPickUpQuest QuestId="68024" InteractDistance="3.0" NpcId="1019961" XYZ="322.83, -120.035, -248.6773"/>
       </If>
     </If>
     <If Condition="HasQuest(68024) and not IsQuestCompleted(68024) and GetQuestStep(68024) == 1">
-      <If Condition="not MovementManager.IsDiving">
-        <GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
-        <RunCode Name="ExitTamamizu"/>
-      </If>
-      <RunCode Name="68024"/>
+      <LisbethTravel ZoneId="613" XYZ="-471.5278, -94.40621, 192.5568"/>
       <LLTalkTo NpcId="1019981" XYZ="-471.5278, -94.40621, 192.5568" QuestId="68024" StepId="1"/>
     </If>
     <If Condition="HasQuest(68024) and not IsQuestCompleted(68024) and GetQuestStep(68024) == 2">
-      <If Condition="not MovementManager.IsDiving">
-        <GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
-        <RunCode Name="ExitTamamizu"/>
-        <RunCode Name="68024"/>
-      </If>
-      <RunCode Name="68024a"/>
-      <GetTo ZoneId="613" XYZ="-739.7813, 4.659779, 233.5405"/>
+      <LisbethTravel ZoneId="613" XYZ="-739.7813, 4.659779, 233.5405"/>
       <WaitWhile Condition="HasQuest(68024) and not IsQuestCompleted(68024) and not GetQuestStep(68024) == 3"/>
     </If>
     <If Condition="HasQuest(68024) and not IsQuestCompleted(68024) and GetQuestStep(68024) == 3">
-      <If Condition="not IsOnSubMap(2786)">
-        <GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
-        <RunCode Name="ExitTamamizu"/>
-        <RunCode Name="68024"/>
-        <RunCode Name="68024a"/>
-      </If>
-      <GetTo ZoneId="613" XYZ="-702.1234, 7.082656, 14.73693"/>
+      <LisbethTravel ZoneId="613" XYZ="-702.1234, 7.082656, 14.73693"/>
       <WaitWhile Condition="HasQuest(68024) and not IsQuestCompleted(68024) and not GetQuestStep(68024) == 4"/>
     </If>
     <If Condition="HasQuest(68024) and not IsQuestCompleted(68024) and GetQuestStep(68024) == 4">
-      <If Condition="not IsOnSubMap(2786)">
-        <GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
-        <RunCode Name="ExitTamamizu"/>
-        <RunCode Name="68024"/>
-        <RunCode Name="68024a"/>
-      </If>
-      <GetTo ZoneId="613" XYZ="-740.1072, 8.312037, 118.198"/>
+      <LisbethTravel ZoneId="613" XYZ="-740.1072, 8.312037, 118.198"/>
       <LLTalkTo NpcId="1020624" XYZ="-740.1072, 8.312037, 118.198" QuestId="68024" StepId="4"/>
     </If>
     <If Condition="HasQuest(68024) and not IsQuestCompleted(68024) and GetQuestStep(68024) == 5">
-      <If Condition="not IsOnSubMap(2786)">
-        <GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
-        <RunCode Name="ExitTamamizu"/>
-        <RunCode Name="68024"/>
-        <RunCode Name="68024a"/>
-      </If>
-      <GetTo ZoneId="613" XYZ="-836.1205, 51.33524, 39.59386"/>
+      <LisbethTravel ZoneId="613" XYZ="-836.1205, 51.33524, 39.59386"/>
       <LLTalkTo NpcId="1019983" XYZ="-836.1205, 51.33524, 39.59386" QuestId="68024" StepId="5"/>
     </If>
     <If Condition="HasQuest(68024) and not IsQuestCompleted(68024) and GetQuestStep(68024) == 255">
-      <If Condition="not IsOnSubMap(2788)">
-        <GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
-        <RunCode Name="ExitTamamizu"/>
-        <RunCode Name="68024"/>
-        <RunCode Name="68024a"/>
-      </If>
-      <GetTo ZoneId="613" XYZ="-796.9917, 48.3916, 149.5965"/>
+      <LisbethTravel ZoneId="613" XYZ="-796.9917, 48.3916, 149.5965"/>
       <LLTurnIn QuestId="68024" InteractDistance="3.0" NpcId="1019985" XYZ="-796.9917, 48.3916, 149.5965"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
     </If>
     <!-- The Lord of the Revel (Level 63) -->
     <If Condition="IsQuestCompleted(68024) and not HasQuest(68025) and not IsQuestCompleted(68025)">
-      <If Condition="not IsOnSubMap(2788)">
-        <GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
-        <RunCode Name="ExitTamamizu"/>
-        <RunCode Name="68024"/>
-        <RunCode Name="68024a"/>
-      </If>
-      <GetTo ZoneId="613" XYZ="-796.9917, 48.3916, 149.5965"/>
+      <LisbethTravel ZoneId="613" XYZ="-796.9917, 48.3916, 149.5965"/>
       <If Condition="IsQuestAcceptQualified(68025)">
         <LLPickUpQuest QuestId="68025" InteractDistance="3.0" NpcId="1019985" XYZ="-796.9917, 48.3916, 149.5965"/>
       </If>
     </If>
     <If Condition="HasQuest(68025) and not IsQuestCompleted(68025) and GetQuestStep(68025) == 1">
-      <If Condition="not IsOnSubMap(2788)">
-        <GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
-        <RunCode Name="ExitTamamizu"/>
-        <RunCode Name="68024"/>
-        <RunCode Name="68024a"/>
-      </If>
-      <GetTo ZoneId="613" XYZ="-838.6819, 51.63837, 38.55779"/>
+      <LisbethTravel ZoneId="613" XYZ="-838.6819, 51.63837, 38.55779"/>
       <UseObject NpcIds="2007853" XYZ="-838.6819, 51.63837, 38.55779" QuestId="68025" StepId="1"/>
     </If>
     <If Condition="HasQuest(68025) and not IsQuestCompleted(68025) and GetQuestStep(68025) == 2">
@@ -1479,9 +1363,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 	  <WaitWhile Condition="not GetQuestStep(68025) == 4"/>
     </If>
     <If Condition="HasQuest(68025) and not IsQuestCompleted(68025) and GetQuestStep(68025) == 4">
-      <If Condition="MovementManager.IsDiving">
-        <RunCode Name="68025"/>
-      </If>
       <GetTo ZoneId="613" XYZ="-726.7028, 0.2673199, -316.119"/>
       <LLTalkTo NpcId="1019987" XYZ="-726.7028, 0.2673199, -316.119" QuestId="68025" StepId="4"/>
       <WaitWhile Condition="HasQuest(68025) and not IsQuestCompleted(68025) and not GetQuestStep(68025) == 255"/>
@@ -1522,7 +1403,8 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 	<If Condition="IsQuestCompleted(68026)">		
 		<!-- The Price of Betrayal (3) -->
 		<If Condition="IsQuestCompleted(68014) and not HasQuest(68209) and not IsQuestCompleted(68209)">
-		  <GetTo ZoneIdId="613" XYZ="500.3604, 34.0062, 783.7982"/>
+		  <GetTo ZoneId="613" XYZ="829.1404, 5.923008, 857.9793"/>
+		  <MoveTo ZoneId="613" XYZ="500.3604, 34.0062, 783.7982"/>
 		  <If Condition="IsQuestAcceptQualified(68209)">
 			<LLPickupQuest QuestId="68209" NpcId="1019168" XYZ="500.3604, 34.0062, 783.7982"/>
 		  </If>
@@ -1554,15 +1436,15 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		  <LLTalkTo NpcId="1022103" XYZ="-47.1007, 2.806094, -634.2139" QuestId="68223" StepId="1"/>
 		</If>
 		<If Condition="HasQuest(68223) and not IsQuestCompleted(68223) and GetQuestStep(68223) == 2">
-		  <GetTo ZoneIdId="628" XYZ="133.2922, 12, 69.90587"/>
+		  <GetTo ZoneId="628" XYZ="133.2922, 12, 69.90587"/>
 		  <LLHandOver ItemIds="2002223,2002224" NpcId="1022122" XYZ="133.2922, 12, 69.90587" QuestId="68223" StepId="2"/>
 		</If>
 		<If Condition="HasQuest(68223) and not IsQuestCompleted(68223) and GetQuestStep(68223) == 3">
-		  <GetTo ZoneIdId="628" XYZ="-129.3015, -4.999999, 141.4579"/>
+		  <GetTo ZoneId="628" XYZ="-129.3015, -4.999999, 141.4579"/>
 		  <LLHandOver ItemIds="2002223,2002224" NpcId="1019049" XYZ="-129.3015, -4.999999, 141.4579" QuestId="68223" StepId="3"/>
 		</If>
 		<If Condition="HasQuest(68223) and not IsQuestCompleted(68223) and GetQuestStep(68223) == 255">
-		  <GetTo ZoneIdId="613" XYZ="-47.80473, 2.769715, -634.8738"/>
+		  <GetTo ZoneId="613" XYZ="-47.80473, 2.769715, -634.8738"/>
 		  <LLTurnIn QuestId="68223" ItemIds="2002223,2002224" NpcId="1022117" XYZ="-47.80473, 2.769715, -634.8738"/>
 		  <LLSmallTalk/>
 		  <AutoInventoryEquip/>
@@ -1611,26 +1493,24 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 			<GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
 			<RunCode Name="SuiNoSato"/>
 		  </If>
+		  <GetTo ZoneId="613" XYZ="-62.79089, -198.9651, -64.34735"/>
 		  <If Condition="IsQuestAcceptQualified(68168)">
-			<MoveTo XYZ="-63.24492, -198.9927, -65.75132"/>
 			<LLPickupQuest QuestId="68168" NpcId="1023280" XYZ="-63.24492, -198.9927, -65.75132"/>
 		  </If>
 		</If>
 		<If Condition="HasQuest(68168) and not IsQuestCompleted(68168) and GetQuestStep(68168) == 1">
-		  <If Condition="not IsOnSubMap(2772)">
-			<GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
-			<RunCode Name="SuiNoSato"/>
-		  </If>
+		  <LisbethTravel ZoneId="613" XYZ="-10.84258, -187.0837, -94.69545"/>
 		  <LLTalkTo NpcId="1019197" XYZ="-10.84258, -187.0837, -94.69545" QuestId="68168" StepId="1"/>
 		</If>
 		<If Condition="HasQuest(68168) and not IsQuestCompleted(68168) and GetQuestStep(68168) == 2">
 		  <If Condition="not IsOnSubMap(2772)">
-			<GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
+			<GetTo ZoneId="613" XYZ="328.7931, -120.3626, -305.2633"/>
 			<RunCode Name="SuiNoSato"/>
 		  </If>
 		  <MoveTo XYZ="15.6932, -197.987, -151.7496"/>
 		  <RunCode Name="ShisuiOfTheVioletTides"/>
-		  <LLTalkTo NpcId="1023293" XYZ="-955.9929, -899.5684, 757.0262" QuestId="68168" StepId="2"/>
+		  <Dismount/>
+		  <LLTalkTo NpcId="1023293" XYZ="-957.5826, -892.5878, 757.0205" QuestId="68168" StepId="2"/>
 		</If>
 		<If Condition="HasQuest(68168) and not IsQuestCompleted(68168) and GetQuestStep(68168) == 4">
 		  <If Condition="not IsOnSubMap(2778)">
@@ -1652,23 +1532,23 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <GetTo ZoneId="613" XYZ="21.00052, 25.11103, -633.582"/>
 		<Dismount/>
 		<RunCode Name="2007999"/>
-			<UseObject NpcId="2007999" XYZ="21.28632, 24.00244, -623.621" Condition="not IsAetherCurrentCompleted(613,10)"/>
+			<UseObject NpcId="2007999" XYZ="21.28632, 24.00244, -623.621" Condition="not IsAetherCurrentCompleted(613,7)"/>
 		<RunCode Name="2007999"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(613,6)">
-        <GetTo ZoneId="613" XYZ="707.8875, 38.32983, -47.2851"/>
-			<UseObject NpcId="2008002" XYZ="707.8875, 38.32983, -47.2851" Condition="not IsAetherCurrentCompleted(613,7)"/>
+        <GetTo ZoneId="613" XYZ="694.7584, 1.907349, -53.48291"/>
+			<UseObject NpcId="2008002" XYZ="694.7584, 1.907349, -53.48291" Condition="not IsAetherCurrentCompleted(613,6)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(613,8)">
-        <GetTo ZoneId="613" XYZ="425.7114, 16.89172, 870.1456"/>
-			<UseObject NpcId="2007995" XYZ="425.7114, 16.89172, 870.1456" Condition="not IsAetherCurrentCompleted(613,14)"/>
+        <GetTo ZoneId="613" XYZ="423.5447, 15.82355, 801.541"/>
+			<UseObject NpcId="2007995" XYZ="423.5447, 15.82355, 801.541" Condition="not IsAetherCurrentCompleted(613,8)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(613,5)">
         <GetTo ZoneId="613" XYZ="-411.5153, -0.599997, 172.7803"/>
 		    <GetTo ZoneId="613" XYZ="-411.5153, -0.599997, 172.7803"/>
 			<RunCode Name="IsleOfBekko"/>
-			<GetTo ZoneId="613" XYZ="-678.0947, 27.73551, 377.6114"/>
-			<UseObject NpcId="2008004" XYZ="-676.936, 27.42041, 374.1055" Condition="not IsAetherCurrentCompleted(613,5)"/>
+			<GetTo ZoneId="613" XYZ="-805.7832, 36.57581, 235.1873"/>
+			<UseObject NpcId="2008004" XYZ="-805.7832, 36.57581, 235.1873" Condition="not IsAetherCurrentCompleted(613,5)"/>
 		</If>
 		<LogMessage Message="You've attuned to the Aether Currents in The Ruby Sea!"/>
 	</If>	
@@ -2218,20 +2098,20 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(614,7)">
         <GetTo ZoneId="614" XYZ="165.6102, 144.9191, -13.4639"/>
-			<UseObject NpcId="2008008" XYZ="165.6102, 144.9191, -13.4639" Condition="not IsAetherCurrentCompleted(614,11)"/>
+			<UseObject NpcId="2008008" XYZ="165.6102, 144.9191, -13.4639" Condition="not IsAetherCurrentCompleted(614,7)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(614,8)">
         <GetTo ZoneId="614" XYZ="500.622, 16.34361, 399.3223"/>
-			<UseObject NpcId="2008007" XYZ="500.622, 16.34361, 399.3223" Condition="not IsAetherCurrentCompleted(614,12)"/>
+			<UseObject NpcId="2008007" XYZ="500.622, 16.34361, 399.3223" Condition="not IsAetherCurrentCompleted(614,8)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(614,6)">
         <GetTo ZoneId="614" XYZ="456.3852, 33.21088, 818.3664"/>
-			<UseObject NpcId="2008011" XYZ="456.3852, 33.21088, 818.3664" Condition="not IsAetherCurrentCompleted(614,8)"/>
+			<UseObject NpcId="2008011" XYZ="456.3852, 33.21088, 818.3664" Condition="not IsAetherCurrentCompleted(614,6)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(614,5)">
         <GetTo ZoneId="614" XYZ="-99.23248, 12.13735, 564.1642"/>
 		<MoveTo XYZ="-89.03793, 9.027429, 562.3278" UseMesh="False" Distance="0.5"/>
-			<UseObject NpcId="2008013" XYZ="-89.03793, 9.027429, 562.3278" Condition="not IsAetherCurrentCompleted(614,6)"/>
+			<UseObject NpcId="2008013" XYZ="-89.03793, 9.027429, 562.3278" Condition="not IsAetherCurrentCompleted(614,5)"/>
 		<MoveTo XYZ="-75.02338, -0.3, 558.5806" UseMesh="False" Distance="0.5"/>
 		</If>
 		<LogMessage Message="You've attuned to the Aether Currents in Yanxia!"/>
@@ -2520,9 +2400,44 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <GetTo ZoneId="622" XYZ="66.20763, 114.905, -8.062243"/>
         <UseTransport InteractDistance="3.0" NpcId="1023089" XYZ="66.20763, 114.905, -8.062243"/>
       </If>
-      <NoCombatMoveTo XYZ="-0.9057157, 1.986998, 182.9323"/>
-      <UserDialog QuestId="68045" StepId="3" DialogText="See if maybe lisbeth can do this!"/>
-	  <WaitWhile Condition="not GetQuestStep(68045) == 4"/>
+	  <If Condition="not MovementManager.IsDiving">
+        <NoCombatMoveTo XYZ="-0.9057157, 1.986998, 182.9323"/>
+        <RunCode Name="Diving"/>
+	  </If>
+      <!--<UserDialog QuestId="68045" StepId="3" DialogText="See if maybe lisbeth can do this!"/>
+	  <WaitWhile Condition="not GetQuestStep(68045) == 4"/>-->
+	  <If Condition="GetQuestById(68045).QuestI8A == 0">
+        <LisbethTravel ZoneId="622" XYZ="61.0015, -73.53041, 11.13224"/>
+        <UseObject NpcIds="2008252" XYZ="61.0015, -73.53041, 11.13224" UseDistance="5" QuestId="68045" StepId="3" Condition="GetQuestById(68045).QuestI8A == 0"/>
+	  </If>
+	  <If Condition="GetQuestById(68045).QuestI8A == 1">
+        <LisbethTravel ZoneId="622" XYZ="135.1228, -62.65467, -18.12578"/>
+        <UseObject NpcIds="2008255" XYZ="135.1228, -62.65467, -18.12578" UseDistance="5" QuestId="68045" StepId="3" Condition="GetQuestById(68045).QuestI8A == 1"/>
+	  </If>
+	  <If Condition="GetQuestById(68045).QuestI8A == 2">
+        <LisbethTravel ZoneId="622" XYZ="109.4597, -52.0721, -41.05727"/>
+        <UseObject NpcIds="2008250" XYZ="109.4597, -52.0721, -41.05727" UseDistance="5" QuestId="68045" StepId="3" Condition="GetQuestById(68045).QuestI8A == 2"/>
+	  </If>
+	  <If Condition="GetQuestById(68045).QuestI8A == 3">
+        <LisbethTravel ZoneId="622" XYZ="166.873, -63.23409, 27.40122"/>
+        <UseObject NpcIds="2008253" XYZ="166.873, -63.23409, 27.40122" UseDistance="5" QuestId="68045" StepId="3" Condition="GetQuestById(68045).QuestI8A == 3"/>
+	  </If>
+	  <If Condition="GetQuestById(68045).QuestI8A == 4">
+        <LisbethTravel ZoneId="622" XYZ="-124.9766, -56.6727, 92.98186"/>
+        <UseObject NpcIds="2008256" XYZ="-124.9766, -56.6727, 92.98186" UseDistance="5" QuestId="68045" StepId="3" Condition="GetQuestById(68045).QuestI8A == 4"/>
+	  </If>
+	  <If Condition="GetQuestById(68045).QuestI8A == 5">
+        <LisbethTravel ZoneId="622" XYZ="-193.2319, -58.81292, 106.2575"/>
+        <UseObject NpcIds="2008257" XYZ="-193.2319, -58.81292, 106.2575" UseDistance="5" QuestId="68045" StepId="3" Condition="GetQuestById(68045).QuestI8A == 5"/>
+	  </If>
+	  <If Condition="GetQuestById(68045).QuestI8A == 6">
+        <LisbethTravel ZoneId="622" XYZ="-74.08949, -59.9917, 59.57987"/>
+        <UseObject NpcIds="2008251" XYZ="-74.08949, -59.9917, 59.57987" UseDistance="5" QuestId="68045" StepId="3" Condition="GetQuestById(68045).QuestI8A == 6"/>
+	  </If>
+	  <If Condition="GetQuestById(68045).QuestI8A == 7">
+        <LisbethTravel ZoneId="622" XYZ="-78.39314, -61.45512, 6.063428"/>
+        <UseObject NpcIds="2008254" XYZ="-78.39314, -61.45512, 6.063428" UseDistance="5" QuestId="68045" StepId="3" Condition="GetQuestById(68045).QuestI8A == 7"/>
+	  </If>
       <!--<UseObject NpcIds="2008250,2008251,2008252,2008253,2008254,2008255,2008256,2008257" UseDistance="0.5" QuestId="68045" StepId="3">
         <HotSpots>
           <HotSpot XYZ="61.0015, -73.53041, 11.13224" Radius="20"/>
@@ -2537,10 +2452,11 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         </HotSpots>
       </UseObject>-->
     </If>
-    <If Condition="HasQuest(68045) and not IsQuestCompleted(68045) and GetQuestStep(68045) == 4">
+    <If Condition="HasQuest(68045) and not IsQuestCompleted(68045) and GetQuestStep(68045) == 4">	  
       <If Condition="not IsOnMap(622)">
         <GetTo ZoneId="622" XYZ="102.9981, 114.905, 70.99219"/>
-      </If>
+      </If>	  
+      <RunCode Name="Breath"/>
       <NoCombatMoveTo XYZ="61.60059, 8.799953, 41.12305"/>
       <UseTransport NpcId="1019423" InteractDistance="3.0" XYZ="61.60059, 8.799953, 41.12305"/>
       <HandOver ItemId="2002207" NpcId="1020687" XYZ="102.9981, 114.905, 70.99219" QuestId="68045" StepId="4"/>
@@ -2854,25 +2770,22 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		  <AutoInventoryEquip/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(622,8)">
-        <GetTo ZoneId="622" XYZ="623.724, -35.16813, 458.6954"/>
-			<UseObject NpcId="2008015" XYZ="623.724, -35.16813, 458.6954" Condition="not IsAetherCurrentCompleted(622,14)"/>
+        <GetTo ZoneId="622" XYZ="570.2753, -19.51636, 438.1627"/>
+			<UseObject NpcId="2008015" XYZ="570.2753, -19.51636, 438.1627" Condition="not IsAetherCurrentCompleted(622,8)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(622,7)">
         <GetTo ZoneId="622" XYZ="228.3774, 98.79747, -530.2931"/>
-		<NoCombatMoveTo XYZ="228.3774, 98.79747, -530.2931" Distance="1"/>
-		<RunCode Name="2008017"/>
-		<NoCombatMoveTo XYZ="273.6664, 90.20409, -475.5069" Distance="1"/>
-		<NoCombatMoveTo XYZ="282.4987, 81.48897, -460.5905" Distance="1" UseMesh="False"/>
-			<UseObject NpcId="2008017" XYZ="282.4987, 81.48897, -460.5905" Condition="not IsAetherCurrentCompleted(622,12)"/>
-		<NoCombatMoveTo XYZ="285.5352, 50.87238, -443.2186" Distance="1" UseMesh="False"/>
+		<MoveTo XYZ="231.9829, 93.36987, -515.8008" Distance="1" UseMesh="False"/>
+			<UseObject NpcId="2008017" XYZ="231.9829, 93.36987, -515.8008" Condition="not IsAetherCurrentCompleted(622,7)"/>
+		<NoCombatMoveTo XYZ="231.0051, 62.26472, -491.019" Distance="1" UseMesh="False"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(622,6)">
         <GetTo ZoneId="622" XYZ="103.7593, 116.043, -48.00158"/>
-			<UseObject NpcId="2008019" XYZ="103.7593, 116.043, -48.00158" Condition="not IsAetherCurrentCompleted(622,10)"/>
+			<UseObject NpcId="2008019" XYZ="103.7593, 116.043, -48.00158" Condition="not IsAetherCurrentCompleted(622,6)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(622,5)">
-        <GetTo ZoneId="622" XYZ="-640.5781, 6.119884, 702.3987"/>
-			<UseObject NpcId="2008022" XYZ="-640.5781, 6.119884, 702.3987" Condition="not IsAetherCurrentCompleted(622,7)"/>
+        <GetTo ZoneId="622" XYZ="-693.843, 7.248047, 658.8691"/>
+			<UseObject NpcId="2008022" XYZ="-693.843, 7.248047, 658.8691" Condition="not IsAetherCurrentCompleted(622,5)"/>
 		</If>
 		<LogMessage Message="You've attuned to the Aether Currents in The Azim Steppe!"/>
 	</If>
@@ -3088,15 +3001,15 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(68058) and not IsQuestCompleted(68058) and GetQuestStep(68058) == 1 and GetQuestById(68058).GetTodoArgs(1, 0).Item1 == 0">
       <GetTo ZoneId="614" XYZ="233.5597, 5.242018, -425.2724"/>
-      <LLTalkTo NpcId="1019286" InteractDistance="3.0" XYZ="233.5597, 5.242018, -425.2724" QuestId="68058"/>
+      <LLTalkTo NpcId="1019286" InteractDistance="3.0" XYZ="233.5597, 5.242018, -425.2724" QuestId="68058" Condition="HasQuest(68058) and not IsQuestCompleted(68058) and GetQuestStep(68058) == 1 and GetQuestById(68058).GetTodoArgs(1, 0).Item1 == 0"/>
     </If>
     <If Condition="HasQuest(68058) and not IsQuestCompleted(68058) and GetQuestStep(68058) == 1 and GetQuestById(68058).GetTodoArgs(1, 0).Item1 == 1">
       <GetTo ZoneId="614" XYZ="196.7047, 5.167062, -411.3493"/>
-      <LLTalkTo NpcId="1019287" InteractDistance="3.0" XYZ="196.7047, 5.167062, -411.3493" QuestId="68058"/>
+      <LLTalkTo NpcId="1019287" InteractDistance="3.0" XYZ="196.7047, 5.167062, -411.3493" QuestId="68058" Condition="HasQuest(68058) and not IsQuestCompleted(68058) and GetQuestStep(68058) == 1 and GetQuestById(68058).GetTodoArgs(1, 0).Item1 == 1"/>
     </If>
     <If Condition="HasQuest(68058) and not IsQuestCompleted(68058) and GetQuestStep(68058) == 1 and GetQuestById(68058).GetTodoArgs(1, 0).Item1 == 2">
       <GetTo ZoneId="614" XYZ="195.8469, 5.169701, -437.7425"/>
-      <LLTalkTo NpcId="1019285" InteractDistance="3.0" XYZ="195.8469, 5.169701, -437.7425" QuestId="68058"/>
+      <LLTalkTo NpcId="1019285" InteractDistance="3.0" XYZ="195.8469, 5.169701, -437.7425" QuestId="68058" Condition="HasQuest(68058) and not IsQuestCompleted(68058) and GetQuestStep(68058) == 1 and GetQuestById(68058).GetTodoArgs(1, 0).Item1 == 2"/>
     </If>
     <If Condition="HasQuest(68058) and not IsQuestCompleted(68058) and GetQuestStep(68058) == 2">
       <GetTo ZoneId="614" XYZ="174.734, 5.196851, -432.5633"/>
@@ -3542,26 +3455,19 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(612,8)">
         <GetTo ZoneId="612" XYZ="-487.611, 76.42045, -249.6582"/>
-			<UseObject NpcId="2007965" XYZ="-487.611, 76.42045, -249.6582" Condition="not IsAetherCurrentCompleted(612,14)"/>
+			<UseObject NpcId="2007965" XYZ="-487.611, 76.42045, -249.6582" Condition="not IsAetherCurrentCompleted(612,8)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(612,7)">
-        <GetTo ZoneId="612" XYZ="178.8236, 77.97686, -517.6952"/>
-			<UseObject NpcId="2007967" XYZ="178.8236, 77.97686, -517.6952" Condition="not IsAetherCurrentCompleted(612,12)"/>
+        <GetTo ZoneId="612" XYZ="155.8403, 53.3302, -499.4431"/>
+			<UseObject NpcId="2007967" XYZ="155.8403, 53.3302, -499.4431" Condition="not IsAetherCurrentCompleted(612,7)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(612,6)">
         <GetTo ZoneId="612" XYZ="322.2093, 88.87299, 10.92838"/>
-			<UseObject NpcId="2007971" XYZ="322.2093, 88.87299, 10.92838" Condition="not IsAetherCurrentCompleted(612,8)"/>
+			<UseObject NpcId="2007971" XYZ="322.2093, 88.87299, 10.92838" Condition="not IsAetherCurrentCompleted(612,6)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(612,5)">
-        <GetTo ZoneId="612" XYZ="731.2742, 186.2449, -228.1943"/>
-		<NoCombatMoveTo XYZ="731.2741, 186.2448, -228.1942" Distance="0.5"/>
-		<GetTo ZoneId="612" XYZ="734.5917, 187.633, -234.947"/>
-		<NoCombatMoveTo XYZ="734.5917, 187.633, -234.947" Distance="0.5"/>
-		<ClimbHill Start="734.5917, 187.633, -234.947" End="731.45, 189.5175, -235.5348"/>
-		<MoveTo XYZ="728.7842, 188.4747, -243.4452" Distance="0.5" UseMesh="False"/>
-		<MoveTo XYZ="718.484, 174.6899, -239.3259" Distance="0.5" UseMesh="False"/>
-			<UseObject NpcId="2007972" XYZ="718.484, 174.6899, -239.3259" Condition="not IsAetherCurrentCompleted(612,7)"/>
-		<MoveTo XYZ="698.092, 156.233, -228.5606" Distance="1" UseMesh="False"/>
+		<GetTo ZoneId="612" XYZ="743.0074, 180.9872, -214.0688"/>
+			<UseObject NpcId="2007972" XYZ="743.0074, 180.9872, -214.0688" Condition="not IsAetherCurrentCompleted(612,5)"/>
 		</If>
 		<LogMessage Message="You've attuned to the Aether Currents in The Fringes!"/>
 	</If>
@@ -3991,8 +3897,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		</If>
 		<!-- A Hunger for Trade -->
 		<If Condition="IsQuestCompleted(68079) and not HasQuest(68387) and not IsQuestCompleted(68387)">
-			<GetTo ZoneId="621" XYZ="-680.6262, 58.09087, -15.74572"/>
-			<MoveTo XYZ="-800.4244, 50.78772, -15.77226" UseMesh="False"/>
 		  <GetTo ZoneId="620" XYZ="311.476, 324.3033, 361.2439"/>
 		  <If Condition="IsQuestAcceptQualified(68387)">
 			<LLPickupQuest QuestId="68387" NpcId="1023167" XYZ="311.476, 324.3033, 361.2439"/>
@@ -4007,8 +3911,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		  <LLHandOver ItemId="2002310" NpcId="1023169" XYZ="-201.2187, 258.9065, 781.106" QuestId="68387" StepId="2"/>
 		</If>
 		<If Condition="HasQuest(68387) and not IsQuestCompleted(68387) and GetQuestStep(68387) == 3">
-			<GetTo ZoneId="621" XYZ="-680.6262, 58.09087, -15.74572"/>
-			<MoveTo XYZ="-800.4244, 50.78772, -15.77226" UseMesh="False"/>
 		  <GetTo ZoneId="620" XYZ="358.4203, 325.3905, 332.8086"/>
 		  <LLHandOver ItemId="2002311" NpcId="1023168" XYZ="358.4203, 325.3905, 332.8086" QuestId="68387" StepId="3"/>
 		</If>
@@ -4042,37 +3944,26 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		  <LLTalkTo NpcId="1020870" XYZ="-217.9739, 257.5265, 738.7597" QuestId="68396" StepId="2"/>
 		</If>
 		<If Condition="HasQuest(68396) and not IsQuestCompleted(68396) and GetQuestStep(68396) == 255">
-			<GetTo ZoneId="621" XYZ="-680.6262, 58.09087, -15.74572"/>
-			<MoveTo XYZ="-800.4244, 50.78772, -15.77226" UseMesh="False"/>
 		  <GetTo ZoneId="620" XYZ="283.6925, 322.8716, 750.7115"/>
 		  <LLTurnIn QuestId="68396" NpcId="1020893" XYZ="283.6925, 322.8716, 750.7115"/>
 		  <LLSmallTalk/>
 		  <AutoInventoryEquip/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(620,7)">
-        <GetTo ZoneId="620" XYZ="-281.9031, 104.5053, -361.8653"/>
-		<NoCombatMoveTo XYZ="-282.1063, 157.9419, -279.173" UseMesh="False" Distance="0.5"/>
-		<NoCombatMoveTo XYZ="-253.4668, 143.303, -276.1974" UseMesh="False" Distance="0.5"/>
-		<NoCombatMoveTo XYZ="-252.6902, 143.3147, -251.0808" UseMesh="False" Distance="0.5"/>
-		<NoCombatMoveTo XYZ="-283.5474, 143.3108, -249.7684" UseMesh="False" Distance="0.5"/>
-		<NoCombatMoveTo XYZ="-280.5971, 127.1437, -228.6376" UseMesh="False" Distance="0.5"/>
-			<UseObject NpcId="2007978" XYZ="-280.5971, 127.1437, -228.6376" Condition="not IsAetherCurrentCompleted(620,11)"/>
-		<NoCombatMoveTo XYZ="-280.4504, 106.6676, -209.3894" UseMesh="False" Distance="0.5"/>
+        <GetTo ZoneId="620" XYZ="-271.2597, 157.9156, -280.2625"/>
+			<UseObject NpcId="2007978" XYZ="-271.2597, 157.9156, -280.2625" Condition="not IsAetherCurrentCompleted(620,7)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(620,8)">
-        <GetTo ZoneId="620" XYZ="272.8755, 133.9292, -746.3962"/>
-		<NoCombatMoveTo ZoneIdId="620" XYZ="272.8755, 133.9292, -746.3962" Distance="1"/>
-		<NoCombatMoveTo XYZ="268.8016, 126.3302, -731.3122" Distance="1" UseMesh="False"/>
-			<UseObject NpcId="2007976" XYZ="261.7257, 126.2511, -726.2002" Condition="not IsAetherCurrentCompleted(620,13)"/>
-		<MoveTo XYZ="265.6757, 114.3539, -718.0762" UseMesh="False" Distance="1.0"/>
+        <GetTo ZoneId="620" XYZ="202.8687, 133.8978, -753.1395"/>
+			<UseObject NpcId="2007976" XYZ="202.8687, 133.8978, -753.1395" Condition="not IsAetherCurrentCompleted(620,8)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(620,6)">
         <GetTo ZoneId="620" XYZ="-530.6277, 304.5957, 249.8138"/>
-			<UseObject NpcId="2007981" XYZ="-530.6277, 304.5957, 249.8138" Condition="not IsAetherCurrentCompleted(620,8)"/>
+			<UseObject NpcId="2007981" XYZ="-530.6277, 304.5957, 249.8138" Condition="not IsAetherCurrentCompleted(620,6)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(620,5)">
-        <GetTo ZoneId="620" XYZ="120.679, 305.8007, 517.4084"/>
-			<UseObject NpcId="2007984" XYZ="120.679, 305.8007, 517.4084" Condition="not IsAetherCurrentCompleted(620,5)"/>
+        <GetTo ZoneId="620" XYZ="146.6239, 303.7307, 460.8071"/>
+			<UseObject NpcId="2007984" XYZ="146.6239, 303.7307, 460.8071" Condition="not IsAetherCurrentCompleted(620,5)"/>
 		</If>
 		<LogMessage Message="You've attuned to the Aether Currents in The Peaks!"/>
 	</If>
@@ -6394,6 +6285,26 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
             await Coroutine.Yield();
           }
         }
+      ]]>
+    </CodeChunk>
+    <CodeChunk Name="Diving">
+      <![CDATA[
+        MovementManager.StartDescending();
+        while (!MovementManager.IsDiving)  {  await Coroutine.Yield();  }	
+        while (CommonBehaviors.IsLoading)  {  await Coroutine.Yield();  }
+        MovementManager.StopDescending();
+    
+        if (!Core.Me.IsMounted)  {  await CommonTasks.SummonFlyingMount();  }
+      ]]>
+    </CodeChunk>
+    <CodeChunk Name="Breath">
+      <![CDATA[
+        MovementManager.StartAscending();
+        while (MovementManager.IsDiving)  {  await Coroutine.Yield();  }	
+        while (CommonBehaviors.IsLoading)  {  await Coroutine.Yield();  }
+        MovementManager.StopAscending();
+    
+        if (!Core.Me.IsMounted)  {  await CommonTasks.SummonFlyingMount();  }
       ]]>
     </CodeChunk>
     <CodeChunk Name="68086b">

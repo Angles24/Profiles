@@ -4004,6 +4004,7 @@
 			<If Condition="GetQuestStep(69985) == 1">
 				<GetTo ZoneId="956" XYZ="-231.6633, -224.3827, 352.3181"/>
 				<LLTalkTo NpcId="1040487" XYZ="-234.6991, -224.3827, 349.0195" QuestId="69985" StepId="1"/>
+				<GetTo ZoneId="956" XYZ="-230.4876, -224.3827, 345.3879"/>
 			</If>
 			<If Condition="GetQuestStep(69985) == 2">
 				<UserDialog IsAutoDefend="False" QuestId="69985" StepId="2" DialogText="Please manually complete the dungeon: Lv. 89 The Aitiascope."/>
