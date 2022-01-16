@@ -27,6 +27,8 @@
     Using the item needs some work.
   Their Greatest Contribution - Line 2888
     Unable to navigate over the ledge.
+	
+	Updated: January 2022 by Angles24
 -->
 
 <!DOCTYPE Profile [
@@ -35,15 +37,8 @@
 ]>
 
 <Profile>
-  <Name>Endwalker Main Story Quests</Name>
+  <Name>[Orderbot] 6.0 Endwalker Main Scenario</Name>
   <Order>
-    <If Condition="not IsQuestCompleted(69601)">
-      <LLToast message="Please complete all the post-Shadowbringers content before starting this profile!"/>
-      <StopBot/>
-    </If>
-
-    <LLToast message="This profile is still in beta. Do not run it unattended!"/>
-    <LLToast message="There will be bugs!"/>
 
     <!-- The Next Ship to Sail -->
     <If Condition="not IsQuestCompleted(69893)">
@@ -345,7 +340,9 @@
 			</If>
 			<If Condition="GetQuestStep(69899) == 5">
 				<GetTo ZoneId="956" XYZ="574.7405, 169.4404, -518.2614"/>
-				<UserDialog QuestId="69899" StepId="5" DialogText="Please manually sedate the Large Green Bird with the sleeping dart."/>
+				<BotSettings BlockSkippingCutscenes="1"/> <!-- Turn Off Cutscenes for Zoomie Zoom -->
+				<UserDialog QuestId="69899" StepId="5" DialogText="Please manually complete the zoomie zoom."/>
+				<BotSettings BlockSkippingCutscenes="0"/> 
 				<WaitWhile Condition="not GetQuestStep(69899) == 255"/>
 			</If>
 			<If Condition="GetQuestStep(69899) == 255">
@@ -926,7 +923,7 @@
 				<UseObject NpcId="2011956" XYZ="-632.0439, -0.01531982, -659.6018" QuestId="69913" StepId="2"/>
 			</If>
 			<If Condition="GetQuestStep(69913) == 3">
-				<UserDialog IsAutoDefend="False" QuestId="69913" StepId="3" DialogText="Please manually complete the dungeon: Lv. 81 Tower of Zot."/>
+				<UserDialog QuestId="69913" StepId="3" DialogText="Please manually complete the dungeon: Lv. 81 Tower of Zot."/>
 				<WaitWhile Condition="not GetQuestStep(69913) == 255"/>
 			</If>
 			<If Condition="GetQuestStep(69913) == 4">
@@ -1715,7 +1712,7 @@
 				<UseObject NpcId="2012112" XYZ="-516.7163, -190.0206, -675.288" QuestId="69931" StepId="3"/>
 			</If>
 			<If Condition="GetQuestStep(69931) == 4">
-				<UserDialog IsAutoDefend="False" QuestId="69931" StepId="4" DialogText="Please manually complete the dungeon: Lv. 83 The Tower of Babil."/>
+				<UserDialog QuestId="69931" StepId="4" DialogText="Please manually complete the dungeon: Lv. 83 The Tower of Babil."/>
 				<WaitWhile Condition="not GetQuestStep(69931) == 255"/>
 			</If>
 			<If Condition="GetQuestStep(69931) == 5">
@@ -2218,7 +2215,9 @@
 			</If>
 			<If Condition="GetQuestStep(69942) == 6">
 				<GetTo ZoneId="959" XYZ="466.9865, -168, -652.0822"/>
-				<UserDialog QuestId="69942" StepId="6" DialogText="Please manually shoot the Lopporit that *runs* and talks."/>
+				<BotSettings BlockSkippingCutscenes="1"/> <!-- Turn Off Cutscenes for Zoomie Zoom -->
+				<UserDialog QuestId="69942" StepId="6" DialogText="Please manually complete the zoomie zoom."/>
+				<BotSettings BlockSkippingCutscenes="0"/> 
 				<WaitWhile Condition="not GetQuestStep(69942) == 255"/>
 			</If>
 			<If Condition="GetQuestStep(69942) == 255">
@@ -2330,7 +2329,7 @@
 				<LLTalkTo NpcId="1038978" XYZ="202.3499, 1.769995, 757.7172" QuestId="69945" StepId="3"/>
 			</If>
 			<If Condition="GetQuestStep(69945) == 4">
-				<UserDialog IsAutoDefend="False" QuestId="69945" StepId="4" DialogText="Please manually complete the dungeon: Lv. 85 Vanaspati."/>
+				<UserDialog QuestId="69945" StepId="4" DialogText="Please manually complete the dungeon: Lv. 85 Vanaspati."/>
 				<WaitWhile Condition="not GetQuestStep(69945) == 255"/>
 			</If>
 			<If Condition="GetQuestStep(69945) == 5">
@@ -3540,7 +3539,7 @@
 				<LLTalkTo NpcId="1040154" XYZ="-401.236, 329.783, -760.3418" QuestId="69973" StepId="1"/>
 			</If>
 			<If Condition="GetQuestStep(69973) == 2">
-				<UserDialog IsAutoDefend="False" QuestId="69973" StepId="1" DialogText="Please manually complete the dungeon: Lv. 87 Ktisis Hyperboreia."/>
+				<UserDialog QuestId="69973" StepId="1" DialogText="Please manually complete the dungeon: Lv. 87 Ktisis Hyperboreia."/>
 				<WaitWhile Condition="not GetQuestStep(69973) == 255"/>
 			</If>
 			<If Condition="GetQuestStep(69973) == 255">
@@ -3733,7 +3732,9 @@
 			</If>
 			<If Condition="GetQuestStep(69979) == 2">
 				<GetTo ZoneId="956" XYZ="124.1743, -17.53038, -74.18906"/>
-				<UserDialog QuestId="69979" StepId="2" DialogText="Please manually look at the blue Tanks, brass Metallic Tube, and brass Mushroom-like Thing."/>
+				<BotSettings BlockSkippingCutscenes="1"/> <!-- Turn Off Cutscenes for Zoomie Zoom -->
+				<UserDialog QuestId="69979" StepId="2" DialogText="Please manually complete the zoomie zoom."/>
+				<BotSettings BlockSkippingCutscenes="0"/> 
 				<WaitWhile Condition="not GetQuestStep(69979) == 3"/>
 			</If>
 			<If Condition="GetQuestStep(69979) == 3">
@@ -4007,7 +4008,7 @@
 				<GetTo ZoneId="956" XYZ="-230.4876, -224.3827, 345.3879"/>
 			</If>
 			<If Condition="GetQuestStep(69985) == 2">
-				<UserDialog IsAutoDefend="False" QuestId="69985" StepId="2" DialogText="Please manually complete the dungeon: Lv. 89 The Aitiascope."/>
+				<UserDialog QuestId="69985" StepId="2" DialogText="Please manually complete the dungeon: Lv. 89 The Aitiascope."/>
 				<WaitWhile Condition="not GetQuestStep(69985) == 4"/>
 			</If>
 			<If Condition="GetQuestStep(69985) == 3">
@@ -4016,7 +4017,7 @@
 			<If Condition="GetQuestStep(69985) == 4">
 				<WaitTimer waitTime="1" />
 				<AutoInventoryEquip/>	
-				<UserDialog IsAutoDefend="False" QuestId="69985" StepId="4" DialogText="Please manually complete the trial: Lv. 89 The Mothercrystal."/>
+				<UserDialog QuestId="69985" StepId="4" DialogText="Please manually complete the trial: Lv. 89 The Mothercrystal."/>
 				<WaitWhile Condition="not GetQuestStep(69985) == 6"/>
 			</If>
 			<If Condition="GetQuestStep(69985) == 5">
@@ -4430,7 +4431,9 @@
 			</If>
 			<If Condition="GetQuestStep(69996) == 4">
 				<GetTo ZoneId="960" XYZ="527.8383, 441.0412, 376.7456"/>
+				<BotSettings BlockSkippingCutscenes="1"/> <!-- Turn Off Cutscenes for Zoomie Zoom -->
 				<UserDialog QuestId="69996" StepId="4" DialogText="Please do the zoomie zoom manually."/>
+				<BotSettings BlockSkippingCutscenes="0"/> 
 				<WaitWhile Condition="not GetQuestStep(69996) == 5"/>
 			</If>
 			<If Condition="GetQuestStep(69996) == 5">
@@ -4463,7 +4466,9 @@
 			</If>
 			<If Condition="GetQuestStep(69997) == 2">
 				<GetTo ZoneId="960" XYZ="606.0432, 440.5609, 396.3582"/>
+				<BotSettings BlockSkippingCutscenes="1"/> <!-- Turn Off Cutscenes for Zoomie Zoom -->
 				<UserDialog QuestId="69997" StepId="2" DialogText="Please do the zoomie zoom manually."/>
+				<BotSettings BlockSkippingCutscenes="0"/> 
 				<WaitWhile Condition="not GetQuestStep(69997) == 3"/>
 			</If>
 			<If Condition="GetQuestStep(69997) == 3">
@@ -4589,11 +4594,11 @@
         </If>
       </If>
 			<If Condition="GetQuestStep(70000) == 1">
-				<UserDialog IsAutoDefend="False" QuestId="70000" StepId="1" DialogText="Please manually complete the following duties: \n\nDungeon: Lv. 90 The Dead Ends\nTrial: Lv. 90 The Final Day\nSolo Duty: Fight Zenos"/>
+				<UserDialog QuestId="70000" StepId="1" DialogText="Please manually complete the following duties: \n\nDungeon: Lv. 90 The Dead Ends\nTrial: Lv. 90 The Final Day\nSolo Duty: Fight Zenos"/>
 				<WaitWhile Condition="not GetQuestStep(70000) == 3"/>
 			</If>
 			<If Condition="GetQuestStep(70000) == 3">
-				<UserDialog IsAutoDefend="False" QuestId="70000" StepId="3" DialogText="Please manually complete the following duties: \n\nTrial: Lv. 90 The Final Day\nSolo Duty: Fight Zenos"/>
+				<UserDialog QuestId="70000" StepId="3" DialogText="Please manually complete the following duties: \n\nTrial: Lv. 90 The Final Day\nSolo Duty: Fight Zenos"/>
 				<WaitWhile Condition="not GetQuestStep(70000) == 5"/>
 			</If>
 			<If Condition="GetQuestStep(70000) == 5">

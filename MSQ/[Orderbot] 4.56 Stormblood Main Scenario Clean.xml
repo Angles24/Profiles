@@ -3,9 +3,10 @@
 Profile:  [Orderbot] Stormblood Main Scenario
 Authors:  Sodimm, TuckMeintoBread
 Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
+Updated: January 2022 by Angles24
 -->
 <Profile>
-  <Name>[OrderBot] Stormblood Main Scenario 2.0</Name>
+  <Name>[OrderBot] 4.56 Stormblood Main Scenario Clean</Name>
   <Order>
   
     <BotSettings AutoEquip="0"/>
@@ -1510,7 +1511,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		  <MoveTo XYZ="15.6932, -197.987, -151.7496"/>
 		  <RunCode Name="ShisuiOfTheVioletTides"/>
 		  <Dismount/>
-		  <LLTalkTo NpcId="1023293" XYZ="-957.5826, -892.5878, 757.0205" QuestId="68168" StepId="2"/>
+		  <LLTalkTo NpcId="1023293" XYZ="-957.1526, -895.9945, 756.8322" QuestId="68168" StepId="2"/>
 		</If>
 		<If Condition="HasQuest(68168) and not IsQuestCompleted(68168) and GetQuestStep(68168) == 4">
 		  <If Condition="not IsOnSubMap(2778)">
@@ -1519,7 +1520,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 			<MoveTo XYZ="15.6932, -197.987, -151.7496"/>
 			<RunCode Name="ShisuiOfTheVioletTides"/>
 		  </If>
-		  <LLTalkTo NpcId="1023293" XYZ="-955.6203, -899.6981, 757.6763" QuestId="68168" StepId="4"/>
+		  <LLTalkTo NpcId="1023293" XYZ="-957.1526, -895.9945, 756.8322" QuestId="68168" StepId="4"/>
 		</If>
 		<If Condition="HasQuest(68168) and not IsQuestCompleted(68168) and GetQuestStep(68168) == 255">
 		  <GetTo ZoneId="613" XYZ="325.959, -120.3188, -308.8289"/>
@@ -1530,8 +1531,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(613,7)">
         <GetTo ZoneId="613" XYZ="21.00052, 25.11103, -633.582"/>
-		<Dismount/>
-		<RunCode Name="2007999"/>
 			<UseObject NpcId="2007999" XYZ="21.28632, 24.00244, -623.621" Condition="not IsAetherCurrentCompleted(613,7)"/>
 		<RunCode Name="2007999"/>
 		</If>
@@ -1747,12 +1746,16 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(68031) and not IsQuestCompleted(68031) and GetQuestStep(68031) == 4">
       <GetTo ZoneId="614" XYZ="498.9214, 78.11392, 147.0668"/>
+      <BotSettings BlockSkippingCutscenes="1"/>
       <UserDialog QuestId="68031" StepId="4" DialogText="Please manually complete zoomie zoom."/>
+      <BotSettings BlockSkippingCutscenes="0"/>
 	  <WaitWhile Condition="not GetQuestStep(68031) == 5"/>
     </If>
     <If Condition="HasQuest(68031) and not IsQuestCompleted(68031) and GetQuestStep(68031) == 5">
       <GetTo ZoneId="614" XYZ="535.1069, 54.54139, 236.5954"/>
+      <BotSettings BlockSkippingCutscenes="1"/>
       <UserDialog QuestId="68031" StepId="5" DialogText="Please manually complete zoomie zoom."/>
+      <BotSettings BlockSkippingCutscenes="0"/>
 	  <WaitWhile Condition="not GetQuestStep(68031) == 6"/>
     </If>
     <If Condition="HasQuest(68031) and not IsQuestCompleted(68031) and GetQuestStep(68031) == 6">
@@ -1761,7 +1764,9 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
     <If Condition="HasQuest(68031) and not IsQuestCompleted(68031) and GetQuestStep(68031) == 7">
       <GetTo ZoneId="614" XYZ="329.7429, 32.98788, 603.2724"/>
+      <BotSettings BlockSkippingCutscenes="1"/>
       <UserDialog QuestId="68031" StepId="7" DialogText="Please manually complete zoomie zoom."/>
+      <BotSettings BlockSkippingCutscenes="0"/>
 	  <WaitWhile Condition="not GetQuestStep(68031) == 8"/>
     </If>
     <If Condition="HasQuest(68031) and not IsQuestCompleted(68031) and GetQuestStep(68031) == 8">
@@ -4261,18 +4266,16 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		  <AutoInventoryEquip/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(621,8)">
-        <GetTo ZoneId="621" XYZ="-392.5773, 39.61606, -47.4309"/>
-		<MoveTo XYZ="-356.7994, 25.33143, 9.968737" UseMesh="False"/>
-			<UseObject NpcId="2007987" XYZ="-356.7994, 25.33143, 9.968737" Condition="not IsAetherCurrentCompleted(621,12)"/>
-		<MoveTo XYZ="-346.0119, 9.085359, 26.44012" UseMesh="False"/>
+        <GetTo ZoneId="621" XYZ="-380.2091, 10.05566, 16.89172"/>
+			<UseObject NpcId="2007987" XYZ="-380.2091, 10.05566, 16.89172" Condition="not IsAetherCurrentCompleted(621,8)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(621,7)">
         <GetTo ZoneId="621" XYZ="106.7653, 42.00407, 787.726"/>
 			<UseObject NpcId="2007992" XYZ="106.7653, 42.00407, 787.726" Condition="not IsAetherCurrentCompleted(621,7)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(621,5)">
-        <GetTo ZoneId="621" XYZ="673.4974, 82.99997, 508.5288"/>
-			<UseObject NpcId="2007994" XYZ="673.4974, 82.99997, 508.5288" Condition="not IsAetherCurrentCompleted(621,5)"/>
+        <GetTo ZoneId="621" XYZ="683.4058, 69.99304, 521.1719"/>
+			<UseObject NpcId="2007994" XYZ="683.4058, 69.99304, 521.1719" Condition="not IsAetherCurrentCompleted(621,5)"/>
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(621,6)">
         <GetTo ZoneId="621" XYZ="261.5243, 78.3855, 69.93213"/>
@@ -4497,6 +4500,70 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
     </If>
+	
+	<!-- Unlock Gold Saucer -->
+    <!-- It Could Happen to You (Level 15) -->
+    <If Condition="(IsQuestCompleted(66043) or IsQuestCompleted(66064) or IsQuestCompleted(66082)) and not HasQuest(65970) and not IsQuestCompleted(65970) and Core.Player.ClassLevel &gt; 14">
+      <GetTo ZoneId="130" XYZ="-81.28416, 4, -110.7648"/>
+      <If Condition="IsQuestAcceptQualified(65970)">
+        <LLPickUpQuest QuestId="65970" NpcId="1011565" InteractDistance="3.0" XYZ="-78.8739, 4, -110.4296"/>
+      </If>
+    </If>
+    <If Condition="HasQuest(65970) and not IsQuestCompleted(65970) and GetQuestStep(65970) == 255">
+      <GetTo ZoneId="130" XYZ="-23.6542, 83.19999, -4.632526"/>
+      <LLTurnIn ItemId="2001555" QuestId="65970" NpcId="1004433" InteractDistance="3.0" XYZ="-23.60571, 83.19999, -2.304138"/>
+      <WaitWhile Condition="not IsOnMap(144)"/>
+    </If>
+    <!-- World of Wonders (Level 15) -->
+    <If Condition="IsQuestCompleted(65970) and not HasQuest(65971) and not IsQuestCompleted(65971)">
+      <GetTo ZoneId="144" XYZ="-38.97863, 0.02503264, 99.10065"/>
+      <If Condition="IsQuestAcceptQualified(65971)">
+        <LLPickUpQuest QuestId="65971" NpcId="1011022" InteractDistance="3.0" XYZ="-38.89526, -2.793968E-06, 97.33728"/>
+      </If>
+    </If>
+    <If Condition="HasQuest(65971) and not IsQuestCompleted(65971) and GetQuestStep(65971) == 1">
+      <If Condition="not IsOnMap(144)">
+        <GetTo ZoneId="144" XYZ="-54.18003, 1.600001, 34.63613"/>
+      </If>
+      <LLTalkTo NpcId="1010448" XYZ="-54.00177, 1.6, 30.68579" QuestId="65971" StepId="1"/>
+    </If>
+    <If Condition="HasQuest(65971) and not IsQuestCompleted(65971) and GetQuestStep(65971) == 2">
+      <If Condition="not IsOnMap(144)">
+        <GetTo ZoneId="144" XYZ="-61.41798, 1.6, 29.30517"/>
+      </If>
+      <LLTalkTo NpcId="1011038" XYZ="-58.88464, 1.6, 27.63403" QuestId="65971" StepId="2"/>
+    </If>
+    <If Condition="HasQuest(65971) and not IsQuestCompleted(65971) and GetQuestStep(65971) == 3">
+      <If Condition="not IsOnMap(144)">
+        <GetTo ZoneId="144" XYZ="-98.22258, -0.8629702, 64.79282"/>
+      </If>
+      <LLTalkTo NpcId="1010478" XYZ="-99.19891, -0.8629702, 66.11731" QuestId="65971" StepId="3"/>
+    </If>
+    <If Condition="HasQuest(65971) and not IsQuestCompleted(65971) and GetQuestStep(65971) == 4">
+      <If Condition="not IsOnMap(144)">
+        <GetTo ZoneId="144" XYZ="19.41186, 3.99973, 36.23358"/>
+      </If>
+      <LLTalkTo NpcId="1011080" XYZ="21.53046, 3.99973, 39.90234" QuestId="65971" StepId="4"/>
+    </If>
+    <If Condition="HasQuest(65971) and not IsQuestCompleted(65971) and GetQuestStep(65971) == 5">
+      <If Condition="not IsOnMap(144)">
+        <GetTo ZoneId="144" XYZ="122.4002, 13.00045, -15.48271"/>
+      </If>
+      <LLTalkTo NpcId="1011079" XYZ="125.0781, 13.00064, -13.77893" QuestId="65971" StepId="5"/>
+    </If>
+    <If Condition="HasQuest(65971) and not IsQuestCompleted(65971) and GetQuestStep(65971) == 6">
+      <If Condition="not IsOnMap(144)">
+        <GetTo ZoneId="144" XYZ="-10.32157, 3.265048, -74.50376"/>
+      </If>
+      <LLTalkTo NpcId="1011084" XYZ="-12.52765, 3.254643, -73.16705" QuestId="65971" StepId="6"/>
+    </If>
+    <If Condition="HasQuest(65971) and not IsQuestCompleted(65971) and GetQuestStep(65971) == 255">
+      <If Condition="not IsOnMap(144)">
+        <GetTo ZoneId="144" XYZ="-54.09208, 1.600001, 34.75377"/>
+      </If>
+      <LLTurnIn QuestId="65971" NpcId="1010448" InteractDistance="3.0" XYZ="-54.00177, 1.6, 30.68579"/>
+    </If>
+	
     <!-- A Sultana's Strings (Level 70) -->
     <If Condition="IsQuestCompleted(68502) and not HasQuest(68503) and not IsQuestCompleted(68503)">
       <If Condition="not IsOnMap(621)">
@@ -4625,7 +4692,9 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <LisbethTravel ZoneId="621" XYZ="-285.47, 11.18326, 190.2811"/>
       </If>
       <MoveTo XYZ="-240.2812, 1.682302, 198.3816"/>
-      <UserDialog QuestId="68506" StepId="3" DialogText="Please manually complete the zoomie zoom."/>
+      <BotSettings BlockSkippingCutscenes="1"/>
+	  <UserDialog QuestId="68506" StepId="3" DialogText="Please manually complete the Zoomie Zoom."/>
+      <BotSettings BlockSkippingCutscenes="0"/>
 	  <WaitWhile Condition="not GetQuestStep(68506) == 4"/>
     </If>
     <If Condition="HasQuest(68506) and not IsQuestCompleted(68506) and GetQuestStep(68506) == 4">
@@ -4640,7 +4709,9 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <TeleportTo Name="Porta Praetoria" AetheryteId="102"/>
       </If>
       <LisbethTravel ZoneId="621" XYZ="7.366835, 4.852146, 283.4615"/>
+      <BotSettings BlockSkippingCutscenes="1"/>
       <UserDialog QuestId="68506" StepId="5" DialogText="Please manually complete the zoomie zoom."/>
+      <BotSettings BlockSkippingCutscenes="0"/>
 	  <WaitWhile Condition="not GetQuestStep(68506) == 6"/>
     </If>
     <If Condition="HasQuest(68506) and not IsQuestCompleted(68506) and GetQuestStep(68506) == 6">
@@ -4983,7 +5054,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <TeleportTo Name="The House of the Fierce" AetheryteId="108" Force="True"/>
         <MoveTo XYZ="328.5023, 21.67948, -552.327"/>
       </If>
-      <LisbethTravel ZoneId="614" XYZ="-348.9281, 1.230035, -344.1367"/>
+      <FlyTo AllowedVariance="0" ZoneId="614" XYZ="-348.9281, 1.230035, -344.1367"/>
       <UserDialog QuestId="68563" StepId="3" DialogText="Please manually complete the solo duty."/>
 	  <WaitWhile Condition="not GetQuestStep(68563) == 255"/>
     </If>
@@ -5019,7 +5090,6 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
 		</If>		
         <UseTransport InteractDistance="3.0" NpcId="1024974" XYZ="-10.33038, 0.1999732, 12.8938"/>
       </If>
-      <GetTo ZoneId="759" XYZ="0.1983643, 0.02109136, -3.097595"/>
       <LLTurnIn QuestId="68564" NpcId="1024999" InteractDistance="3.0" XYZ="0.1983643, 0.02109136, -3.097595"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
@@ -5449,7 +5519,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
         <GetTo ZoneId="759" XYZ="-10.33038, 0.1999732, 12.8938"/>
       </If>
       <UseTransport InteractDistance="3.0" NpcId="1024974" XYZ="-10.33038, 0.1999732, 12.8938" QuestId="68681" StepId="1"/>
-      <WaitWhile Condition="HasQuest(68681) and not IsQuestCompleted(68681) and not GetQuestStep(68681) == 2 and not IsOnMap(744)"/>
+      <WaitWhile Condition="not GetQuestStep(68681) == 2"/>
     </If>
     <If Condition="HasQuest(68681) and not IsQuestCompleted(68681) and GetQuestStep(68681) == 2">
       <If Condition="not IsOnMap(744)">
@@ -5913,8 +5983,7 @@ Known Issues:  GetTo sometimes doesn't get into range of an Aetheryte.
     </If>
 	
     <If Condition="IsQuestCompleted(68721)">
-	<LLStopBot/>
-	  <LLoadProfile Path="[Orderbot] Stormblood Main Scenario Clean.xml"/>
+	  <LLoadProfile Path="[Orderbot] 5.55 Shadowbringers Main Scenario Clean.xml"/>
     </If>  
 	
   </Order>
