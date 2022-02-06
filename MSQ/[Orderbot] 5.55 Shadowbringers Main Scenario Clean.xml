@@ -22,8 +22,10 @@ Updated: January 2022 by Angles24
           <If Condition="IsOnMap(351)">
             <UseTransport InteractDistance="3.0" NpcId="2002879" XYZ="-0.01531982, 2.975464, 27.48145"/>
           </If>
-          <GetTo ZoneId="156" XYZ="351.4656, -25.9659, -373.1818"/>
+          <LisbethTravel ZoneId="156" XYZ="30.62738, 20.495, -656.361"/>
+          <LisbethTravel ZoneId="156" XYZ="351.4656, -25.9659, -373.1818"/>
         </If>
+        <LisbethTravel ZoneId="156" XYZ="351.4656, -25.9659, -373.1818"/>
         <LLTalkTo NpcId="1029791" XYZ="351.4916, -26.42413, -370.8095" QuestId="68815" StepId="1"/>
         <WaitWhile Condition="not IsOnMap(842)"/>
       </If>
@@ -1978,9 +1980,7 @@ Updated: January 2022 by Angles24
 	
     <!-- The Wheel Turns (Level 73) -->
     <If Condition="IsQuestCompleted(68856) and not HasQuest(68857) and not IsQuestCompleted(68857)">
-      <If Condition="not IsOnMap(816)">
-        <GetTo ZoneId="816" XYZ="-374.2905, 48.27262, 472.4072"/>
-      </If>
+      <GetTo ZoneId="816" XYZ="-374.2905, 48.27262, 472.4072"/>
       <If Condition="IsQuestAcceptQualified(68857)">
         <LLPickUpQuest QuestId="68857" NpcId="1029584"/>
       </If>
@@ -2143,6 +2143,7 @@ Updated: January 2022 by Angles24
             <GetTo ZoneId="817" XYZ="-112.5699, -18.53477, 325.5354"/>
           </If>
           <MoveTo XYZ="-113.1152, -18.48463, 324.2084"/>
+		  <Dismount/>
           <RunCode Name="688614"/>
           <WaitWhile Condition="GetQuestById(68861).GetTodoArgs(4, 0).Item1 == 0"/>
         </If>
@@ -2151,6 +2152,7 @@ Updated: January 2022 by Angles24
             <GetTo ZoneId="817" XYZ="-26.30175, -25.31891, 305.4835"/>
           </If>
           <MoveTo XYZ="-24.73492, -25.32426, 305.5924"/>
+		  <Dismount/>
           <RunCode Name="688614"/>
           <WaitWhile Condition="GetQuestById(68861).GetTodoArgs(4, 0).Item1 == 1"/>
         </If>
@@ -2159,6 +2161,7 @@ Updated: January 2022 by Angles24
             <GetTo ZoneId="817" XYZ="-129.5815, -18.48668, 247.5631"/>
           </If>
           <MoveTo XYZ="-130.2664, -18.48668, 246.5704"/>
+		  <Dismount/>
           <RunCode Name="688614"/>
           <WaitWhile Condition="GetQuestById(68861).GetTodoArgs(4, 0).Item1 == 2"/>
         </If>
@@ -2655,7 +2658,7 @@ Updated: January 2022 by Angles24
           <GetTo ZoneId="817" XYZ="174.8342, -19.58986, -534.7708"/>
         </If>
         <!-- Bad Mesh -->
-       <!-- <RunCode Name="688721"/>-->
+		<RunCode Name="688721"/>
         <GetTo ZoneId="817" XYZ="121.0243, -8.781985, -891.2568"/>
         <LLTalkTo NpcId="1029242" XYZ="122.6978, -8.781985, -891.4168" QuestId="68872" StepId="1"/>
       </If>
@@ -2664,19 +2667,16 @@ Updated: January 2022 by Angles24
         <If Condition="not IsOnMap(817)">
           <GetTo ZoneId="817" XYZ="174.8342, -19.58986, -534.7708"/>
           <!-- Bad Mesh -->
-          <!--<RunCode Name="688721"/>-->
+          <RunCode Name="688721"/>
         </If>
-        <GetTo ZoneId="817" XYZ="217.7762, 11.20001, -711.9302"/>
-        <!--<RunCode Name="688722"/>-->
+        <RunCode Name="688722"/>
         <UseObject NpcId="2010218" XYZ="220.1724, 12.4361, -711.9707" QuestId="68872" StepId="2"/>
       </If>
       <If Condition="GetQuestStep(68872) == 3">
         <If Condition="not Core.Me.HasAura(404)">
-          <GetTo ZoneId="817" XYZ="174.8342, -19.58986, -534.7708"/>
           <!-- Bad Mesh -->
-          <!--<RunCode Name="688721"/>-->
-          <!--<RunCode Name="688722"/>-->
-          <GetTo ZoneId="817" XYZ="217.7762, 11.20001, -711.9302"/>
+          <RunCode Name="688721"/>
+          <RunCode Name="688722"/>
           <UseObject NpcId="2010218" XYZ="220.1724, 12.4361, -711.9707" Condition="not Core.Me.HasAura(404)"/>
         </If>
         <RunCode Name="688723"/>
@@ -2686,7 +2686,7 @@ Updated: January 2022 by Angles24
         <If Condition="not IsOnMap(817)">
           <GetTo ZoneId="817" XYZ="174.8342, -19.58986, -534.7708"/>
           <!-- Bad Mesh -->
-          <!--<RunCode Name="688721"/>-->
+          <RunCode Name="688721"/>
           <GetTo ZoneId="817" XYZ="120.0231, -8.781985, -891.4398"/>
         </If>
         <LLTurnIn QuestId="68872" NpcId="1029242" XYZ="122.6978, -8.781985, -891.4168"/>
@@ -2699,7 +2699,7 @@ Updated: January 2022 by Angles24
       <If Condition="not IsOnMap(817)">
         <GetTo ZoneId="817" XYZ="174.8342, -19.58986, -534.7708"/>
         <!-- Bad Mesh -->
-        <!--<RunCode Name="688721"/>-->
+        <RunCode Name="688721"/>
         <GetTo ZoneId="817" XYZ="120.0231, -8.781985, -891.4398"/>
       </If>
       <If Condition="IsQuestAcceptQualified(68873)">
@@ -2711,7 +2711,7 @@ Updated: January 2022 by Angles24
         <If Condition="not IsOnMap(817) and not IsOnMap(859)">
           <GetTo ZoneId="817" XYZ="174.8342, -19.58986, -534.7708"/>
           <!-- Bad Mesh -->
-          <!--<RunCode Name="688721"/>-->
+          <RunCode Name="688721"/>
           <GetTo ZoneId="817" XYZ="120.0231, -8.781985, -891.4398"/>
         </If>
         <EnablePlugin Name="SideStep"/>
@@ -2991,9 +2991,7 @@ Updated: January 2022 by Angles24
 	
     <!-- Bearing With It (Level 75) -->
     <If Condition="IsQuestCompleted(68876) and not HasQuest(68877) and not IsQuestCompleted(68877)">
-      <If Condition="not IsOnMap(817)">
-        <GetTo ZoneId="817" XYZ="849.2484, -65.42493, -391.7697"/>
-      </If>
+      <GetTo ZoneId="817" XYZ="849.2484, -65.42493, -391.7697"/>
       <If Condition="IsQuestAcceptQualified(68877)">
         <LLPickUpQuest QuestId="68877" NpcId="1029557"/>
       </If>
@@ -3671,6 +3669,77 @@ Updated: January 2022 by Angles24
 	    <LLSmallTalk/>
 	    <AutoInventoryEquip/>
       </If>
+    </If>	
+    <!-- Crossroads (Level 77) -->
+    <If Condition="IsQuestCompleted(69155) and not HasQuest(69156) and not IsQuestCompleted(69156)">
+      <If Condition="not IsOnMap(815)">
+        <GetTo ZoneId="815" XYZ="19.65151, -90.93282, 511.7431"/>
+      </If>
+      <If Condition="IsQuestAcceptQualified(69156)">
+        <GetTo ZoneId="815" XYZ="19.65151, -90.93282, 511.7431"/>
+        <LLPickUpQuest QuestId="69156" NpcId="1029775"/>
+      </If>
+    </If>
+    <If Condition="GetQuestStep(69156) &gt; 0">
+      <If Condition="GetQuestStep(69156) == 1">
+        <GetTo ZoneId="815" XYZ="139.1297, -77.95128, 620.3334"/>
+        <UseObject NpcId="2009921" XYZ="138.9639, -77.83636, 621.3627" QuestId="69156" StepId="1"/>
+      </If>
+      <If Condition="GetQuestStep(69156) == 2">
+        <If Condition="not IsOnMap(815)">
+          <GetTo ZoneId="815" XYZ="147.6348, -75.16154, 641.277"/>
+        </If>
+        <UseObject NpcId="1029777" XYZ="147.9362, -75.01646, 642.359" QuestId="69156" StepId="2"/>
+      </If>
+      <If Condition="GetQuestStep(69156) == 255">
+        <GetTo ZoneId="815" XYZ="-281.8258, -62.86976, 382.4308"/>
+        <LLTurnIn QuestId="69156" NpcId="1029778" XYZ="-282.0936, -62.82141, 380.5447"/>
+	    <LLSmallTalk/>
+	    <Dismount />
+        <WaitTimer WaitTime="2" />
+        <RunCode Name="Coffer" />
+        <WaitTimer WaitTime="2"/>	
+	    <AutoInventoryEquip/>
+      </If>
+    </If>	
+    <!-- A Fresh Start (Level 77) -->
+    <If Condition="IsQuestCompleted(69156) and not HasQuest(69157) and not IsQuestCompleted(69157)">
+      <If Condition="not IsOnMap(815)">
+        <GetTo ZoneId="815" XYZ="-281.8258, -62.86976, 382.4308"/>
+      </If>
+      <If Condition="IsQuestAcceptQualified(69157)">
+        <LLPickUpQuest QuestId="69157" NpcId="1029783"/>
+      </If>
+    </If>
+    <If Condition="GetQuestStep(69157) &gt; 0">
+      <If Condition="GetQuestStep(69157) == 1">
+        <GetTo ZoneId="815" XYZ="-506.8639, -95.96886, 490.0764"/>
+        <UseObject NpcId="2009922" XYZ="-508.5069, -96.02509, 490.0739" QuestId="69157" StepId="1"/>
+      </If>
+      <If Condition="GetQuestStep(69157) == 2">
+        <If Condition="not IsOnMap(815)">
+          <GetTo ZoneId="815" XYZ="-506.8639, -95.96886, 490.0764"/>
+        </If>
+	    <UserDialog QuestId="69157" StepId="2" DialogText="Please manually complete the dungeon: Lv. 77 Malikah's Well."/>	 
+	    <WaitWhile Condition="not GetQuestStep(69157) == 255"/>
+      </If>
+      <If Condition="GetQuestStep(69157) == 255">
+        <If Condition="not IsOnMap(815)">
+          <GetTo ZoneId="815" XYZ="-430.9525, -86.32272, 464.3591"/>
+        </If>
+        <LLTurnIn QuestId="69157" NpcId="1029784" XYZ="-429.923, -86.05476, 464.5914"/>
+	    <LLSmallTalk/>
+	    <AutoInventoryEquip/>
+      </If>
+    </If>
+    <!-- More than a Hunch (Level 77) -->
+    <If Condition="IsQuestCompleted(69157) and not HasQuest(69158) and not IsQuestCompleted(69158)">
+      <If Condition="not IsOnMap(815)">
+        <GetTo ZoneId="815" XYZ="-430.9525, -86.32272, 464.3591"/>
+      </If>
+      <If Condition="IsQuestAcceptQualified(69158)">
+        <LLPickUpQuest QuestId="69158" NpcId="1029786"/>
+      </If>
     </If>
 	
     <!-- Ahm Araeng -->
@@ -3772,78 +3841,8 @@ Updated: January 2022 by Angles24
         <GetTo ZoneId="815" XYZ="158.8007, -61.11243, 674.8912"/>
         <UseObject NpcId="2010052" XYZ="158.8007, -61.11243, 674.8912" Condition="not IsAetherCurrentCompleted(815,5)"/>
       </If>
-    </If>
+    </If>	
 	
-    <!-- Crossroads (Level 77) -->
-    <If Condition="IsQuestCompleted(69155) and not HasQuest(69156) and not IsQuestCompleted(69156)">
-      <If Condition="not IsOnMap(815)">
-        <GetTo ZoneId="815" XYZ="19.65151, -90.93282, 511.7431"/>
-      </If>
-      <If Condition="IsQuestAcceptQualified(69156)">
-        <LLPickUpQuest QuestId="69156" NpcId="1029775"/>
-      </If>
-    </If>
-    <If Condition="GetQuestStep(69156) &gt; 0">
-      <If Condition="GetQuestStep(69156) == 1">
-        <GetTo ZoneId="815" XYZ="139.1297, -77.95128, 620.3334"/>
-        <UseObject NpcId="2009921" XYZ="138.9639, -77.83636, 621.3627" QuestId="69156" StepId="1"/>
-      </If>
-      <If Condition="GetQuestStep(69156) == 2">
-        <If Condition="not IsOnMap(815)">
-          <GetTo ZoneId="815" XYZ="147.6348, -75.16154, 641.277"/>
-        </If>
-        <UseObject NpcId="1029777" XYZ="147.9362, -75.01646, 642.359" QuestId="69156" StepId="2"/>
-      </If>
-      <If Condition="GetQuestStep(69156) == 255">
-        <GetTo ZoneId="815" XYZ="-281.8258, -62.86976, 382.4308"/>
-        <LLTurnIn QuestId="69156" NpcId="1029778" XYZ="-282.0936, -62.82141, 380.5447"/>
-	    <LLSmallTalk/>
-	    <Dismount />
-        <WaitTimer WaitTime="2" />
-        <RunCode Name="Coffer" />
-        <WaitTimer WaitTime="2"/>	
-	    <AutoInventoryEquip/>
-      </If>
-    </If>
-    <!-- A Fresh Start (Level 77) -->
-    <If Condition="IsQuestCompleted(69156) and not HasQuest(69157) and not IsQuestCompleted(69157)">
-      <If Condition="not IsOnMap(815)">
-        <GetTo ZoneId="815" XYZ="-281.8258, -62.86976, 382.4308"/>
-      </If>
-      <If Condition="IsQuestAcceptQualified(69157)">
-        <LLPickUpQuest QuestId="69157" NpcId="1029783"/>
-      </If>
-    </If>
-    <If Condition="GetQuestStep(69157) &gt; 0">
-      <If Condition="GetQuestStep(69157) == 1">
-        <GetTo ZoneId="815" XYZ="-506.8639, -95.96886, 490.0764"/>
-        <UseObject NpcId="2009922" XYZ="-508.5069, -96.02509, 490.0739" QuestId="69157" StepId="1"/>
-      </If>
-      <If Condition="GetQuestStep(69157) == 2">
-        <If Condition="not IsOnMap(815)">
-          <GetTo ZoneId="815" XYZ="-506.8639, -95.96886, 490.0764"/>
-        </If>
-	    <UserDialog QuestId="69157" StepId="2" DialogText="Please manually complete the dungeon: Lv. 77 Malikah's Well."/>	 
-	    <WaitWhile Condition="not GetQuestStep(69157) == 255"/>
-      </If>
-      <If Condition="GetQuestStep(69157) == 255">
-        <If Condition="not IsOnMap(815)">
-          <GetTo ZoneId="815" XYZ="-430.9525, -86.32272, 464.3591"/>
-        </If>
-        <LLTurnIn QuestId="69157" NpcId="1029784" XYZ="-429.923, -86.05476, 464.5914"/>
-	    <LLSmallTalk/>
-	    <AutoInventoryEquip/>
-      </If>
-    </If>
-    <!-- More than a Hunch (Level 77) -->
-    <If Condition="IsQuestCompleted(69157) and not HasQuest(69158) and not IsQuestCompleted(69158)">
-      <If Condition="not IsOnMap(815)">
-        <GetTo ZoneId="815" XYZ="-430.9525, -86.32272, 464.3591"/>
-      </If>
-      <If Condition="IsQuestAcceptQualified(69158)">
-        <LLPickUpQuest QuestId="69158" NpcId="1029786"/>
-      </If>
-    </If>
     <If Condition="GetQuestStep(69158) &gt; 0">
       <If Condition="GetQuestStep(69158) == 1">
         <GetTo ZoneId="819" XYZ="27.35625, 0, 1.132881"/>
@@ -5853,10 +5852,12 @@ Updated: January 2022 by Angles24
         </If>
         <If Condition="GetQuestStep(69124) == 2">
           <If Condition="GetQuestById(69124).QuestI8A == 0">
+            <GetTo ZoneId="818" XYZ="340.9324, 342.6719, -310.4753"/>
             <LLTalkTo NpcId="2010463" DialogOption="1" XYZ="340.9324, 342.6719, -310.4753" QuestId="69124" StepId="2" Condition="GetQuestById(69124).QuestI8A == 0"/>
           </If>
-          <If Condition="GetQuestById(69124).QuestI8A == 1">
-            <LLTalkTo NpcId="2010464" DialogOption="1" XYZ="341.5426, 342.7634, -308.7053" QuestId="69124" StepId="2" Condition="GetQuestById(69124).QuestI8A == 1"/>
+          <If Condition="GetQuestById(69124).QuestI8A == 16">
+            <GetTo ZoneId="818" XYZ="341.5426, 342.7634, -308.7053"/>
+            <LLTalkTo NpcId="2010464" DialogOption="1" XYZ="341.5426, 342.7634, -308.7053" QuestId="69124" StepId="2" Condition="GetQuestById(69124).QuestI8A == 16"/>
           </If>
         </If>
         <If Condition="GetQuestStep(69124) == 3">
@@ -6439,7 +6440,8 @@ Updated: January 2022 by Angles24
         <LisbethTravel ZoneId="813" XYZ="629.71, 94.35435, -642.8939"/>
       </If>
       <If Condition="IsQuestAcceptQualified(69300)">
-        <LLPickUpQuest QuestId="69299" NpcId="1032502"/>
+        <LLPickUpQuest QuestId="69300" NpcId="1032502"/>
+		<WaitTimer WaitTime="10"/>
       </If>
     </If>
     <If Condition="GetQuestStep(69300) &gt; 0">
@@ -6664,6 +6666,9 @@ Updated: January 2022 by Angles24
       </If>
     </If>
     <If Condition="GetQuestStep(69306) &gt; 0">
+      <If Condition="GetQuestStep(69306) == 1">
+	    <WaitWhile Condition="not GetQuestStep(69306) == 2"/>
+      </If>
       <If Condition="GetQuestStep(69306) == 2">
         <LLTalkTo NpcId="1032529" XYZ="5.53894, 0.01941725, -0.5036011" QuestId="69306" StepId="2"/>
       </If>
@@ -6744,15 +6749,18 @@ Updated: January 2022 by Angles24
     </If>
     <If Condition="GetQuestStep(69308) == 2 and GetQuestById(69308).GetTodoArgs(2, 0).Item1 == 0">
       <LisbethTravel ZoneId="813" XYZ="686.146, 6.878385, 496.3295" land="True"/>
-      <LLUseItem ItemId="2003001" InCombat="True" NpcIds="2011079" XYZ="685.5725, 6.881775, 497.1235" Radius="25" QuestId="69308" StepId="2" Condition="GetQuestStep(69308) == 2 and GetQuestById(69308).GetTodoArgs(2, 0).Item1 == 0"/>
+      <LLUseItem ItemId="2003001" InCombat="True" NpcIds="2011079" XYZ="685.5725, 6.881775, 497.1235" Radius="25" UseTimes="1" BlacklistAfter="True"/>
+	  <WaitWhile Condition="not GetQuestById(69308).GetTodoArgs(2, 0).Item1 == 1"/>
     </If>
     <If Condition="GetQuestStep(69308) == 2 and GetQuestById(69308).GetTodoArgs(2, 0).Item1 == 1">
       <LisbethTravel ZoneId="813" XYZ="753.6814, 16.05424, 276.0833" land="True"/>
-      <LLUseItem ItemId="2003001" InCombat="True" NpcIds="2011078" XYZ="754.4517, 15.88458, 273.8842" Radius="25" QuestId="69308" StepId="2" Condition="GetQuestStep(69308) == 2 and GetQuestById(69308).GetTodoArgs(2, 0).Item1 == 1"/>
+      <LLUseItem ItemId="2003001" InCombat="True" NpcIds="2011078" XYZ="754.4517, 15.88458, 273.8842" Radius="25" UseTimes="1" BlacklistAfter="True"/>
+	  <WaitWhile Condition="not GetQuestById(69308).GetTodoArgs(2, 0).Item1 == 2"/>
     </If>
     <If Condition="GetQuestStep(69308) == 2 and GetQuestById(69308).GetTodoArgs(2, 0).Item1 == 2">
       <LisbethTravel XYZ="495.4756, 10.2998, 290.547" land="True"/>
-      <LLUseItem ItemId="2003001" InCombat="True" NpcIds="2011076" XYZ="495.4756, 10.2998, 290.547" Radius="25" QuestId="69308" StepId="2" Condition="GetQuestStep(69308) == 2 and GetQuestById(69308).GetTodoArgs(2, 0).Item1 == 2"/>
+      <LLUseItem ItemId="2003001" InCombat="True" NpcIds="2011076" XYZ="495.4756, 10.2998, 290.547" Radius="25" UseTimes="1" BlacklistAfter="True"/>
+	  <WaitWhile Condition="not GetQuestStep(69308) == 3"/>
     </If>
     <If Condition="GetQuestStep(69308) == 3">
       <LisbethTravel ZoneId="813" XYZ="765.5645, 25.74815, 417.2639"/>
@@ -6837,7 +6845,7 @@ Updated: January 2022 by Angles24
         <LisbethTravel ZoneId="819" XYZ="44.30539, 0, 1.387627" />
       </If>
       <While Condition="IsQuestAcceptQualified(69311) and not HasQuest(69311)">
-        <LLPickUpQuest NpcId="1033823" QuestId="69310" />
+        <LLPickUpQuest NpcId="1033823" QuestId="69311" />
       </While>
     </If>
     <If Condition="GetQuestStep(69311) == 1">
@@ -7536,6 +7544,7 @@ Updated: January 2022 by Angles24
     <If Condition="GetQuestStep(69599) == 4">
       <LisbethTravel Zone="156" Subzone="943" Position="21.86835, 21.25273, -632.9349"/>
       <LLTalkTo NpcId="2002881" XYZ="21.13373, 22.32391, -631.281" QuestId="69599" StepId="4"/>
+	  <WaitWhile Condition="not GetQuestStep(69599) == 255"/>
     </If>
     <If Condition="GetQuestStep(69599) == 255">
       <If condition="not IsOnMap(351)">

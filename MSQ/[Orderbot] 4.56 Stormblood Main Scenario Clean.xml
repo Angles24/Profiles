@@ -1250,7 +1250,8 @@ Updated: January 2022 by Angles24
       <LLTalkTo NpcId="1019969" XYZ="322.5031, -120.3922, -299.9959" QuestId="68020" StepId="1"/>
     </If>
     <If Condition="HasQuest(68020) and not IsQuestCompleted(68020) and GetQuestStep(68020) == 255">
-      <LisbethTravel ZoneId="613" XYZ="19.38696, -197.5218, -143.6913"/>	 
+      <LisbethTravel ZoneId="613" XYZ="19.38696, -197.5218, -143.6913"/>
+	  <Dismount/>
       <LLTurnIn QuestId="68020" InteractDistance="3.0" NpcId="1019970" XYZ="19.38696, -197.5218, -143.6913"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
@@ -1263,7 +1264,7 @@ Updated: January 2022 by Angles24
       </If>
     </If>
     <If Condition="HasQuest(68021) and not IsQuestCompleted(68021) and GetQuestStep(68021) == 1">
-      <LisbethTravel ZoneId="613" XYZ="321.4923, -120.3948, -299.794"/>	 
+      <LisbethTravel ZoneId="613" XYZ="-8.926575, -187.0837, -95.01801"/>	 
       <LLTalkTo NpcId="1019197" XYZ="-8.819601, -187.0837, -97.10515" QuestId="68021" StepId="1"/>
     </If>
     <If Condition="HasQuest(68021) and not IsQuestCompleted(68021) and GetQuestStep(68021) == 255">
@@ -1323,11 +1324,14 @@ Updated: January 2022 by Angles24
       </If>
     </If>
     <If Condition="HasQuest(68024) and not IsQuestCompleted(68024) and GetQuestStep(68024) == 1">
+      <LisbethTravel ZoneId="613" XYZ="325.8938, -120.3135, -309.2349"/>
+	  <RunCode Name="Transition1"/>
       <LisbethTravel ZoneId="613" XYZ="-471.5278, -94.40621, 192.5568"/>
       <LLTalkTo NpcId="1019981" XYZ="-471.5278, -94.40621, 192.5568" QuestId="68024" StepId="1"/>
     </If>
     <If Condition="HasQuest(68024) and not IsQuestCompleted(68024) and GetQuestStep(68024) == 2">
       <LisbethTravel ZoneId="613" XYZ="-739.7813, 4.659779, 233.5405"/>
+      <GetTo ZoneId="613" XYZ="-739.7813, 4.659779, 233.5405"/>
       <WaitWhile Condition="HasQuest(68024) and not IsQuestCompleted(68024) and not GetQuestStep(68024) == 3"/>
     </If>
     <If Condition="HasQuest(68024) and not IsQuestCompleted(68024) and GetQuestStep(68024) == 3">
@@ -1531,6 +1535,7 @@ Updated: January 2022 by Angles24
 		</If>
 		<If Condition="not IsAetherCurrentCompleted(613,7)">
         <GetTo ZoneId="613" XYZ="21.00052, 25.11103, -633.582"/>
+        <LLClimbHill Start="21.00052, 25.11103, -633.582" End="21.28632, 24.00244, -623.621" Distance="2.5"/>
 			<UseObject NpcId="2007999" XYZ="21.28632, 24.00244, -623.621" Condition="not IsAetherCurrentCompleted(613,7)"/>
 		<RunCode Name="2007999"/>
 		</If>
@@ -2680,8 +2685,8 @@ Updated: January 2022 by Angles24
       <WaitWhile Condition="HasQuest(68052) and not IsQuestCompleted(68052) and not GetQuestStep(68052) == 3"/>
     </If>
     <If Condition="HasQuest(68052) and not IsQuestCompleted(68052) and GetQuestStep(68052) == 3">
-      <GetTo ZoneId="622" XYZ="545.6717, 38.87797, -483.259"/>
-      <MoveTo Distance="1.0" XYZ="546.1561, 38.77595, -482.7362"/>
+      <GetTo ZoneId="622" XYZ="545.8792, 38.79727, -482.7155"/>
+      <MoveTo Distance="0.5" XYZ="545.8792, 38.79727, -482.7155"/>
       <LLSendChat Emote="victorypose" QuestId="68052" StepId="3"/>
       <WaitWhile Condition="HasQuest(68052) and not IsQuestCompleted(68052) and not GetQuestStep(68052) == 255"/>
     </If>
@@ -5350,7 +5355,10 @@ Updated: January 2022 by Angles24
       <WaitWhile Condition="not IsOnMap(786)"/>
     </If>
     <If Condition="HasQuest(68610) and not IsQuestCompleted(68610) and GetQuestStep(68610) == 2">
-      <UserDialog QuestId="68610" StepId="2" DialogText="Please manually complete the trial: Lv. 70 Castrum Fluminis."/>
+	  <WaitWhile Condition="not GetQuestStep(68610) == 3"/>
+    </If>
+    <If Condition="HasQuest(68610) and not IsQuestCompleted(68610) and GetQuestStep(68610) == 3">
+      <UserDialog QuestId="68610" StepId="3" DialogText="Please manually complete the trial: Lv. 70 Castrum Fluminis."/>
 	  <WaitWhile Condition="not GetQuestStep(68610) == 5"/>
     </If>
     <If Condition="HasQuest(68610) and not IsQuestCompleted(68610) and GetQuestStep(68610) == 5">
@@ -6989,6 +6997,14 @@ Updated: January 2022 by Angles24
 			while (CommonBehaviors.IsLoading)  {  await Coroutine.Yield();  }
 			MovementManager.StopAscending();
 		  ]]>
+		</CodeChunk>
+		<CodeChunk Name="Transition1">
+		  <![CDATA[
+				Core.Me.SetFacing(3.798285f);
+				MovementManager.MoveForwardStart();
+				await Coroutine.Sleep(2000);
+				Navigator.PlayerMover.MoveStop();
+				]]>
 		</CodeChunk>
   </CodeChunks>
 </Profile>

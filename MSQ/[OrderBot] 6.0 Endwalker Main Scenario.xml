@@ -430,7 +430,7 @@
 					<LLTalkTo NpcId="1038736" XYZ="177.264, 56.63088, -411.5511" QuestId="69901" StepId="3"/>
 				</While>
 				<While condition="Core.Player.HasAura(565) and GetQuestStep(69901) == 3">
-					<NoCombatMoveTo XYZ="-163.9276, 80.92038, -533.9874" />
+					<NoCombatMoveTo XYZ="-163.9276, 80.92038, -533.9874"/>
 					<LLSmallTalk/>
 				</While>
 			</While>
@@ -694,43 +694,43 @@
 			<If Condition="GetQuestStep(69908) == 4">
 				<GetTo ZoneId="957" XYZ="-485.5554, 48.78896, 155.5085"/>
 				<LLTalkTo NpcId="1038636" XYZ="-485.71, 49.10382, 152.9106" QuestId="69908" StepId="4"/>
-				<MoveTo XYZ="-425.414,38.41502,160.1206" />
+				<MoveTo XYZ="-425.414,38.41502,160.1206"/>
 				<WaitTimer WaitTime="15"/>
-				<MoveTo XYZ="-438.1987, 38.1377, 173.3383" />
+				<MoveTo XYZ="-438.1987, 38.1377, 173.3383"/>
 				<WaitWhile condition="not GameObjectManager.GetObjectByNPCId(1041219).IsVisible"/>
-				<MoveTo XYZ="-425.414,38.41502,160.1206" />
+				<MoveTo XYZ="-425.414,38.41502,160.1206"/>
 				<WaitWhile condition="GetQuestStep(69908) == 4"/>
 			</If>
 			<If Condition="GetQuestStep(69908) == 5">
 				<GetTo ZoneId="957" XYZ="-426.5075, 38.39244, 161.343"/>
 				<LLTalkTo NpcId="1041219" XYZ="-425.4368, 38.41315, 160.1129" QuestId="69908" StepId="5"/>
-				<MoveTo XYZ="-419.6078,43.95012,87.3025" />
+				<MoveTo XYZ="-419.6078,43.95012,87.3025"/>
 				<WaitTimer WaitTime="15"/>
-				<MoveTo XYZ="-423.8852, 43.64464, 103.364" />
+				<MoveTo XYZ="-423.8852, 43.64464, 103.364"/>
 				<WaitWhile condition="not GameObjectManager.GetObjectByNPCId(1041220).IsVisible"/>
-				<MoveTo XYZ="-419.6078,43.95012,87.3025" />
+				<MoveTo XYZ="-419.6078,43.95012,87.3025"/>
 				<WaitWhile condition="GetQuestStep(69908) == 5"/>
 			</If>
 			<If Condition="GetQuestStep(69908) == 6">
 				<GetTo ZoneId="957" XYZ="-420.3188, 44.07317, 89.94058"/>
 				<LLTalkTo NpcId="1041220" XYZ="-419.6078, 43.9499, 87.29688" QuestId="69908" StepId="6"/>
-				<MoveTo XYZ="-452.5342, 58.6748, 70.95951" />
-				<MoveTo XYZ="-444.7032,49.551,97.1969" />
+				<MoveTo XYZ="-452.5342, 58.6748, 70.95951"/>
+				<MoveTo XYZ="-444.7032,49.551,97.1969"/>
 				<WaitTimer WaitTime="15"/>
-				<MoveTo XYZ="-452.5342, 58.6748, 70.95951" />
+				<MoveTo XYZ="-452.5342, 58.6748, 70.95951"/>
 				<WaitWhile condition="not GameObjectManager.GetObjectByNPCId(1041221).IsVisible"/>
-				<MoveTo XYZ="-444.7032,49.551,97.1969" />
+				<MoveTo XYZ="-444.7032,49.551,97.1969"/>
 				<WaitWhile condition="GetQuestStep(69908) == 6"/>
 			</If>
 			<If Condition="GetQuestStep(69908) == 7">
 				<GetTo ZoneId="957" XYZ="-445.8572, 49.98135, 94.63971"/>
 				<LLTalkTo NpcId="1041221" XYZ="-444.7242, 49.55681, 97.18469" QuestId="69908" StepId="7"/>
-				<MoveTo XYZ="-460.2699, 51.14045, 128.9878" />
-				<MoveTo XYZ="-484.5909,54.18516,128.3601" />
+				<MoveTo XYZ="-460.2699, 51.14045, 128.9878"/>
+				<MoveTo XYZ="-484.5909,54.18516,128.3601"/>
 				<WaitTimer WaitTime="15"/>
-				<MoveTo XYZ="-460.2699, 51.14045, 128.9878" />
+				<MoveTo XYZ="-460.2699, 51.14045, 128.9878"/>
 				<WaitWhile condition="not GameObjectManager.GetObjectByNPCId(1038637).IsVisible"/>
-				<MoveTo XYZ="-484.5909,54.18516,128.3601" />
+				<MoveTo XYZ="-484.5909,54.18516,128.3601"/>
 				<WaitWhile condition="GetQuestStep(69908) == 7"/>
 			</If>
 			<If Condition="GetQuestStep(69908) == 8">
@@ -821,14 +821,14 @@
 			</If>
 			<If Condition="GetQuestStep(69910) == 6">
 				<!-- Mount 275 = "Hamsa" Dodo Mount -->
-				<RunCode name="69910_DismountIfNot_275" />
+				<RunCode name="69910_DismountIfNot_275"/>
 				<If Condition="not Core.Player.IsMounted">
-					<GetTo ZoneId="957" XYZ="-552.3464, 9.817474, -561.2477" />
-					<LLTalkTo NpcId="1038650" XYZ="-555.8404, 9.714635, -558.2208" QuestId="69910" StepId="6" />
+					<GetTo ZoneId="957" XYZ="-552.3464, 9.817474, -561.2477"/>
+					<LLTalkTo NpcId="1038650" XYZ="-555.8404, 9.714635, -558.2208" QuestId="69910" StepId="6"/>
 				</If>
-				<RunCode name="TurnOffMount" />
-				<NoCombatMoveTo XYZ="-103.3072, 88.84355, -607.3538" />
-				<RunCode name="TurnOnMount" />
+				<RunCode name="TurnOffMount"/>
+				<NoCombatMoveTo XYZ="-103.3072, 88.84355, -607.3538"/>
+				<RunCode name="TurnOnMount"/>
 			</If>
 			<If Condition="GetQuestStep(69910) == 255">
 				<GetTo ZoneId="957" XYZ="-90.77538, 89.43965, -641.8225"/>
@@ -890,20 +890,20 @@
 				<MoveTo XYZ="3.059902, 1.907349E-06, 4.101292"/>
 				<LLTurnIn QuestId="69912" NpcId="1038589" XYZ="4.074097, 1.907349E-06, 2.029419"/>
 				<LLSmallTalk/>
-				<Dismount />
-				<WaitTimer WaitTime="3" />
+				<Dismount/>
+				<WaitTimer WaitTime="3"/>
 				<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
+					<RunCode Name="Coffer"/>
 				</If>	
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 			</If>
 		</If>
 		
     <!-- In the Dark of the Tower -->
     <If Condition="IsQuestCompleted(69903) and IsQuestCompleted(69912) and not IsQuestCompleted(69913)">
-			<If Condition="IsQuestCompleted(69903) and IsQuestCompleted(69912)">
+			<If Condition="IsQuestCompleted(69903) and IsQuestCompleted(69912) and not HasQuest(69913)">
 				<If condition="not IsOnMap(987)">
 					<GetTo ZoneId="962" XYZ="-107.2913, 3.898939, 5.505816"/>
 					<UseTransport NpcId="2011936" InteractDistance="3.0" XYZ="-108.568, 5.020142, 4.53186"/>
@@ -1237,25 +1237,29 @@
 				<GetTo ZoneId="958" XYZ="116.7688, -16.81971, 390.4879"/>
 				<UseObject NpcId="2012078" XYZ="117.8148, -16.9223, 390.4631" QuestId="69920" StepId="5"/>
 			</If>
-			<If Condition="GetQuestStep(69920) == 6">
+			<While Condition="GetQuestStep(69920) == 6">
+				<GetTo ZoneId="958" XYZ="116.7688, -16.81971, 390.4879"/>
+				<If Condition="ObjectExistsWithId(2012078) and GameObjectManager.GetObjectByNPCId(2012078).IsTargetable">				
+					<LLUseObject NpcId="2012078" XYZ="117.8148, -16.9223, 390.4631" UseTimes="1" BlacklistAfter="True"/>
+					<MoveTo XYZ="123.958, -15.63357, 400.0133" Distance="0.5"/>
+				</If>
 				<RunCode name="TurnOffMount"/>
 				<WaitTimer Waittime="5"/>
-				<MoveTo XYZ="205.1743, -19.10521, 373.7455" />
+				<MoveTo XYZ="205.1743, -19.10521, 373.7455"/>
 				<WaitTimer Waittime="27"/>
-				<MoveTo XYZ="273.8142, -13.14002, 317.4648" />
+				<MoveTo XYZ="273.8142, -13.14002, 317.4648"/>
 				<WaitTimer Waittime="22"/>
-				<MoveTo XYZ="324.1707, -9.298947, 251.0451" />
+				<MoveTo XYZ="324.1707, -9.298947, 251.0451"/>
 				<WaitTimer Waittime="17"/>
-				<MoveTo XYZ="353.8969, -1.325196, 232.9675" />
+				<MoveTo XYZ="353.8969, -1.325196, 232.9675"/>
 				<WaitTimer Waittime="38"/>
 				<!--
-				<MoveTo XYZ="402.4455, 4.064979, 242.5137" />
+				<MoveTo XYZ="402.4455, 4.064979, 242.5137"/>
 				<WaitTimer Waittime="15"/>-->
-				<MoveTo XYZ="497.9082, 20.3584, 151.0306" />
-				<GetTo ZoneId="958" XYZ="555.8098,32.30835,159.1057" />
-				<WaitWhile condition="GetQuestStep(69920) == 6"/>
+				<MoveTo XYZ="497.9082, 20.3584, 151.0306"/>
+				<GetTo ZoneId="958" XYZ="555.8098,32.30835,159.1057"/>
 				<RunCode name="TurnOnMount"/>
-			</If>
+			</While>
 			<If Condition="GetQuestStep(69920) == 255">
 				<GetTo ZoneId="958" XYZ="552.3287, 32.19771, 159.9246"/>
 				<LLTurnIn QuestId="69920" NpcId="1038846" XYZ="555.8098, 32.30835, 159.1057"/>
@@ -1298,7 +1302,7 @@
 				<WaitWhile condition="GetQuestStep(69921) == 6"/>
 			</If>
 			<If Condition="GetQuestStep(69921) == 7">
-				<GetTo ZoneId="958" XYZ="146.0767, -13.94504, 635.7167" />
+				<GetTo ZoneId="958" XYZ="146.0767, -13.94504, 635.7167"/>
 			</If>
 			<If Condition="GetQuestStep(69921) == 255">
 				<GetTo ZoneId="958" XYZ="138.6498, -13.26687, 646.652"/>
@@ -1369,12 +1373,12 @@
 				<LLTalkTo NpcId="1039878" XYZ="-362.1729, 22.07107, 434.0123" QuestId="69923" StepId="3"/>
 			</If>
 			<If Condition="GetQuestStep(69923) == 4">
-				<GetTo ZoneId="958" Subzone="3902" Position="-310.1345, 22.49282, 366.7542"/>
+				<GetTo ZoneId="958" XYZ="-310.1345, 22.49282, 366.7542"/>
 				<LLTalkTo NpcId="1039880" XYZ="-308.3696, 22.46834, 365.7129" QuestId="69923" StepId="4"/>
 			</If>
 			<If Condition="GetQuestStep(69923) == 5">
 				<RunCode name="TurnOffMount"/>
-				<NoCombatMoveTo XYZ="-295.3914, 4.537916, 258.5102" />
+				<NoCombatMoveTo XYZ="-295.3914, 4.537916, 258.5102"/>
 				<WaitTimer Waittime="3"/>
 				<NoCombatMoveTo XYZ="65.88302, 0.04138899, 150.071"/>
 				<LLTalkTo NpcId="1039880" XYZ="65.07941, -0.1091221, 152.0953" QuestId="69923" StepId="5"/>
@@ -1397,7 +1401,8 @@
 				</If>
 			</If>
 			<If Condition="GetQuestStep(69924) == 1">
-				<GetTo ZoneId="958" XYZ="167.7169, 0.9689628, 103.0773" />
+				<GetTo ZoneId="958" XYZ="174.1734, 1.132731, 104.6935"/>
+				<MoveTo XYZ="169.2378, 0.9999279, 105.8213" Distance="0.5"/>
 				<WaitWhile condition="GetQuestStep(69924) == 1"/>
 			</If>
 			<If Condition="GetQuestStep(69924) == 2">
@@ -1405,7 +1410,7 @@
 				<LLTalkTo NpcId="1038761" XYZ="169.2378, 0.9999279, 105.8213" QuestId="69924" StepId="2"/>
 			</If>
 			<If Condition="GetQuestStep(69924) == 3">
-				<GetTo ZoneId="958" XYZ="301.4198, 5.516328, 78.34881" />
+				<GetTo ZoneId="958" XYZ="301.4198, 5.516328, 78.34881"/>
 				<WaitWhile condition="GetQuestStep(69924) == 3"/>
 			</If>
 			<If Condition="GetQuestStep(69924) == 4">
@@ -1417,7 +1422,7 @@
 				<LLTalkTo NpcId="1040164" XYZ="387.2892, 3.89357, 71.97681" QuestId="69924" StepId="5"/>
 			</If>
 			<If Condition="GetQuestStep(69924) == 6">
-				<GetTo ZoneId="958" XYZ="528.0471, 14.62334, -165.0412" />
+				<GetTo ZoneId="958" XYZ="528.0471, 14.62334, -165.0412"/>
 				<WaitWhile condition="GetQuestStep(69924) == 6"/>
 			</If>
 			<If Condition="GetQuestStep(69924) == 7">
@@ -1677,14 +1682,14 @@
 				<GetTo ZoneId="958" XYZ="-368.5879, 22.22248, 402.2648"/>
 				<LLTurnIn QuestId="69930" NpcId="1039933" XYZ="-369.2531, 22.20836, 403.7689"/>
 				<LLSmallTalk/>
-				<Dismount />
-				<WaitTimer WaitTime="3" />
+				<Dismount/>
+				<WaitTimer WaitTime="3"/>
 				<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
+					<RunCode Name="Coffer"/>
 				</If>	
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 			</If>
 		</If>
 		
@@ -1800,17 +1805,17 @@
 			</If>
 			<If Condition="GetQuestStep(69933) == 5">
 				<GetTo ZoneId="959" XYZ="-191.6207, 58.26021, 418.0667"/>
-				<UseObject NpcId="1039985" XYZ="-189.9291, 58.22994, 419.7605" UseTimes="1" BlacklistAfter="True"/>
-				<!--<RunCode name="TurnOffMount"/>
+				<LLTalkTo NpcId="1039985" XYZ="-189.9291, 58.22994, 419.7605" UseTimes="1" BlacklistAfter="True"/>
+				<RunCode name="TurnOffMount"/>
 				<WaitTimer Waittime="1"/>
-				<NoCombatMoveTo XYZ="-143.2284, 57.27193, 460.3226"/>
+				<NoCombatMoveTo XYZ="-143.2284, 57.27193, 460.3226" Distance="0.5"/>
 				<WaitTimer Waittime="1"/>
-				<NoCombatMoveTo XYZ="-68.08318, 52.7694, 481.5619"/>
+				<NoCombatMoveTo XYZ="-68.08318, 52.7694, 481.5619" Distance="0.5"/>
 				<WaitTimer Waittime="2"/>
-				<NoCombatMoveTo XYZ="18.86062, 34.2903, 427.7223"/>
+				<NoCombatMoveTo XYZ="18.86062, 34.2903, 427.7223" Distance="0.5"/>
 				<WaitTimer Waittime="2"/>
-				<NoCombatMoveTo XYZ="105.0767, 42.03614, 455.4755"/>
-				<WaitTimer Waittime="1"/>-->
+				<NoCombatMoveTo XYZ="105.0767, 42.03614, 455.4755" Distance="0.5"/>
+				<WaitTimer Waittime="1"/>
 				<LLTalkTo NpcId="1039986" XYZ="43.9917, 59.05299, 523.5217" QuestId="69933" StepId="5"/>
 				<RunCode name="TurnOnMount"/>
 			</If>
@@ -1825,15 +1830,15 @@
 			</If>
 			<If Condition="GetQuestStep(69933) == 8">
 				<GetTo ZoneId="959" XYZ="40.22904, 59.17518, 523.4526"/>
-				<UseObject NpcId="1039986" XYZ="43.9917, 59.05299, 523.5217" UseTimes="1" BlacklistAfter="True"/>
-				<!--<RunCode name="TurnOffMount"/>
+				<LLTalkTo NpcId="1039986" XYZ="43.9917, 59.05299, 523.5217" UseTimes="1" BlacklistAfter="True"/>
+				<RunCode name="TurnOffMount"/>
 				<WaitTimer Waittime="4"/>
-				<NoCombatMoveTo XYZ="98.60246, 67.04815, 569.1266"/>
-				<NoCombatMoveTo XYZ="194.1676, 106.2749, 675.0836"/>
+				<NoCombatMoveTo XYZ="98.60246, 67.04815, 569.1266" Distance="0.5"/>
+				<NoCombatMoveTo XYZ="194.1676, 106.2749, 675.0836" Distance="0.5"/>
 				<WaitTimer Waittime="3"/>
-				<NoCombatMoveTo XYZ="216.4895, 74.8235, 525.1127"/>
+				<NoCombatMoveTo XYZ="216.4895, 74.8235, 525.1127" Distance="0.5"/>
 				<WaitTimer Waittime="1"/>
-				<NoCombatMoveTo XYZ="191.9045, 63.59433, 467.9334"/>-->
+				<NoCombatMoveTo XYZ="191.9045, 63.59433, 467.9334" Distance="0.5"/>
 				<LLTalkTo NpcId="1039987" XYZ="189.2577, 63.36112, 467.4601" QuestId="69933" StepId="8"/>
 				<RunCode name="TurnOnMount"/>
 			</If>
@@ -1841,14 +1846,14 @@
 				<GetTo ZoneId="959" XYZ="183.3293, 58.91098, 430.4285"/>
 				<LLTurnIn QuestId="69933" NpcId="1039984" XYZ="183.3981, 58.83443, 427.2982"/>
 				<LLSmallTalk/>
-				<Dismount />
-				<WaitTimer WaitTime="3" />
+				<Dismount/>
+				<WaitTimer WaitTime="3"/>
 				<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
+					<RunCode Name="Coffer"/>
 				</If>	
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 			</If>
 		</If>	
 
@@ -1999,12 +2004,12 @@
 				<GetTo ZoneId="959" XYZ="-451.1168, -168, -622.8315"/>
 				<Dismount/>
 				<WaitTimer Waittime="2"/>
-				<LLClimbHill Start="-451.1168, -168, -622.8315" End="-443.8529, -160.7644, -646.6092" Distance="2.5" SpamJump="true" />
-				<LLClimbHill Start="-443.8529, -160.7644, -646.6092" End="-450.065, -155.3644, -663.3547" Distance="2.5" SpamJump="true" />
-				<LLClimbHill Start="-450.065, -155.3644, -663.3547" End="-460.5311, -155.5657, -661.1524" Distance="2.5" SpamJump="true" />
+				<LLClimbHill Start="-451.1168, -168, -622.8315" End="-443.8529, -160.7644, -646.6092" Distance="2.5" SpamJump="true"/>
+				<LLClimbHill Start="-443.8529, -160.7644, -646.6092" End="-450.065, -155.3644, -663.3547" Distance="2.5" SpamJump="true"/>
+				<LLClimbHill Start="-450.065, -155.3644, -663.3547" End="-460.5311, -155.5657, -661.1524" Distance="2.5" SpamJump="true"/>
 				<LLTalkTo NpcId="2012178" XYZ="-456.1074, -168, -618.7686" QuestId="69938" StepId="4"/>
 				<WaitTimer Waittime="2"/>
-				<LLClimbHill Start="-489.2837, -154.8231, -689.4819" End="-501.3929, -168, -701.2598" Distance="2.5" SpamJump="true" />
+				<LLClimbHill Start="-489.2837, -154.8231, -689.4819" End="-501.3929, -168, -701.2598" Distance="2.5" SpamJump="true"/>
 			</If>
 			<If Condition="GetQuestStep(69938) == 3">
 				<GetTo ZoneId="959" XYZ="-453.1275, -168, -618.8707"/>
@@ -2043,12 +2048,12 @@
 				<WaitTimer Waittime="2"/>
 				<Dismount/>
 				<WaitTimer Waittime="2"/>
-				<LLClimbHill Start="-356.272, -161.8438, -256.1834" End="-357.9919, -156.3147, -267.7834" SpamJump="true" />
-				<LLClimbHill Start="-357.9919, -156.3147, -267.7834" End="-363.3863, -153.3146, -272.9346" SpamJump="true" />
-				<LLClimbHill Start="-363.3863, -153.3146, -272.9346" End="-375.733, -151.6717, -269.0102" SpamJump="true" />
+				<LLClimbHill Start="-356.272, -161.8438, -256.1834" End="-357.9919, -156.3147, -267.7834" SpamJump="true"/>
+				<LLClimbHill Start="-357.9919, -156.3147, -267.7834" End="-363.3863, -153.3146, -272.9346" SpamJump="true"/>
+				<LLClimbHill Start="-363.3863, -153.3146, -272.9346" End="-375.733, -151.6717, -269.0102" SpamJump="true"/>
 				<LLTalkTo NpcId="1038923" XYZ="-376.2722, -151.6717, -267.9026" QuestId="69939" StepId="2"/>
 				<WaitTimer Waittime="2"/>
-				<LLClimbHill Start="-375.733, -151.6717, -269.0102" End="-383.0093, -161.8438, -281.614" SpamJump="false" />
+				<LLClimbHill Start="-375.733, -151.6717, -269.0102" End="-383.0093, -161.8438, -281.614" SpamJump="false"/>
 			</If>
 			<If Condition="GetQuestStep(69939) == 3">
 				<GetTo ZoneId="959" XYZ="-331.909, -161.8438, -363.095" Distance="0.5"/>
@@ -2056,13 +2061,13 @@
 				<Dismount/>
 				<WaitTimer Waittime="2"/>
 				<!-- TODO: Replace with ClimbSpiral tag -->
-				<LLClimbHill Start="-331.909, -161.8438, -363.095" End="-333.2318, -160.8146, -360.018" SpamJump="true" />
-				<LLClimbHill Start="-333.2318, -160.8146, -360.018" End="-340.6486, -156.3146, -353.9218" SpamJump="true" />
-				<LLClimbHill Start="-340.6486, -156.3146, -353.9218" End="-341.7104, -153.3146, -348.3445" SpamJump="true" />
-				<LLClimbHill Start="-341.7104, -153.3146, -348.3445" End="-331.8872, -151.6717, -334.9886" SpamJump="true" />
+				<LLClimbHill Start="-331.909, -161.8438, -363.095" End="-333.2318, -160.8146, -360.018" SpamJump="true"/>
+				<LLClimbHill Start="-333.2318, -160.8146, -360.018" End="-340.6486, -156.3146, -353.9218" SpamJump="true"/>
+				<LLClimbHill Start="-340.6486, -156.3146, -353.9218" End="-341.7104, -153.3146, -348.3445" SpamJump="true"/>
+				<LLClimbHill Start="-341.7104, -153.3146, -348.3445" End="-331.8872, -151.6717, -334.9886" SpamJump="true"/>
 				<LLTalkTo NpcId="1038924" XYZ="-329.9763, -151.6717, -333.7606" QuestId="69939" StepId="3"/>
 				<WaitTimer Waittime="2"/>
-				<LLClimbHill Start="-331.8872, -151.6717, -334.9886" End="-347.7405, -161.8438, -330.9621" SpamJump="false" />
+				<LLClimbHill Start="-331.8872, -151.6717, -334.9886" End="-347.7405, -161.8438, -330.9621" SpamJump="false"/>
 			</If>
 			<!-- Guise 2579 -->
 			<If Condition="GetQuestStep(69939) == 4">
@@ -2170,9 +2175,9 @@
 				<WaitTimer Waittime="22"/>
 				<GetTo ZoneId="959" XYZ="12.54666, -0.5566646, -153.5729" Distance="1"/>
 				<WaitTimer Waittime="20"/>
-				<GetTo ZoneId="959" XYZ="-22.66134, 26.31021, -110.1812" />
+				<GetTo ZoneId="959" XYZ="-22.66134, 26.31021, -110.1812"/>
 				<WaitTimer Waittime="10"/>
-				<GetTo ZoneId="959" XYZ="40.80077, 73.85315, -33.73375" />
+				<GetTo ZoneId="959" XYZ="40.80077, 73.85315, -33.73375"/>
 				<WaitWhile condition="GetQuestStep(69941) == 3"/>
 				<RunCode name="TurnOnMount"/>
 			</If>
@@ -2295,14 +2300,14 @@
 				<GetTo ZoneId="962" XYZ="-100.2083, 3.933468, 3.339709"/>
 				<LLTurnIn QuestId="69944" NpcId="1038588" XYZ="-101.7625, 4.357494, 0.7476196"/>
 				<LLSmallTalk/>
-				<Dismount />
-				<WaitTimer WaitTime="3" />
+				<Dismount/>
+				<WaitTimer WaitTime="3"/>
 				<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
+					<RunCode Name="Coffer"/>
 				</If>	
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 			</If>
     </If>
 		
@@ -2795,7 +2800,7 @@
 			<If Condition="GetQuestStep(69956) == 3 and GetQuestById(69956).QuestI8A == 0">
 				<MoveTo XYZ="-11.97703, 0.2999942, -14.04821" UseMesh="False"/>
 				<MoveTo XYZ="-8.221073, 2.213198, -8.57076" UseMesh="False"/>
-				<RunCode Name="699561" />
+				<RunCode Name="699561"/>
 				<UseObject NpcId="2012128" XYZ="-0.001528129, 4.931927, 0.01416349" QuestId="69956" StepId="3" Condition="GetQuestById(69956).QuestI8A == 0"/>
 			</If>
 			<If Condition="GetQuestStep(69956) == 3 and GetQuestById(69956).QuestI8A == 16">
@@ -2854,22 +2859,28 @@
 					<UseTransport NpcId="2012532" DialogOption="0" InteractDistance="3.0" XYZ="-0.01531982, 1.907349, -13.77893"/>
 				</If>
 				<GetTo ZoneId="961" XYZ="220.0089, 20.22273, 645.6842"/>
-				<If Condition="GetQuestStep(69957) == 2 and GetQuestById(69957).QuestI8A == 0">
-					<UseItem ItemId="2003232" NpcIds="10612" InCombatOnly="True" BlacklistAfter="True" UseHealthPercent="40" while="GetQuestById(69957).QuestI8A == 0">
+				  <UseItem NpcIds="10612,10613,10614" ItemId="2003232" InCombatOnly="True" UseHealthPercent="40" QuestId="69957" StepId="2">
+					<HotSpots>
+							<HotSpot Radius="100" XYZ="216.4235, 17.61816, 672.2487"/>
+							<HotSpot Radius="100" XYZ="241.5191,19.60258,624.7169"/>
+					</HotSpots>
+				  </UseItem>
+				<!--<If Condition="GetQuestStep(69957) == 2 and GetQuestById(69957).QuestI8A == 0">
+					<UseItem ItemId="2003232" NpcIds="10612" InCombatOnly="True" UseHealthPercent="40" while="not GetQuestById(69957).QuestI8A == 1">
 						<HotSpots>
-							<HotSpot Radius="100" XYZ="216.4235, 17.61816, 672.2487" />
-							<HotSpot Radius="100" XYZ="241.5191,19.60258,624.7169" />
+							<HotSpot Radius="100" XYZ="216.4235, 17.61816, 672.2487"/>
+							<HotSpot Radius="100" XYZ="241.5191,19.60258,624.7169"/>
 						</HotSpots>
 					</UseItem>
 				</If>
 				<If Condition="GetQuestStep(69957) == 2 and GetQuestById(69957).QuestI8A == 17">
-					<UseItem ItemId="2003232" NpcIds="10613" InCombatOnly="True" BlacklistAfter="True" UseHealthPercent="40" while="GetQuestById(69957).QuestI8A == 17">
+					<UseItem ItemId="2003232" NpcIds="10613,10614" InCombatOnly="True" UseHealthPercent="40" while="not GetQuestStep(69957) == 255">
 						<HotSpots>
-							<HotSpot Radius="100" XYZ="216.4235, 17.61816, 672.2487" />
-							<HotSpot Radius="100" XYZ="241.5191,19.60258,624.7169" />
+							<HotSpot Radius="100" XYZ="216.4235, 17.61816, 672.2487"/>
+							<HotSpot Radius="100" XYZ="241.5191,19.60258,624.7169"/>
 						</HotSpots>
 					</UseItem>
-				</If>
+				</If>-->
 			</If>
 			<If Condition="GetQuestStep(69957) == 255">
 				<If Condition="not IsOnMap(961)">
@@ -2989,7 +3000,7 @@
     <!-- Lives Apart -->
     <If Condition="IsQuestCompleted(69959) and not IsQuestCompleted(69960)">
       <If Condition="not HasQuest(69960)">
-        <GetTo ZoneId="961" XYZ="152.3288, 17.38996, 53.97577" />
+        <GetTo ZoneId="961" XYZ="152.3288, 17.38996, 53.97577"/>
         <If Condition="IsQuestAcceptQualified(69960)">
           <LLPickupQuest QuestId="69960" NpcId="1040027"/>
           <LLSmallTalk/>
@@ -3041,18 +3052,18 @@
 			</If>
 			<If Condition="GetQuestStep(69961) == 4">
 				<GetTo ZoneId="961" XYZ="1.426369, -15.52369, -104.424"/>
-				<LLSendChat Say="I have a favor to ask" NpcId="1040061" XYZ="-2.121033, -15.84744, -104.6312" />
+				<LLSendChat Say="I have a favor to ask" NpcId="1040061" XYZ="-2.121033, -15.84744, -104.6312"/>
 				<WaitWhile condition="GetQuestStep(69961) == 4"/>
 			</If>
 			<If Condition="GetQuestStep(69961) == 5">
 				<GetTo ZoneId="961" XYZ="1.028306, -15.56015, -104.4472"/>
-				<LLSendChat Say="Please, Emet-Selch" NpcId="1040061" XYZ="-2.121033, -15.84744, -104.6312" />
+				<LLSendChat Say="Please, Emet-Selch" NpcId="1040061" XYZ="-2.121033, -15.84744, -104.6312"/>
 				<WaitWhile condition="GetQuestStep(69961) == 5"/>
 			</If>
 			<If Condition="GetQuestStep(69961) == 6">
 				<ClimbHill Start="-37.64533, -11.16602, -70.62399" End="-64.05479, -15.33671, -84.72186"/>
-				<!--<GetTo ZoneId="961" XYZ="-63.71304, -15.33698, -84.45352" />-->
-				<LLSendChat Emote="wave" XYZ="-63.71304, -15.33698, -84.45352" />
+				<!--<GetTo ZoneId="961" XYZ="-63.71304, -15.33698, -84.45352"/>-->
+				<LLSendChat Emote="wave" XYZ="-63.71304, -15.33698, -84.45352"/>
 				<WaitWhile condition="GetQuestStep(69961) == 6"/>
 			</If>
 			<If Condition="GetQuestStep(69961) == 255">
@@ -3487,41 +3498,41 @@
         </If>
       </If>
 			<If Condition="GetQuestStep(69972) == 1">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="436.1958, 149.1965, -362.5172"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<UseObject NpcId="2012167" XYZ="436.057, 149.1263, -360.2503" QuestId="69972" StepId="1"/>
 			</If>
 			<If Condition="GetQuestStep(69972) == 2">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="525.7611, 138.5854, -188.439"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<LLTalkTo NpcId="2012169" XYZ="523.7352, 139.2996, -186.9383" QuestId="69972" StepId="2"/>
 			</If>
 			<If Condition="GetQuestStep(69972) == 3">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="803.407, 153.4156, -212.1224"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<UseObject NpcId="2012170" XYZ="805.0812, 153.521, -210.5593" QuestId="69972" StepId="3"/>
 			</If>
 			<If Condition="GetQuestStep(69972) == 4">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="744.7173, 148.537, -356.7769"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<UseObject NpcId="2012171" XYZ="741.39, 148.0582, -356.5576" QuestId="69972" StepId="4"/>
 			</If>
 			<If Condition="GetQuestStep(69972) == 255">
 				<GetTo ZoneId="961" XYZ="506.5868, 151.481, -306.5848"/>
 				<LLTurnIn QuestId="69972" NpcId="1040151" XYZ="504.3563, 151.5689, -303.8834"/>
 				<LLSmallTalk/>
-				<Dismount />
-				<WaitTimer WaitTime="3" />
+				<Dismount/>
+				<WaitTimer WaitTime="3"/>
 				<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
+					<RunCode Name="Coffer"/>
 				</If>	
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 			</If>
     </If>
 
@@ -3539,7 +3550,7 @@
 				<LLTalkTo NpcId="1040154" XYZ="-401.236, 329.783, -760.3418" QuestId="69973" StepId="1"/>
 			</If>
 			<If Condition="GetQuestStep(69973) == 2">
-				<UserDialog QuestId="69973" StepId="1" DialogText="Please manually complete the dungeon: Lv. 87 Ktisis Hyperboreia."/>
+				<UserDialog QuestId="69973" StepId="2" DialogText="Please manually complete the dungeon: Lv. 87 Ktisis Hyperboreia."/>
 				<WaitWhile Condition="not GetQuestStep(69973) == 255"/>
 			</If>
 			<If Condition="GetQuestStep(69973) == 255">
@@ -3773,39 +3784,39 @@
 				<LLTalkTo NpcId="1040402" XYZ="494.8042, 65.06, -37.70508" QuestId="69980" StepId="1"/>
 			</If>
 			<If Condition="GetQuestStep(69980) == 2">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="478.8029, 66.16193, -109.5982"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<LLTalkTo NpcId="1037985" XYZ="481.8036, 66.16195, -108.5374" QuestId="69980" StepId="2"/>
 			</If>
 			<If Condition="GetQuestStep(69980) == 3">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="420.2737, 65.26338, -122.5118"/>
-				<RunCode Name="TurnOnMount" />
-				<LLTalkTo NpcId="1040402" XYZ="422.2901, 65.29993, -122.3987" QuestId="69980" StepId="3" />
+				<RunCode Name="TurnOnMount"/>
+				<LLTalkTo NpcId="1040402" XYZ="422.2901, 65.29993, -122.3987" QuestId="69980" StepId="3"/>
 			</If>
 			<If Condition="GetQuestStep(69980) == 4">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="406.9573, 65.16199, -120.4245" Distance="1"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<LLTalkTo NpcId="1040402" XYZ="409.8069, 65.16199, -119.4314" QuestId="69980" StepId="4"/>
 			</If>
 			<If Condition="GetQuestStep(69980) == 5">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="464.2007, 65.16199, -64.937"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<LLTalkTo NpcId="1040402" XYZ="464.4508, 65.19597, -66.94105" QuestId="69980" StepId="5"/>
 			</If>
 			<If Condition="GetQuestStep(69980) == 6">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="485.4192, 65.16199, -97.2141" Distance="1"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<LLTalkTo NpcId="1040402" XYZ="483.5618, 65.16199, -96.42091" QuestId="69980" StepId="6"/>
 			</If>
 			<If Condition="GetQuestStep(69980) == 7">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="479.4911, 66.16194, -108.912"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<LLTalkTo NpcId="1037985" XYZ="481.8036, 66.16195, -108.5374" QuestId="69980" StepId="7"/>
 			</If>
 			<If Condition="GetQuestStep(69980) == 255">
@@ -3975,21 +3986,21 @@
 				<LLTalkTo NpcId="1040468" XYZ="-598.3215, -191.1191, 301.7166" QuestId="69984" StepId="5"/>
 			</If>
 			<If Condition="GetQuestStep(69984) == 6">
-				<GetTo ZoneId="956" XYZ="-408.6238, -220.1825, 302.1053" />
+				<GetTo ZoneId="956" XYZ="-408.6238, -220.1825, 302.1053"/>
 				<WaitWhile condition="GetQuestStep(69984) == 6"/>
 			</If>
 			<If Condition="GetQuestStep(69984) == 255">
 				<GetTo ZoneId="956" XYZ="-408.6238, -220.1825, 302.1053"/>
 				<LLTurnIn QuestId="69984" NpcId="1040478" XYZ="-406.9734, -220.1835, 304.1886"/>
 				<LLSmallTalk/>
-				<Dismount />
-				<WaitTimer WaitTime="3" />
+				<Dismount/>
+				<WaitTimer WaitTime="3"/>
 				<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
+					<RunCode Name="Coffer"/>
 				</If>	
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 			</If>
     </If>
 
@@ -4015,7 +4026,7 @@
 				<WaitWhile condition="GetQuestStep(69985) == 3"/>
 			</If>
 			<If Condition="GetQuestStep(69985) == 4">
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 				<AutoInventoryEquip/>	
 				<UserDialog QuestId="69985" StepId="4" DialogText="Please manually complete the trial: Lv. 89 The Mothercrystal."/>
 				<WaitWhile Condition="not GetQuestStep(69985) == 6"/>
@@ -4209,7 +4220,7 @@
 				<UseObject NpcId="2012284" XYZ="-474.3267, 56.19897, -41.03156" QuestId="69990" StepId="4"/>
 			</If>
 			<If Condition="GetQuestStep(69990) == 5">
-				<GetTo ZoneId="960" XYZ="-576.2001, 64.91466, -195.6136" />
+				<GetTo ZoneId="960" XYZ="-576.2001, 64.91466, -195.6136"/>
 				<WaitWhile condition="GetQuestStep(69990) == 5"/>
 			</If>
 			<If Condition="GetQuestStep(69990) == 255">
@@ -4281,7 +4292,7 @@
 				<GetTo ZoneId="960" XYZ="42.29538, 269.2855, -591.7688"/>
 				<UseObject NpcIds="2012354,2012355,2012356,2012357" QuestId="69992" StepId="5">
 					<HotSpots>
-						<HotSpot Radius="90" XYZ="42.29538, 269.2855, -591.7688" />
+						<HotSpot Radius="90" XYZ="42.29538, 269.2855, -591.7688"/>
 						<HotSpot Radius="90" XYZ="126.6519, 269.3031, -593.4112"/>
 					</HotSpots>
 				</UseObject>
@@ -4508,15 +4519,15 @@
 				<LLTalkTo NpcId="1041166" XYZ="459.2507, 417.0675, 414.6638" QuestId="69998" StepId="3"/>
 			</If>
 			<If Condition="GetQuestStep(69998) == 4">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="227.4101, 566, 316.6551"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<LLTalkTo NpcId="1041165" XYZ="228.7923, 566, 318.3383" QuestId="69998" StepId="4"/>
 			</If>
 			<If Condition="GetQuestStep(69998) == 255">
-				<RunCode Name="TurnOffMount" />
+				<RunCode Name="TurnOffMount"/>
 				<MoveTo XYZ="224.6618, 566, 315.9011"/>
-				<RunCode Name="TurnOnMount" />
+				<RunCode Name="TurnOnMount"/>
 				<LLTurnIn QuestId="69998" NpcId="1041167" XYZ="221.21, 565.9999, 314.4121"/>
 				<LLSmallTalk/>
 			</If>
@@ -4564,23 +4575,23 @@
 				<LLTalkTo NpcId="1041170" XYZ="145.2811, 566, 390.7987" QuestId="69999" StepId="3"/>
 			</If>
 			<If Condition="GetQuestStep(69999) == 4">
-				<MoveTo XYZ="38.71193, 567.5, 192.2423" />
-				<MoveTo XYZ="39.23185, 616.8119, 82.53423" usemesh="false" />
-				<MoveTo XYZ="1.86478, 637.1029, 4.291153" />
+				<MoveTo XYZ="38.71193, 567.5, 192.2423"/>
+				<MoveTo XYZ="39.23185, 616.8119, 82.53423" usemesh="false"/>
+				<MoveTo XYZ="1.86478, 637.1029, 4.291153"/>
 				<WaitWhile condition="GetQuestStep(69999) == 4"/>
 			</If>
 			<If Condition="GetQuestStep(69999) == 255">
 				<GetTo ZoneId="960" XYZ="1.86478, 637.1029, 4.291153"/>
 				<LLTurnIn QuestId="69999" NpcId="1041173" XYZ="1.663208, 637.103, 5.233826"/>
 				<LLSmallTalk/>
-				<Dismount />
-				<WaitTimer WaitTime="3" />
+				<Dismount/>
+				<WaitTimer WaitTime="3"/>
 				<If condition="&OpenCoffers; == 1">
-					<RunCode Name="Coffer" />
+					<RunCode Name="Coffer"/>
 				</If>	
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 				<AutoInventoryEquip/>
-				<WaitTimer waitTime="1" />
+				<WaitTimer waitTime="1"/>
 			</If>
     </If>
 

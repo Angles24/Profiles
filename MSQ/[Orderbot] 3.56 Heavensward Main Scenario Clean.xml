@@ -433,7 +433,7 @@ Updated: January 2022 by Angles24
    <UseObject NpcId="2005419" XYZ="299.8245, -115.8313, 424.7349" QuestId="67131" StepId="2"/>
   </If>
   <If Condition="HasQuest(67131) and not IsQuestCompleted(67131) and GetQuestStep(67131) == 3">
-      <If Condition="not DutyManager.InInstance">
+     <!-- <If Condition="not DutyManager.InInstance">
 		<GetTo ZoneId="401" XYZ="531.1816, -99.84944, 349.9656"/>
         <RunCode Name="DutyCommence"/>
       </If>
@@ -443,29 +443,35 @@ Updated: January 2022 by Angles24
 		  <MoveTo ZoneId="401" XYZ="659.3574, -65.53652, -123.3998"/>		
 		  <WaitWhile Condition="Core.Player.InCombat"/>		  
 		  <UseObject NpcId="2005710" XYZ="659.3574, -65.53652, -123.3998" Condition="not Core.Player.InCombat" UseTimes="1" BlacklistAfter="True" />
-		  <Grind GrindRef="67131" While="DutyManager.InInstance and not GetQuestStep(67131) == 255"/>
+		  <Grind GrindRef="67131" While="DutyManager.InInstance and not GetQuestStep(67131) == 255"/>-->
 		  <!--<WaitTimer WaitTime="10"/>	
 		  <MoveTo ZoneId="401" XYZ="683.6423, -65.53652, -88.35236"/>
 		  <WaitTimer WaitTime="5"/>			
 		  <MoveTo ZoneId="401" XYZ="727.4737, -70.55422, -20.15596"/>	
 		  <WaitTimer WaitTime="5"/>	
 		  <MoveTo ZoneId="401" XYZ="708.4626, -85.6245, 30.1816"/>-->
-      </If>	
-	  <WaitWhile Condition="not GetQuestStep(67131) == 255"/>
-   <!--<GetTo ZoneId="401" XYZ="531.1816, -99.84944, 349.9656"/>
+     <!-- </If>	
+	  <WaitWhile Condition="not GetQuestStep(67131) == 255"/>-->
+   <GetTo ZoneId="401" XYZ="531.1816, -99.84944, 349.9656"/>
    <LLSimpleDuty InteractNpcId="1012366" XYZ="531.1816, -99.84944, 349.9656" QuestId="67131" StepId="3">
     <InteractObjects>
      <InteractObject Name="Brambleweed Rope" NpcId="2005710"/>
     </InteractObjects>
     <HotSpots>
      <HotSpot XYZ="659.3574, -65.53652, -123.3998" Radius="60"/>
+     <HotSpot XYZ="685.7556, -65.53652, -87.90729" Radius="60"/>
+     <HotSpot XYZ="727.9093, -68.84732, -26.04375" Radius="60"/>
+     <HotSpot XYZ="701.8826, -87.65438, 34.94961" Radius="60"/>
     </HotSpots>
     <TargetMobs>
      <TargetMob Id="3503" Weight="3000"/>
      <TargetMob Id="3502" Weight="2000"/>
-     <TargetMob Id="4128" Weight="1000"/>
+     <TargetMob Id="4128" Weight="5000"/>
     </TargetMobs>
-   </LLSimpleDuty>-->
+   </LLSimpleDuty>
+  </If>
+  <If Condition="HasQuest(67131) and not IsQuestCompleted(67131) and GetQuestStep(67131) == 4">
+	<WaitWhile Condition="not GetQuestStep(67131) == 255"/>
   </If>
   <If Condition="HasQuest(67131) and not IsQuestCompleted(67131) and GetQuestStep(67131) == 255">
    <GetTo ZoneId="401" XYZ="-678.2483, -110.6741, 481.7731"/>
@@ -643,6 +649,8 @@ Updated: January 2022 by Angles24
      <InteractObject Name="Magitek Device" NpcId="2006332"/>
     </InteractObjects>
    </LLSimpleDuty>
+  </If>
+  <If Condition="HasQuest(67137) and not IsQuestCompleted(67137) and GetQuestStep(67137) == 2">
    <WaitWhile Condition="HasQuest(67137) and not IsQuestCompleted(67137) and not GetQuestStep(67137) == 3"/>
   </If>
   <If Condition="HasQuest(67137) and not IsQuestCompleted(67137) and GetQuestStep(67137) == 3">
@@ -1227,7 +1235,8 @@ Updated: January 2022 by Angles24
     <UseTransport InteractDistance="3.0" NpcId="2005446" XYZ="-9.079163, -127.7333, 734.0046"/>
    </If>
    <MoveTo UseMesh="False" XYZ="5.850327, -2.384186E-07, -0.7740318"/>
-   <MoveTo UseMesh="False" XYZ="-6.210298, -0.02968235, 19.89979"/>
+   <MoveTo UseMesh="False" XYZ="-6.210298, -0.02968235, 19.89979" Distance="0.5"/>
+   <RunCode Name="Transition1"/>
    <WaitWhile Condition="HasQuest(67152) and not IsQuestCompleted(67152) and not GetQuestStep(67152) == 3"/>
   </If>
   <If Condition="HasQuest(67152) and not IsQuestCompleted(67152) and GetQuestStep(67152) == 3">
@@ -5443,10 +5452,18 @@ Updated: January 2022 by Angles24
 				await Buddy.Coroutines.Coroutine.Sleep(1000);
 		]]>
 		</CodeChunk>
+    <CodeChunk Name="Transition1">
+      <![CDATA[
+            Core.Me.SetFacing(0.1336384f);
+            MovementManager.MoveForwardStart();
+            await Coroutine.Sleep(2000);
+            Navigator.PlayerMover.MoveStop();
+            ]]>
+    </CodeChunk>
     <CodeChunk Name="DutyCommence">
       <![CDATA[
         Logging.Write("Commencing duty.");
-        uint[] npcIds = { 1006416, 1012366 };
+        uint[] npcIds = { 1006416, 1012366, 1016034 };
         var dutyNpc = GameObjectManager.GameObjects.Where(r => r.IsTargetable && npcIds.Contains(r.NpcId)).OrderBy(r => r.Distance()).FirstOrDefault();
         while (Core.Me.Location.Distance2D(dutyNpc.Location) > 1.5f)
         {
