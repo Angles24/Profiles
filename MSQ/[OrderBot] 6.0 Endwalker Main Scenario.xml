@@ -1377,10 +1377,10 @@
 				<LLTalkTo NpcId="1039880" XYZ="-308.3696, 22.46834, 365.7129" QuestId="69923" StepId="4"/>
 			</If>
 			<If Condition="GetQuestStep(69923) == 5">
-				<RunCode name="TurnOffMount"/>
-				<NoCombatMoveTo XYZ="-295.3914, 4.537916, 258.5102"/>
-				<WaitTimer Waittime="3"/>
-				<NoCombatMoveTo XYZ="65.88302, 0.04138899, 150.071"/>
+				<RunCode name="TurnOffMount" InCombat="True"/>
+				<NoCombatMoveTo XYZ="-295.3914, 4.537916, 258.5102" InCombat="True"/>
+				<WaitTimer Waittime="3" InCombat="True"/>
+				<NoCombatMoveTo XYZ="65.88302, 0.04138899, 150.071" InCombat="True"/>
 				<LLTalkTo NpcId="1039880" XYZ="65.07941, -0.1091221, 152.0953" QuestId="69923" StepId="5"/>
 				<RunCode name="TurnOnMount"/>
 			</If>
