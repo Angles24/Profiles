@@ -6076,7 +6076,11 @@ Updated: January 2022 by Angles24
         <UseTransport InteractDistance="3.0" NpcId="1027230" XYZ="117.9979, 14.64903, 7.156433"/>
         <LLTurnIn QuestId="69209" NpcId="1032121" XYZ="0.04577637, 0, -5.539063"/>
 	    <LLSmallTalk/>
-	    <AutoInventoryEquip/>
+	    <Dismount />
+        <WaitTimer WaitTime="2" />
+        <RunCode Name="Coffer" />
+        <WaitTimer WaitTime="2"/>	
+        <AutoInventoryEquip/>
       </If>
     </If>
     <!-- A Grand Adventure (Level 80) -->
@@ -6574,9 +6578,31 @@ Updated: January 2022 by Angles24
       </If>
       <If Condition="GetQuestStep(69303) == 255">
         <GetTo ZoneId="818" XYZ="605.8008, 350.3518, -197.6991"/>
-        <LLTurnIn ItemId="2002971" QuestId="69303" NpcId="1027757" XYZ="609.7047, 350.3518, -197.9553"/>
-	    <LLSmallTalk/>
-	    <AutoInventoryEquip/>
+	    <If Condition="Core.Me.CurrentJob == ClassJobType.Paladin or Core.Me.CurrentJob == ClassJobType.Warrior or Core.Me.CurrentJob == ClassJobType.DarkKnight or Core.Me.CurrentJob == ClassJobType.Gunbreaker">
+          <LLTurnIn ItemId="2002971" QuestId="69303" NpcId="1027757" XYZ="609.7047, 350.3518, -197.9553" RewardSlot="0"/>
+		  <LLSmallTalk/>
+	    </If>	
+	    <If Condition="Core.Me.CurrentJob == ClassJobType.Monk or Core.Me.CurrentJob == ClassJobType.Dragoon or Core.Me.CurrentJob == ClassJobType.Samurai or Core.Me.CurrentJob == ClassJobType.Reaper">
+          <LLTurnIn ItemId="2002971" QuestId="69303" NpcId="1027757" XYZ="609.7047, 350.3518, -197.9553" RewardSlot="1"/>
+		  <LLSmallTalk/>
+	    </If>	
+	    <If Condition="Core.Me.CurrentJob == ClassJobType.Bard or Core.Me.CurrentJob == ClassJobType.Machinist or Core.Me.CurrentJob == ClassJobType.Dancer or Core.Me.CurrentJob == ClassJobType.Ninja">
+          <LLTurnIn ItemId="2002971" QuestId="69303" NpcId="1027757" XYZ="609.7047, 350.3518, -197.9553" RewardSlot="2"/>
+		  <LLSmallTalk/>
+	    </If>	
+	    <If Condition="Core.Me.CurrentJob == ClassJobType.WhiteMage or Core.Me.CurrentJob == ClassJobType.Scholar or Core.Me.CurrentJob == ClassJobType.Astrologian or Core.Me.CurrentJob == ClassJobType.Sage">
+          <LLTurnIn ItemId="2002971" QuestId="69303" NpcId="1027757" XYZ="609.7047, 350.3518, -197.9553" RewardSlot="3"/>
+		  <LLSmallTalk/>
+	    </If>	
+	    <If Condition="Core.Me.CurrentJob == ClassJobType.BlackMage or Core.Me.CurrentJob == ClassJobType.Summoner or Core.Me.CurrentJob == ClassJobType.RedMage">
+          <LLTurnIn ItemId="2002971" QuestId="69303" NpcId="1027757" XYZ="609.7047, 350.3518, -197.9553" RewardSlot="4"/>
+	      <LLSmallTalk/>
+		</If>		
+	    <Dismount />
+        <WaitTimer WaitTime="2" />
+        <RunCode Name="Coffer" />
+        <WaitTimer WaitTime="2"/>	
+        <AutoInventoryEquip/>
       </If>
     </If>
     <!-- A Whales Tale (Level 80) -->
@@ -6808,9 +6834,27 @@ Updated: January 2022 by Angles24
     </If>
     <If Condition="GetQuestStep(69309) == 255">
       <LisbethTravel ZoneId="351" XYZ="-0.8783, 0, -7.3048"/>
-      <LLTurnIn QuestId="69309" NpcId="1033817" XYZ="-3.03656, 0.01804012, -8.1026"/>
-	  <LLSmallTalk/>
-	  <AutoInventoryEquip/>
+	  <If Condition="Core.Me.CurrentJob == ClassJobType.Paladin or Core.Me.CurrentJob == ClassJobType.Warrior or Core.Me.CurrentJob == ClassJobType.DarkKnight or Core.Me.CurrentJob == ClassJobType.Gunbreaker">
+        <LLTurnIn QuestId="69309" NpcId="1033817" XYZ="-3.03656, 0.01804012, -8.1026" RewardSlot="0"/>
+	    <LLSmallTalk/>
+	  </If>
+	  <If Condition="Core.Me.CurrentJob == ClassJobType.Dragoon or Core.Me.CurrentJob == ClassJobType.Reaper">
+        <LLTurnIn QuestId="69309" NpcId="1033817" XYZ="-3.03656, 0.01804012, -8.1026" RewardSlot="1"/>
+	    <LLSmallTalk/>
+	  </If>
+	  <If Condition="Core.Me.CurrentJob == ClassJobType.Monk or Core.Me.CurrentJob == ClassJobType.Samurai">
+        <LLTurnIn QuestId="69309" NpcId="1033817" XYZ="-3.03656, 0.01804012, -8.1026" RewardSlot="2"/>
+	    <LLSmallTalk/>
+	  </If>
+      <If Condition="GetQuestStep(69309) == 255">
+        <LLTurnIn QuestId="69309" NpcId="1033817" XYZ="-3.03656, 0.01804012, -8.1026"/>
+	    <LLSmallTalk/>
+	  </If>
+	  <Dismount />
+      <WaitTimer WaitTime="2" />
+      <RunCode Name="Coffer" />
+      <WaitTimer WaitTime="2"/>	
+      <AutoInventoryEquip/>
     </If>
     <!-- Food for the Soul -->
     <If Condition="IsQuestCompleted(69309) and not HasQuest(69310) and not IsQuestCompleted(69310)">
@@ -6835,9 +6879,31 @@ Updated: January 2022 by Angles24
     </If>
     <If Condition="GetQuestStep(69310) == 255">
       <LisbethTravel ZoneId="819" XYZ="42.6882, -5.960464E-08, 0.0258"/>
-      <LLTurnIn QuestId="69310" NpcId="1033822" XYZ="39.6886, 7.450581E-09, -0.8392944"/>
+	  <If Condition="Core.Me.CurrentJob == ClassJobType.Ninja">
+        <LLTurnIn QuestId="69310" NpcId="1033822" XYZ="39.6886, 7.450581E-09, -0.8392944" RewardSlot="1"/>
+	    <LLSmallTalk/>
+	  </If>
+	  <If Condition="Core.Me.CurrentJob == ClassJobType.Bard or Core.Me.CurrentJob == ClassJobType.Dancer or Core.Me.CurrentJob == ClassJobType.Machinist">
+        <LLTurnIn QuestId="69310" NpcId="1033822" XYZ="39.6886, 7.450581E-09, -0.8392944" RewardSlot="0"/>
+	    <LLSmallTalk/>
+	  </If>
+	  <If Condition="Core.Me.CurrentJob == ClassJobType.WhiteMage or Core.Me.CurrentJob == ClassJobType.Scholar or Core.Me.CurrentJob == ClassJobType.Astrologian or Core.Me.CurrentJob == ClassJobType.Sage">
+        <LLTurnIn QuestId="69310" NpcId="1033822" XYZ="39.6886, 7.450581E-09, -0.8392944" RewardSlot="2"/>
+	    <LLSmallTalk/>
+	  </If>
+	  <If Condition="Core.Me.CurrentJob == ClassJobType.BlackMage or Core.Me.CurrentJob == ClassJobType.Summoner or Core.Me.CurrentJob == ClassJobType.RedMage">
+        <LLTurnIn QuestId="69310" NpcId="1033822" XYZ="39.6886, 7.450581E-09, -0.8392944" RewardSlot="3"/>
+	    <LLSmallTalk/>
+	  </If>
+      <If Condition="GetQuestStep(69310) == 255">
+        <LLTurnIn QuestId="69310" NpcId="1033822" XYZ="39.6886, 7.450581E-09, -0.8392944"/>
 	  <LLSmallTalk/>
-	  <AutoInventoryEquip/>
+	  </If>
+	  <Dismount />
+      <WaitTimer WaitTime="2" />
+      <RunCode Name="Coffer" />
+      <WaitTimer WaitTime="2"/>	
+      <AutoInventoryEquip/>
     </If>
     <!-- Faded Memories -->
     <If Condition="IsQuestCompleted(69310) and not HasQuest(69311) and not IsQuestCompleted(69311)">
