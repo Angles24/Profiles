@@ -301,7 +301,7 @@ Updated: January 2022 by Angles24
     </If>
     <If Condition="HasQuest(69390) and not IsQuestCompleted(69390) and GetQuestStep(69390) == 255">
       <GetTo ZoneId="148" XYZ="196.9487, -5.634137, -108.2345"/>
-      <LLTurnIn ItemId="2000062" QuestId="69390" NpcId="1000449" XYZ="201.8309, -5.541967, -107.2557"/>
+      <LLTurnIn ItemId="2003025" QuestId="69390" NpcId="1000449" XYZ="201.8309, -5.541967, -107.2557"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
     </If>
@@ -343,7 +343,7 @@ Updated: January 2022 by Angles24
       </If>
     </If>
     <If Condition="HasQuest(69391) and not IsQuestCompleted(69391) and GetQuestStep(69391) == 1 and not IsTodoChecked(69391, 1, 0)">
-      <GetTo ZoneId="148" XYZ="480.8879, 30.74683, -49.72919"/>
+      <NoCombatMoveTo XYZ="480.8879, 30.74683, -49.72919"/>
 	  <UseObject NpcId="2000010" XYZ="480.8879, 30.74683, -49.72919" UseTimes="1"/>
     </If>
     <If Condition="HasQuest(69391) and not IsQuestCompleted(69391) and GetQuestStep(69391) == 1 and not IsTodoChecked(69391, 1, 1)">
@@ -356,7 +356,7 @@ Updated: January 2022 by Angles24
     </If>
     <If Condition="HasQuest(69391) and not IsQuestCompleted(69391) and GetQuestStep(69391) == 255">
       <GetTo ZoneId="148" XYZ="106.8589, -8, -75.66956"/>
-      <LLTurnIn ItemId="2000071" QuestId="69391" NpcId="1000408" XYZ="106.8589, -8, -75.66956"/>
+      <LLTurnIn ItemId="2003026" QuestId="69391" NpcId="1000408" XYZ="106.8589, -8, -75.66956"/>
 	  <LLSmallTalk/>
 	  <AutoInventoryEquip/>
     </If>
@@ -793,6 +793,7 @@ Updated: January 2022 by Angles24
       <GetTo ZoneId="132" XYZ="26.08903, -8, 115.4739"/>
       <If Condition="IsQuestAcceptQualified(65985)">
         <LLPickUpQuest QuestId="65985" NpcId="1000100" XYZ="23.81927, -8, 115.9227"/>
+		<LLSmallTalk/>
       </If>
     </If>
     <If Condition="HasQuest(65985) and not IsQuestCompleted(65985) and GetQuestStep(65985) == 1">
@@ -3117,6 +3118,7 @@ Updated: January 2022 by Angles24
       <LLTalkTo NpcId="1005017" XYZ="-63.1571, -25.21552, -554.6502" QuestId="65879" StepId="3"/>
     </If>
     <If Condition="HasQuest(65879) and not IsQuestCompleted(65879) and GetQuestStep(65879) == 4">
+	  <LLoadProfile Path="Dungeon Profiles/The Bowl of Embers.xml"/>
 	  <UserDialog QuestId="65879" StepId="4" DialogText="Please manually complete the trial: Lv. 20 The Bowl of Embers."/>
 	  <WaitWhile Condition="not GetQuestStep(65879) == 5"/>
     </If>
