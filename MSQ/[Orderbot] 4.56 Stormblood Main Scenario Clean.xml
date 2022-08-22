@@ -883,7 +883,7 @@ Updated: January 2022 by Angles24
         <UseTransport InteractDistance="3.0" NpcId="2008134" XYZ="-0.01531982, 1.144348, 13.50421"/>
       </If>
       <GetTo ZoneId="628" XYZ="-50.65513, 16.76604, -6.563137"/>
-      <UserDialog QuestId="68010" StepId="4" DialogText="Please manually complete the Dolo Duty."/>
+      <UserDialog QuestId="68010" StepId="4" DialogText="Please manually complete the Solo Duty."/>
 	  <WaitWhile Condition="not GetQuestStep(68010) == 255"/>
     </If>
     <If Condition="HasQuest(68010) and not IsQuestCompleted(68010) and GetQuestStep(68010) == 255">
